@@ -48,6 +48,22 @@ data class ReadingText(
     val questions: List<Exercise>,
 )
 
+/** Реплика диалога. who: "them" — собеседник (en, ru); "me" — ваш ответ (hint, options[0] — верный, ru). */
+@Serializable
+data class DialogLine(
+    val who: String,
+    val en: String = "",
+    val ru: String = "",
+    val hint: String = "",
+    val options: List<String> = emptyList(),
+)
+
+@Serializable
+data class Dialog(val id: String, val title: String, val topic: String, val intro: String, val lines: List<DialogLine>)
+
+@Serializable
+private data class DialogBank(val dialogs: List<Dialog>)
+
 @Serializable
 private data class GrammarBank(val lessons: List<GrammarLesson>)
 
@@ -58,6 +74,12 @@ object PracticeKind {
     const val GRAMMAR = "grammar"
     const val READING = "reading"
     const val LISTENING = "listening"
+    const val SPEAKING = "speaking"
+    const val DIALOG = "dialog"
+
+    /** Шаг «Практика» сессии дня — понимание; шаг «Речь» — говорение. */
+    val PRACTICE_STEP = listOf(GRAMMAR, READING, LISTENING)
+    val SPEECH_STEP = listOf(SPEAKING, DIALOG)
 }
 
 /** Материалы практики из assets/course и учёт пройденного. */
@@ -65,15 +87,20 @@ class PracticeRepository(private val context: Context, private val db: AppDataba
     private val json = Json { ignoreUnknownKeys = true }
     private var grammar: List<GrammarLesson>? = null
     private var reading: ReadingBank? = null
+    private var dialogs: List<Dialog>? = null
 
     suspend fun grammarLessons(): List<GrammarLesson> =
         grammar ?: json.decodeFromString<GrammarBank>(asset("course/a1_grammar.json")).lessons.also { grammar = it }
 
     suspend fun readingTexts(): List<ReadingText> = readingBank().texts
 
+    suspend fun dialogs(): List<Dialog> =
+        dialogs ?: json.decodeFromString<DialogBank>(asset("course/a1_dialogs.json")).dialogs.also { dialogs = it }
+
     fun bestScores(kind: String): Flow<List<BestScore>> = db.activityDao().bestScoresFlow(kind)
 
-    fun practicedTodayFlow(): Flow<Int> = db.activityDao().countSinceFlow(StudyRepository.dayStart())
+    /** Сколько упражнений данных видов сделано сегодня. */
+    fun doneTodayFlow(kinds: List<String>): Flow<Int> = db.activityDao().countSinceFlow(kinds, StudyRepository.dayStart())
 
     suspend fun log(kind: String, itemId: String, correct: Int, total: Int, durationMs: Long) =
         db.activityDao().insert(

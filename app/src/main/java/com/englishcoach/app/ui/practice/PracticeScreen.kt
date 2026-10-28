@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.englishcoach.app.data.practice.Dialog
 import com.englishcoach.app.data.practice.GrammarLesson
 import com.englishcoach.app.data.practice.PracticeKind
 import com.englishcoach.app.data.practice.ReadingText
@@ -32,10 +33,19 @@ import com.englishcoach.app.ui.theme.Success
 private const val PASS_PERCENT = 70
 
 @Composable
-fun PracticeScreen(onGrammar: (String) -> Unit, onReading: (String) -> Unit, onListening: () -> Unit) {
+fun PracticeScreen(
+    onGrammar: (String) -> Unit,
+    onReading: (String) -> Unit,
+    onListening: () -> Unit,
+    onSpeaking: () -> Unit,
+    onDialog: (String) -> Unit,
+) {
     val c = LocalAppContainer.current
     val lessons by produceState(emptyList<GrammarLesson>()) { value = c.practice.grammarLessons() }
     val texts by produceState(emptyList<ReadingText>()) { value = c.practice.readingTexts() }
+    val dialogs by produceState(emptyList<Dialog>()) { value = c.practice.dialogs() }
+    val dialogBest by remember { c.practice.bestScores(PracticeKind.DIALOG) }.collectAsStateWithLifecycle(emptyList())
+    val dMap = dialogBest.associate { it.itemId to it.best }
     val grammarBest by remember { c.practice.bestScores(PracticeKind.GRAMMAR) }.collectAsStateWithLifecycle(emptyList())
     val readingBest by remember { c.practice.bestScores(PracticeKind.READING) }.collectAsStateWithLifecycle(emptyList())
     val gMap = grammarBest.associate { it.itemId to it.best }
@@ -52,8 +62,11 @@ fun PracticeScreen(onGrammar: (String) -> Unit, onReading: (String) -> Unit, onL
         }
         Section("Аудирование")
         ItemRow("Послушай и запиши", "8 фраз из примеров к вашим словам", null, onListening)
-        ComingSoon(4, "Произношение: повторить вслух, приложение проверит.")
-        ComingSoon(4, "Диалоги: сценарии (аэропорт, магазин, стройка, игровой чат).")
+        Section("Речь")
+        ItemRow("Произношение", "Повторите 6 фраз вслух — приложение проверит", null, onSpeaking)
+        dialogs.forEach { d ->
+            ItemRow("Диалог: ${d.title}", dMap[d.id]?.let { "${d.topic} · лучший результат $it%" } ?: d.topic, dMap[d.id]) { onDialog(d.id) }
+        }
         ComingSoon(5, "Собеседник ИИ: свободный разговор и разбор ошибок.")
     }
 }

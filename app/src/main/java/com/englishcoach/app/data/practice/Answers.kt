@@ -31,6 +31,12 @@ object Answers {
         }
     }
 
+    /** Доля слов эталона, которые есть в ответе (0..1). Для речи: распознавание редко бывает дословным. */
+    fun matchRatio(input: String, target: String): Double {
+        val d = wordDiff(input, target)
+        return if (d.isEmpty()) 0.0 else d.count { it.second }.toDouble() / d.size
+    }
+
     /** Варианты начальной формы для поиска перевода: plays → play, liked → like, cities → city. */
     fun stems(word: String): List<String> {
         val w = word.lowercase().removeSuffix("'s")

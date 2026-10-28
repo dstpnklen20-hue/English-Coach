@@ -39,7 +39,9 @@ import androidx.navigation.compose.rememberNavController
 import com.englishcoach.app.AppContainer
 import com.englishcoach.app.ui.placement.PlacementScreen
 import com.englishcoach.app.ui.review.ReviewScreen
+import com.englishcoach.app.ui.practice.DialogScreen
 import com.englishcoach.app.ui.practice.GrammarScreen
+import com.englishcoach.app.ui.practice.SpeakingScreen
 import com.englishcoach.app.ui.practice.ListeningScreen
 import com.englishcoach.app.ui.practice.PracticeScreen
 import com.englishcoach.app.ui.practice.ReadingScreen
@@ -53,6 +55,7 @@ val LocalAppContainer = staticCompositionLocalOf<AppContainer> { error("AppConta
 private const val REVIEW_ROUTE = "review"
 private const val PLACEMENT_ROUTE = "placement"
 private const val LISTENING_ROUTE = "listening"
+private const val SPEAKING_ROUTE = "speaking"
 
 private enum class Tab(val route: String, val label: String, val icon: ImageVector) {
     Today("today", "Сегодня", Icons.Outlined.TaskAlt),
@@ -130,8 +133,12 @@ private fun AppNavHost(nav: NavHostController, modifier: Modifier) {
                 onGrammar = { nav.navigate("grammar/$it") },
                 onReading = { nav.navigate("reading/$it") },
                 onListening = { nav.navigate(LISTENING_ROUTE) },
+                onSpeaking = { nav.navigate(SPEAKING_ROUTE) },
+                onDialog = { nav.navigate("dialog/$it") },
             )
         }
+        composable(SPEAKING_ROUTE) { SpeakingScreen(onClose = { nav.popBackStack() }) }
+        composable("dialog/{id}") { DialogScreen(it.arguments?.getString("id").orEmpty(), onClose = { nav.popBackStack() }) }
         composable("grammar/{id}") { GrammarScreen(it.arguments?.getString("id").orEmpty(), onClose = { nav.popBackStack() }) }
         composable("reading/{id}") { ReadingScreen(it.arguments?.getString("id").orEmpty(), onClose = { nav.popBackStack() }) }
         composable(LISTENING_ROUTE) { ListeningScreen(onClose = { nav.popBackStack() }) }

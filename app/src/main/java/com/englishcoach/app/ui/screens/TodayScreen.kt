@@ -33,6 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.englishcoach.app.data.Streak
+import com.englishcoach.app.data.practice.PracticeKind
 import com.englishcoach.app.ui.LocalAppContainer
 import com.englishcoach.app.ui.components.Panel
 import com.englishcoach.app.ui.components.ScreenColumn
@@ -43,7 +44,8 @@ import java.time.LocalDate
 @Composable
 fun TodayScreen(onStudyWords: () -> Unit, onPlacement: () -> Unit, onPractice: () -> Unit) {
     val c = LocalAppContainer.current
-    val practiced by remember { c.practice.practicedTodayFlow() }.collectAsStateWithLifecycle(0)
+    val practiced by remember { c.practice.doneTodayFlow(PracticeKind.PRACTICE_STEP) }.collectAsStateWithLifecycle(0)
+    val spoke by remember { c.practice.doneTodayFlow(PracticeKind.SPEECH_STEP) }.collectAsStateWithLifecycle(0)
     val due by remember { c.study.dueCountFlow(System.currentTimeMillis()) }.collectAsStateWithLifecycle(0)
     val new by remember { c.study.newTodayCountFlow() }.collectAsStateWithLifecycle(0)
     val settings by remember { c.settings.flow }.collectAsStateWithLifecycle(null)
@@ -98,7 +100,7 @@ fun TodayScreen(onStudyWords: () -> Unit, onPlacement: () -> Unit, onPractice: (
                     Step("Повторение", if (due > 0) "$due" else null, done = due == 0)
                     Step("Новые слова", if (new > 0) "$new" else null, done = new == 0)
                     Step("Практика", if (practiced > 0) "$practiced" else "открыть", done = practiced > 0, onClick = onPractice)
-                    Step("Речь", "этап 4", locked = true)
+                    Step("Речь", if (spoke > 0) "$spoke" else "открыть", done = spoke > 0, onClick = onPractice)
                 }
             }
             Button(onClick = onStudyWords, enabled = due + new > 0, modifier = Modifier.fillMaxWidth()) {
