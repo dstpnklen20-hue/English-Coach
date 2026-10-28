@@ -158,7 +158,11 @@ fun SettingsScreen(onPlacement: () -> Unit) {
         }
 
         Section("ИИ (Claude)")
-        AiSettings(s, onModel = { id -> update { it.copy(aiModel = id) } })
+        AiSettings(
+            s,
+            onModel = { id -> update { it.copy(aiModel = id) } },
+            onServer = { server, bearer -> update { it.copy(aiServer = server, aiBearer = bearer) } },
+        )
 
         ComingSoon(6, "Синхронизация телефона и планшета.")
     }
@@ -170,34 +174,75 @@ fun SettingsScreen(onPlacement: () -> Unit) {
 }
 
 @Composable
-private fun AiSettings(s: Settings, onModel: (String) -> Unit) {
+private fun AiSettings(s: Settings, onModel: (String) -> Unit, onServer: (String, Boolean) -> Unit) {
     val ai = LocalAppContainer.current.ai
     val hasKey by ai.hasKey.collectAsStateWithLifecycle()
     var input by remember { mutableStateOf("") }
+    var proxy by remember(s.aiServer) { mutableStateOf(s.aiServer.isNotBlank()) }
+    var server by remember(s.aiServer) { mutableStateOf(s.aiServer) }
     Panel {
         if (hasKey) {
             Text("Ключ API сохранён: …${ai.keyHint().orEmpty()}", style = MaterialTheme.typography.bodyLarge)
             Text(
-                "Хранится в зашифрованном виде только на этом устройстве и отправляется только в Anthropic.",
+                "Хранится в зашифрованном виде только на этом устройстве и отправляется только на сервер ИИ (Anthropic или ваш посредник).",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             OutlinedButton(onClick = { ai.clearKey() }) { Text("Удалить ключ") }
         } else {
             Text(
-                "Вставьте ключ API Anthropic (начинается с sk-ant-). Без ключа всё остальное работает офлайн.",
+                "Вставьте ключ API: от Anthropic (sk-ant-…) или от посредника. Без ключа всё остальное работает офлайн.",
                 style = MaterialTheme.typography.bodyMedium,
             )
             OutlinedTextField(
                 value = input,
                 onValueChange = { input = it.trim() },
                 modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("sk-ant-…") },
+                placeholder = { Text("sk-…") },
                 singleLine = true,
                 visualTransformation = PasswordVisualTransformation(),
                 shape = MaterialTheme.shapes.medium,
             )
-            Button(onClick = { ai.saveKey(input); input = "" }, enabled = input.startsWith("sk-ant-")) { Text("Сохранить ключ") }
+            Button(onClick = { ai.saveKey(input); input = "" }, enabled = AiRepository.looksLikeKey(input)) { Text("Сохранить ключ") }
+        }
+
+        // Посредник: свой адрес сервера (ANTHROPIC_BASE_URL у продавца) и, возможно, Bearer (ANTHROPIC_AUTH_TOKEN)
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text("Ключ от посредника (не Anthropic)", style = MaterialTheme.typography.bodyLarge, modifier = Modifier.weight(1f))
+            Switch(checked = proxy, onCheckedChange = { on ->
+                proxy = on
+                if (!on) {
+                    server = ""
+                    onServer("", false)
+                }
+            })
+        }
+        if (proxy) {
+            OutlinedTextField(
+                value = server,
+                onValueChange = { server = it.trim() },
+                modifier = Modifier.fillMaxWidth(),
+                label = { Text("Адрес сервера (ANTHROPIC_BASE_URL)") },
+                placeholder = { Text("https://…") },
+                singleLine = true,
+                shape = MaterialTheme.shapes.medium,
+            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    "Ключ через Authorization: Bearer (в инструкции продавца — ANTHROPIC_AUTH_TOKEN)",
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.weight(1f),
+                )
+                Switch(checked = s.aiBearer, onCheckedChange = { onServer(server, it) })
+            }
+            Button(onClick = { onServer(server, s.aiBearer) }, enabled = server.startsWith("https://") && server != s.aiServer) {
+                Text("Сохранить адрес")
+            }
+            Text(
+                "Посредник видит все ваши сообщения ИИ и может в любой момент перестать работать.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
         }
         Text("Модель", style = MaterialTheme.typography.bodyLarge)
         AiRepository.MODELS.forEach { m ->

@@ -15,7 +15,13 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 @Serializable
-data class PlacementQuestion(val q: String, val options: List<String>, val answer: Int)
+data class PlacementQuestion(
+    val q: String,
+    val options: List<String>,
+    val answer: Int,
+    /** Почему вариант неверен: why[i] к options[i]. */
+    val why: List<String> = emptyList(),
+)
 
 @Serializable
 data class PlacementLevel(val level: String, val questions: List<PlacementQuestion>)
@@ -62,11 +68,18 @@ class PlacementViewModel(private val c: AppContainer) : ViewModel() {
         val p = phase as? Phase.Question ?: return
         if (p.chosen != null) return
         phase = p.copy(chosen = option)
-        if (option == p.q.answer) correct++
-        viewModelScope.launch {
-            delay(700) // успеть увидеть, верно ли
-            nextQuestion()
+        if (option == p.q.answer) {
+            correct++
+            viewModelScope.launch {
+                delay(700) // успеть увидеть, что верно
+                nextQuestion()
+            }
         }
+        // При ошибке ждём «Дальше»: сначала подсказка к ошибке
+    }
+
+    fun next() {
+        if ((phase as? Phase.Question)?.chosen != null) nextQuestion()
     }
 
     fun knowWord(yes: Boolean) {

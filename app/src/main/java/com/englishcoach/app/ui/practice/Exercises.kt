@@ -16,6 +16,9 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Close
+import androidx.compose.material.icons.outlined.Lightbulb
+import androidx.compose.material3.TextButton
+import com.englishcoach.app.ui.theme.Warm
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -69,15 +72,59 @@ fun PracticeFrame(progress: Float?, onClose: () -> Unit, content: @Composable ()
  */
 @Composable
 fun ExerciseView(ex: Exercise, onDone: (Boolean) -> Unit) {
-    var result by remember(ex) { mutableStateOf<Boolean?>(null) }
+    val st = remember(ex) { ExerciseState() }
     when (ex.type) {
-        "choice" -> ChoiceExercise(ex, result) { result = it }
-        "input" -> InputExercise(ex, result) { result = it }
-        else -> OrderExercise(ex, result) { result = it }
+        "choice" -> ChoiceExercise(ex, st)
+        "input" -> InputExercise(ex, st)
+        else -> OrderExercise(ex, st)
     }
-    result?.let { ok ->
-        Feedback(ok, if (ok) null else correctAnswer(ex))
-        Button(onClick = { onDone(ok) }, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text("Дальше") }
+    when {
+        st.solved -> {
+            Text(if (st.failedOnce) "Теперь верно!" else "Верно!", style = MaterialTheme.typography.titleMedium, color = Success)
+            // В счёт идёт только ответ с первой попытки — так результат остаётся честным
+            Button(onClick = { onDone(!st.failedOnce) }, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text("Дальше") }
+        }
+        st.revealed -> {
+            Text("Правильно: ${correctAnswer(ex)}", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+            Button(onClick = { onDone(false) }, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text("Дальше") }
+        }
+        st.hint != null -> {
+            HintCard(st.hint.orEmpty())
+            TextButton(onClick = { st.revealed = true }) { Text("Показать ответ") }
+        }
+    }
+}
+
+/**
+ * Попытки по одному упражнению. После ошибки показывается подсказка именно к ней,
+ * и можно исправить ответ; «Показать ответ» — если не получается.
+ */
+private class ExerciseState {
+    var failedOnce by mutableStateOf(false)
+    var solved by mutableStateOf(false)
+    var revealed by mutableStateOf(false)
+    var hint by mutableStateOf<String?>(null)
+    val finished get() = solved || revealed
+
+    fun check(ok: Boolean, hintText: String?) {
+        if (ok) {
+            solved = true
+            hint = null
+        } else {
+            failedOnce = true
+            hint = hintText ?: "Пока неверно — посмотрите внимательнее и попробуйте ещё раз."
+        }
+    }
+}
+
+/** Небольшая подсказка к ошибке. */
+@Composable
+fun HintCard(text: String) {
+    Panel {
+        Row {
+            Icon(Icons.Outlined.Lightbulb, null, tint = Warm, modifier = Modifier.padding(end = 8.dp))
+            Text(text, style = MaterialTheme.typography.bodyMedium)
+        }
     }
 }
 
@@ -93,18 +140,23 @@ private fun Question(ex: Exercise) {
 }
 
 @Composable
-private fun ChoiceExercise(ex: Exercise, result: Boolean?, onResult: (Boolean) -> Unit) {
-    var chosen by remember(ex) { mutableStateOf<Int?>(null) }
+private fun ChoiceExercise(ex: Exercise, st: ExerciseState) {
+    val wrong = remember(ex) { mutableStateListOf<Int>() }
     Question(ex)
     ex.options.forEachIndexed { i, option ->
         val color = when {
-            result == null -> null
-            i == ex.answer -> Success
-            i == chosen -> MaterialTheme.colorScheme.error
+            i == ex.answer && st.finished -> Success
+            i in wrong -> MaterialTheme.colorScheme.error
             else -> null
         }
         OutlinedButton(
-            onClick = { if (result == null) { chosen = i; onResult(i == ex.answer) } },
+            onClick = {
+                if (!st.finished && i !in wrong) {
+                    val ok = i == ex.answer
+                    if (!ok) wrong.add(i)
+                    st.check(ok, ex.hintFor(i))
+                }
+            },
             modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp),
             colors = if (color != null) {
                 ButtonDefaults.outlinedButtonColors(containerColor = color.copy(alpha = 0.16f), contentColor = color)
@@ -116,13 +168,13 @@ private fun ChoiceExercise(ex: Exercise, result: Boolean?, onResult: (Boolean) -
 }
 
 @Composable
-private fun InputExercise(ex: Exercise, result: Boolean?, onResult: (Boolean) -> Unit) {
+private fun InputExercise(ex: Exercise, st: ExerciseState) {
     var text by remember(ex) { mutableStateOf("") }
-    val check = { if (result == null && text.isNotBlank()) onResult(Answers.matches(text, ex.accept)) }
+    val check = { if (!st.finished && text.isNotBlank()) st.check(Answers.matches(text, ex.accept), ex.hint) }
     Question(ex)
     OutlinedTextField(
         value = text,
-        onValueChange = { if (result == null) text = it },
+        onValueChange = { if (!st.finished) text = it },
         modifier = Modifier.fillMaxWidth(),
         placeholder = { Text("Впишите пропущенное слово") },
         singleLine = true,
@@ -130,14 +182,14 @@ private fun InputExercise(ex: Exercise, result: Boolean?, onResult: (Boolean) ->
         keyboardActions = KeyboardActions(onDone = { check() }),
         shape = MaterialTheme.shapes.medium,
     )
-    if (result == null) {
+    if (!st.finished) {
         Button(onClick = check, enabled = text.isNotBlank(), modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text("Проверить") }
     }
 }
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun OrderExercise(ex: Exercise, result: Boolean?, onResult: (Boolean) -> Unit) {
+private fun OrderExercise(ex: Exercise, st: ExerciseState) {
     val target = ex.accept.firstOrNull().orEmpty()
     // Индексы слов, чтобы одинаковые слова («the», «the») не путались
     val words = remember(ex) { target.split(" ") }
@@ -149,31 +201,22 @@ private fun OrderExercise(ex: Exercise, result: Boolean?, onResult: (Boolean) ->
     Panel {
         FlowRow(Modifier.heightIn(min = 40.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             picked.toList().forEach { i ->
-                AssistChip(onClick = { if (result == null) { picked.remove(i); pool.add(i) } }, label = { Text(words[i], fontWeight = FontWeight.SemiBold) })
+                AssistChip(onClick = { if (!st.finished) { picked.remove(i); pool.add(i) } }, label = { Text(words[i], fontWeight = FontWeight.SemiBold) })
             }
         }
     }
     FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
         pool.toList().forEach { i ->
-            AssistChip(onClick = { if (result == null) { pool.remove(i); picked.add(i) } }, label = { Text(words[i]) })
+            AssistChip(onClick = { if (!st.finished) { pool.remove(i); picked.add(i) } }, label = { Text(words[i]) })
         }
     }
-    if (result == null) {
+    if (!st.finished) {
         Button(
-            onClick = { onResult(Answers.matches(picked.joinToString(" ") { words[it] }, ex.accept)) },
+            onClick = { st.check(Answers.matches(picked.joinToString(" ") { words[it] }, ex.accept), ex.hint) },
             enabled = pool.isEmpty(),
             modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp),
         ) { Text("Проверить") }
     }
-}
-
-@Composable
-private fun Feedback(ok: Boolean, correct: String?) {
-    Text(
-        if (ok) "Верно!" else "Не совсем. Правильно: $correct",
-        style = MaterialTheme.typography.titleMedium,
-        color = if (ok) Success else MaterialTheme.colorScheme.error,
-    )
 }
 
 /** Итог упражнения: счёт и кнопки. */

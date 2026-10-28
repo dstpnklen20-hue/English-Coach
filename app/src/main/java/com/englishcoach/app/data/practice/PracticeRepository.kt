@@ -16,6 +16,7 @@ import kotlinx.serialization.json.Json
  * Упражнение. type: "choice" — выбрать вариант (options, answer — индекс);
  * "input" — вписать слово вместо ___ (accept — допустимые ответы);
  * "order" — собрать фразу из слов (accept[0] — эталон, слова перемешиваются сами).
+ * Подсказки при ошибке: why[i] — почему вариант options[i] неверен (для choice), hint — правило в целом.
  */
 @Serializable
 data class Exercise(
@@ -25,7 +26,13 @@ data class Exercise(
     val answer: Int = 0,
     val accept: List<String> = emptyList(),
     val ru: String? = null,
-)
+    val hint: String? = null,
+    val why: List<String> = emptyList(),
+) {
+    /** Подсказка к конкретной ошибке: объяснение выбранного варианта, иначе общее правило. */
+    fun hintFor(option: Int?): String? =
+        option?.let { why.getOrNull(it) }?.takeIf { it.isNotBlank() } ?: hint?.takeIf { it.isNotBlank() }
+}
 
 @Serializable
 data class GrammarLesson(

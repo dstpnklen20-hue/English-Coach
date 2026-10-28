@@ -25,6 +25,10 @@ data class Settings(
     val placementDone: Boolean = false,
     val level: String = "A1",
     val aiModel: String = "claude-sonnet-5-5",
+    /** Сервер-посредник вместо api.anthropic.com (у продавцов ключей — ANTHROPIC_BASE_URL); пусто — напрямую. */
+    val aiServer: String = "",
+    /** Ключ в заголовке Authorization: Bearer (ANTHROPIC_AUTH_TOKEN) вместо x-api-key. */
+    val aiBearer: Boolean = false,
 )
 
 /** Настройки пользователя. Синхронизация с планшетом — этап 6. */
@@ -40,6 +44,8 @@ class SettingsRepository(private val context: Context) {
         val placementDone = booleanPreferencesKey("placement_done")
         val level = stringPreferencesKey("level")
         val aiModel = stringPreferencesKey("ai_model")
+        val aiServer = stringPreferencesKey("ai_server")
+        val aiBearer = booleanPreferencesKey("ai_bearer")
     }
 
     val flow: Flow<Settings> = context.dataStore.data.map(::fromPrefs)
@@ -59,6 +65,8 @@ class SettingsRepository(private val context: Context) {
             p[K.placementDone] = s.placementDone
             p[K.level] = s.level
             p[K.aiModel] = s.aiModel
+            p[K.aiServer] = s.aiServer
+            p[K.aiBearer] = s.aiBearer
         }
     }
 
@@ -75,6 +83,8 @@ class SettingsRepository(private val context: Context) {
             placementDone = p[K.placementDone] ?: d.placementDone,
             level = p[K.level] ?: d.level,
             aiModel = p[K.aiModel] ?: d.aiModel,
+            aiServer = p[K.aiServer] ?: d.aiServer,
+            aiBearer = p[K.aiBearer] ?: d.aiBearer,
         )
     }
 }

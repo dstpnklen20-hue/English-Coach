@@ -92,6 +92,8 @@ class AiTutor(private val ai: AiRepository, private val settings: SettingsReposi
             - input: q is a sentence with a ___ gap, accept lists every correct answer, options is empty, answer is 0.
             - order: accept has one correct sentence of 4-7 words without final punctuation, q and options are empty, answer is 0.
             ru: the Russian translation of the full correct sentence.
+            hint: a short plain-Russian tip about the rule, shown when the learner makes a mistake; do not reveal the answer.
+            why: for choice, one short Russian explanation per option of why it is wrong (empty string for the correct option); for other types, an empty list.
             Mix the three types.
         """.trimIndent()
         val schema = obj(
@@ -103,6 +105,8 @@ class AiTutor(private val ai: AiRepository, private val settings: SettingsReposi
                     "answer" to int(),
                     "accept" to arr(str()),
                     "ru" to str(),
+                    "hint" to str(),
+                    "why" to arr(str()),
                 ),
             ),
         )

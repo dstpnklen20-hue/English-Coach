@@ -39,6 +39,7 @@ class AiRepository(context: Context, private val settings: SettingsRepository) {
     private val _hasKey = MutableStateFlow(secrets.get(KEY_NAME) != null)
     val hasKey: StateFlow<Boolean> = _hasKey
     @Volatile private var client: AnthropicClient? = null
+    @Volatile private var clientConfig: String? = null
 
     fun keyHint(): String? = secrets.get(KEY_NAME)?.takeLast(4)
 
@@ -59,7 +60,9 @@ class AiRepository(context: Context, private val settings: SettingsRepository) {
      * Возвращает сообщение целиком — его надо класть в историю как есть (toParam), не редактируя.
      */
     suspend fun request(system: String, history: List<MessageParam>, schema: Map<String, Any>): Message = withContext(Dispatchers.IO) {
-        val model = modelById(settings.current().aiModel)
+        val s = settings.current()
+        val model = modelById(s.aiModel)
+        val direct = s.aiServer.isBlank()
         val params = MessageCreateParams.builder()
             .model(model.id)
             .maxTokens(16000L)
@@ -73,8 +76,9 @@ class AiRepository(context: Context, private val settings: SettingsRepository) {
                     .build(),
             )
             .apply {
-                // Если Sonnet откажется отвечать, сервер сам передаст запрос подходящей модели
-                if (model.id == SONNET.id) {
+                // Если Sonnet 5.5 откажется отвечать, сервер Anthropic сам передаст запрос подходящей модели.
+                // Посредникам эту бета-функцию не шлём: они могут её не поддерживать.
+                if (model.id == SONNET.id && direct) {
                     putAdditionalHeader("anthropic-beta", "server-side-fallback-2026-07-01")
                     putAdditionalBodyProperty("fallbacks", JsonValue.from("default"))
                 }
@@ -82,11 +86,17 @@ class AiRepository(context: Context, private val settings: SettingsRepository) {
             .build()
 
         val msg = try {
-            client().messages().create(params)
+            client(s.aiServer.trim().trimEnd('/'), s.aiBearer).messages().create(params)
         } catch (e: UnauthorizedException) {
-            throw AiException("Ключ API не подходит. Проверьте его в настройках.")
+            throw AiException(
+                if (direct) "Ключ API не подходит. Проверьте его в настройках."
+                else "Посредник не принял ключ. Проверьте ключ, адрес сервера и способ передачи (Bearer) в настройках.",
+            )
         } catch (e: PermissionDeniedException) {
-            throw AiException("У этого ключа нет доступа к модели ${model.title}.")
+            throw AiException(
+                "Модель ${model.title} не открыта для этого ключа. " +
+                    "Ключи посредников часто работают только с одной моделью — выберите другую в настройках (например, Claude Sonnet 5).",
+            )
         } catch (e: NotFoundException) {
             throw AiException("Модель ${model.id} не найдена.")
         } catch (e: RateLimitException) {
@@ -120,9 +130,19 @@ class AiRepository(context: Context, private val settings: SettingsRepository) {
             .apply()
     }
 
-    private fun client(): AnthropicClient = client ?: run {
+    /** Клиент пересоздаётся, если сменились ключ, адрес сервера или способ передачи ключа. */
+    private fun client(server: String, bearer: Boolean): AnthropicClient {
+        val config = "$server|$bearer"
+        client?.takeIf { clientConfig == config }?.let { return it }
         val key = secrets.get(KEY_NAME) ?: throw AiException("Добавьте ключ API в настройках.")
-        AnthropicOkHttpClient.builder().apiKey(key).build().also { client = it }
+        return AnthropicOkHttpClient.builder()
+            .apply { if (server.isNotEmpty()) baseUrl(server) }
+            .apply { if (bearer) authToken(key) else apiKey(key) }
+            .build()
+            .also {
+                client = it
+                clientConfig = config
+            }
     }
 
     private fun schemaOf(schema: Map<String, Any>): JsonOutputFormat.Schema =
@@ -134,8 +154,13 @@ class AiRepository(context: Context, private val settings: SettingsRepository) {
         private const val KEY_NAME = "anthropic_api_key"
 
         val SONNET = AiModel("claude-sonnet-5-5", "Claude Sonnet 5.5", 2.0, 10.0)
+        // Sonnet 5 — для ключей посредников, где открыта только она (так было у ключа для Jarvis)
+        val SONNET_5 = AiModel("claude-sonnet-5", "Claude Sonnet 5", 2.0, 10.0)
         val HAIKU = AiModel("claude-haiku-5-5", "Claude Haiku 5.5", 0.10, 0.50)
-        val MODELS = listOf(SONNET, HAIKU)
+        val MODELS = listOf(SONNET, SONNET_5, HAIKU)
+
+        /** Ключ Anthropic (sk-ant-…) или посредника (sk-cvc-… и т. п.): без пробелов, не короче 20 символов. */
+        fun looksLikeKey(key: String) = key.length >= 20 && key.none { it.isWhitespace() }
 
         fun modelById(id: String) = MODELS.firstOrNull { it.id == id } ?: SONNET
 

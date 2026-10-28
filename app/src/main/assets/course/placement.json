@@ -3,37 +3,53 @@
     {
       "level": "A1",
       "questions": [
-        { "q": "I ___ a student.", "options": ["am", "is", "are", "be"], "answer": 0 },
-        { "q": "She ___ coffee every morning.", "options": ["drink", "drinks", "drinking", "is drink"], "answer": 1 },
-        { "q": "Where ___ you from?", "options": ["is", "do", "are", "does"], "answer": 2 },
-        { "q": "There ___ two cats in the room.", "options": ["is", "are", "be", "am"], "answer": 1 }
+        { "q": "I ___ a student.", "options": ["am", "is", "are", "be"], "answer": 0,
+          "why": ["", "is — для he/she/it. С I всегда am.", "are — для we/you/they. С I всегда am.", "be — начальная форма; в предложении её меняют: I am."] },
+        { "q": "She ___ coffee every morning.", "options": ["drink", "drinks", "drinking", "is drink"], "answer": 1,
+          "why": ["После she/he/it в Present Simple к глаголу добавляется -s: she drinks.", "", "-ing без am/is/are не бывает. А здесь привычка — she drinks.", "is и глагол без -ing вместе не ставят. Привычка — she drinks."] },
+        { "q": "Where ___ you from?", "options": ["is", "do", "are", "does"], "answer": 2,
+          "why": ["is — для he/she/it, а с you нужно are.", "«Откуда ты?» строится с глаголом be: Where are you from?", "", "does — вспомогательный для he/she/it; здесь нужен be: are."] },
+        { "q": "There ___ two cats in the room.", "options": ["is", "are", "be", "am"], "answer": 1,
+          "why": ["two cats — несколько, значит there are.", "", "be не ставится в начальной форме; нужно there are.", "am — только с I."] }
       ]
     },
     {
       "level": "A2",
       "questions": [
-        { "q": "I ___ to the cinema yesterday.", "options": ["go", "goes", "went", "gone"], "answer": 2 },
-        { "q": "This phone is ___ than my old one.", "options": ["more cheap", "cheaper", "cheapest", "the cheaper"], "answer": 1 },
-        { "q": "We ___ dinner when you called.", "options": ["had", "were having", "have", "are having"], "answer": 1 },
-        { "q": "You ___ wear a helmet on a building site.", "options": ["must", "can't", "don't", "would"], "answer": 0 }
+        { "q": "I ___ to the cinema yesterday.", "options": ["go", "goes", "went", "gone"], "answer": 2,
+          "why": ["yesterday — прошлое: go → went.", "goes — настоящее время для he/she/it, а нужно прошлое: went.", "", "gone — третья форма, без have не употребляется. Прошлое — went."] },
+        { "q": "This phone is ___ than my old one.", "options": ["more cheap", "cheaper", "cheapest", "the cheaper"], "answer": 1,
+          "why": ["Короткие прилагательные сравнивают через -er: cheap → cheaper.", "", "cheapest — «самый дешёвый», а с than нужно сравнение: cheaper.", "Перед cheaper … than артикль the не нужен."] },
+        { "q": "We ___ dinner when you called.", "options": ["had", "were having", "have", "are having"], "answer": 1,
+          "why": ["had — «поужинали», то есть закончили. А ужин шёл в момент звонка — were having.", "", "have — настоящее время, а речь о прошлом.", "are having — «сейчас», а звонок был в прошлом: were having."] },
+        { "q": "You ___ wear a helmet on a building site.", "options": ["must", "can't", "don't", "would"], "answer": 0,
+          "why": ["", "can't — «нельзя», а каску носить как раз обязательно.", "don't wear — «не носишь». Смысл — обязанность: must.", "would — «бы», условие. Правило выражают через must."] }
       ]
     },
     {
       "level": "B1",
       "questions": [
-        { "q": "I have lived here ___ 2015.", "options": ["for", "since", "from", "during"], "answer": 1 },
-        { "q": "If I ___ more time, I would learn Japanese.", "options": ["have", "had", "will have", "would have"], "answer": 1 },
-        { "q": "The bridge ___ in 1890.", "options": ["built", "was built", "has built", "is building"], "answer": 1 },
-        { "q": "She asked me where I ___.", "options": ["live", "lived", "do live", "am living"], "answer": 1 }
+        { "q": "I have lived here ___ 2015.", "options": ["for", "since", "from", "during"], "answer": 1,
+          "why": ["for — с длительностью (for 5 years). С точкой отсчёта (2015) — since.", "", "from … to — «с … по». С начальной точкой в Present Perfect — since.", "during — «во время чего-то», а не «с какого-то года»."] },
+        { "q": "If I ___ more time, I would learn Japanese.", "options": ["have", "had", "will have", "would have"], "answer": 1,
+          "why": ["Во второй части would — значит условие нереальное, и после if нужно прошедшее: had.", "", "После if will не ставят. Нереальное условие — had.", "would в части с if не ставят: If I had…"] },
+        { "q": "The bridge ___ in 1890.", "options": ["built", "was built", "has built", "is building"], "answer": 1,
+          "why": ["Мост не строил сам — его построили. Нужен пассив: was built.", "", "has built — «(кто-то) построил», активный залог. Нужен пассив в прошлом.", "is building — «строит сейчас», а речь о 1890 годе."] },
+        { "q": "She asked me where I ___.", "options": ["live", "lived", "do live", "am living"], "answer": 1,
+          "why": ["В косвенной речи после asked время сдвигается в прошлое: lived.", "", "В косвенном вопросе нет do и обратного порядка слов.", "После asked время сдвигается в прошлое: lived."] }
       ]
     },
     {
       "level": "B2",
       "questions": [
-        { "q": "By next year, they ___ the new stadium.", "options": ["will finish", "will have finished", "finish", "are finishing"], "answer": 1 },
-        { "q": "I wish I ___ that game — it was a waste of money.", "options": ["didn't buy", "hadn't bought", "wouldn't buy", "don't buy"], "answer": 1 },
-        { "q": "Hardly ___ the match started when it began to rain.", "options": ["had", "has", "did", "was"], "answer": 0 },
-        { "q": "He denied ___ the window.", "options": ["to break", "breaking", "break", "broke"], "answer": 1 }
+        { "q": "By next year, they ___ the new stadium.", "options": ["will finish", "will have finished", "finish", "are finishing"], "answer": 1,
+          "why": ["By + момент в будущем — «к этому времени уже» = will have finished.", "", "finish — настоящее время, а нужно будущее завершённое.", "are finishing — «заканчивают сейчас». С by next year — will have finished."] },
+        { "q": "I wish I ___ that game — it was a waste of money.", "options": ["didn't buy", "hadn't bought", "wouldn't buy", "don't buy"], "answer": 1,
+          "why": ["Сожаление о прошлом после wish — Past Perfect: hadn't bought.", "", "wouldn't — о чужом поведении. О своём прошлом — hadn't bought.", "don't — настоящее время. Сожаление о прошлом — hadn't bought."] },
+        { "q": "Hardly ___ the match started when it began to rain.", "options": ["had", "has", "did", "was"], "answer": 0,
+          "why": ["", "Hardly … when — о прошлом, нужен Past Perfect: had started.", "В конструкции hardly … when нужен Past Perfect: had started.", "was — для be или пассива. Здесь had started."] },
+        { "q": "He denied ___ the window.", "options": ["to break", "breaking", "break", "broke"], "answer": 1,
+          "why": ["После deny глагол идёт с -ing, а не с to.", "", "После deny нужна форма с -ing: breaking.", "broke — прошедшее время. После deny — breaking."] }
       ]
     }
   ]

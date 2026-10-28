@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material.icons.Icons
@@ -32,6 +33,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.englishcoach.app.ui.LocalAppContainer
 import com.englishcoach.app.ui.components.Panel
+import com.englishcoach.app.ui.practice.HintCard
 import com.englishcoach.app.ui.theme.Success
 
 @Composable
@@ -47,7 +49,7 @@ fun PlacementScreen(onClose: () -> Unit) {
         ) {
             when (val p = vm.phase) {
                 Phase.Intro -> Intro(vm::start)
-                is Phase.Question -> Question(p, vm::answer)
+                is Phase.Question -> Question(p, vm::answer, vm::next)
                 is Phase.WordCheck -> WordCheck(p, vm::knowWord, vm::speak, vm::finishWords)
                 is Phase.Result -> Result(p, onClose)
             }
@@ -74,7 +76,7 @@ private fun Intro(onStart: () -> Unit) {
 }
 
 @Composable
-private fun Question(p: Phase.Question, onAnswer: (Int) -> Unit) {
+private fun Question(p: Phase.Question, onAnswer: (Int) -> Unit, onNext: () -> Unit) {
     val total = 4 * PlacementViewModel.QUESTIONS_PER_LEVEL
     LinearProgressIndicator(
         progress = { p.number.toFloat() / total },
@@ -100,6 +102,11 @@ private fun Question(p: Phase.Question, onAnswer: (Int) -> Unit) {
                 ButtonDefaults.outlinedButtonColors()
             },
         ) { Text(option, style = MaterialTheme.typography.titleMedium) }
+    }
+    val chosen = p.chosen
+    if (chosen != null && chosen != p.q.answer) {
+        HintCard(p.q.why.getOrNull(chosen)?.takeIf { it.isNotBlank() } ?: "Правильный ответ: ${p.q.options[p.q.answer]}.")
+        Button(onClick = onNext, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text("Дальше") }
     }
 }
 
