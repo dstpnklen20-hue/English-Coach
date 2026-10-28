@@ -11,32 +11,36 @@ import com.englishcoach.app.data.db.WordEntity
 import com.englishcoach.app.data.practice.Exercise
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
+
+// Значения по умолчанию — чтобы ответ без какого-то поля (у посредников бывает) всё равно разобрался
 
 @Serializable
-data class NewWord(val en: String, val ru: String)
+data class NewWord(val en: String = "", val ru: String = "")
 
 @Serializable
 data class ChatReply(
-    val reply: String,
-    @SerialName("reply_ru") val replyRu: String,
-    val correction: String,
-    @SerialName("explanation_ru") val explanationRu: String,
-    @SerialName("new_words") val newWords: List<NewWord>,
+    val reply: String = "",
+    @SerialName("reply_ru") val replyRu: String = "",
+    val correction: String = "",
+    @SerialName("explanation_ru") val explanationRu: String = "",
+    @SerialName("new_words") val newWords: List<NewWord> = emptyList(),
 )
 
 @Serializable
-data class Mistake(val original: String, val fixed: String, @SerialName("explanation_ru") val explanationRu: String)
+data class Mistake(val original: String = "", val fixed: String = "", @SerialName("explanation_ru") val explanationRu: String = "")
 
 @Serializable
-data class TextCheck(val corrected: String, val mistakes: List<Mistake>, @SerialName("comment_ru") val commentRu: String)
+data class TextCheck(
+    val corrected: String = "",
+    val mistakes: List<Mistake> = emptyList(),
+    @SerialName("comment_ru") val commentRu: String = "",
+)
 
 @Serializable
-private data class ExerciseSet(val exercises: List<Exercise>)
+internal data class ExerciseSet(val exercises: List<Exercise> = emptyList())
 
 /** Учебные сценарии поверх Claude: собеседник, проверка текста, упражнения по слабым словам. */
 class AiTutor(private val ai: AiRepository, private val settings: SettingsRepository) {
-    private val json = Json { ignoreUnknownKeys = true }
 
     /** Ответ собеседника. history — вся переписка (append-only); вернёт разбор и сообщение для истории. */
     suspend fun chat(topic: String, history: List<MessageParam>): Pair<ChatReply, Message> {
@@ -59,7 +63,7 @@ class AiTutor(private val ai: AiRepository, private val settings: SettingsReposi
             "new_words" to arr(obj("en" to str(), "ru" to str())),
         )
         val msg = ai.request(system, history, schema)
-        return json.decodeFromString<ChatReply>(AiRepository.textOf(msg)) to msg
+        return AiRepository.parse<ChatReply>(msg) to msg
     }
 
     suspend fun checkText(text: String): TextCheck {
@@ -77,7 +81,7 @@ class AiTutor(private val ai: AiRepository, private val settings: SettingsReposi
             "comment_ru" to str(),
         )
         val msg = ai.request(system, listOf(AiRepository.userMessage(text)), schema)
-        return json.decodeFromString(AiRepository.textOf(msg))
+        return AiRepository.parse<TextCheck>(msg)
     }
 
     /** Упражнения на слова, которые чаще всего забываются. Формат — как у встроенных уроков. */
@@ -112,7 +116,7 @@ class AiTutor(private val ai: AiRepository, private val settings: SettingsReposi
         )
         val prompt = "Make $count exercises that practise these words the learner keeps forgetting: $list"
         val msg = ai.request(system, listOf(AiRepository.userMessage(prompt)), schema)
-        return json.decodeFromString<ExerciseSet>(AiRepository.textOf(msg)).exercises
+        return AiRepository.parse<ExerciseSet>(msg).exercises
             .filter { valid(it) }
     }
 

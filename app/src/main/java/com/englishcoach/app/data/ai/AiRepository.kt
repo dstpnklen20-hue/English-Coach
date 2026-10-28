@@ -22,6 +22,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.SerializationException
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonNull
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
 import java.time.YearMonth
 
 class AiException(message: String) : Exception(message)
@@ -66,7 +73,8 @@ class AiRepository(context: Context, private val settings: SettingsRepository) {
         val params = MessageCreateParams.builder()
             .model(model.id)
             .maxTokens(16000L)
-            .system(system)
+            // Схема ещё и в инструкции: посредники иногда не поддерживают строгий JSON-режим (output_config.format)
+            .system("$system\n\nAnswer with only one JSON object that matches this JSON schema, with no other text and no code fences:\n${schemaText(schema)}")
             .apply { history.forEach { addMessage(it) } }
             .outputConfig(
                 OutputConfig.builder()
@@ -185,8 +193,47 @@ class AiRepository(context: Context, private val settings: SettingsRepository) {
 
         fun modelById(id: String) = MODELS.firstOrNull { it.id == id } ?: SONNET
 
-        /** Текст ответа (JSON по схеме) из сообщения. */
+        /** Текст ответа из сообщения. */
         fun textOf(msg: Message): String = msg.content().mapNotNull { it.text().orElse(null)?.text() }.joinToString("")
+
+        /**
+         * JSON-объект из ответа модели: без обёртки ```json и лишних слов вокруг.
+         * Нужен, когда посредник не включил строгий JSON-режим и модель ответила «как в чате».
+         */
+        fun extractJson(text: String): String {
+            val start = text.indexOf('{')
+            val end = text.lastIndexOf('}')
+            return if (start in 0 until end) text.substring(start, end + 1) else text.trim()
+        }
+
+        private val lenientJson = Json { ignoreUnknownKeys = true; isLenient = true; coerceInputValues = true }
+
+        /** Разбор ответа модели; при неудаче — понятная ошибка с началом ответа. */
+        inline fun <reified T> parse(msg: Message): T {
+            val raw = textOf(msg)
+            return try {
+                decode(raw)
+            } catch (e: SerializationException) {
+                throw AiException("Не удалось разобрать ответ ИИ. Начало ответа: «${raw.take(160)}»")
+            } catch (e: IllegalArgumentException) {
+                throw AiException("Не удалось разобрать ответ ИИ. Начало ответа: «${raw.take(160)}»")
+            }
+        }
+
+        inline fun <reified T> decode(raw: String): T = jsonParser().decodeFromString(extractJson(raw))
+
+        fun jsonParser(): Json = lenientJson
+
+        private fun schemaText(schema: Any?): String = toJson(schema).toString()
+
+        private fun toJson(v: Any?): JsonElement = when (v) {
+            null -> JsonNull
+            is Map<*, *> -> JsonObject(v.entries.associate { (k, x) -> k.toString() to toJson(x) })
+            is List<*> -> JsonArray(v.map { toJson(it) })
+            is Boolean -> JsonPrimitive(v)
+            is Number -> JsonPrimitive(v)
+            else -> JsonPrimitive(v.toString())
+        }
 
         fun userMessage(text: String): MessageParam =
             MessageParam.builder().role(MessageParam.Role.USER).content(text).build()
