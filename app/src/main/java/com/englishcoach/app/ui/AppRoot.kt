@@ -37,6 +37,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.englishcoach.app.AppContainer
+import com.englishcoach.app.ui.placement.PlacementScreen
 import com.englishcoach.app.ui.review.ReviewScreen
 import com.englishcoach.app.ui.screens.PracticeScreen
 import com.englishcoach.app.ui.screens.ProgressScreen
@@ -47,6 +48,7 @@ import com.englishcoach.app.ui.screens.WordsScreen
 val LocalAppContainer = staticCompositionLocalOf<AppContainer> { error("AppContainer не передан") }
 
 private const val REVIEW_ROUTE = "review"
+private const val PLACEMENT_ROUTE = "placement"
 
 private enum class Tab(val route: String, val label: String, val icon: ImageVector) {
     Today("today", "Сегодня", Icons.Outlined.TaskAlt),
@@ -63,8 +65,8 @@ fun AppRoot() {
     val current by nav.currentBackStackEntryAsState()
     val route = current?.destination?.route
     val wide = LocalConfiguration.current.screenWidthDp >= 600
-    // Экран повторения — полноэкранный, без панели разделов, чтобы ничего не отвлекало
-    val showNav = route != REVIEW_ROUTE
+    // Повторение и тест — полноэкранные, без панели разделов, чтобы ничего не отвлекало
+    val showNav = route != REVIEW_ROUTE && route != PLACEMENT_ROUTE
 
     if (!showNav) {
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
@@ -109,12 +111,15 @@ fun AppRoot() {
 @Composable
 private fun AppNavHost(nav: NavHostController, modifier: Modifier) {
     NavHost(nav, startDestination = Tab.Today.route, modifier = modifier) {
-        composable(Tab.Today.route) { TodayScreen(onStudyWords = { nav.navigate(REVIEW_ROUTE) }) }
+        composable(Tab.Today.route) {
+            TodayScreen(onStudyWords = { nav.navigate(REVIEW_ROUTE) }, onPlacement = { nav.navigate(PLACEMENT_ROUTE) })
+        }
         composable(REVIEW_ROUTE) { ReviewScreen(onClose = { nav.popBackStack() }) }
+        composable(PLACEMENT_ROUTE) { PlacementScreen(onClose = { nav.popBackStack() }) }
         composable(Tab.Words.route) { WordsScreen() }
         composable(Tab.Practice.route) { PracticeScreen() }
         composable(Tab.Progress.route) { ProgressScreen() }
-        composable(Tab.Settings.route) { SettingsScreen() }
+        composable(Tab.Settings.route) { SettingsScreen(onPlacement = { nav.navigate(PLACEMENT_ROUTE) }) }
     }
 }
 

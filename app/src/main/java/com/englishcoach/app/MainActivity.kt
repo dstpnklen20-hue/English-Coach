@@ -9,6 +9,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.englishcoach.app.ui.theme.Palettes
 import com.englishcoach.app.ui.AppRoot
 import com.englishcoach.app.ui.LocalAppContainer
 import com.englishcoach.app.ui.theme.EnglishTheme
@@ -23,7 +26,8 @@ class MainActivity : ComponentActivity() {
         )
         val container = (application as EnglishApp).container
         setContent {
-            EnglishTheme {
+            val settings by container.settings.flow.collectAsStateWithLifecycle(null)
+            EnglishTheme(palette = Palettes.byId(settings?.paletteId)) {
                 // Surface задаёт фон и цвет текста/иконок по умолчанию для всех экранов
                 Surface(color = MaterialTheme.colorScheme.background) {
                     CompositionLocalProvider(LocalAppContainer provides container) {

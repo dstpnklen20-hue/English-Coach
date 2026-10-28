@@ -18,7 +18,8 @@ data class ReviewUi(
     val revealed: Boolean = false,
     val previews: Map<Rating, String> = emptyMap(),
     val done: Int = 0,
-    val total: Int = 0,
+    /** Сколько карточек ещё в очереди, включая текущую и вернувшиеся на короткий шаг. */
+    val remaining: Int = 0,
 )
 
 class ReviewViewModel(private val c: AppContainer) : ViewModel() {
@@ -32,7 +33,7 @@ class ReviewViewModel(private val c: AppContainer) : ViewModel() {
         viewModelScope.launch {
             c.seeder.seedIfNeeded() // на случай первого запуска: дождаться загрузки курса
             queue.addAll(c.study.loadQueue(System.currentTimeMillis()))
-            ui = ui.copy(loading = false, total = queue.size)
+            ui = ui.copy(loading = false)
             showNext()
         }
     }
@@ -65,7 +66,7 @@ class ReviewViewModel(private val c: AppContainer) : ViewModel() {
     private fun showNext() {
         val next = queue.removeFirstOrNull()
         shownAt = System.currentTimeMillis()
-        ui = ui.copy(current = next, revealed = false, previews = emptyMap())
+        ui = ui.copy(current = next, revealed = false, previews = emptyMap(), remaining = queue.size + if (next != null) 1 else 0)
         if (next != null && next.card.direction == 0) speak(next.word.en)
     }
 

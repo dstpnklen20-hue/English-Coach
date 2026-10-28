@@ -9,10 +9,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.ColorUtils
 
-/**
- * Палитра в стиле приложения «Тик Так»: тема задаётся пятью цветами, остальное выводится смешиванием.
- * Позже (настройки) сюда добавятся пресеты на выбор, как в «Тик Так».
- */
+/** Палитра в стиле приложения «Тик Так»: тема задаётся пятью цветами, остальное выводится смешиванием. Пресеты — в Palettes. */
 data class Palette(
     val bg: Long,
     val surface: Long,
@@ -20,9 +17,6 @@ data class Palette(
     val accent: Long,
     val onAccent: Long,
 )
-
-/** «Стандартная» тёмная из «Тик Так». */
-val DefaultPalette = Palette(bg = 0xFF15131A, surface = 0xFF2B2833, text = 0xFFE6E1E9, accent = 0xFF5B8CFF, onAccent = 0xFF0B1020)
 
 // Смысловые цвета обучения — общие для всех палитр
 val Success = Color(0xFF5FD38D)
@@ -37,7 +31,7 @@ private val AppShapes = Shapes(
 )
 
 @Composable
-fun EnglishTheme(palette: Palette = DefaultPalette, content: @Composable () -> Unit) {
+fun EnglishTheme(palette: Palette = Palettes.all.first().palette, content: @Composable () -> Unit) {
     val bg = Color(palette.bg)
     val surface = Color(palette.surface)
     val text = Color(palette.text)

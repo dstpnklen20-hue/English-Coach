@@ -52,11 +52,11 @@ fun ReviewScreen(onClose: () -> Unit) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = onClose) { Icon(Icons.Outlined.Close, "Закрыть") }
             LinearProgressIndicator(
-                progress = { if (ui.total == 0) 0f else ui.done.toFloat() / ui.total },
+                progress = { if (ui.done + ui.remaining == 0) 0f else ui.done.toFloat() / (ui.done + ui.remaining) },
                 modifier = Modifier.weight(1f).padding(horizontal = 8.dp),
-                trackColor = MaterialTheme.colorScheme.outline,
+                trackColor = MaterialTheme.colorScheme.outlineVariant,
             )
-            Text("${ui.done}/${ui.total}", style = MaterialTheme.typography.labelLarge)
+            Text("осталось ${ui.remaining}", style = MaterialTheme.typography.labelLarge)
         }
 
         val cur = ui.current

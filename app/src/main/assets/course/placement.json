@@ -1,0 +1,40 @@
+{
+  "levels": [
+    {
+      "level": "A1",
+      "questions": [
+        { "q": "I ___ a student.", "options": ["am", "is", "are", "be"], "answer": 0 },
+        { "q": "She ___ coffee every morning.", "options": ["drink", "drinks", "drinking", "is drink"], "answer": 1 },
+        { "q": "Where ___ you from?", "options": ["is", "do", "are", "does"], "answer": 2 },
+        { "q": "There ___ two cats in the room.", "options": ["is", "are", "be", "am"], "answer": 1 }
+      ]
+    },
+    {
+      "level": "A2",
+      "questions": [
+        { "q": "I ___ to the cinema yesterday.", "options": ["go", "goes", "went", "gone"], "answer": 2 },
+        { "q": "This phone is ___ than my old one.", "options": ["more cheap", "cheaper", "cheapest", "the cheaper"], "answer": 1 },
+        { "q": "We ___ dinner when you called.", "options": ["had", "were having", "have", "are having"], "answer": 1 },
+        { "q": "You ___ wear a helmet on a building site.", "options": ["must", "can't", "don't", "would"], "answer": 0 }
+      ]
+    },
+    {
+      "level": "B1",
+      "questions": [
+        { "q": "I have lived here ___ 2015.", "options": ["for", "since", "from", "during"], "answer": 1 },
+        { "q": "If I ___ more time, I would learn Japanese.", "options": ["have", "had", "will have", "would have"], "answer": 1 },
+        { "q": "The bridge ___ in 1890.", "options": ["built", "was built", "has built", "is building"], "answer": 1 },
+        { "q": "She asked me where I ___.", "options": ["live", "lived", "do live", "am living"], "answer": 1 }
+      ]
+    },
+    {
+      "level": "B2",
+      "questions": [
+        { "q": "By next year, they ___ the new stadium.", "options": ["will finish", "will have finished", "finish", "are finishing"], "answer": 1 },
+        { "q": "I wish I ___ that game — it was a waste of money.", "options": ["didn't buy", "hadn't bought", "wouldn't buy", "don't buy"], "answer": 1 },
+        { "q": "Hardly ___ the match started when it began to rain.", "options": ["had", "has", "did", "was"], "answer": 0 },
+        { "q": "He denied ___ the window.", "options": ["to break", "breaking", "break", "broke"], "answer": 1 }
+      ]
+    }
+  ]
+}

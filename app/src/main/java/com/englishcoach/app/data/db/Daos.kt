@@ -36,6 +36,13 @@ interface WordDao {
            GROUP BY w.id ORDER BY w.id""",
     )
     fun progressFlow(): Flow<List<WordProgress>>
+
+    /** Слова курса уровня, которые ещё ни разу не повторялись — для быстрой проверки «знаю / не знаю». */
+    @Query(
+        """SELECT w.* FROM words w WHERE w.level = :level AND w.source = 'course'
+           AND NOT EXISTS (SELECT 1 FROM cards c WHERE c.wordId = w.id AND c.reps > 0) ORDER BY w.id""",
+    )
+    suspend fun untouched(level: String): List<WordEntity>
 }
 
 // Новая карточка RU→EN доступна только после первого показа EN→RU того же слова:
@@ -64,6 +71,9 @@ interface CardDao {
 
     @Update
     suspend fun update(card: CardEntity)
+
+    @Query("SELECT * FROM cards WHERE wordId = :wordId")
+    suspend fun forWord(wordId: Long): List<CardEntity>
 }
 
 @Dao
@@ -77,4 +87,14 @@ interface ReviewLogDao {
 
     @Query("SELECT COUNT(*) FROM (SELECT MIN(reviewedAt) AS firstAt FROM review_log GROUP BY cardId) WHERE firstAt >= :dayStart")
     suspend fun introducedSince(dayStart: Long): Int
+
+    /** Итоги по дням (местное время). Один ответ считается не дольше минуты — чтобы паузы не раздували время. */
+    @Query(
+        """SELECT date(reviewedAt / 1000, 'unixepoch', 'localtime') AS day,
+                  SUM(MIN(durationMs, 60000)) AS ms, COUNT(*) AS answers
+           FROM review_log GROUP BY day ORDER BY day DESC""",
+    )
+    fun dayTotalsFlow(): Flow<List<DayTotal>>
 }
+
+data class DayTotal(val day: String, val ms: Long, val answers: Int)

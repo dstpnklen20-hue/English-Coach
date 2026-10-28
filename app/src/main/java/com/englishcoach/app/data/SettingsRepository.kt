@@ -1,0 +1,76 @@
+package com.englishcoach.app.data
+
+import android.content.Context
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.stringSetPreferencesKey
+import androidx.datastore.preferences.preferencesDataStore
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
+
+private val Context.dataStore by preferencesDataStore(name = "settings")
+
+data class Settings(
+    val newWordsPerDay: Int = 10,
+    val sessionMinutes: Int = 30,
+    val paletteId: String = "default",
+    val remindersOn: Boolean = false,
+    val reminderHour: Int = 19,
+    val reminderMinute: Int = 0,
+    val reminderDays: Set<Int> = (1..7).toSet(), // DayOfWeek: 1 — понедельник … 7 — воскресенье
+    val placementDone: Boolean = false,
+    val level: String = "A1",
+)
+
+/** Настройки пользователя. Синхронизация с планшетом — этап 6. */
+class SettingsRepository(private val context: Context) {
+    private object K {
+        val newWords = intPreferencesKey("new_words_per_day")
+        val sessionMinutes = intPreferencesKey("session_minutes")
+        val palette = stringPreferencesKey("palette")
+        val remindersOn = booleanPreferencesKey("reminders_on")
+        val reminderHour = intPreferencesKey("reminder_hour")
+        val reminderMinute = intPreferencesKey("reminder_minute")
+        val reminderDays = stringSetPreferencesKey("reminder_days")
+        val placementDone = booleanPreferencesKey("placement_done")
+        val level = stringPreferencesKey("level")
+    }
+
+    val flow: Flow<Settings> = context.dataStore.data.map(::fromPrefs)
+
+    suspend fun current(): Settings = flow.first()
+
+    suspend fun update(transform: (Settings) -> Settings) {
+        context.dataStore.edit { p ->
+            val s = transform(fromPrefs(p))
+            p[K.newWords] = s.newWordsPerDay
+            p[K.sessionMinutes] = s.sessionMinutes
+            p[K.palette] = s.paletteId
+            p[K.remindersOn] = s.remindersOn
+            p[K.reminderHour] = s.reminderHour
+            p[K.reminderMinute] = s.reminderMinute
+            p[K.reminderDays] = s.reminderDays.map { it.toString() }.toSet()
+            p[K.placementDone] = s.placementDone
+            p[K.level] = s.level
+        }
+    }
+
+    private fun fromPrefs(p: Preferences): Settings {
+        val d = Settings()
+        return Settings(
+            newWordsPerDay = p[K.newWords] ?: d.newWordsPerDay,
+            sessionMinutes = p[K.sessionMinutes] ?: d.sessionMinutes,
+            paletteId = p[K.palette] ?: d.paletteId,
+            remindersOn = p[K.remindersOn] ?: d.remindersOn,
+            reminderHour = p[K.reminderHour] ?: d.reminderHour,
+            reminderMinute = p[K.reminderMinute] ?: d.reminderMinute,
+            reminderDays = p[K.reminderDays]?.map { it.toInt() }?.toSet() ?: d.reminderDays,
+            placementDone = p[K.placementDone] ?: d.placementDone,
+            level = p[K.level] ?: d.level,
+        )
+    }
+}
