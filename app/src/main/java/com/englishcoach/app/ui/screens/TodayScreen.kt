@@ -29,22 +29,21 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.englishcoach.app.ui.LocalAppContainer
 import com.englishcoach.app.ui.components.Panel
 import com.englishcoach.app.ui.components.ScreenColumn
-import com.englishcoach.app.ui.theme.Accent
 import com.englishcoach.app.ui.theme.Success
 import com.englishcoach.app.ui.theme.Warm
 
 @Composable
-fun TodayScreen() {
-    val db = LocalAppContainer.current.db
-    val due by remember { db.cardDao().dueCountFlow(System.currentTimeMillis()) }.collectAsStateWithLifecycle(0)
-    val new by remember { db.cardDao().newCountFlow() }.collectAsStateWithLifecycle(0)
+fun TodayScreen(onStudyWords: () -> Unit) {
+    val study = LocalAppContainer.current.study
+    val due by remember { study.dueCountFlow(System.currentTimeMillis()) }.collectAsStateWithLifecycle(0)
+    val new by remember { study.newTodayCountFlow() }.collectAsStateWithLifecycle(0)
 
     ScreenColumn(title = "Сегодня", subtitle = "Уровень A1 · цель — свободный разговор") {
         Panel {
             // Тонкая акцентная полоска сверху — «небольшая деталь» минималистичного дизайна
             Box(
                 Modifier.fillMaxWidth().height(3.dp).clip(MaterialTheme.shapes.small)
-                    .background(Brush.horizontalGradient(listOf(Accent, Success))),
+                    .background(Brush.horizontalGradient(listOf(MaterialTheme.colorScheme.primary, Success))),
             )
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                 Box(contentAlignment = Alignment.Center) {
@@ -64,8 +63,9 @@ fun TodayScreen() {
                     )
                 }
             }
-            Button(onClick = {}, enabled = false, modifier = Modifier.fillMaxWidth()) {
-                Text("Начать — появится на этапе 2")
+            // Полная сессия дня — этап 2; пока кнопка запускает повторение слов
+            Button(onClick = onStudyWords, enabled = due + new > 0, modifier = Modifier.fillMaxWidth()) {
+                Text(if (due + new > 0) "Учить слова · ${due + new}" else "Слова на сегодня пройдены")
             }
         }
 

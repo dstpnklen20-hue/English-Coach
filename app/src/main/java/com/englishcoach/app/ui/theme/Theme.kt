@@ -7,32 +7,28 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.core.graphics.ColorUtils
 
-// Тёмная минималистичная палитра: один холодный акцент + мятный для «успеха» + тёплый для серий/дедлайнов.
-val Accent = Color(0xFF7C9CFF)
-val Success = Color(0xFF5FD4A8)
+/**
+ * Палитра в стиле приложения «Тик Так»: тема задаётся пятью цветами, остальное выводится смешиванием.
+ * Позже (настройки) сюда добавятся пресеты на выбор, как в «Тик Так».
+ */
+data class Palette(
+    val bg: Long,
+    val surface: Long,
+    val text: Long,
+    val accent: Long,
+    val onAccent: Long,
+)
+
+/** «Стандартная» тёмная из «Тик Так». */
+val DefaultPalette = Palette(bg = 0xFF15131A, surface = 0xFF2B2833, text = 0xFFE6E1E9, accent = 0xFF5B8CFF, onAccent = 0xFF0B1020)
+
+// Смысловые цвета обучения — общие для всех палитр
+val Success = Color(0xFF5FD38D)
 val Warm = Color(0xFFFFB86B)
 
-private val Colors = darkColorScheme(
-    primary = Accent,
-    onPrimary = Color(0xFF0F1115),
-    primaryContainer = Color(0xFF243055),
-    onPrimaryContainer = Color(0xFFDCE3FF),
-    secondary = Success,
-    onSecondary = Color(0xFF0F1115),
-    tertiary = Warm,
-    onTertiary = Color(0xFF0F1115),
-    background = Color(0xFF0F1115),
-    onBackground = Color(0xFFE8EAF0),
-    surface = Color(0xFF0F1115),
-    onSurface = Color(0xFFE8EAF0),
-    surfaceVariant = Color(0xFF1C2029),
-    onSurfaceVariant = Color(0xFF9AA1B2),
-    surfaceContainer = Color(0xFF161922),
-    surfaceContainerHigh = Color(0xFF1C2029),
-    outline = Color(0xFF2C313D),
-    outlineVariant = Color(0xFF232733),
-)
+private fun blend(a: Long, b: Long, ratio: Float) = Color(ColorUtils.blendARGB(a.toInt(), b.toInt(), ratio))
 
 private val AppShapes = Shapes(
     small = RoundedCornerShape(10.dp),
@@ -41,6 +37,39 @@ private val AppShapes = Shapes(
 )
 
 @Composable
-fun EnglishTheme(content: @Composable () -> Unit) {
-    MaterialTheme(colorScheme = Colors, shapes = AppShapes, content = content)
+fun EnglishTheme(palette: Palette = DefaultPalette, content: @Composable () -> Unit) {
+    val bg = Color(palette.bg)
+    val surface = Color(palette.surface)
+    val text = Color(palette.text)
+    val accent = Color(palette.accent)
+    val container = blend(palette.accent, palette.bg, 0.78f)
+    val raised = blend(palette.surface, palette.bg, 0.5f)
+    val secondaryText = blend(palette.text, palette.bg, 0.35f)
+    val scheme = darkColorScheme(
+        primary = accent,
+        onPrimary = Color(palette.onAccent),
+        primaryContainer = container,
+        onPrimaryContainer = text,
+        secondary = accent,
+        onSecondary = Color(palette.onAccent),
+        secondaryContainer = container,
+        onSecondaryContainer = text,
+        tertiary = Warm,
+        onTertiary = bg,
+        background = bg,
+        onBackground = text,
+        surface = bg,
+        onSurface = text,
+        surfaceVariant = surface,
+        onSurfaceVariant = secondaryText,
+        surfaceContainerLowest = bg,
+        surfaceContainerLow = raised,
+        surfaceContainer = surface,
+        surfaceContainerHigh = surface,
+        surfaceContainerHighest = surface,
+        surfaceTint = accent,
+        outline = blend(palette.text, palette.bg, 0.7f),
+        outlineVariant = blend(palette.text, palette.bg, 0.85f),
+    )
+    MaterialTheme(colorScheme = scheme, shapes = AppShapes, content = content)
 }

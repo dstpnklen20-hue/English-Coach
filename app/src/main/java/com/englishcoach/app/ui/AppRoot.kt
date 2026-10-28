@@ -37,6 +37,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.englishcoach.app.AppContainer
+import com.englishcoach.app.ui.review.ReviewScreen
 import com.englishcoach.app.ui.screens.PracticeScreen
 import com.englishcoach.app.ui.screens.ProgressScreen
 import com.englishcoach.app.ui.screens.SettingsScreen
@@ -44,6 +45,8 @@ import com.englishcoach.app.ui.screens.TodayScreen
 import com.englishcoach.app.ui.screens.WordsScreen
 
 val LocalAppContainer = staticCompositionLocalOf<AppContainer> { error("AppContainer не передан") }
+
+private const val REVIEW_ROUTE = "review"
 
 private enum class Tab(val route: String, val label: String, val icon: ImageVector) {
     Today("today", "Сегодня", Icons.Outlined.TaskAlt),
@@ -60,8 +63,14 @@ fun AppRoot() {
     val current by nav.currentBackStackEntryAsState()
     val route = current?.destination?.route
     val wide = LocalConfiguration.current.screenWidthDp >= 600
+    // Экран повторения — полноэкранный, без панели разделов, чтобы ничего не отвлекало
+    val showNav = route != REVIEW_ROUTE
 
-    if (wide) {
+    if (!showNav) {
+        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
+            AppNavHost(nav, Modifier.widthIn(max = 720.dp))
+        }
+    } else if (wide) {
         Row(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
             NavigationRail(containerColor = MaterialTheme.colorScheme.surfaceContainer) {
                 Tab.entries.forEach { tab ->
@@ -100,7 +109,8 @@ fun AppRoot() {
 @Composable
 private fun AppNavHost(nav: NavHostController, modifier: Modifier) {
     NavHost(nav, startDestination = Tab.Today.route, modifier = modifier) {
-        composable(Tab.Today.route) { TodayScreen() }
+        composable(Tab.Today.route) { TodayScreen(onStudyWords = { nav.navigate(REVIEW_ROUTE) }) }
+        composable(REVIEW_ROUTE) { ReviewScreen(onClose = { nav.popBackStack() }) }
         composable(Tab.Words.route) { WordsScreen() }
         composable(Tab.Practice.route) { PracticeScreen() }
         composable(Tab.Progress.route) { ProgressScreen() }

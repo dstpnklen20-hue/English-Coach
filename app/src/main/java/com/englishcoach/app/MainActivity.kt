@@ -6,6 +6,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.CompositionLocalProvider
 import com.englishcoach.app.ui.AppRoot
 import com.englishcoach.app.ui.LocalAppContainer
@@ -22,8 +24,11 @@ class MainActivity : ComponentActivity() {
         val container = (application as EnglishApp).container
         setContent {
             EnglishTheme {
-                CompositionLocalProvider(LocalAppContainer provides container) {
-                    AppRoot()
+                // Surface задаёт фон и цвет текста/иконок по умолчанию для всех экранов
+                Surface(color = MaterialTheme.colorScheme.background) {
+                    CompositionLocalProvider(LocalAppContainer provides container) {
+                        AppRoot()
+                    }
                 }
             }
         }

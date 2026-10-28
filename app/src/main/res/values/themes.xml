@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="bg">#0F1115</color>
-    <color name="ic_launcher_background">#151922</color>
+    <color name="bg">#15131A</color>
+    <color name="ic_launcher_background">#1E1B24</color>
 
     <style name="Theme.EnglishCoach" parent="android:Theme.Material.NoActionBar">
         <item name="android:windowBackground">@color/bg</item>
