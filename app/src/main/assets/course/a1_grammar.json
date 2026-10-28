@@ -1,0 +1,148 @@
+{
+  "lessons": [
+    {
+      "id": "a1-be",
+      "title": "Глагол to be: am / is / are",
+      "level": "A1",
+      "theory": [
+        "В английском предложении всегда нужен глагол. Где по-русски «Я — строитель», по-английски нужен глагол be: I am a builder.",
+        "Формы: I → am; he, she, it → is; we, you, they → are.",
+        "Отрицание — добавьте not: I am not tired, she is not (isn't) here.",
+        "Вопрос — поставьте am / is / are в начало: Are you ready? Is it new?"
+      ],
+      "examples": [
+        ["I am a builder.", "Я строитель."],
+        ["She is at home.", "Она дома."],
+        ["They are not tired.", "Они не устали."],
+        ["Are you ready?", "Ты готов?"]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "She ___ my sister.", "options": ["am", "is", "are"], "answer": 1 },
+        { "type": "choice", "q": "We ___ at the airport.", "options": ["am", "is", "are"], "answer": 2 },
+        { "type": "input", "q": "I ___ hungry.", "accept": ["am"], "ru": "Я голоден." },
+        { "type": "input", "q": "___ you a player?", "accept": ["are"], "ru": "Ты игрок?" },
+        { "type": "choice", "q": "It ___ not a big house.", "options": ["am", "is", "are"], "answer": 1 },
+        { "type": "order", "accept": ["Where is my phone"], "ru": "Где мой телефон?" }
+      ]
+    },
+    {
+      "id": "a1-present-simple",
+      "title": "Present Simple: I work / he works",
+      "level": "A1",
+      "theory": [
+        "Present Simple — для привычек и фактов: что вы делаете обычно, всегда, каждый день.",
+        "Глагол не меняется: I work, we play. Но после he / she / it добавляется -s: he works, she plays.",
+        "Отрицание: don't + глагол (I don't eat meat). После he / she / it — doesn't, и -s уже не нужно: she doesn't eat.",
+        "Вопрос: Do you…? / Does he…? — Do you play football? Does she work here?"
+      ],
+      "examples": [
+        ["I play games every day.", "Я играю в игры каждый день."],
+        ["He works from home.", "Он работает из дома."],
+        ["She doesn't like coffee.", "Она не любит кофе."],
+        ["Do you speak English?", "Ты говоришь по-английски?"]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "My brother ___ football.", "options": ["play", "plays", "playing"], "answer": 1 },
+        { "type": "choice", "q": "They ___ in a big city.", "options": ["live", "lives", "living"], "answer": 0 },
+        { "type": "input", "q": "She ___ eat meat. (не ест)", "accept": ["doesn't", "does not"], "ru": "Она не ест мясо." },
+        { "type": "choice", "q": "___ you like music?", "options": ["Do", "Does", "Are"], "answer": 0 },
+        { "type": "input", "q": "He ___ on a computer. (work)", "accept": ["works"], "ru": "Он работает за компьютером." },
+        { "type": "order", "accept": ["I don't understand"], "ru": "Я не понимаю." }
+      ]
+    },
+    {
+      "id": "a1-there-is",
+      "title": "There is / There are",
+      "level": "A1",
+      "theory": [
+        "Чтобы сказать «есть, находится», когда упоминаем что-то впервые, используют There is / There are.",
+        "There is + одна вещь: There is a key on the table. There are + несколько: There are two cats.",
+        "Отрицание: There isn't / There aren't. Вопрос: Is there…? Are there…?"
+      ],
+      "examples": [
+        ["There is a hotel near the sea.", "Рядом с морем есть отель."],
+        ["There are ten nails in the box.", "В коробке десять гвоздей."],
+        ["Is there a gym here?", "Здесь есть спортзал?"]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "There ___ a map on the wall.", "options": ["is", "are"], "answer": 0 },
+        { "type": "choice", "q": "There ___ many people in the street.", "options": ["is", "are"], "answer": 1 },
+        { "type": "input", "q": "___ there a train to London?", "accept": ["is"], "ru": "Есть поезд до Лондона?" },
+        { "type": "choice", "q": "There ___ any bread.", "options": ["isn't", "aren't"], "answer": 0 },
+        { "type": "input", "q": "There ___ three players in my team.", "accept": ["are"], "ru": "В моей команде три игрока." },
+        { "type": "order", "accept": ["There is a bed in my room"], "ru": "В моей комнате есть кровать." }
+      ]
+    },
+    {
+      "id": "a1-articles",
+      "title": "Артикли a / an / the",
+      "level": "A1",
+      "theory": [
+        "Перед существительным в единственном числе почти всегда стоит артикль.",
+        "a / an — «один, какой-то», когда говорим о чём-то впервые: a phone, a game. An — перед гласным звуком: an apple, an error.",
+        "the — «тот самый», когда понятно, о чём речь: Close the door (ту, что здесь). The game is great (та, о которой говорили).",
+        "Во множественном числе a / an не ставят: cats, games."
+      ],
+      "examples": [
+        ["I have a new phone.", "У меня новый телефон."],
+        ["She eats an apple.", "Она ест яблоко."],
+        ["The phone is on the table.", "Телефон на столе."]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "I need ___ hammer.", "options": ["a", "an"], "answer": 0 },
+        { "type": "choice", "q": "This is ___ error.", "options": ["a", "an"], "answer": 1 },
+        { "type": "choice", "q": "Open ___ window, please.", "options": ["a", "an", "the"], "answer": 2 },
+        { "type": "choice", "q": "He is ___ actor.", "options": ["a", "an", "the"], "answer": 1 },
+        { "type": "input", "q": "I have ___ idea!", "accept": ["an"], "ru": "У меня есть идея!" },
+        { "type": "order", "accept": ["The train is late"], "ru": "Поезд опаздывает." }
+      ]
+    },
+    {
+      "id": "a1-can",
+      "title": "Can / can't — могу, умею",
+      "level": "A1",
+      "theory": [
+        "can — «могу, умею». После can глагол без to и без -s: I can swim, she can play (не can plays).",
+        "Отрицание: can't (cannot). Вопрос: Can you…? — Can you help me?"
+      ],
+      "examples": [
+        ["I can speak a little English.", "Я немного говорю по-английски."],
+        ["She can't swim.", "Она не умеет плавать."],
+        ["Can you help me?", "Можешь мне помочь?"]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "He can ___ fast.", "options": ["run", "runs", "to run"], "answer": 0 },
+        { "type": "choice", "q": "___ you open the door?", "options": ["Can", "Do", "Are"], "answer": 0 },
+        { "type": "input", "q": "I ___ find my key. (не могу)", "accept": ["can't", "cannot", "can not"], "ru": "Я не могу найти ключ." },
+        { "type": "choice", "q": "We can ___ the game!", "options": ["win", "wins", "winning"], "answer": 0 },
+        { "type": "input", "q": "___ she speak English?", "accept": ["can"], "ru": "Она умеет говорить по-английски?" },
+        { "type": "order", "accept": ["Can I have some water"], "ru": "Можно мне воды?" }
+      ]
+    },
+    {
+      "id": "a1-past",
+      "title": "Прошлое: was / were и -ed",
+      "level": "A1",
+      "theory": [
+        "Прошлое для to be: I / he / she / it → was, we / you / they → were. I was at home yesterday.",
+        "Обычные глаголы в прошлом получают -ed: play → played, work → worked, like → liked.",
+        "Неправильные глаголы запоминают: go → went, have → had, see → saw, make → made.",
+        "Отрицание и вопрос — через did, а глагол возвращается в начальную форму: I didn't play. Did you see it?"
+      ],
+      "examples": [
+        ["I was tired yesterday.", "Вчера я устал."],
+        ["We played football on Sunday.", "В воскресенье мы играли в футбол."],
+        ["She went to the gym.", "Она ходила в спортзал."],
+        ["Did you watch the match?", "Ты смотрел матч?"]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "They ___ at the hotel last week.", "options": ["was", "were"], "answer": 1 },
+        { "type": "choice", "q": "Yesterday I ___ a movie.", "options": ["watch", "watched", "watching"], "answer": 1 },
+        { "type": "input", "q": "He ___ to work by bus. (go)", "accept": ["went"], "ru": "Он поехал на работу на автобусе." },
+        { "type": "choice", "q": "___ you see the game?", "options": ["Did", "Do", "Was"], "answer": 0 },
+        { "type": "input", "q": "I didn't ___ the end. (like)", "accept": ["like"], "ru": "Мне не понравилась концовка." },
+        { "type": "order", "accept": ["We were at home"], "ru": "Мы были дома." }
+      ]
+    }
+  ]
+}

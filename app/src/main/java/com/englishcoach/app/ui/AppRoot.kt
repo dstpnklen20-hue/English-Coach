@@ -39,7 +39,10 @@ import androidx.navigation.compose.rememberNavController
 import com.englishcoach.app.AppContainer
 import com.englishcoach.app.ui.placement.PlacementScreen
 import com.englishcoach.app.ui.review.ReviewScreen
-import com.englishcoach.app.ui.screens.PracticeScreen
+import com.englishcoach.app.ui.practice.GrammarScreen
+import com.englishcoach.app.ui.practice.ListeningScreen
+import com.englishcoach.app.ui.practice.PracticeScreen
+import com.englishcoach.app.ui.practice.ReadingScreen
 import com.englishcoach.app.ui.screens.ProgressScreen
 import com.englishcoach.app.ui.screens.SettingsScreen
 import com.englishcoach.app.ui.screens.TodayScreen
@@ -49,6 +52,7 @@ val LocalAppContainer = staticCompositionLocalOf<AppContainer> { error("AppConta
 
 private const val REVIEW_ROUTE = "review"
 private const val PLACEMENT_ROUTE = "placement"
+private const val LISTENING_ROUTE = "listening"
 
 private enum class Tab(val route: String, val label: String, val icon: ImageVector) {
     Today("today", "Сегодня", Icons.Outlined.TaskAlt),
@@ -65,8 +69,8 @@ fun AppRoot() {
     val current by nav.currentBackStackEntryAsState()
     val route = current?.destination?.route
     val wide = LocalConfiguration.current.screenWidthDp >= 600
-    // Повторение и тест — полноэкранные, без панели разделов, чтобы ничего не отвлекало
-    val showNav = route != REVIEW_ROUTE && route != PLACEMENT_ROUTE
+    // Повторение, тест и упражнения — полноэкранные, без панели разделов, чтобы ничего не отвлекало
+    val showNav = Tab.entries.any { it.route == route } || route == null
 
     if (!showNav) {
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
@@ -112,12 +116,25 @@ fun AppRoot() {
 private fun AppNavHost(nav: NavHostController, modifier: Modifier) {
     NavHost(nav, startDestination = Tab.Today.route, modifier = modifier) {
         composable(Tab.Today.route) {
-            TodayScreen(onStudyWords = { nav.navigate(REVIEW_ROUTE) }, onPlacement = { nav.navigate(PLACEMENT_ROUTE) })
+            TodayScreen(
+                onStudyWords = { nav.navigate(REVIEW_ROUTE) },
+                onPlacement = { nav.navigate(PLACEMENT_ROUTE) },
+                onPractice = { nav.goTo(Tab.Practice.route) },
+            )
         }
         composable(REVIEW_ROUTE) { ReviewScreen(onClose = { nav.popBackStack() }) }
         composable(PLACEMENT_ROUTE) { PlacementScreen(onClose = { nav.popBackStack() }) }
         composable(Tab.Words.route) { WordsScreen() }
-        composable(Tab.Practice.route) { PracticeScreen() }
+        composable(Tab.Practice.route) {
+            PracticeScreen(
+                onGrammar = { nav.navigate("grammar/$it") },
+                onReading = { nav.navigate("reading/$it") },
+                onListening = { nav.navigate(LISTENING_ROUTE) },
+            )
+        }
+        composable("grammar/{id}") { GrammarScreen(it.arguments?.getString("id").orEmpty(), onClose = { nav.popBackStack() }) }
+        composable("reading/{id}") { ReadingScreen(it.arguments?.getString("id").orEmpty(), onClose = { nav.popBackStack() }) }
+        composable(LISTENING_ROUTE) { ListeningScreen(onClose = { nav.popBackStack() }) }
         composable(Tab.Progress.route) { ProgressScreen() }
         composable(Tab.Settings.route) { SettingsScreen(onPlacement = { nav.navigate(PLACEMENT_ROUTE) }) }
     }

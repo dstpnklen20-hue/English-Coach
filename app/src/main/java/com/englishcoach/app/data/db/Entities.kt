@@ -45,6 +45,19 @@ data class CardEntity(
     val updatedAt: Long = System.currentTimeMillis(),
 )
 
+/** Пройденное упражнение практики: kind — grammar / reading / listening, itemId — id урока или текста. */
+@Entity(tableName = "activity_log", indices = [Index("uid", unique = true), Index("kind"), Index("at")])
+data class ActivityEntity(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val uid: String = UUID.randomUUID().toString(),
+    val kind: String,
+    val itemId: String,
+    val correct: Int,
+    val total: Int,
+    val durationMs: Long,
+    val at: Long,
+)
+
 /** Журнал ответов: нужен для статистики и подстройки параметров FSRS. */
 @Entity(
     tableName = "review_log",

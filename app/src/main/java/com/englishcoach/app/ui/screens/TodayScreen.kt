@@ -41,8 +41,9 @@ import com.englishcoach.app.ui.theme.Warm
 import java.time.LocalDate
 
 @Composable
-fun TodayScreen(onStudyWords: () -> Unit, onPlacement: () -> Unit) {
+fun TodayScreen(onStudyWords: () -> Unit, onPlacement: () -> Unit, onPractice: () -> Unit) {
     val c = LocalAppContainer.current
+    val practiced by remember { c.practice.practicedTodayFlow() }.collectAsStateWithLifecycle(0)
     val due by remember { c.study.dueCountFlow(System.currentTimeMillis()) }.collectAsStateWithLifecycle(0)
     val new by remember { c.study.newTodayCountFlow() }.collectAsStateWithLifecycle(0)
     val settings by remember { c.settings.flow }.collectAsStateWithLifecycle(null)
@@ -96,7 +97,7 @@ fun TodayScreen(onStudyWords: () -> Unit, onPlacement: () -> Unit) {
                     Text("Сессия дня", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
                     Step("Повторение", if (due > 0) "$due" else null, done = due == 0)
                     Step("Новые слова", if (new > 0) "$new" else null, done = new == 0)
-                    Step("Практика", "этап 3", locked = true)
+                    Step("Практика", if (practiced > 0) "$practiced" else "открыть", done = practiced > 0, onClick = onPractice)
                     Step("Речь", "этап 4", locked = true)
                 }
             }
@@ -126,13 +127,16 @@ fun TodayScreen(onStudyWords: () -> Unit, onPlacement: () -> Unit) {
 }
 
 @Composable
-private fun Step(title: String, detail: String?, done: Boolean = false, locked: Boolean = false) {
+private fun Step(title: String, detail: String?, done: Boolean = false, locked: Boolean = false, onClick: (() -> Unit)? = null) {
     val (icon: ImageVector, tint) = when {
         locked -> Icons.Outlined.Lock to MaterialTheme.colorScheme.outline
         done -> Icons.Outlined.CheckCircle to Success
         else -> Icons.Outlined.RadioButtonUnchecked to MaterialTheme.colorScheme.primary
     }
-    Row(verticalAlignment = Alignment.CenterVertically) {
+    Row(
+        if (onClick != null) Modifier.clip(MaterialTheme.shapes.small).clickable(onClick = onClick) else Modifier,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
         Icon(icon, null, tint = tint, modifier = Modifier.size(16.dp))
         Text(
             "  $title",

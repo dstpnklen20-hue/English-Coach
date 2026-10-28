@@ -7,6 +7,7 @@ import com.englishcoach.app.data.StudyRepository
 import com.englishcoach.app.data.Tts
 import com.englishcoach.app.data.db.AppDatabase
 import com.englishcoach.app.data.fsrs.Fsrs
+import com.englishcoach.app.data.practice.PracticeRepository
 import com.englishcoach.app.reminders.Reminders
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +22,7 @@ class AppContainer(val app: Application) {
     val study: StudyRepository by lazy { StudyRepository(db, Fsrs(), settings) }
     val tts: Tts by lazy { Tts(app) }
     val seeder: CourseSeeder by lazy { CourseSeeder(app, db) }
+    val practice: PracticeRepository by lazy { PracticeRepository(app, db) }
 }
 
 class EnglishApp : Application() {

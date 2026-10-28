@@ -43,6 +43,16 @@ interface WordDao {
            AND NOT EXISTS (SELECT 1 FROM cards c WHERE c.wordId = w.id AND c.reps > 0) ORDER BY w.id""",
     )
     suspend fun untouched(level: String): List<WordEntity>
+
+    @Query("SELECT * FROM words WHERE lower(en) = :en LIMIT 1")
+    suspend fun findByEnglish(en: String): WordEntity?
+
+    /** Фразы для аудирования: сначала примеры к уже знакомым словам, остальные — случайно. */
+    @Query(
+        """SELECT w.* FROM words w WHERE w.example IS NOT NULL
+           ORDER BY EXISTS (SELECT 1 FROM cards c WHERE c.wordId = w.id AND c.reps > 0) DESC, RANDOM() LIMIT :limit""",
+    )
+    suspend fun listeningSentences(limit: Int): List<WordEntity>
 }
 
 // Новая карточка RU→EN доступна только после первого показа EN→RU того же слова:
@@ -88,13 +98,35 @@ interface ReviewLogDao {
     @Query("SELECT COUNT(*) FROM (SELECT MIN(reviewedAt) AS firstAt FROM review_log GROUP BY cardId) WHERE firstAt >= :dayStart")
     suspend fun introducedSince(dayStart: Long): Int
 
-    /** Итоги по дням (местное время). Один ответ считается не дольше минуты — чтобы паузы не раздували время. */
+    /**
+     * Итоги по дням (местное время): карточки + практика. Паузы не раздувают время:
+     * один ответ на карточку — не дольше минуты, одно упражнение практики — не дольше 20 минут.
+     */
     @Query(
-        """SELECT date(reviewedAt / 1000, 'unixepoch', 'localtime') AS day,
-                  SUM(MIN(durationMs, 60000)) AS ms, COUNT(*) AS answers
-           FROM review_log GROUP BY day ORDER BY day DESC""",
+        """SELECT day, SUM(ms) AS ms, SUM(answers) AS answers FROM (
+               SELECT date(reviewedAt / 1000, 'unixepoch', 'localtime') AS day, MIN(durationMs, 60000) AS ms, 1 AS answers
+               FROM review_log
+               UNION ALL
+               SELECT date(at / 1000, 'unixepoch', 'localtime') AS day, MIN(durationMs, 1200000) AS ms, 0 AS answers
+               FROM activity_log
+           ) GROUP BY day ORDER BY day DESC""",
     )
     fun dayTotalsFlow(): Flow<List<DayTotal>>
 }
 
 data class DayTotal(val day: String, val ms: Long, val answers: Int)
+
+/** Лучший результат по уроку/тексту в процентах. */
+data class BestScore(val itemId: String, val best: Int)
+
+@Dao
+interface ActivityDao {
+    @Insert
+    suspend fun insert(a: ActivityEntity)
+
+    @Query("SELECT itemId, MAX(correct * 100 / total) AS best FROM activity_log WHERE kind = :kind AND total > 0 GROUP BY itemId")
+    fun bestScoresFlow(kind: String): Flow<List<BestScore>>
+
+    @Query("SELECT COUNT(*) FROM activity_log WHERE at >= :since")
+    fun countSinceFlow(since: Long): Flow<Int>
+}
