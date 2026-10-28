@@ -51,6 +51,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import com.englishcoach.app.data.Settings
+import com.englishcoach.app.data.ai.AiException
 import com.englishcoach.app.data.ai.AiRepository
 import com.englishcoach.app.reminders.Reminders
 import com.englishcoach.app.ui.LocalAppContainer
@@ -260,6 +261,29 @@ private fun AiSettings(s: Settings, onModel: (String) -> Unit, onServer: (String
                     )
                 }
             }
+        }
+        if (hasKey) {
+            val scope = rememberCoroutineScope()
+            var checking by remember { mutableStateOf(false) }
+            var checkResult by remember { mutableStateOf<String?>(null) }
+            OutlinedButton(
+                onClick = {
+                    checking = true
+                    checkResult = null
+                    scope.launch {
+                        checkResult = try {
+                            ai.testConnection()
+                        } catch (e: AiException) {
+                            e.message
+                        } catch (e: Exception) {
+                            "Ошибка: ${e.javaClass.simpleName}"
+                        }
+                        checking = false
+                    }
+                },
+                enabled = !checking,
+            ) { Text(if (checking) "Проверяю…" else "Проверить подключение") }
+            checkResult?.let { Text(it, style = MaterialTheme.typography.bodySmall) }
         }
         Text(
             "Потрачено в этом месяце: ≈ \$${"%.3f".format(ai.monthCostUsd())}",

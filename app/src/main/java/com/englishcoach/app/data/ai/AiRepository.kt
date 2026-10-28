@@ -89,20 +89,23 @@ class AiRepository(context: Context, private val settings: SettingsRepository) {
             client(s.aiServer.trim().trimEnd('/'), s.aiBearer).messages().create(params)
         } catch (e: UnauthorizedException) {
             throw AiException(
-                if (direct) "Ключ API не подходит. Проверьте его в настройках."
-                else "Посредник не принял ключ. Проверьте ключ, адрес сервера и способ передачи (Bearer) в настройках.",
+                (
+                    if (direct) "Ключ API не подходит. Проверьте его в настройках."
+                    else "Посредник не принял ключ. Проверьте ключ, адрес сервера и способ передачи (Bearer) в настройках."
+                    ) + serverSaid(e),
             )
         } catch (e: PermissionDeniedException) {
             throw AiException(
                 "Модель ${model.title} не открыта для этого ключа. " +
-                    "Ключи посредников часто работают только с одной моделью — выберите другую в настройках (например, Claude Sonnet 5).",
+                    "Ключи посредников часто работают только с одной моделью — выберите другую в настройках (например, Claude Sonnet 5)." +
+                    serverSaid(e),
             )
         } catch (e: NotFoundException) {
-            throw AiException("Модель ${model.id} не найдена.")
+            throw AiException("Модель ${model.id} не найдена." + serverSaid(e))
         } catch (e: RateLimitException) {
             throw AiException("Слишком много запросов. Подождите минуту и попробуйте снова.")
         } catch (e: AnthropicServiceException) {
-            throw AiException("Сервис ответил ошибкой (${e.statusCode()}). Если дело в оплате — проверьте баланс в консоли Anthropic.")
+            throw AiException("Сервис ответил ошибкой. Если дело в оплате — проверьте баланс у продавца ключа или в консоли Anthropic." + serverSaid(e))
         } catch (e: AnthropicIoException) {
             throw AiException("Нет связи с сервером. Проверьте интернет.")
         }
@@ -111,6 +114,24 @@ class AiRepository(context: Context, private val settings: SettingsRepository) {
             throw AiException("Модель отказалась отвечать на это сообщение. Попробуйте сформулировать иначе.")
         }
         msg
+    }
+
+    /** Пробный крошечный запрос с текущими настройками: «работает» или текст ошибки. */
+    suspend fun testConnection(): String {
+        val model = modelById(settings.current().aiModel)
+        request("Reply with ok = \"ok\".", listOf(userMessage("ping")), obj("ok" to str()))
+        return "Работает: ${model.title} отвечает."
+    }
+
+    /**
+     * Код и текст ответа сервера — без них причину отказа не понять (особенно у посредников).
+     * Ключ, если сервер вдруг вернул его в ответе, вырезается.
+     */
+    private fun serverSaid(e: AnthropicServiceException): String {
+        val key = secrets.get(KEY_NAME)
+        var text = e.message.orEmpty()
+        if (!key.isNullOrEmpty()) text = text.replace(key, "***")
+        return "\n\nОтвет сервера (${e.statusCode()}): ${text.take(300)}"
     }
 
     /** Стоимость запросов за текущий месяц, $ (по ценам из таблицы моделей). */
