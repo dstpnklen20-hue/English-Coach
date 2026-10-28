@@ -74,7 +74,7 @@ fun TodayScreen() {
             StatTile("Новых", new.toString(), Modifier.weight(1f))
             Panel(Modifier.weight(1f)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(Icons.Outlined.LocalFireDepartment, null, tint = Warm, modifier = Modifier.size(18.dp))
+                    Icon(Icons.Outlined.LocalFireDepartment, null, tint = Warm, modifier = Modifier.size(14.dp))
                     Box(Modifier.width(4.dp))
                     Text("Серия", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
