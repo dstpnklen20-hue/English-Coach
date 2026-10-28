@@ -5,6 +5,8 @@ import com.englishcoach.app.data.CourseSeeder
 import com.englishcoach.app.data.SettingsRepository
 import com.englishcoach.app.data.StudyRepository
 import com.englishcoach.app.data.Tts
+import com.englishcoach.app.data.ai.AiRepository
+import com.englishcoach.app.data.ai.AiTutor
 import com.englishcoach.app.data.db.AppDatabase
 import com.englishcoach.app.data.fsrs.Fsrs
 import com.englishcoach.app.data.practice.PracticeRepository
@@ -23,6 +25,8 @@ class AppContainer(val app: Application) {
     val tts: Tts by lazy { Tts(app) }
     val seeder: CourseSeeder by lazy { CourseSeeder(app, db) }
     val practice: PracticeRepository by lazy { PracticeRepository(app, db) }
+    val ai: AiRepository by lazy { AiRepository(app, settings) }
+    val tutor: AiTutor by lazy { AiTutor(ai, settings) }
 }
 
 class EnglishApp : Application() {

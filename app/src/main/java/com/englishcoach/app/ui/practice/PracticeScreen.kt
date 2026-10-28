@@ -39,8 +39,12 @@ fun PracticeScreen(
     onListening: () -> Unit,
     onSpeaking: () -> Unit,
     onDialog: (String) -> Unit,
+    onAiChat: () -> Unit,
+    onTextCheck: () -> Unit,
+    onAiExercises: () -> Unit,
 ) {
     val c = LocalAppContainer.current
+    val hasKey by c.ai.hasKey.collectAsStateWithLifecycle()
     val lessons by produceState(emptyList<GrammarLesson>()) { value = c.practice.grammarLessons() }
     val texts by produceState(emptyList<ReadingText>()) { value = c.practice.readingTexts() }
     val dialogs by produceState(emptyList<Dialog>()) { value = c.practice.dialogs() }
@@ -67,7 +71,16 @@ fun PracticeScreen(
         dialogs.forEach { d ->
             ItemRow("Диалог: ${d.title}", dMap[d.id]?.let { "${d.topic} · лучший результат $it%" } ?: d.topic, dMap[d.id]) { onDialog(d.id) }
         }
-        ComingSoon(5, "Собеседник ИИ: свободный разговор и разбор ошибок.")
+        Section("С ИИ (нужен интернет)")
+        if (hasKey) {
+            ItemRow("Собеседник", "Разговор на ваши темы, разбор ошибок, новые слова", null, onAiChat)
+            ItemRow("Проверка текста", "Напишите пару предложений — исправлю и объясню", null, onTextCheck)
+            ItemRow("Упражнения по трудным словам", "Составлю задания из слов, которые чаще забываются", null, onAiExercises)
+        } else {
+            Panel {
+                Text("Добавьте ключ API в «Настройках», чтобы открыть собеседника, проверку текста и упражнения от ИИ.", style = MaterialTheme.typography.bodyMedium)
+            }
+        }
     }
 }
 

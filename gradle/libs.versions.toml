@@ -13,8 +13,10 @@ datastore = "1.2.1"
 coroutines = "1.11.0"
 serialization = "1.11.0"
 junit = "4.13.2"
+anthropic = "2.34.0"
 
 [libraries]
+anthropic-java = { group = "com.anthropic", name = "anthropic-java", version.ref = "anthropic" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }

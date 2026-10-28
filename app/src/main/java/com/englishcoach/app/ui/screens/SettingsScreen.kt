@@ -45,7 +45,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import com.englishcoach.app.data.Settings
+import com.englishcoach.app.data.ai.AiRepository
 import com.englishcoach.app.reminders.Reminders
 import com.englishcoach.app.ui.LocalAppContainer
 import com.englishcoach.app.ui.components.ComingSoon
@@ -151,13 +157,70 @@ fun SettingsScreen(onPlacement: () -> Unit) {
             OutlinedButton(onClick = onPlacement) { Text(if (s.placementDone) "Пройти заново" else "Пройти тест") }
         }
 
-        ComingSoon(5, "Ключ ИИ (хранится зашифрованно на устройстве).")
+        Section("ИИ (Claude)")
+        AiSettings(s, onModel = { id -> update { it.copy(aiModel = id) } })
+
         ComingSoon(6, "Синхронизация телефона и планшета.")
     }
 
     if (pickTime) TimeDialog(s.reminderHour, s.reminderMinute, onDismiss = { pickTime = false }) { h, m ->
         pickTime = false
         update { it.copy(reminderHour = h, reminderMinute = m) }
+    }
+}
+
+@Composable
+private fun AiSettings(s: Settings, onModel: (String) -> Unit) {
+    val ai = LocalAppContainer.current.ai
+    val hasKey by ai.hasKey.collectAsStateWithLifecycle()
+    var input by remember { mutableStateOf("") }
+    Panel {
+        if (hasKey) {
+            Text("Ключ API сохранён: …${ai.keyHint().orEmpty()}", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                "Хранится в зашифрованном виде только на этом устройстве и отправляется только в Anthropic.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            OutlinedButton(onClick = { ai.clearKey() }) { Text("Удалить ключ") }
+        } else {
+            Text(
+                "Вставьте ключ API Anthropic (начинается с sk-ant-). Без ключа всё остальное работает офлайн.",
+                style = MaterialTheme.typography.bodyMedium,
+            )
+            OutlinedTextField(
+                value = input,
+                onValueChange = { input = it.trim() },
+                modifier = Modifier.fillMaxWidth(),
+                placeholder = { Text("sk-ant-…") },
+                singleLine = true,
+                visualTransformation = PasswordVisualTransformation(),
+                shape = MaterialTheme.shapes.medium,
+            )
+            Button(onClick = { ai.saveKey(input); input = "" }, enabled = input.startsWith("sk-ant-")) { Text("Сохранить ключ") }
+        }
+        Text("Модель", style = MaterialTheme.typography.bodyLarge)
+        AiRepository.MODELS.forEach { m ->
+            Row(
+                Modifier.fillMaxWidth().clip(MaterialTheme.shapes.small).clickable { onModel(m.id) }.padding(vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                RadioButton(selected = s.aiModel == m.id, onClick = { onModel(m.id) })
+                Column {
+                    Text(m.title, style = MaterialTheme.typography.bodyLarge)
+                    Text(
+                        "\$${m.inPrice} / \$${m.outPrice} за 1 млн токенов" + if (m == AiRepository.HAIKU) " · дешевле, проще" else " · умнее",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+        }
+        Text(
+            "Потрачено в этом месяце: ≈ \$${"%.3f".format(ai.monthCostUsd())}",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
     }
 }
 

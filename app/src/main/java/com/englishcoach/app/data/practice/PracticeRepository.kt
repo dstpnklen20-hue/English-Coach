@@ -76,10 +76,13 @@ object PracticeKind {
     const val LISTENING = "listening"
     const val SPEAKING = "speaking"
     const val DIALOG = "dialog"
+    const val AI_CHAT = "ai_chat"
+    const val AI_WRITING = "ai_writing"
+    const val AI_EXERCISES = "ai_exercises"
 
-    /** Шаг «Практика» сессии дня — понимание; шаг «Речь» — говорение. */
-    val PRACTICE_STEP = listOf(GRAMMAR, READING, LISTENING)
-    val SPEECH_STEP = listOf(SPEAKING, DIALOG)
+    /** Шаг «Практика» сессии дня — понимание и письмо; шаг «Речь» — говорение и общение. */
+    val PRACTICE_STEP = listOf(GRAMMAR, READING, LISTENING, AI_WRITING, AI_EXERCISES)
+    val SPEECH_STEP = listOf(SPEAKING, DIALOG, AI_CHAT)
 }
 
 /** Материалы практики из assets/course и учёт пройденного. */
@@ -108,6 +111,8 @@ class PracticeRepository(private val context: Context, private val db: AppDataba
         )
 
     suspend fun listeningSentences(limit: Int): List<WordEntity> = db.wordDao().listeningSentences(limit)
+
+    suspend fun weakWords(limit: Int): List<WordEntity> = db.wordDao().weakWords(limit)
 
     /** Перевод слова из текста: словарь текста → общий словарь → слова курса (с учётом окончаний). */
     suspend fun translate(word: String, glossary: Map<String, String>): String? {

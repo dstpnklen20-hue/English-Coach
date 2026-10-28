@@ -39,6 +39,9 @@ import androidx.navigation.compose.rememberNavController
 import com.englishcoach.app.AppContainer
 import com.englishcoach.app.ui.placement.PlacementScreen
 import com.englishcoach.app.ui.review.ReviewScreen
+import com.englishcoach.app.ui.ai.AiChatScreen
+import com.englishcoach.app.ui.ai.AiExercisesScreen
+import com.englishcoach.app.ui.ai.TextCheckScreen
 import com.englishcoach.app.ui.practice.DialogScreen
 import com.englishcoach.app.ui.practice.GrammarScreen
 import com.englishcoach.app.ui.practice.SpeakingScreen
@@ -56,6 +59,9 @@ private const val REVIEW_ROUTE = "review"
 private const val PLACEMENT_ROUTE = "placement"
 private const val LISTENING_ROUTE = "listening"
 private const val SPEAKING_ROUTE = "speaking"
+private const val AI_CHAT_ROUTE = "ai-chat"
+private const val TEXT_CHECK_ROUTE = "ai-text"
+private const val AI_EXERCISES_ROUTE = "ai-exercises"
 
 private enum class Tab(val route: String, val label: String, val icon: ImageVector) {
     Today("today", "Сегодня", Icons.Outlined.TaskAlt),
@@ -135,8 +141,14 @@ private fun AppNavHost(nav: NavHostController, modifier: Modifier) {
                 onListening = { nav.navigate(LISTENING_ROUTE) },
                 onSpeaking = { nav.navigate(SPEAKING_ROUTE) },
                 onDialog = { nav.navigate("dialog/$it") },
+                onAiChat = { nav.navigate(AI_CHAT_ROUTE) },
+                onTextCheck = { nav.navigate(TEXT_CHECK_ROUTE) },
+                onAiExercises = { nav.navigate(AI_EXERCISES_ROUTE) },
             )
         }
+        composable(AI_CHAT_ROUTE) { AiChatScreen(onClose = { nav.popBackStack() }) }
+        composable(TEXT_CHECK_ROUTE) { TextCheckScreen(onClose = { nav.popBackStack() }) }
+        composable(AI_EXERCISES_ROUTE) { AiExercisesScreen(onClose = { nav.popBackStack() }) }
         composable(SPEAKING_ROUTE) { SpeakingScreen(onClose = { nav.popBackStack() }) }
         composable("dialog/{id}") { DialogScreen(it.arguments?.getString("id").orEmpty(), onClose = { nav.popBackStack() }) }
         composable("grammar/{id}") { GrammarScreen(it.arguments?.getString("id").orEmpty(), onClose = { nav.popBackStack() }) }

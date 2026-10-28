@@ -24,6 +24,7 @@ data class Settings(
     val reminderDays: Set<Int> = (1..7).toSet(), // DayOfWeek: 1 — понедельник … 7 — воскресенье
     val placementDone: Boolean = false,
     val level: String = "A1",
+    val aiModel: String = "claude-sonnet-5-5",
 )
 
 /** Настройки пользователя. Синхронизация с планшетом — этап 6. */
@@ -38,6 +39,7 @@ class SettingsRepository(private val context: Context) {
         val reminderDays = stringSetPreferencesKey("reminder_days")
         val placementDone = booleanPreferencesKey("placement_done")
         val level = stringPreferencesKey("level")
+        val aiModel = stringPreferencesKey("ai_model")
     }
 
     val flow: Flow<Settings> = context.dataStore.data.map(::fromPrefs)
@@ -56,6 +58,7 @@ class SettingsRepository(private val context: Context) {
             p[K.reminderDays] = s.reminderDays.map { it.toString() }.toSet()
             p[K.placementDone] = s.placementDone
             p[K.level] = s.level
+            p[K.aiModel] = s.aiModel
         }
     }
 
@@ -71,6 +74,7 @@ class SettingsRepository(private val context: Context) {
             reminderDays = p[K.reminderDays]?.map { it.toInt() }?.toSet() ?: d.reminderDays,
             placementDone = p[K.placementDone] ?: d.placementDone,
             level = p[K.level] ?: d.level,
+            aiModel = p[K.aiModel] ?: d.aiModel,
         )
     }
 }

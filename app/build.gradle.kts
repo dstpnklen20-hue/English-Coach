@@ -42,6 +42,8 @@ android {
 
     packaging {
         resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        // Служебные файлы лицензий из зависимостей Anthropic SDK (Jackson, OkHttp и др.) совпадают по имени
+        resources.excludes += listOf("/META-INF/DEPENDENCIES", "/META-INF/LICENSE*", "/META-INF/NOTICE*", "/META-INF/INDEX.LIST")
     }
 }
 
@@ -71,6 +73,7 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.anthropic.java)
 
     testImplementation(libs.junit)
 }

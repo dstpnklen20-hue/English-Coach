@@ -44,6 +44,13 @@ interface WordDao {
     )
     suspend fun untouched(level: String): List<WordEntity>
 
+    /** Слова, которые чаще забываются: больше провалов, ниже стабильность. Только уже начатые. */
+    @Query(
+        """SELECT w.* FROM words w JOIN cards c ON c.wordId = w.id WHERE c.reps > 0
+           GROUP BY w.id ORDER BY MAX(c.lapses) DESC, MIN(c.stability) ASC LIMIT :limit""",
+    )
+    suspend fun weakWords(limit: Int): List<WordEntity>
+
     @Query("SELECT * FROM words WHERE lower(en) = :en LIMIT 1")
     suspend fun findByEnglish(en: String): WordEntity?
 
