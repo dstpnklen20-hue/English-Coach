@@ -10,6 +10,10 @@ import com.englishcoach.app.data.ai.AiTutor
 import com.englishcoach.app.data.db.AppDatabase
 import com.englishcoach.app.data.fsrs.Fsrs
 import com.englishcoach.app.data.practice.PracticeRepository
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ProcessLifecycleOwner
+import com.englishcoach.app.data.sync.SyncRepository
 import com.englishcoach.app.reminders.Reminders
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -27,6 +31,7 @@ class AppContainer(val app: Application) {
     val practice: PracticeRepository by lazy { PracticeRepository(app, db) }
     val ai: AiRepository by lazy { AiRepository(app, settings) }
     val tutor: AiTutor by lazy { AiTutor(ai, settings) }
+    val sync: SyncRepository by lazy { SyncRepository(app, db, settings, seeder) }
 }
 
 class EnglishApp : Application() {
@@ -42,5 +47,15 @@ class EnglishApp : Application() {
             // Будильник напоминания мог потеряться (обновление приложения) — ставим заново
             Reminders.schedule(this@EnglishApp, container.settings.current())
         }
+        // Синхронизация при открытии и при сворачивании приложения (если выполнен вход)
+        ProcessLifecycleOwner.get().lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onStart(owner: LifecycleOwner) {
+                container.appScope.launch { container.sync.sync() }
+            }
+
+            override fun onStop(owner: LifecycleOwner) {
+                container.appScope.launch { container.sync.sync() }
+            }
+        })
     }
 }

@@ -52,6 +52,7 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import com.englishcoach.app.data.Settings
 import com.englishcoach.app.data.ai.AiException
+import com.englishcoach.app.data.sync.SyncException
 import com.englishcoach.app.data.ai.AiRepository
 import com.englishcoach.app.reminders.Reminders
 import com.englishcoach.app.ui.LocalAppContainer
@@ -74,7 +75,7 @@ fun SettingsScreen(onPlacement: () -> Unit) {
     val s = remember { c.settings.flow }.collectAsStateWithLifecycle(null).value ?: return
 
     fun update(transform: (Settings) -> Settings) = scope.launch {
-        c.settings.update(transform)
+        c.settings.update(transform = transform)
         Reminders.schedule(context, c.settings.current())
     }
 
@@ -165,7 +166,8 @@ fun SettingsScreen(onPlacement: () -> Unit) {
             onServer = { server, bearer -> update { it.copy(aiServer = server, aiBearer = bearer) } },
         )
 
-        ComingSoon(6, "Синхронизация телефона и планшета.")
+        Section("Синхронизация телефона и планшета")
+        SyncSettings()
     }
 
     if (pickTime) TimeDialog(s.reminderHour, s.reminderMinute, onDismiss = { pickTime = false }) { h, m ->
@@ -290,6 +292,79 @@ private fun AiSettings(s: Settings, onModel: (String) -> Unit, onServer: (String
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
+    }
+}
+
+/** Вход в аккаунт Supabase (тот же, что в «Тик Так») и ручной запуск синхронизации. */
+@Composable
+private fun SyncSettings() {
+    val sync = LocalAppContainer.current.sync
+    val status by sync.status.collectAsStateWithLifecycle()
+    val scope = rememberCoroutineScope()
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var busy by remember { mutableStateOf(false) }
+    var message by remember { mutableStateOf<String?>(null) }
+
+    fun run(action: suspend () -> Unit) {
+        busy = true
+        message = null
+        scope.launch {
+            try {
+                action()
+            } catch (e: SyncException) {
+                message = e.message
+            } finally {
+                busy = false
+            }
+        }
+    }
+
+    Panel {
+        val signedIn = status.email
+        if (signedIn != null) {
+            Text("Вход выполнен: $signedIn", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                when {
+                    status.running -> "Синхронизирую…"
+                    status.lastSyncAt > 0 -> "Последняя синхронизация: " +
+                        java.text.DateFormat.getDateTimeInstance(java.text.DateFormat.SHORT, java.text.DateFormat.SHORT)
+                            .format(java.util.Date(status.lastSyncAt))
+                    else -> "Ещё не синхронизировано"
+                },
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Button(onClick = { run { sync.sync() } }, enabled = !status.running) { Text("Синхронизировать") }
+                OutlinedButton(onClick = { run { sync.signOut() } }) { Text("Выйти") }
+            }
+        } else {
+            Text(
+                "Войдите той же почтой и паролем, что в «Тик Так». Прогресс по словам, история занятий и учебные настройки станут общими на телефоне и планшете.",
+                style = MaterialTheme.typography.bodyMedium,
+            )
+            OutlinedTextField(
+                value = email, onValueChange = { email = it.trim() }, modifier = Modifier.fillMaxWidth(),
+                label = { Text("Почта") }, singleLine = true, shape = MaterialTheme.shapes.medium,
+            )
+            OutlinedTextField(
+                value = password, onValueChange = { password = it }, modifier = Modifier.fillMaxWidth(),
+                label = { Text("Пароль") }, singleLine = true, visualTransformation = PasswordVisualTransformation(),
+                shape = MaterialTheme.shapes.medium,
+            )
+            val ready = !busy && email.contains("@") && password.length >= 6
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Button(onClick = { run { sync.signIn(email, password); password = "" } }, enabled = ready) { Text("Войти") }
+                OutlinedButton(onClick = {
+                    run {
+                        if (!sync.signUp(email, password)) message = "Проверьте почту: откройте письмо от Supabase, нажмите ссылку и войдите."
+                        password = ""
+                    }
+                }, enabled = ready) { Text("Создать аккаунт") }
+            }
+        }
+        (message ?: status.error)?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) }
     }
 }
 

@@ -51,6 +51,17 @@ interface WordDao {
     )
     suspend fun weakWords(limit: Int): List<WordEntity>
 
+    // --- синхронизация ---
+    @Query("SELECT * FROM words WHERE uid = :uid LIMIT 1")
+    suspend fun byUid(uid: String): WordEntity?
+
+    /** Свои и импортированные слова, изменённые с момента since (слова курса одинаковы везде — их не шлём). */
+    @Query("SELECT * FROM words WHERE source != 'course' AND updatedAt >= :since")
+    suspend fun ownChangedSince(since: Long): List<WordEntity>
+
+    @Update
+    suspend fun update(word: WordEntity)
+
     @Query("SELECT * FROM words WHERE lower(en) = :en LIMIT 1")
     suspend fun findByEnglish(en: String): WordEntity?
 
@@ -91,12 +102,34 @@ interface CardDao {
 
     @Query("SELECT * FROM cards WHERE wordId = :wordId")
     suspend fun forWord(wordId: Long): List<CardEntity>
+
+    // --- синхронизация ---
+    @Query("SELECT * FROM cards WHERE uid = :uid LIMIT 1")
+    suspend fun byUid(uid: String): CardEntity?
+
+    /** Карточки с прогрессом, изменённые с since. Нетронутые одинаковы на всех устройствах — их не шлём. */
+    @Transaction
+    @Query("SELECT * FROM cards WHERE reps > 0 AND updatedAt >= :since")
+    suspend fun touchedSince(since: Long): List<CardWithWord>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(card: CardEntity): Long
 }
+
+/** Ответ из журнала + uid карточки (на другом устройстве у неё другой локальный id). */
+data class ReviewWithCard(@Embedded val log: ReviewLogEntity, val cardUid: String)
 
 @Dao
 interface ReviewLogDao {
     @Insert
     suspend fun insert(log: ReviewLogEntity)
+
+    /** Для синхронизации: запись с таким uid уже есть — пропускаем. */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertIgnore(log: ReviewLogEntity): Long
+
+    @Query("SELECT r.*, c.uid AS cardUid FROM review_log r JOIN cards c ON c.id = r.cardId WHERE r.reviewedAt >= :since")
+    suspend fun since(since: Long): List<ReviewWithCard>
 
     /** Сколько карточек впервые показано начиная с dayStart — для дневного лимита новых. */
     @Query("SELECT COUNT(*) FROM (SELECT MIN(reviewedAt) AS firstAt FROM review_log GROUP BY cardId) WHERE firstAt >= :dayStart")
@@ -130,6 +163,12 @@ data class BestScore(val itemId: String, val best: Int)
 interface ActivityDao {
     @Insert
     suspend fun insert(a: ActivityEntity)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertIgnore(a: ActivityEntity): Long
+
+    @Query("SELECT * FROM activity_log WHERE at >= :since")
+    suspend fun since(since: Long): List<ActivityEntity>
 
     @Query("SELECT itemId, MAX(correct * 100 / total) AS best FROM activity_log WHERE kind = :kind AND total > 0 GROUP BY itemId")
     fun bestScoresFlow(kind: String): Flow<List<BestScore>>

@@ -5,6 +5,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -29,7 +30,26 @@ data class Settings(
     val aiServer: String = "",
     /** Ключ в заголовке Authorization: Bearer (ANTHROPIC_AUTH_TOKEN) вместо x-api-key. */
     val aiBearer: Boolean = false,
+    /** Когда менялись учебные настройки, которые синхронизируются между устройствами. */
+    val syncedUpdatedAt: Long = 0,
 )
+
+/**
+ * Настройки, общие для телефона и планшета. Напоминания и ИИ остаются у каждого устройства своими:
+ * например, на планшете можно не включать напоминания.
+ */
+@kotlinx.serialization.Serializable
+data class SyncedSettings(
+    val newWordsPerDay: Int,
+    val sessionMinutes: Int,
+    val paletteId: String,
+    val placementDone: Boolean,
+    val level: String,
+) {
+    companion object {
+        fun of(s: Settings) = SyncedSettings(s.newWordsPerDay, s.sessionMinutes, s.paletteId, s.placementDone, s.level)
+    }
+}
 
 /** Настройки пользователя. Синхронизация с планшетом — этап 6. */
 class SettingsRepository(private val context: Context) {
@@ -46,15 +66,31 @@ class SettingsRepository(private val context: Context) {
         val aiModel = stringPreferencesKey("ai_model")
         val aiServer = stringPreferencesKey("ai_server")
         val aiBearer = booleanPreferencesKey("ai_bearer")
+        val syncedUpdatedAt = longPreferencesKey("synced_updated_at")
     }
 
     val flow: Flow<Settings> = context.dataStore.data.map(::fromPrefs)
 
     suspend fun current(): Settings = flow.first()
 
-    suspend fun update(transform: (Settings) -> Settings) {
+    /** Применить учебные настройки с другого устройства (с их временем изменения). */
+    suspend fun applySynced(remote: SyncedSettings, updatedAt: Long) = update(stamp = false) {
+        it.copy(
+            newWordsPerDay = remote.newWordsPerDay,
+            sessionMinutes = remote.sessionMinutes,
+            paletteId = remote.paletteId,
+            placementDone = remote.placementDone,
+            level = remote.level,
+            syncedUpdatedAt = updatedAt,
+        )
+    }
+
+    suspend fun update(stamp: Boolean = true, transform: (Settings) -> Settings) {
         context.dataStore.edit { p ->
-            val s = transform(fromPrefs(p))
+            val old = fromPrefs(p)
+            var s = transform(old)
+            // Изменились общие настройки — отметим время, чтобы отправить их на другие устройства
+            if (stamp && SyncedSettings.of(s) != SyncedSettings.of(old)) s = s.copy(syncedUpdatedAt = System.currentTimeMillis())
             p[K.newWords] = s.newWordsPerDay
             p[K.sessionMinutes] = s.sessionMinutes
             p[K.palette] = s.paletteId
@@ -67,6 +103,7 @@ class SettingsRepository(private val context: Context) {
             p[K.aiModel] = s.aiModel
             p[K.aiServer] = s.aiServer
             p[K.aiBearer] = s.aiBearer
+            p[K.syncedUpdatedAt] = s.syncedUpdatedAt
         }
     }
 
@@ -85,6 +122,7 @@ class SettingsRepository(private val context: Context) {
             aiModel = p[K.aiModel] ?: d.aiModel,
             aiServer = p[K.aiServer] ?: d.aiServer,
             aiBearer = p[K.aiBearer] ?: d.aiBearer,
+            syncedUpdatedAt = p[K.syncedUpdatedAt] ?: d.syncedUpdatedAt,
         )
     }
 }
