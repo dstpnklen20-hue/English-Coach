@@ -66,7 +66,7 @@ data class DialogLine(
 )
 
 @Serializable
-data class Dialog(val id: String, val title: String, val topic: String, val intro: String, val lines: List<DialogLine>)
+data class Dialog(val id: String, val title: String, val topic: String, val intro: String, val lines: List<DialogLine>, val level: String = "A1")
 
 @Serializable
 private data class DialogBank(val dialogs: List<Dialog>)
@@ -100,12 +100,12 @@ class PracticeRepository(private val context: Context, private val db: AppDataba
     private var dialogs: List<Dialog>? = null
 
     suspend fun grammarLessons(): List<GrammarLesson> =
-        grammar ?: json.decodeFromString<GrammarBank>(asset("course/a1_grammar.json")).lessons.also { grammar = it }
+        grammar ?: LEVELS.flatMap { json.decodeFromString<GrammarBank>(asset("course/${it}_grammar.json")).lessons }.also { grammar = it }
 
     suspend fun readingTexts(): List<ReadingText> = readingBank().texts
 
     suspend fun dialogs(): List<Dialog> =
-        dialogs ?: json.decodeFromString<DialogBank>(asset("course/a1_dialogs.json")).dialogs.also { dialogs = it }
+        dialogs ?: LEVELS.flatMap { json.decodeFromString<DialogBank>(asset("course/${it}_dialogs.json")).dialogs }.also { dialogs = it }
 
     fun bestScores(kind: String): Flow<List<BestScore>> = db.activityDao().bestScoresFlow(kind)
 
@@ -135,8 +135,16 @@ class PracticeRepository(private val context: Context, private val db: AppDataba
     /** Есть ли слово (в любой форме) среди слов курса или своих — тогда добавлять его в карточки не нужно. */
     suspend fun inDictionary(word: String): Boolean = Answers.stems(word).any { db.wordDao().findByEnglish(it) != null }
 
-    private suspend fun readingBank(): ReadingBank =
-        reading ?: json.decodeFromString<ReadingBank>(asset("course/a1_reading.json")).also { reading = it }
+    /** Тексты всех уровней и их общие словари — одним банком. */
+    private suspend fun readingBank(): ReadingBank = reading ?: LEVELS
+        .map { json.decodeFromString<ReadingBank>(asset("course/${it}_reading.json")) }
+        .reduce { a, b -> ReadingBank(a.common + b.common, a.texts + b.texts) }
+        .also { reading = it }
+
+    private companion object {
+        /** Уровни встроенного курса: файлы course/<уровень>_grammar|reading|dialogs.json. */
+        val LEVELS = listOf("a1", "a2")
+    }
 
     private suspend fun asset(path: String): String = withContext(Dispatchers.IO) {
         context.assets.open(path).bufferedReader().use { it.readText() }

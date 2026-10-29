@@ -82,6 +82,9 @@ fun ProgressScreen() {
         value = Triple(c.practice.grammarLessons().size, c.practice.readingTexts().size, c.practice.dialogs().size)
     }
 
+    val a1Lessons by produceState(emptySet<String>()) {
+        value = c.practice.grammarLessons().filter { it.level == "A1" }.map { it.id }.toSet()
+    }
     val today = LocalDate.now()
     val started = words.count { it.maxReps > 0 }
     val known = words.count { it.maxReps > 0 && it.minStability >= KNOWN_DAYS }
@@ -92,8 +95,9 @@ fun ProgressScreen() {
         bestStreak = bestStreak(days),
         knownWords = known,
         startedWords = started,
-        grammarPassed = grammar.count { it.best >= PASS },
-        grammarTotal = totals.first,
+        // Достижение «Грамматика A1» — только уроки A1
+        grammarPassed = grammar.count { it.best >= PASS && it.itemId in a1Lessons },
+        grammarTotal = a1Lessons.size,
         dialogsPassed = dialogs.count { it.best >= PASS },
         aiChats = chats.size,
         importedWords = words.count { it.word.source == "import" },
@@ -115,7 +119,8 @@ fun ProgressScreen() {
         Section("Навыки")
         Panel {
             Skill("Слова", "начато $started · выучено $known", started.toFloat() / (settings.goalWords.takeIf { it > 0 } ?: LEVEL_WORDS.getValue("A2")))
-            Skill("Грамматика", "уроков на 70%+: ${stats.grammarPassed} из ${totals.first}", ratio(stats.grammarPassed, totals.first))
+            val grammarPassedAll = grammar.count { it.best >= PASS }
+            Skill("Грамматика", "уроков на 70%+: $grammarPassedAll из ${totals.first}", ratio(grammarPassedAll, totals.first))
             Skill("Чтение", "текстов на 70%+: ${reading.count { it.best >= PASS }} из ${totals.second}", ratio(reading.count { it.best >= PASS }, totals.second))
             Skill("Аудирование", "лучший диктант: ${listening.maxOfOrNull { it.best } ?: 0}%", (listening.maxOfOrNull { it.best } ?: 0) / 100f)
             val speech = maxOf(speaking.maxOfOrNull { it.best } ?: 0, ratio(stats.dialogsPassed, totals.third).times(100).toInt())

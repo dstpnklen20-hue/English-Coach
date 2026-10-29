@@ -1,0 +1,167 @@
+{
+  "lessons": [
+    {
+      "id": "a2-past-simple",
+      "title": "Past Simple: неправильные глаголы и did",
+      "level": "A2",
+      "theory": [
+        "Past Simple — законченное действие в прошлом: yesterday, last week, in 2020, two days ago.",
+        "Правильные глаголы получают -ed (worked, played). Неправильные запоминают: go → went, see → saw, buy → bought, take → took, come → came, get → got.",
+        "Вопрос и отрицание — через did, а глагол в начальной форме: Did you buy it? I didn't go."
+      ],
+      "examples": [
+        ["I bought a new phone last week.", "На прошлой неделе я купил новый телефон."],
+        ["We didn't see the boss yesterday.", "Вчера мы не видели начальника."],
+        ["Did you take the bus?", "Ты поехал на автобусе?"]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "I ___ a new keyboard yesterday.", "options": ["buyed", "bought", "buy"], "answer": 1,
+          "why": ["buy — неправильный глагол: в прошлом bought, а не buyed.", "", "yesterday — прошлое, нужна форма bought."] },
+        { "type": "choice", "q": "___ you go to the meeting?", "options": ["Did", "Do", "Were"], "answer": 0,
+          "why": ["", "Do — настоящее время. Вопрос о прошлом — Did.", "Were — для be. С глаголом go вопрос строят через Did."] },
+        { "type": "input", "q": "We ___ the crane on the site. (see)", "accept": ["saw"], "ru": "Мы видели кран на стройке.", "hint": "see — неправильный глагол: в прошлом saw." },
+        { "type": "choice", "q": "She didn't ___ the deadline.", "options": ["missed", "miss", "misses"], "answer": 1,
+          "why": ["После didn't глагол в начальной форме, без -ed.", "", "После didn't — начальная форма, без -s."] },
+        { "type": "input", "q": "They ___ home late last night. (come)", "accept": ["came"], "ru": "Вчера вечером они пришли домой поздно.", "hint": "come — неправильный глагол: в прошлом came." },
+        { "type": "order", "accept": ["I took the train two days ago"], "ru": "Я поехал на поезде два дня назад.", "hint": "Порядок: кто → что сделал → что → когда (ago в конце)." }
+      ]
+    },
+    {
+      "id": "a2-present-continuous",
+      "title": "Present Continuous: происходит сейчас",
+      "level": "A2",
+      "theory": [
+        "Present Continuous — то, что происходит прямо сейчас или в эти дни: am / is / are + глагол с -ing.",
+        "I am working. She is playing. They are building a house.",
+        "Слова-подсказки: now, right now, at the moment, today, this week.",
+        "Отрицание: I'm not working. Вопрос: Are you playing?",
+        "Глаголы знания и желания (know, like, want, need) обычно не ставят в -ing: I know, а не I am knowing."
+      ],
+      "examples": [
+        ["I am learning English now.", "Сейчас я учу английский."],
+        ["They are repairing the roof this week.", "На этой неделе они ремонтируют крышу."],
+        ["Is he playing online?", "Он играет онлайн?"]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "Look! The crane ___ the bricks.", "options": ["lifts", "is lifting", "lifting"], "answer": 1,
+          "why": ["lifts — «обычно, всегда». Look! — значит прямо сейчас: is lifting.", "", "Без is форма с -ing не работает: is lifting."] },
+        { "type": "choice", "q": "We ___ for the bus at the moment.", "options": ["are waiting", "wait", "waits"], "answer": 0,
+          "why": ["", "at the moment — прямо сейчас, нужно are waiting.", "waits — для he/she/it, и нужна форма с -ing: are waiting."] },
+        { "type": "input", "q": "She ___ working today. (не)", "accept": ["isn't", "is not"], "ru": "Она сегодня не работает.", "hint": "Отрицание: is + not + глагол с -ing. She → is." },
+        { "type": "choice", "q": "I ___ the answer.", "options": ["know", "am knowing"], "answer": 0,
+          "why": ["", "know — глагол знания, его не ставят в -ing: I know."] },
+        { "type": "input", "q": "___ you watching the match?", "accept": ["are"], "ru": "Ты смотришь матч?", "hint": "Вопрос: am/is/are в начало. You → are." },
+        { "type": "order", "accept": ["My brother is playing a new game"], "ru": "Мой брат играет в новую игру.", "hint": "Кто → is → глагол с -ing → что." }
+      ]
+    },
+    {
+      "id": "a2-comparatives",
+      "title": "Сравнения: cheaper, more expensive, the best",
+      "level": "A2",
+      "theory": [
+        "Короткие слова получают -er + than: cheap → cheaper than, fast → faster than.",
+        "Длинные — через more: more expensive than, more interesting than.",
+        "«Самый»: the + -est (the cheapest) или the most (the most expensive).",
+        "Исключения: good → better → the best, bad → worse → the worst."
+      ],
+      "examples": [
+        ["This phone is cheaper than that one.", "Этот телефон дешевле того."],
+        ["The new game is more interesting.", "Новая игра интереснее."],
+        ["He is the best player in the team.", "Он лучший игрок в команде."]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "The bus is ___ than the train.", "options": ["slow", "slower", "more slow"], "answer": 1,
+          "why": ["Для сравнения нужна форма -er + than: slower.", "", "slow — короткое слово, к нему -er, а не more."] },
+        { "type": "choice", "q": "This hotel is ___ than the other one.", "options": ["expensiver", "more expensive", "most expensive"], "answer": 1,
+          "why": ["expensive — длинное слово, сравнивают через more.", "", "most — «самый»; с than нужно more expensive."] },
+        { "type": "choice", "q": "She is the ___ coach in our gym.", "options": ["good", "better", "best"], "answer": 2,
+          "why": ["С the в значении «самый» нужна форма the best.", "better — «лучше» (сравнение двух). «Самый лучший» — the best.", ""] },
+        { "type": "input", "q": "My new laptop is ___ than the old one. (fast)", "accept": ["faster"], "ru": "Мой новый ноутбук быстрее старого.", "hint": "Короткое прилагательное + -er." },
+        { "type": "input", "q": "Today the traffic is ___ than yesterday. (bad)", "accept": ["worse"], "ru": "Сегодня пробки хуже, чем вчера.", "hint": "bad — исключение: bad → worse → the worst." },
+        { "type": "order", "accept": ["This is the most difficult level"], "ru": "Это самый сложный уровень.", "hint": "«Самый» с длинным словом: the most + прилагательное." }
+      ]
+    },
+    {
+      "id": "a2-future",
+      "title": "Будущее: will и going to",
+      "level": "A2",
+      "theory": [
+        "will — решение в момент речи, обещание, прогноз: I'll help you. It will rain.",
+        "be going to — план, который уже решён: I'm going to buy a new phone.",
+        "Отрицание: won't (will not), I'm not going to. Вопрос: Will you…? Are you going to…?",
+        "После will глагол в начальной форме, без to: will go, а не will to go."
+      ],
+      "examples": [
+        ["I'll call you later.", "Я позвоню тебе позже."],
+        ["We are going to build a garage.", "Мы собираемся построить гараж."],
+        ["Will you come to the party?", "Ты придёшь на вечеринку?"]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "The phone is ringing. — I ___ answer it!", "options": ["will", "am going to", "go"], "answer": 0,
+          "why": ["", "Решение принято прямо сейчас — will, а не going to.", "Нужна форма будущего: I'll answer."] },
+        { "type": "choice", "q": "I ___ visit London next summer. I have the tickets.", "options": ["will", "am going to"], "answer": 1,
+          "why": ["Билеты уже есть — это готовый план: am going to.", ""] },
+        { "type": "choice", "q": "He will ___ the report tomorrow.", "options": ["send", "sends", "to send"], "answer": 0,
+          "why": ["", "После will — начальная форма, без -s.", "После will частица to не нужна."] },
+        { "type": "input", "q": "I ___ forget your birthday. (не забуду)", "accept": ["won't", "will not"], "ru": "Я не забуду твой день рождения.", "hint": "Отрицание будущего: won't (will not)." },
+        { "type": "input", "q": "Are you ___ to play tonight?", "accept": ["going"], "ru": "Ты собираешься играть сегодня вечером?", "hint": "План: be going to + глагол." },
+        { "type": "order", "accept": ["It will be a hard day"], "ru": "Это будет тяжёлый день.", "hint": "Прогноз: It will be …" }
+      ]
+    },
+    {
+      "id": "a2-present-perfect",
+      "title": "Present Perfect: опыт и результат",
+      "level": "A2",
+      "theory": [
+        "Present Perfect — опыт и результат к настоящему моменту: have / has + третья форма глагола.",
+        "I have finished. She has seen this film. Третья форма: у правильных — с -ed, неправильные запоминают (see → seen, do → done, be → been).",
+        "Слова-подсказки: ever (когда-нибудь), never (никогда), already (уже), yet (ещё — в отрицаниях, уже — в вопросах), just (только что).",
+        "Если названо точное время в прошлом (yesterday, in 2020) — нужен Past Simple, а не Present Perfect."
+      ],
+      "examples": [
+        ["I have never been to London.", "Я никогда не был в Лондоне."],
+        ["She has already finished the task.", "Она уже закончила задачу."],
+        ["Have you ever played this game?", "Ты когда-нибудь играл в эту игру?"]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "I ___ this film three times.", "options": ["have seen", "have saw", "seen"], "answer": 0,
+          "why": ["", "После have нужна третья форма: seen, а не saw.", "Без have Present Perfect не бывает: have seen."] },
+        { "type": "choice", "q": "She ___ already finished.", "options": ["has", "have", "is"], "answer": 0,
+          "why": ["", "have — для I/you/we/they. She → has.", "is в Present Perfect не используют: has finished."] },
+        { "type": "choice", "q": "I ___ the report yesterday.", "options": ["have sent", "sent"], "answer": 1,
+          "why": ["yesterday — точное время в прошлом, нужен Past Simple: sent.", ""] },
+        { "type": "input", "q": "Have you ___ been to Spain? (когда-нибудь)", "accept": ["ever"], "ru": "Ты когда-нибудь был в Испании?", "hint": "«Когда-нибудь» в вопросе — ever." },
+        { "type": "input", "q": "We haven't finished the roof ___. (ещё)", "accept": ["yet"], "ru": "Мы ещё не закончили крышу.", "hint": "«Ещё не» в отрицании — yet в конце." },
+        { "type": "order", "accept": ["I have just lost my keys"], "ru": "Я только что потерял ключи.", "hint": "I have + just + третья форма глагола." }
+      ]
+    },
+    {
+      "id": "a2-modals",
+      "title": "must, have to, should",
+      "level": "A2",
+      "theory": [
+        "must — сильная обязанность или правило: You must wear a helmet.",
+        "have to — обязанность из-за обстоятельств: I have to work on Saturday. С he/she/it — has to.",
+        "should — совет: You should rest.",
+        "mustn't — «нельзя!», а don't have to — «не обязательно».",
+        "После must и should глагол без to; после have — с to: have to go."
+      ],
+      "examples": [
+        ["You must wear safety boots on the site.", "На стройке обязательно носить защитные ботинки."],
+        ["I have to get up early tomorrow.", "Завтра мне нужно рано встать."],
+        ["You should see a doctor.", "Тебе стоит сходить к врачу."]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "You look tired. You ___ rest.", "options": ["should", "mustn't", "don't have to"], "answer": 0,
+          "why": ["", "mustn't — «нельзя», а здесь совет отдохнуть: should.", "don't have to — «не обязательно»; совет даёт should."] },
+        { "type": "choice", "q": "You ___ touch that wire! It's dangerous.", "options": ["mustn't", "don't have to", "should"], "answer": 0,
+          "why": ["", "don't have to — «не обязательно», а здесь запрет: mustn't.", "should — совет, а здесь строгий запрет: mustn't."] },
+        { "type": "choice", "q": "She ___ work on Sundays.", "options": ["has to", "have to", "must to"], "answer": 0,
+          "why": ["", "She → has to (как has).", "После must частица to не ставится."] },
+        { "type": "input", "q": "You ___ pay now, you can pay later. (не обязательно)", "accept": ["don't have to", "do not have to"], "ru": "Тебе не обязательно платить сейчас, можно позже.", "hint": "«Не обязательно» — don't have to (а mustn't значит «нельзя»)." },
+        { "type": "input", "q": "We ___ wear helmets on the building site. (обязаны, правило)", "accept": ["must", "have to"], "ru": "На стройке мы обязаны носить каски.", "hint": "Правило, обязанность — must (или have to)." },
+        { "type": "order", "accept": ["You should drink more water"], "ru": "Тебе стоит пить больше воды.", "hint": "Совет: You should + глагол без to." }
+      ]
+    }
+  ]
+}

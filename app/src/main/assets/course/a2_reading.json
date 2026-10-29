@@ -1,0 +1,74 @@
+{
+  "common": {
+    "told": "сказал (tell)", "asked": "спросил", "called": "позвонил(и)", "got": "получил (get)", "first": "сначала; первый",
+    "still": "всё ещё", "finally": "наконец", "almost": "почти", "everything": "всё", "ourselves": "сами", "only": "только",
+    "flew": "полетел (fly)", "met": "встретил, познакомился (meet)", "read": "читать; читал", "drank": "пил (drink)",
+    "next": "следующий", "time": "раз; время", "end": "конец (in the end — в итоге)"
+  },
+  "texts": [
+    {
+      "id": "a2-r-interview",
+      "title": "My first job interview",
+      "topic": "Работа",
+      "level": "A2",
+      "text": "Last Monday I had my first job interview at a big IT company. I was very nervous, so I arrived thirty minutes early. The manager was friendly. She asked me about my experience and my skills. I told her that I have worked with computers for three years. Then she asked a difficult question: why should we choose you? I said that I learn fast and I am not afraid of hard tasks. Two days later they called me. I got the job! I am going to start next month.",
+      "glossary": {
+        "nervous": "нервничающий", "manager": "менеджер, руководитель", "difficult": "трудный", "company": "компания",
+        "worked": "работал (have worked — работаю, с опытом)", "thirty": "тридцать", "question": "вопрос", "hard": "трудный"
+      },
+      "questions": [
+        { "type": "choice", "q": "Почему автор пришёл заранее?", "options": ["Он нервничал", "Он перепутал время", "Его попросили"], "answer": 0 },
+        { "type": "choice", "q": "Что автор сказал о себе?", "options": ["Быстро учится и не боится трудных задач", "У него десять лет опыта", "Хочет большую зарплату"], "answer": 0 },
+        { "type": "choice", "q": "Когда автор начнёт работать?", "options": ["Завтра", "В следующем месяце", "Через год"], "answer": 1 }
+      ]
+    },
+    {
+      "id": "a2-r-old-house",
+      "title": "Fixing an old house",
+      "topic": "Строительство",
+      "level": "A2",
+      "text": "My uncle bought an old house near the river. The roof was broken and the pipes were very old, so we decided to repair everything ourselves. First we checked the foundation, and it was still strong. Then we changed the pipes and the wires. It was dirty and heavy work, but we didn't stop. My uncle has already painted the walls, and next week we are going to put in new windows. The house is going to be warmer and cheaper to heat.",
+      "glossary": {
+        "uncle": "дядя", "river": "река", "broken": "сломанный", "checked": "проверили", "changed": "заменили",
+        "dirty": "грязный", "painted": "покрасил", "put": "класть (put in — установить)", "warmer": "теплее", "heat": "отапливать"
+      },
+      "questions": [
+        { "type": "choice", "q": "Что было не так с домом?", "options": ["Сломана крыша и старые трубы", "Не было окон", "Плохой фундамент"], "answer": 0 },
+        { "type": "choice", "q": "Что дядя уже сделал?", "options": ["Покрасил стены", "Поставил окна", "Построил гараж"], "answer": 0 },
+        { "type": "choice", "q": "Почему дом станет дешевле содержать?", "options": ["Его будет дешевле отапливать", "Он стал меньше", "Дядя его продаст"], "answer": 0 }
+      ]
+    },
+    {
+      "id": "a2-r-trip",
+      "title": "A trip that went wrong",
+      "topic": "Путешествия",
+      "level": "A2",
+      "text": "Last summer I flew to Barcelona. At the airport there was a four-hour delay, so I read a book and drank a lot of coffee. When I finally arrived, my luggage wasn't there! The airline said it was still in Moscow. I had to buy new clothes and a toothbrush. The next day my bag arrived at the hotel. In the end, the trip was great: I went sightseeing, swam in the sea and met friendly people. Next time I will take only a small bag.",
+      "glossary": {
+        "summer": "лето", "barcelona": "Барселона", "moscow": "Москва", "airline": "авиакомпания", "clothes": "одежда",
+        "toothbrush": "зубная щётка", "swam": "плавал (swim)", "sea": "море", "four": "четыре", "wrong": "неправильно (went wrong — пошло не так)"
+      },
+      "questions": [
+        { "type": "choice", "q": "Что случилось в аэропорту?", "options": ["Рейс задержали на 4 часа", "Рейс отменили", "Автор потерял паспорт"], "answer": 0 },
+        { "type": "choice", "q": "Где был багаж?", "options": ["Ещё в Москве", "В отеле", "В такси"], "answer": 0 },
+        { "type": "choice", "q": "Что автор сделает в следующий раз?", "options": ["Возьмёт только маленькую сумку", "Поедет на поезде", "Не полетит в Барселону"], "answer": 0 }
+      ]
+    },
+    {
+      "id": "a2-r-tournament",
+      "title": "Our online tournament",
+      "topic": "Игры",
+      "level": "A2",
+      "text": "This weekend my team played in an online tournament. There were sixty-four teams, and the prize was five hundred dollars. Before the first match we practised for three hours. Our first two games were easy, but in the third game the enemy attacked very fast. Our best player had a lag, and we almost lost. In the end we won, but in the semi-final we lost to a stronger team. We are not sad: we have learned a lot, and we are going to play again next month.",
+      "glossary": {
+        "sixty": "шестьдесят", "prize": "приз", "dollars": "долларов", "practised": "тренировались", "easy": "лёгкий",
+        "lag": "лаг, задержка связи", "semi": "полу- (semi-final — полуфинал)", "final": "финал", "stronger": "сильнее", "learned": "научились"
+      },
+      "questions": [
+        { "type": "choice", "q": "Каким был приз?", "options": ["500 долларов", "Новая игра", "64 доллара"], "answer": 0 },
+        { "type": "choice", "q": "Что случилось в третьей игре?", "options": ["У лучшего игрока был лаг", "Команда сдалась", "Игра сломалась"], "answer": 0 },
+        { "type": "choice", "q": "Чем закончился турнир для команды?", "options": ["Проиграли в полуфинале", "Выиграли турнир", "Не прошли первый матч"], "answer": 0 }
+      ]
+    }
+  ]
+}

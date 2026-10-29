@@ -55,21 +55,21 @@ fun PracticeScreen(
     val gMap = grammarBest.associate { it.itemId to it.best }
     val rMap = readingBest.associate { it.itemId to it.best }
 
-    ScreenColumn(title = "Практика", subtitle = "Уровень A1 · всё работает без интернета") {
+    ScreenColumn(title = "Практика", subtitle = "Уровни A1–A2 · всё работает без интернета") {
         Section("Грамматика")
         lessons.forEach { l ->
-            ItemRow(l.title, gMap[l.id]?.let { "лучший результат $it%" } ?: "${l.exercises.size} упражнений", gMap[l.id]) { onGrammar(l.id) }
+            ItemRow(l.title, "${l.level} · " + (gMap[l.id]?.let { "лучший результат $it%" } ?: "${l.exercises.size} упражнений"), gMap[l.id]) { onGrammar(l.id) }
         }
         Section("Чтение")
         texts.forEach { t ->
-            ItemRow(t.title, rMap[t.id]?.let { "${t.topic} · лучший результат $it%" } ?: t.topic, rMap[t.id]) { onReading(t.id) }
+            ItemRow(t.title, "${t.level} · ${t.topic}" + (rMap[t.id]?.let { " · лучший результат $it%" } ?: ""), rMap[t.id]) { onReading(t.id) }
         }
         Section("Аудирование")
         ItemRow("Послушай и запиши", "8 фраз из примеров к вашим словам", null, onListening)
         Section("Речь")
         ItemRow("Произношение", "Повторите 6 фраз вслух — приложение проверит", null, onSpeaking)
         dialogs.forEach { d ->
-            ItemRow("Диалог: ${d.title}", dMap[d.id]?.let { "${d.topic} · лучший результат $it%" } ?: d.topic, dMap[d.id]) { onDialog(d.id) }
+            ItemRow("Диалог: ${d.title}", "${d.level} · ${d.topic}" + (dMap[d.id]?.let { " · лучший результат $it%" } ?: ""), dMap[d.id]) { onDialog(d.id) }
         }
         Section("С ИИ (нужен интернет)")
         if (hasKey) {
