@@ -55,7 +55,7 @@ fun PracticeScreen(
     val gMap = grammarBest.associate { it.itemId to it.best }
     val rMap = readingBest.associate { it.itemId to it.best }
 
-    ScreenColumn(title = "Практика", subtitle = "Уровни A1–B1 · всё работает без интернета") {
+    ScreenColumn(title = "Практика", subtitle = "Уровни A1–B2 · всё работает без интернета") {
         Section("Грамматика")
         lessons.forEach { l ->
             ItemRow(l.title, "${l.level} · " + (gMap[l.id]?.let { "лучший результат $it%" } ?: "${l.exercises.size} упражнений"), gMap[l.id]) { onGrammar(l.id) }

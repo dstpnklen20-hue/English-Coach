@@ -14,7 +14,7 @@
       "level": "B1",
       "text": "Two years ago, Mark decided to move from his small town to Canada. He was a builder, and he had heard that Canadian companies were looking for skilled workers. The first months were hard. Although he had studied English for a year, he couldn't understand people on the phone, and the local accent was very different from the videos he had watched. He rented a tiny room and worked for a contractor who paid him less than other workers. However, Mark didn't give up. He took evening classes, watched hockey with his neighbors and practiced speaking every day. After a year, he got a construction permit and found a better job. Now he manages a small team. \"The language was the biggest wall,\" he says, \"but every wall can be built — or broken — one brick at a time.\"",
       "glossary": {
-        "skilled": "квалифицированный", "accent": "акцент", "tiny": "крошечный", "give up": "сдаваться",
+        "skilled": "квалифицированный", "accent": "акцент", "tiny": "крошечный", "give": "давать (give up — сдаваться)",
         "classes": "занятия, курсы", "hockey": "хоккей", "heard": "слышал (hear)", "broken": "сломан(ный) (break)"
       },
       "questions": [
@@ -47,7 +47,7 @@
       "text": "A year ago I couldn't run five kilometers without stopping. My doctor told me that I should do more exercise, so I made a plan: I would run a marathon before my thirtieth birthday. I downloaded an app, bought comfortable shoes and started with short runs three times a week. In the second month I got a knee injury because I didn't warm up properly. I had to rest for three weeks, and I almost quit. A friend suggested joining a running club, and that changed everything. The coach showed us how to stretch and how to increase the distance slowly. Last Sunday I finished the city marathon in four hours and twenty minutes. It wasn't a record, of course, but when I crossed the finish line, the fans were cheering, and I felt like a champion.",
       "glossary": {
         "kilometers": "километры", "marathon": "марафон", "thirtieth": "тридцатый", "knee": "колено",
-        "properly": "как следует", "club": "клуб", "distance": "дистанция, расстояние", "crossed": "пересёк", "finish line": "финишная черта"
+        "properly": "как следует", "club": "клуб", "distance": "дистанция, расстояние", "crossed": "пересёк", "line": "линия (finish line — финишная черта)"
       },
       "questions": [
         { "type": "choice", "q": "Why did the author start running?", "options": ["A friend asked him", "He wanted to win money", "The doctor advised more exercise"], "answer": 2 },
@@ -62,8 +62,8 @@
       "level": "B1",
       "text": "When we finished the renovation of our flat, we decided to make it \"smart\". We installed smart lights, a robot vacuum cleaner and a camera at the door. Everything can be controlled from one app on the phone. Some features are really useful: the heating turns on half an hour before we come home, and the lights switch off when nobody is in the room, which reduces our electricity bill. However, not everything is perfect. Last month the network was down for a whole day, and we couldn't even open the garage. The setup was also more complicated than we expected, and some devices need a monthly subscription. My advice? Start with one or two reliable devices, compare prices and read reviews. A smart home is comfortable, but it should make your life easier, not more annoying.",
       "glossary": {
-        "flat": "квартира", "vacuum cleaner": "пылесос", "controlled": "управляется", "heating": "отопление",
-        "switch off": "выключать(ся)", "nobody": "никто", "electricity": "электричество", "perfect": "идеальный", "setup": "настройка", "monthly": "ежемесячный"
+        "flat": "квартира", "vacuum": "вакуум (vacuum cleaner — пылесос)", "cleaner": "уборщик; чистящее средство", "controlled": "управляется", "heating": "отопление",
+        "switch": "переключатель (switch off — выключать)", "nobody": "никто", "electricity": "электричество", "perfect": "идеальный", "setup": "настройка", "monthly": "ежемесячный"
       },
       "questions": [
         { "type": "choice", "q": "How does the smart home save money?", "options": ["The app is free", "Lights switch off in empty rooms", "The camera is cheap"], "answer": 1 },

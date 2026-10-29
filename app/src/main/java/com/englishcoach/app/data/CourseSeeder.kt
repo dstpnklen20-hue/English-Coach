@@ -54,7 +54,7 @@ class CourseSeeder(private val context: Context, private val db: AppDatabase) {
     }
 
     companion object {
-        // Новые карточки идут по порядку добавления: A1 → A2 → B1
-        private val PACKS = listOf("course/a1_words.json", "course/a2_words.json", "course/b1_words.json")
+        // Новые карточки идут по порядку добавления: A1 → A2 → B1 → B2
+        private val PACKS = listOf("course/a1_words.json", "course/a2_words.json", "course/b1_words.json", "course/b2_words.json")
     }
 }

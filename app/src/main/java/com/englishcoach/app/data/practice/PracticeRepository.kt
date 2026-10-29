@@ -143,7 +143,7 @@ class PracticeRepository(private val context: Context, private val db: AppDataba
 
     private companion object {
         /** Уровни встроенного курса: файлы course/<уровень>_grammar|reading|dialogs.json. */
-        val LEVELS = listOf("a1", "a2", "b1")
+        val LEVELS = listOf("a1", "a2", "b1", "b2")
     }
 
     private suspend fun asset(path: String): String = withContext(Dispatchers.IO) {
