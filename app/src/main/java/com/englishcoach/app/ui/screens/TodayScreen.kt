@@ -39,7 +39,10 @@ import com.englishcoach.app.ui.components.Panel
 import com.englishcoach.app.ui.components.ScreenColumn
 import com.englishcoach.app.ui.theme.Success
 import com.englishcoach.app.ui.theme.Warm
+import com.englishcoach.app.data.progress.GoalPlan
+import com.englishcoach.app.data.progress.goal
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 @Composable
 fun TodayScreen(onStudyWords: () -> Unit, onPlacement: () -> Unit, onPractice: () -> Unit) {
@@ -57,7 +60,18 @@ fun TodayScreen(onStudyWords: () -> Unit, onPlacement: () -> Unit, onPractice: (
     val minutes = (todayMs / 60_000).toInt()
     val streak = Streak.compute(days, today)
 
-    ScreenColumn(title = "Сегодня", subtitle = "Уровень ${settings?.level ?: "A1"} · цель — свободный разговор") {
+    val started by remember { c.db.cardDao().startedWordsFlow() }.collectAsStateWithLifecycle(0)
+    val goalLine = settings?.goal()?.let { g ->
+        val st = GoalPlan.status(g, started, settings?.newWordsPerDay ?: 10, today)
+        "цель ${g.level} к ${g.deadline.format(DateTimeFormatter.ofPattern("dd.MM"))} · " +
+            when {
+                st.reached -> "достигнута"
+                st.onTrack -> "по плану"
+                else -> "отстаёте — см. «Прогресс»"
+            }
+    } ?: "цель — свободный разговор"
+
+    ScreenColumn(title = "Сегодня", subtitle = "Уровень ${settings?.level ?: "A1"} · $goalLine") {
         if (settings?.placementDone == false) {
             Panel(Modifier.clickable(onClick = onPlacement)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {

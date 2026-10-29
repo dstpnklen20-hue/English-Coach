@@ -107,6 +107,10 @@ interface CardDao {
     @Query("SELECT * FROM cards WHERE wordId = :wordId")
     suspend fun forWord(wordId: Long): List<CardEntity>
 
+    /** Сколько слов начато (хотя бы одна карточка повторена) — для цели. */
+    @Query("SELECT COUNT(DISTINCT wordId) FROM cards WHERE reps > 0")
+    fun startedWordsFlow(): Flow<Int>
+
     // --- синхронизация ---
     @Query("SELECT * FROM cards WHERE uid = :uid LIMIT 1")
     suspend fun byUid(uid: String): CardEntity?

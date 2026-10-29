@@ -32,6 +32,12 @@ data class Settings(
     val aiBearer: Boolean = false,
     /** Когда менялись учебные настройки, которые синхронизируются между устройствами. */
     val syncedUpdatedAt: Long = 0,
+    /** Цель: уровень, число слов и срок (день от 1970 г.; 0 — цели нет), а также с чего начинали. */
+    val goalLevel: String = "",
+    val goalWords: Int = 0,
+    val goalDeadline: Long = 0,
+    val goalStartDay: Long = 0,
+    val goalStartWords: Int = 0,
 )
 
 /**
@@ -45,9 +51,18 @@ data class SyncedSettings(
     val paletteId: String,
     val placementDone: Boolean,
     val level: String,
+    // Цель — со значениями по умолчанию, чтобы читались записи старых версий
+    val goalLevel: String = "",
+    val goalWords: Int = 0,
+    val goalDeadline: Long = 0,
+    val goalStartDay: Long = 0,
+    val goalStartWords: Int = 0,
 ) {
     companion object {
-        fun of(s: Settings) = SyncedSettings(s.newWordsPerDay, s.sessionMinutes, s.paletteId, s.placementDone, s.level)
+        fun of(s: Settings) = SyncedSettings(
+            s.newWordsPerDay, s.sessionMinutes, s.paletteId, s.placementDone, s.level,
+            s.goalLevel, s.goalWords, s.goalDeadline, s.goalStartDay, s.goalStartWords,
+        )
     }
 }
 
@@ -67,6 +82,11 @@ class SettingsRepository(private val context: Context) {
         val aiServer = stringPreferencesKey("ai_server")
         val aiBearer = booleanPreferencesKey("ai_bearer")
         val syncedUpdatedAt = longPreferencesKey("synced_updated_at")
+        val goalLevel = stringPreferencesKey("goal_level")
+        val goalWords = intPreferencesKey("goal_words")
+        val goalDeadline = longPreferencesKey("goal_deadline")
+        val goalStartDay = longPreferencesKey("goal_start_day")
+        val goalStartWords = intPreferencesKey("goal_start_words")
     }
 
     val flow: Flow<Settings> = context.dataStore.data.map(::fromPrefs)
@@ -81,6 +101,11 @@ class SettingsRepository(private val context: Context) {
             paletteId = remote.paletteId,
             placementDone = remote.placementDone,
             level = remote.level,
+            goalLevel = remote.goalLevel,
+            goalWords = remote.goalWords,
+            goalDeadline = remote.goalDeadline,
+            goalStartDay = remote.goalStartDay,
+            goalStartWords = remote.goalStartWords,
             syncedUpdatedAt = updatedAt,
         )
     }
@@ -104,6 +129,11 @@ class SettingsRepository(private val context: Context) {
             p[K.aiServer] = s.aiServer
             p[K.aiBearer] = s.aiBearer
             p[K.syncedUpdatedAt] = s.syncedUpdatedAt
+            p[K.goalLevel] = s.goalLevel
+            p[K.goalWords] = s.goalWords
+            p[K.goalDeadline] = s.goalDeadline
+            p[K.goalStartDay] = s.goalStartDay
+            p[K.goalStartWords] = s.goalStartWords
         }
     }
 
@@ -123,6 +153,11 @@ class SettingsRepository(private val context: Context) {
             aiServer = p[K.aiServer] ?: d.aiServer,
             aiBearer = p[K.aiBearer] ?: d.aiBearer,
             syncedUpdatedAt = p[K.syncedUpdatedAt] ?: d.syncedUpdatedAt,
+            goalLevel = p[K.goalLevel] ?: d.goalLevel,
+            goalWords = p[K.goalWords] ?: d.goalWords,
+            goalDeadline = p[K.goalDeadline] ?: d.goalDeadline,
+            goalStartDay = p[K.goalStartDay] ?: d.goalStartDay,
+            goalStartWords = p[K.goalStartWords] ?: d.goalStartWords,
         )
     }
 }
