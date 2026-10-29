@@ -49,7 +49,8 @@ try {
     git -C $stage init -q -b updates
     git -C $stage add -A
     git -C $stage -c user.email=$email -c user.name=$user commit -q -m "English Coach $name (code $code), content v$($manifest.version)"
-    git -C $stage push --force $repo updates
+    # A big postBuffer: without it pushing the APK over HTTPS breaks with "unable to rewind rpc post data"
+    git -C $stage -c http.postBuffer=157286400 push --force $repo updates
     if ($LASTEXITCODE -ne 0) { throw "Push failed." }
 
     Write-Host "Published: app $name (code $code), content v$($manifest.version), sha256 $sha"
