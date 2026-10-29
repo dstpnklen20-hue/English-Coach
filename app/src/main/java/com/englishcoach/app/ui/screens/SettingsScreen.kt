@@ -168,6 +168,9 @@ fun SettingsScreen(onPlacement: () -> Unit) {
 
         Section("Синхронизация телефона и планшета")
         SyncSettings()
+
+        Section("Приложение")
+        UpdateSettings()
     }
 
     if (pickTime) TimeDialog(s.reminderHour, s.reminderMinute, onDismiss = { pickTime = false }) { h, m ->

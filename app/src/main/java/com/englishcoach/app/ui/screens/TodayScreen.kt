@@ -78,6 +78,7 @@ fun TodayScreen(onStudyWords: () -> Unit, onPlacement: () -> Unit, onPractice: (
     } ?: "цель — свободный разговор"
 
     ScreenColumn(title = "Сегодня", subtitle = "Уровень ${settings?.level ?: "A1"} · $goalLine") {
+        UpdateBanner()
         if (settings?.placementDone == false) {
             Panel(Modifier.clickable(onClick = onPlacement)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {

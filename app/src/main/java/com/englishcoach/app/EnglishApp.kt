@@ -7,6 +7,8 @@ import com.englishcoach.app.data.StudyRepository
 import com.englishcoach.app.data.Tts
 import com.englishcoach.app.data.ai.AiRepository
 import com.englishcoach.app.data.ai.AiTutor
+import com.englishcoach.app.data.content.CourseContent
+import com.englishcoach.app.data.update.Updater
 import com.englishcoach.app.data.db.AppDatabase
 import com.englishcoach.app.data.fsrs.Fsrs
 import com.englishcoach.app.data.practice.PracticeRepository
@@ -28,8 +30,10 @@ class AppContainer(val app: Application) {
     val settings: SettingsRepository by lazy { SettingsRepository(app) }
     val study: StudyRepository by lazy { StudyRepository(db, Fsrs(), settings) }
     val tts: Tts by lazy { Tts(app) }
-    val seeder: CourseSeeder by lazy { CourseSeeder(app, db) }
-    val practice: PracticeRepository by lazy { PracticeRepository(app, db) }
+    val content: CourseContent by lazy { CourseContent(app) }
+    val seeder: CourseSeeder by lazy { CourseSeeder(app, content, db) }
+    val practice: PracticeRepository by lazy { PracticeRepository(content, db) }
+    val updater: Updater by lazy { Updater(app, content, practice, seeder) }
     val ai: AiRepository by lazy { AiRepository(app, settings) }
     val tutor: AiTutor by lazy { AiTutor(ai, settings) }
     val sync: SyncRepository by lazy { SyncRepository(app, db, settings, seeder) }
@@ -60,6 +64,8 @@ class EnglishApp : Application() {
         ProcessLifecycleOwner.get().lifecycle.addObserver(object : DefaultLifecycleObserver {
             override fun onStart(owner: LifecycleOwner) {
                 container.appScope.launch { container.sync.sync() }
+                // Новая версия и новые материалы с GitHub — не чаще раза в 6 часов
+                container.appScope.launch { container.updater.check() }
             }
 
             override fun onStop(owner: LifecycleOwner) {

@@ -1,7 +1,7 @@
 package com.englishcoach.app.data.practice
 
-import android.content.Context
 import com.englishcoach.app.data.StudyRepository
+import com.englishcoach.app.data.content.CourseContent
 import com.englishcoach.app.data.db.ActivityEntity
 import com.englishcoach.app.data.db.AppDatabase
 import com.englishcoach.app.data.db.BestScore
@@ -92,29 +92,44 @@ object PracticeKind {
     val SPEECH_STEP = listOf(SPEAKING, DIALOG, AI_CHAT)
 }
 
-/** Материалы практики из assets/course и учёт пройденного. */
-class PracticeRepository(private val context: Context, private val db: AppDatabase) {
-    private val json = Json { ignoreUnknownKeys = true }
-    // Заполняются из фонового потока (предзагрузка при старте), читаются с главного
-    @Volatile private var grammar: List<GrammarLesson>? = null
-    @Volatile private var reading: ReadingBank? = null
-    @Volatile private var dialogs: List<Dialog>? = null
+/** Материалы практики (встроенные или скачанные — см. [CourseContent]) и учёт пройденного. */
+class PracticeRepository(private val content: CourseContent, private val db: AppDatabase) {
+    private class Bank(val grammar: List<GrammarLesson>, val reading: ReadingBank, val dialogs: List<Dialog>)
+
+    // Заполняется из фонового потока (предзагрузка при старте), читается с главного
+    @Volatile private var bank: Bank? = null
 
     // Файлы курса читаются и разбираются один раз и в фоне: разбор JSON на главном потоке подтормаживал экраны
-    suspend fun grammarLessons(): List<GrammarLesson> = grammar ?: load {
-        LEVELS.flatMap { json.decodeFromString<GrammarBank>(asset("course/${it}_grammar.json")).lessons }
-    }.also { grammar = it }
+    private suspend fun bank(): Bank = bank ?: withContext(Dispatchers.IO) { parse(content.manifest.levels, content::text) }.also { bank = it }
 
-    suspend fun readingTexts(): List<ReadingText> = readingBank().texts
+    suspend fun grammarLessons(): List<GrammarLesson> = bank().grammar
 
-    suspend fun dialogs(): List<Dialog> = dialogs ?: load {
-        LEVELS.flatMap { json.decodeFromString<DialogBank>(asset("course/${it}_dialogs.json")).dialogs }
-    }.also { dialogs = it }
+    suspend fun readingTexts(): List<ReadingText> = bank().reading.texts
+
+    suspend fun dialogs(): List<Dialog> = bank().dialogs
 
     /** Уже загруженные материалы (или пусто) — без ожидания, для первого кадра экрана. */
-    fun cachedGrammar(): List<GrammarLesson> = grammar.orEmpty()
-    fun cachedTexts(): List<ReadingText> = reading?.texts.orEmpty()
-    fun cachedDialogs(): List<Dialog> = dialogs.orEmpty()
+    fun cachedGrammar(): List<GrammarLesson> = bank?.grammar.orEmpty()
+    fun cachedTexts(): List<ReadingText> = bank?.reading?.texts.orEmpty()
+    fun cachedDialogs(): List<Dialog> = bank?.dialogs.orEmpty()
+
+    /** Проверка скачанного набора теми же классами, что при чтении; бросает исключение, если файл битый. */
+    fun validate(levels: List<String>, read: (String) -> String) {
+        parse(levels, read)
+    }
+
+    /** Материалы обновились — при следующем обращении перечитать. */
+    fun invalidate() {
+        bank = null
+    }
+
+    private fun parse(levels: List<String>, read: (String) -> String) = Bank(
+        grammar = levels.flatMap { json.decodeFromString<GrammarBank>(read("${it}_grammar.json")).lessons },
+        // Тексты всех уровней и их общие словари — одним банком
+        reading = levels.map { json.decodeFromString<ReadingBank>(read("${it}_reading.json")) }
+            .reduce { a, b -> ReadingBank(a.common + b.common, a.texts + b.texts) },
+        dialogs = levels.flatMap { json.decodeFromString<DialogBank>(read("${it}_dialogs.json")).dialogs },
+    )
 
     fun bestScores(kind: String): Flow<List<BestScore>> = db.activityDao().bestScoresFlow(kind)
 
@@ -132,7 +147,7 @@ class PracticeRepository(private val context: Context, private val db: AppDataba
 
     /** Перевод слова из текста: словарь текста → общий словарь → слова курса (с учётом окончаний). */
     suspend fun translate(word: String, glossary: Map<String, String>): String? {
-        val common = readingBank().common
+        val common = bank().reading.common
         for (w in Answers.stems(word)) {
             glossary[w]?.let { return it }
             common[w]?.let { return it }
@@ -144,18 +159,7 @@ class PracticeRepository(private val context: Context, private val db: AppDataba
     /** Есть ли слово (в любой форме) среди слов курса или своих — тогда добавлять его в карточки не нужно. */
     suspend fun inDictionary(word: String): Boolean = Answers.stems(word).any { db.wordDao().findByEnglish(it) != null }
 
-    /** Тексты всех уровней и их общие словари — одним банком. */
-    private suspend fun readingBank(): ReadingBank = reading ?: load {
-        LEVELS.map { json.decodeFromString<ReadingBank>(asset("course/${it}_reading.json")) }
-            .reduce { a, b -> ReadingBank(a.common + b.common, a.texts + b.texts) }
-    }.also { reading = it }
-
     private companion object {
-        /** Уровни встроенного курса: файлы course/<уровень>_grammar|reading|dialogs.json. */
-        val LEVELS = listOf("a1", "a2", "b1", "b2")
+        val json = Json { ignoreUnknownKeys = true }
     }
-
-    private suspend fun <T> load(block: () -> T): T = withContext(Dispatchers.IO) { block() }
-
-    private fun asset(path: String): String = context.assets.open(path).bufferedReader().use { it.readText() }
 }
