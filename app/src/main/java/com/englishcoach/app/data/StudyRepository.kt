@@ -41,14 +41,16 @@ class StudyRepository(private val db: AppDatabase, val fsrs: Fsrs, private val s
         return due + db.cardDao().newCards(newLimit)
     }
 
-    /** Пересчитывает карточку по FSRS, сохраняет её и запись в журнал. Возвращает обновлённую карточку. */
-    suspend fun answer(card: CardEntity, rating: Rating, now: Long, durationMs: Long): CardEntity {
-        val updated = card.withMemory(fsrs.schedule(card.toMemory(), rating, now), now)
+    /** Новое состояние карточки по FSRS — без записи в базу, чтобы экран не ждал диск. */
+    fun schedule(card: CardEntity, rating: Rating, now: Long): CardEntity =
+        card.withMemory(fsrs.schedule(card.toMemory(), rating, now), now)
+
+    /** Сохраняет пересчитанную карточку и запись в журнал. */
+    suspend fun saveAnswer(updated: CardEntity, rating: Rating, now: Long, durationMs: Long) {
         db.withTransaction {
             db.cardDao().update(updated)
-            db.reviewLogDao().insert(ReviewLogEntity(cardId = card.id, rating = rating.value, reviewedAt = now, durationMs = durationMs))
+            db.reviewLogDao().insert(ReviewLogEntity(cardId = updated.id, rating = rating.value, reviewedAt = now, durationMs = durationMs))
         }
-        return updated
     }
 
     suspend fun wordsForCheck(level: String): List<WordEntity> = db.wordDao().untouched(level)

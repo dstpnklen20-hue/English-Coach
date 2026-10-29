@@ -1,6 +1,8 @@
 package com.englishcoach.app.ui.screens
 
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
+import com.englishcoach.app.ui.theme.Motion
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -37,6 +39,8 @@ import com.englishcoach.app.data.practice.PracticeKind
 import com.englishcoach.app.ui.LocalAppContainer
 import com.englishcoach.app.ui.components.Panel
 import com.englishcoach.app.ui.components.ScreenColumn
+import com.englishcoach.app.ui.components.dayOf
+import com.englishcoach.app.ui.components.rememberNow
 import com.englishcoach.app.ui.theme.Success
 import com.englishcoach.app.ui.theme.Warm
 import com.englishcoach.app.data.progress.GoalPlan
@@ -47,14 +51,16 @@ import java.time.format.DateTimeFormatter
 @Composable
 fun TodayScreen(onStudyWords: () -> Unit, onPlacement: () -> Unit, onPractice: () -> Unit) {
     val c = LocalAppContainer.current
-    val practiced by remember { c.practice.doneTodayFlow(PracticeKind.PRACTICE_STEP) }.collectAsStateWithLifecycle(0)
-    val spoke by remember { c.practice.doneTodayFlow(PracticeKind.SPEECH_STEP) }.collectAsStateWithLifecycle(0)
-    val due by remember { c.study.dueCountFlow(System.currentTimeMillis()) }.collectAsStateWithLifecycle(0)
-    val new by remember { c.study.newTodayCountFlow() }.collectAsStateWithLifecycle(0)
+    val now by rememberNow()
+    val today = dayOf(now)
+    // Запросы «с начала дня» пересоздаются при смене даты, «к повторению» — каждую минуту
+    val practiced by remember(today) { c.practice.doneTodayFlow(PracticeKind.PRACTICE_STEP) }.collectAsStateWithLifecycle(0)
+    val spoke by remember(today) { c.practice.doneTodayFlow(PracticeKind.SPEECH_STEP) }.collectAsStateWithLifecycle(0)
+    val due by remember(now) { c.study.dueCountFlow(now) }.collectAsStateWithLifecycle(0)
+    val new by remember(today) { c.study.newTodayCountFlow() }.collectAsStateWithLifecycle(0)
     val settings by remember { c.settings.flow }.collectAsStateWithLifecycle(null)
     val days by remember { c.study.dayTotalsFlow() }.collectAsStateWithLifecycle(emptyList())
 
-    val today = LocalDate.now()
     val todayMs = days.firstOrNull { it.day == today.toString() }?.ms ?: 0
     val goalMin = settings?.sessionMinutes ?: 30
     val minutes = (todayMs / 60_000).toInt()
@@ -98,8 +104,9 @@ fun TodayScreen(onStudyWords: () -> Unit, onPlacement: () -> Unit, onPractice: (
             )
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                 Box(contentAlignment = Alignment.Center) {
+                    val ring by animateFloatAsState((minutes.toFloat() / goalMin).coerceIn(0f, 1f), Motion.soft(700), label = "ring")
                     CircularProgressIndicator(
-                        progress = { (minutes.toFloat() / goalMin).coerceIn(0f, 1f) },
+                        progress = { ring },
                         modifier = Modifier.size(72.dp),
                         color = if (minutes >= goalMin) Success else MaterialTheme.colorScheme.primary,
                         trackColor = MaterialTheme.colorScheme.outlineVariant,

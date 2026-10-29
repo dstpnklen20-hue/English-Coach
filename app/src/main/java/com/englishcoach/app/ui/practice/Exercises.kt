@@ -1,6 +1,13 @@
 package com.englishcoach.app.ui.practice
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.SizeTransform
+import androidx.compose.animation.core.MutableTransitionState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Arrangement
+import com.englishcoach.app.ui.theme.Motion
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -52,8 +59,9 @@ fun PracticeFrame(progress: Float?, onClose: () -> Unit, content: @Composable ()
         Row {
             IconButton(onClick = onClose) { Icon(Icons.Outlined.Close, "Закрыть") }
             if (progress != null) {
+                val smooth by animateFloatAsState(progress, Motion.soft(450), label = "progress")
                 LinearProgressIndicator(
-                    progress = { progress },
+                    progress = { smooth },
                     modifier = Modifier.weight(1f).padding(start = 8.dp, top = 22.dp),
                     trackColor = MaterialTheme.colorScheme.outlineVariant,
                 )
@@ -73,26 +81,55 @@ fun PracticeFrame(progress: Float?, onClose: () -> Unit, content: @Composable ()
 @Composable
 fun ExerciseView(ex: Exercise, onDone: (Boolean) -> Unit) {
     val st = remember(ex) { ExerciseState() }
-    when (ex.type) {
-        "choice" -> ChoiceExercise(ex, st)
-        "input" -> InputExercise(ex, st)
-        else -> OrderExercise(ex, st)
+    // Каждое новое упражнение мягко проявляется с небольшим сдвигом
+    val shown = remember(ex) { MutableTransitionState(false).apply { targetState = true } }
+    AnimatedVisibility(shown, enter = Motion.exerciseEnter) {
+        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            when (ex.type) {
+                "choice" -> ChoiceExercise(ex, st)
+                "input" -> InputExercise(ex, st)
+                else -> OrderExercise(ex, st)
+            }
+            val feedback = when {
+                st.solved -> Feedback.Solved(firstTry = !st.failedOnce)
+                st.revealed -> Feedback.Revealed
+                st.hint != null -> Feedback.Hint(st.hint.orEmpty())
+                else -> Feedback.None
+            }
+            // Отзыв на ответ сменяется плавно; содержимое берётся из состояния-ключа, чтобы уходящее не мигало новым текстом
+            AnimatedContent(
+                feedback,
+                transitionSpec = { Motion.appear togetherWith Motion.disappear using SizeTransform(clip = false) },
+                label = "feedback",
+            ) { f ->
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    when (f) {
+                        is Feedback.Solved -> {
+                            Text(if (f.firstTry) "Верно!" else "Теперь верно!", style = MaterialTheme.typography.titleMedium, color = Success)
+                            // В счёт идёт только ответ с первой попытки — так результат остаётся честным
+                            Button(onClick = { onDone(f.firstTry) }, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text("Дальше") }
+                        }
+                        Feedback.Revealed -> {
+                            Text("Правильно: ${correctAnswer(ex)}", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+                            Button(onClick = { onDone(false) }, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text("Дальше") }
+                        }
+                        is Feedback.Hint -> {
+                            HintCard(f.text)
+                            TextButton(onClick = { st.revealed = true }) { Text("Показать ответ") }
+                        }
+                        Feedback.None -> Unit
+                    }
+                }
+            }
+        }
     }
-    when {
-        st.solved -> {
-            Text(if (st.failedOnce) "Теперь верно!" else "Верно!", style = MaterialTheme.typography.titleMedium, color = Success)
-            // В счёт идёт только ответ с первой попытки — так результат остаётся честным
-            Button(onClick = { onDone(!st.failedOnce) }, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text("Дальше") }
-        }
-        st.revealed -> {
-            Text("Правильно: ${correctAnswer(ex)}", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
-            Button(onClick = { onDone(false) }, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text("Дальше") }
-        }
-        st.hint != null -> {
-            HintCard(st.hint.orEmpty())
-            TextButton(onClick = { st.revealed = true }) { Text("Показать ответ") }
-        }
-    }
+}
+
+private sealed interface Feedback {
+    data object None : Feedback
+    data class Hint(val text: String) : Feedback
+    data class Solved(val firstTry: Boolean) : Feedback
+    data object Revealed : Feedback
 }
 
 /**

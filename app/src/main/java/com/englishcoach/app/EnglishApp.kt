@@ -50,6 +50,12 @@ class EnglishApp : Application() {
             // Будильник напоминания мог потеряться (обновление приложения) — ставим заново
             Reminders.schedule(this@EnglishApp, container.settings.current())
         }
+        // Материалы практики разбираем заранее, в фоне — «Практика» и уроки открываются без задержки
+        container.appScope.launch {
+            container.practice.grammarLessons()
+            container.practice.readingTexts()
+            container.practice.dialogs()
+        }
         // Синхронизация при открытии и при сворачивании приложения (если выполнен вход)
         ProcessLifecycleOwner.get().lifecycle.addObserver(object : DefaultLifecycleObserver {
             override fun onStart(owner: LifecycleOwner) {

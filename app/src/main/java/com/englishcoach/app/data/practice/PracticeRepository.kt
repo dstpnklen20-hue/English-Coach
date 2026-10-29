@@ -95,17 +95,26 @@ object PracticeKind {
 /** Материалы практики из assets/course и учёт пройденного. */
 class PracticeRepository(private val context: Context, private val db: AppDatabase) {
     private val json = Json { ignoreUnknownKeys = true }
-    private var grammar: List<GrammarLesson>? = null
-    private var reading: ReadingBank? = null
-    private var dialogs: List<Dialog>? = null
+    // Заполняются из фонового потока (предзагрузка при старте), читаются с главного
+    @Volatile private var grammar: List<GrammarLesson>? = null
+    @Volatile private var reading: ReadingBank? = null
+    @Volatile private var dialogs: List<Dialog>? = null
 
-    suspend fun grammarLessons(): List<GrammarLesson> =
-        grammar ?: LEVELS.flatMap { json.decodeFromString<GrammarBank>(asset("course/${it}_grammar.json")).lessons }.also { grammar = it }
+    // Файлы курса читаются и разбираются один раз и в фоне: разбор JSON на главном потоке подтормаживал экраны
+    suspend fun grammarLessons(): List<GrammarLesson> = grammar ?: load {
+        LEVELS.flatMap { json.decodeFromString<GrammarBank>(asset("course/${it}_grammar.json")).lessons }
+    }.also { grammar = it }
 
     suspend fun readingTexts(): List<ReadingText> = readingBank().texts
 
-    suspend fun dialogs(): List<Dialog> =
-        dialogs ?: LEVELS.flatMap { json.decodeFromString<DialogBank>(asset("course/${it}_dialogs.json")).dialogs }.also { dialogs = it }
+    suspend fun dialogs(): List<Dialog> = dialogs ?: load {
+        LEVELS.flatMap { json.decodeFromString<DialogBank>(asset("course/${it}_dialogs.json")).dialogs }
+    }.also { dialogs = it }
+
+    /** Уже загруженные материалы (или пусто) — без ожидания, для первого кадра экрана. */
+    fun cachedGrammar(): List<GrammarLesson> = grammar.orEmpty()
+    fun cachedTexts(): List<ReadingText> = reading?.texts.orEmpty()
+    fun cachedDialogs(): List<Dialog> = dialogs.orEmpty()
 
     fun bestScores(kind: String): Flow<List<BestScore>> = db.activityDao().bestScoresFlow(kind)
 
@@ -136,17 +145,17 @@ class PracticeRepository(private val context: Context, private val db: AppDataba
     suspend fun inDictionary(word: String): Boolean = Answers.stems(word).any { db.wordDao().findByEnglish(it) != null }
 
     /** Тексты всех уровней и их общие словари — одним банком. */
-    private suspend fun readingBank(): ReadingBank = reading ?: LEVELS
-        .map { json.decodeFromString<ReadingBank>(asset("course/${it}_reading.json")) }
-        .reduce { a, b -> ReadingBank(a.common + b.common, a.texts + b.texts) }
-        .also { reading = it }
+    private suspend fun readingBank(): ReadingBank = reading ?: load {
+        LEVELS.map { json.decodeFromString<ReadingBank>(asset("course/${it}_reading.json")) }
+            .reduce { a, b -> ReadingBank(a.common + b.common, a.texts + b.texts) }
+    }.also { reading = it }
 
     private companion object {
         /** Уровни встроенного курса: файлы course/<уровень>_grammar|reading|dialogs.json. */
         val LEVELS = listOf("a1", "a2", "b1", "b2")
     }
 
-    private suspend fun asset(path: String): String = withContext(Dispatchers.IO) {
-        context.assets.open(path).bufferedReader().use { it.readText() }
-    }
+    private suspend fun <T> load(block: () -> T): T = withContext(Dispatchers.IO) { block() }
+
+    private fun asset(path: String): String = context.assets.open(path).bufferedReader().use { it.readText() }
 }

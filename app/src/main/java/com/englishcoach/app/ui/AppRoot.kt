@@ -1,6 +1,17 @@
 package com.englishcoach.app.ui
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandHorizontally
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkHorizontally
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.runtime.movableContentOf
+import androidx.compose.runtime.remember
+import com.englishcoach.app.ui.theme.Motion
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -87,50 +98,72 @@ fun AppRoot() {
     LaunchedEffect(shared) { if (shared != null && route != IMPORT_ROUTE) nav.navigate(IMPORT_ROUTE) }
     // Повторение, тест и упражнения — полноэкранные, без панели разделов, чтобы ничего не отвлекало
     val showNav = Tab.entries.any { it.route == route } || route == null
+    // Один и тот же NavHost при любой раскладке: раньше при входе в полноэкранный режим он пересоздавался
+    // с нуля (рывок и оборванная анимация); movableContentOf переносит его вместе с состоянием
+    val host = remember(nav) { movableContentOf { m: Modifier -> AppNavHost(nav, m) } }
+    val content = Modifier.widthIn(max = if (showNav) 840.dp else 720.dp)
 
-    if (!showNav) {
-        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
-            AppNavHost(nav, Modifier.widthIn(max = 720.dp))
-        }
-    } else if (wide) {
+    if (wide) {
         Row(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-            NavigationRail(containerColor = MaterialTheme.colorScheme.surfaceContainer) {
-                Tab.entries.forEach { tab ->
-                    NavigationRailItem(
-                        selected = route == tab.route,
-                        onClick = { nav.goTo(tab.route) },
-                        icon = { Icon(tab.icon, null) },
-                        label = { Text(tab.label) },
-                    )
+            AnimatedVisibility(
+                showNav,
+                enter = fadeIn(Motion.soft()) + expandHorizontally(Motion.soft()),
+                exit = fadeOut(Motion.soft(160)) + shrinkHorizontally(Motion.soft()),
+            ) {
+                NavigationRail(containerColor = MaterialTheme.colorScheme.surfaceContainer) {
+                    Tab.entries.forEach { tab ->
+                        NavigationRailItem(
+                            selected = route == tab.route,
+                            onClick = { nav.goTo(tab.route) },
+                            icon = { Icon(tab.icon, null) },
+                            label = { Text(tab.label) },
+                        )
+                    }
                 }
             }
-            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
-                AppNavHost(nav, Modifier.widthIn(max = 840.dp))
-            }
+            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) { host(content) }
         }
     } else {
         Scaffold(
             bottomBar = {
-                NavigationBar(containerColor = MaterialTheme.colorScheme.surfaceContainer) {
-                    Tab.entries.forEach { tab ->
-                        NavigationBarItem(
-                            selected = route == tab.route,
-                            onClick = { nav.goTo(tab.route) },
-                            icon = { Icon(tab.icon, null) },
-                            label = { Text(tab.label, maxLines = 1) },
-                        )
+                // Панель разделов плавно уезжает вниз на полноэкранных экранах и возвращается обратно
+                AnimatedVisibility(
+                    showNav,
+                    enter = fadeIn(Motion.soft()) + expandVertically(Motion.soft(), expandFrom = Alignment.Top),
+                    exit = fadeOut(Motion.soft(160)) + shrinkVertically(Motion.soft(), shrinkTowards = Alignment.Top),
+                ) {
+                    NavigationBar(containerColor = MaterialTheme.colorScheme.surfaceContainer) {
+                        Tab.entries.forEach { tab ->
+                            NavigationBarItem(
+                                selected = route == tab.route,
+                                onClick = { nav.goTo(tab.route) },
+                                icon = { Icon(tab.icon, null) },
+                                label = { Text(tab.label, maxLines = 1) },
+                            )
+                        }
                     }
                 }
             },
         ) { padding ->
-            AppNavHost(nav, Modifier.padding(padding))
+            // Отступы системных панелей отдаются здесь и помечаются использованными — полноэкранные экраны не добавят их второй раз
+            Box(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding), contentAlignment = Alignment.TopCenter) {
+                host(content)
+            }
         }
     }
 }
 
 @Composable
 private fun AppNavHost(nav: NavHostController, modifier: Modifier) {
-    NavHost(nav, startDestination = Tab.Today.route, modifier = modifier) {
+    NavHost(
+        nav,
+        startDestination = Tab.Today.route,
+        modifier = modifier,
+        enterTransition = { Motion.screenEnter },
+        exitTransition = { Motion.screenExit },
+        popEnterTransition = { Motion.screenEnter },
+        popExitTransition = { Motion.screenPopExit },
+    ) {
         composable(Tab.Today.route) {
             TodayScreen(
                 onStudyWords = { nav.navigate(REVIEW_ROUTE) },

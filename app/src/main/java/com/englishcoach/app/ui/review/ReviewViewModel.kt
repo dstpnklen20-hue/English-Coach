@@ -10,7 +10,10 @@ import com.englishcoach.app.data.db.CardWithWord
 import com.englishcoach.app.data.fsrs.Rating
 import com.englishcoach.app.data.fsrs.formatInterval
 import com.englishcoach.app.data.toMemory
+import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 data class ReviewUi(
     val loading: Boolean = true,
@@ -32,6 +35,7 @@ class ReviewViewModel(private val c: AppContainer) : ViewModel() {
     init {
         viewModelScope.launch {
             c.seeder.seedIfNeeded() // на случай первого запуска: дождаться загрузки курса
+            saves.withLock { } // дождаться записи ответов прошлой сессии
             queue.addAll(c.study.loadQueue(System.currentTimeMillis()))
             ui = ui.copy(loading = false)
             showNext()
@@ -50,15 +54,17 @@ class ReviewViewModel(private val c: AppContainer) : ViewModel() {
 
     fun rate(rating: Rating) {
         val cur = ui.current ?: return
+        if (!ui.revealed) return // защита от двойного нажатия: оценка уже ушла, на экране следующая карточка
         val now = System.currentTimeMillis()
-        viewModelScope.launch {
-            val updated = c.study.answer(cur.card, rating, now, now - shownAt)
-            // Карточка в коротком шаге (минуты) возвращается в конец очереди этой же сессии
-            val again = updated.due - now < RELEARN_WINDOW_MS
-            if (again) queue.addLast(cur.copy(card = updated))
-            if (!again) ui = ui.copy(done = ui.done + 1)
-            showNext()
-        }
+        val updated = c.study.schedule(cur.card, rating, now)
+        val duration = now - shownAt
+        // Запись — в фоне и строго по очереди (UNDISPATCHED встаёт в очередь Mutex сразу, Mutex честный), а не в viewModelScope: закрытие экрана её не оборвёт
+        c.appScope.launch(start = CoroutineStart.UNDISPATCHED) { saves.withLock { c.study.saveAnswer(updated, rating, now, duration) } }
+        // Карточка в коротком шаге (минуты) возвращается в конец очереди этой же сессии
+        val again = updated.due - now < RELEARN_WINDOW_MS
+        if (again) queue.addLast(cur.copy(card = updated))
+        if (!again) ui = ui.copy(done = ui.done + 1)
+        showNext()
     }
 
     fun speak(text: String, slow: Boolean = false) = c.tts.speak(text, slow)
@@ -72,5 +78,7 @@ class ReviewViewModel(private val c: AppContainer) : ViewModel() {
 
     private companion object {
         const val RELEARN_WINDOW_MS = 20 * 60_000L
+        /** Общая на все сессии: следующая сессия не прочитает очередь раньше, чем допишутся ответы прошлой. */
+        val saves = Mutex()
     }
 }

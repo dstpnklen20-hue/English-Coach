@@ -54,6 +54,8 @@ import com.englishcoach.app.data.progress.goal
 import com.englishcoach.app.ui.LocalAppContainer
 import com.englishcoach.app.ui.components.Panel
 import com.englishcoach.app.ui.components.ScreenColumn
+import com.englishcoach.app.ui.components.dayOf
+import com.englishcoach.app.ui.components.rememberNow
 import com.englishcoach.app.ui.theme.Success
 import com.englishcoach.app.ui.theme.Warm
 import kotlinx.coroutines.launch
@@ -85,7 +87,7 @@ fun ProgressScreen() {
     val a1Lessons by produceState(emptySet<String>()) {
         value = c.practice.grammarLessons().filter { it.level == "A1" }.map { it.id }.toSet()
     }
-    val today = LocalDate.now()
+    val today = dayOf(rememberNow().value)
     val started = words.count { it.maxReps > 0 }
     val known = words.count { it.maxReps > 0 && it.minStability >= KNOWN_DAYS }
     val stats = Stats(

@@ -1,6 +1,14 @@
 package com.englishcoach.app.ui.review
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.clickable
+import androidx.compose.runtime.getValue
+import com.englishcoach.app.ui.theme.Motion
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -51,8 +59,13 @@ fun ReviewScreen(onClose: () -> Unit) {
     Column(Modifier.fillMaxSize().safeDrawingPadding().padding(horizontal = 20.dp, vertical = 8.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = onClose) { Icon(Icons.Outlined.Close, "Закрыть") }
+            val progress by animateFloatAsState(
+                if (ui.done + ui.remaining == 0) 0f else ui.done.toFloat() / (ui.done + ui.remaining),
+                Motion.soft(450),
+                label = "progress",
+            )
             LinearProgressIndicator(
-                progress = { if (ui.done + ui.remaining == 0) 0f else ui.done.toFloat() / (ui.done + ui.remaining) },
+                progress = { progress },
                 modifier = Modifier.weight(1f).padding(horizontal = 8.dp),
                 trackColor = MaterialTheme.colorScheme.outlineVariant,
             )
@@ -64,16 +77,32 @@ fun ReviewScreen(onClose: () -> Unit) {
             ui.loading -> Box(Modifier.fillMaxSize(), Alignment.Center) { CircularProgressIndicator() }
             cur == null -> Finished(ui.done, onClose)
             else -> {
-                Column(
-                    Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(vertical = 16.dp),
-                    verticalArrangement = Arrangement.Center,
-                ) {
-                    CardFace(cur, ui.revealed, onReveal = vm::reveal, onSpeak = vm::speak)
+                // Новая карточка мягко сменяет прошлую; уходящая остаётся открытой, пока гаснет
+                AnimatedContent(
+                    cur,
+                    modifier = Modifier.weight(1f).fillMaxWidth(),
+                    contentKey = { it.card.id },
+                    transitionSpec = { Motion.exerciseEnter togetherWith Motion.exerciseExit },
+                    label = "card",
+                ) { item ->
+                    Column(
+                        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(vertical = 16.dp),
+                        verticalArrangement = Arrangement.Center,
+                    ) {
+                        val revealed = if (item.card.id == ui.current?.card?.id) ui.revealed else true
+                        CardFace(item, revealed, onReveal = vm::reveal, onSpeak = vm::speak)
+                    }
                 }
-                if (!ui.revealed) {
-                    Button(onClick = vm::reveal, modifier = Modifier.fillMaxWidth().height(52.dp)) { Text("Показать ответ") }
-                } else {
-                    RatingButtons(ui.previews, vm::rate)
+                AnimatedContent(
+                    ui.revealed,
+                    transitionSpec = { fadeIn(Motion.soft(220, 60)) togetherWith fadeOut(Motion.soft(120)) },
+                    label = "buttons",
+                ) { revealed ->
+                    if (!revealed) {
+                        Button(onClick = vm::reveal, modifier = Modifier.fillMaxWidth().height(52.dp)) { Text("Показать ответ") }
+                    } else {
+                        RatingButtons(ui.previews, vm::rate)
+                    }
                 }
                 Spacer(Modifier.height(8.dp))
             }
@@ -94,19 +123,21 @@ private fun CardFace(item: CardWithWord, revealed: Boolean, onReveal: () -> Unit
         Spacer(Modifier.height(8.dp))
         if (enFirst) EnglishWord(w.en, w.transcription, onSpeak) else BigText(w.ru)
 
-        if (revealed) {
-            HorizontalDivider(Modifier.padding(vertical = 12.dp), color = MaterialTheme.colorScheme.outlineVariant)
-            if (enFirst) BigText(w.ru) else EnglishWord(w.en, w.transcription, onSpeak)
-            if (w.example != null) {
-                Spacer(Modifier.height(12.dp))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(w.example, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.weight(1f))
-                    IconButton(onClick = { onSpeak(w.example, false) }) {
-                        Icon(Icons.AutoMirrored.Outlined.VolumeUp, "Озвучить пример", tint = MaterialTheme.colorScheme.onSurfaceVariant)
+        AnimatedVisibility(revealed, enter = Motion.appear, exit = Motion.disappear) {
+            Column {
+                HorizontalDivider(Modifier.padding(vertical = 12.dp), color = MaterialTheme.colorScheme.outlineVariant)
+                if (enFirst) BigText(w.ru) else EnglishWord(w.en, w.transcription, onSpeak)
+                if (w.example != null) {
+                    Spacer(Modifier.height(12.dp))
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(w.example, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.weight(1f))
+                        IconButton(onClick = { onSpeak(w.example, false) }) {
+                            Icon(Icons.AutoMirrored.Outlined.VolumeUp, "Озвучить пример", tint = MaterialTheme.colorScheme.onSurfaceVariant)
+                        }
                     }
-                }
-                w.exampleRu?.let {
-                    Text(it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    w.exampleRu?.let {
+                        Text(it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
                 }
             }
         }

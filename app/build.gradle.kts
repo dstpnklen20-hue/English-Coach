@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -13,8 +15,22 @@ android {
         applicationId = "com.englishcoach.app"
         minSdk = 26
         targetSdk = 37
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "1.0.0"
+    }
+
+    // Ключ релиза и пароли лежат вне репозитория; путь можно переопределить свойством englishSigning
+    val signingFile = file(providers.gradleProperty("englishSigning").getOrElse("F:/AndroidDev/keys/english-coach-signing.properties"))
+    signingConfigs {
+        if (signingFile.exists()) {
+            val p = Properties().apply { signingFile.inputStream().use { load(it) } }
+            create("release") {
+                storeFile = file(p.getProperty("storeFile"))
+                storePassword = p.getProperty("storePassword")
+                keyAlias = p.getProperty("keyAlias")
+                keyPassword = p.getProperty("keyPassword")
+            }
+        }
     }
 
     buildTypes {
@@ -25,8 +41,8 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
-            // TODO: свой ключ подписи из F:\AndroidDev\keys перед установкой релиза на устройства
-            signingConfig = signingConfigs.getByName("debug")
+            // Без файла с ключом (другой компьютер) релиз подписывается отладочным ключом — только для проверки
+            signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
         }
     }
 
