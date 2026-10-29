@@ -39,6 +39,13 @@ data class TextCheck(
 @Serializable
 internal data class ExerciseSet(val exercises: List<Exercise> = emptyList())
 
+/** Перевод слова для импорта: lemma — словарная форма (soldiers → soldier). */
+@Serializable
+data class Translation(val word: String = "", val lemma: String = "", val ru: String = "")
+
+@Serializable
+internal data class TranslationSet(val items: List<Translation> = emptyList())
+
 /** Учебные сценарии поверх Claude: собеседник, проверка текста, упражнения по слабым словам. */
 class AiTutor(private val ai: AiRepository, private val settings: SettingsRepository) {
 
@@ -118,6 +125,21 @@ class AiTutor(private val ai: AiRepository, private val settings: SettingsReposi
         val msg = ai.request(system, listOf(AiRepository.userMessage(prompt)), schema)
         return AiRepository.parse<ExerciseSet>(msg).exercises
             .filter { valid(it) }
+    }
+
+    /** Перевод слов из импортированного текста с учётом предложения, где слово встретилось. */
+    suspend fun translate(items: List<Pair<String, String?>>): List<Translation> {
+        val level = settings.current().level
+        val system = """
+            You translate English words for a Russian-speaking learner at CEFR level $level.
+            For each item return: word — exactly as given; lemma — the dictionary form (verbs without "to", nouns singular);
+            ru — a short Russian translation (1-3 variants separated by commas) that fits the context sentence when it is given.
+            Keep the order of the items.
+        """.trimIndent()
+        val list = items.joinToString("\n") { (w, ctx) -> if (ctx != null) "- $w | context: $ctx" else "- $w" }
+        val schema = obj("items" to arr(obj("word" to str(), "lemma" to str(), "ru" to str())))
+        val msg = ai.request(system, listOf(AiRepository.userMessage(list)), schema)
+        return AiRepository.parse<TranslationSet>(msg).items
     }
 
     /** Отсекаем упражнения, которые нельзя показать (на случай редких промахов модели). */

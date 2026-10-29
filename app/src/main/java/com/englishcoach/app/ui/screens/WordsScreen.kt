@@ -65,7 +65,7 @@ private fun Status.color(): Color = when (this) {
 }
 
 @Composable
-fun WordsScreen() {
+fun WordsScreen(onImport: () -> Unit) {
     val c = LocalAppContainer.current
     val words by remember { c.db.wordDao().progressFlow() }.collectAsStateWithLifecycle(emptyList())
     var query by rememberSaveable { mutableStateOf("") }
@@ -87,7 +87,10 @@ fun WordsScreen() {
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             item {
-                Text("Слова", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.SemiBold)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text("Слова", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f))
+                    TextButton(onClick = onImport) { Text("Импорт") }
+                }
                 Row(Modifier.padding(vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                     Status.entries.forEach { s ->
                         Row(verticalAlignment = Alignment.CenterVertically) {

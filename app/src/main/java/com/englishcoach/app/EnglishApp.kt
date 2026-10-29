@@ -18,6 +18,7 @@ import com.englishcoach.app.reminders.Reminders
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 /** Ручной DI: один контейнер зависимостей на приложение. */
@@ -32,6 +33,8 @@ class AppContainer(val app: Application) {
     val ai: AiRepository by lazy { AiRepository(app, settings) }
     val tutor: AiTutor by lazy { AiTutor(ai, settings) }
     val sync: SyncRepository by lazy { SyncRepository(app, db, settings, seeder) }
+    /** Текст, присланный через «Поделиться», — его подхватывает экран импорта. */
+    val pendingShare = MutableStateFlow<String?>(null)
 }
 
 class EnglishApp : Application() {

@@ -39,6 +39,9 @@ import androidx.navigation.compose.rememberNavController
 import com.englishcoach.app.AppContainer
 import com.englishcoach.app.ui.placement.PlacementScreen
 import com.englishcoach.app.ui.review.ReviewScreen
+import androidx.compose.runtime.LaunchedEffect
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.englishcoach.app.ui.importer.ImportScreen
 import com.englishcoach.app.ui.ai.AiChatScreen
 import com.englishcoach.app.ui.ai.AiExercisesScreen
 import com.englishcoach.app.ui.ai.TextCheckScreen
@@ -62,6 +65,7 @@ private const val SPEAKING_ROUTE = "speaking"
 private const val AI_CHAT_ROUTE = "ai-chat"
 private const val TEXT_CHECK_ROUTE = "ai-text"
 private const val AI_EXERCISES_ROUTE = "ai-exercises"
+private const val IMPORT_ROUTE = "import"
 
 private enum class Tab(val route: String, val label: String, val icon: ImageVector) {
     Today("today", "Сегодня", Icons.Outlined.TaskAlt),
@@ -78,6 +82,9 @@ fun AppRoot() {
     val current by nav.currentBackStackEntryAsState()
     val route = current?.destination?.route
     val wide = LocalConfiguration.current.screenWidthDp >= 600
+    // Пришёл текст через «Поделиться» — сразу на экран импорта
+    val shared by LocalAppContainer.current.pendingShare.collectAsStateWithLifecycle()
+    LaunchedEffect(shared) { if (shared != null && route != IMPORT_ROUTE) nav.navigate(IMPORT_ROUTE) }
     // Повторение, тест и упражнения — полноэкранные, без панели разделов, чтобы ничего не отвлекало
     val showNav = Tab.entries.any { it.route == route } || route == null
 
@@ -133,7 +140,8 @@ private fun AppNavHost(nav: NavHostController, modifier: Modifier) {
         }
         composable(REVIEW_ROUTE) { ReviewScreen(onClose = { nav.popBackStack() }) }
         composable(PLACEMENT_ROUTE) { PlacementScreen(onClose = { nav.popBackStack() }) }
-        composable(Tab.Words.route) { WordsScreen() }
+        composable(Tab.Words.route) { WordsScreen(onImport = { nav.navigate(IMPORT_ROUTE) }) }
+        composable(IMPORT_ROUTE) { ImportScreen(onClose = { nav.popBackStack() }) }
         composable(Tab.Practice.route) {
             PracticeScreen(
                 onGrammar = { nav.navigate("grammar/$it") },

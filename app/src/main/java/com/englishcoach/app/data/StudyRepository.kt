@@ -72,6 +72,24 @@ class StudyRepository(private val db: AppDatabase, val fsrs: Fsrs, private val s
         }
     }
 
+    suspend fun knownWords(): Set<String> = db.wordDao().allEnglish().toSet()
+
+    /** Импорт слов с карточками; уже имеющиеся (по английскому написанию) пропускаются. Вернёт число добавленных. */
+    suspend fun addImported(words: List<ImportWord>): Int = db.withTransaction {
+        var added = 0
+        for (w in words) {
+            val en = w.en.trim()
+            if (en.isEmpty() || w.ru.isBlank() || db.wordDao().findByEnglish(en.lowercase()) != null) continue
+            val word = WordEntity(en = en, ru = w.ru.trim(), example = w.example, topic = w.topic, level = "", source = "import")
+            val id = db.wordDao().insert(word)
+            if (id > 0) {
+                db.cardDao().insertAll(newCardsFor(id, word.uid))
+                added++
+            }
+        }
+        added
+    }
+
     companion object {
         private const val MAX_REVIEWS = 500
         const val USER_TOPIC = "Мои слова"
@@ -83,6 +101,8 @@ class StudyRepository(private val db: AppDatabase, val fsrs: Fsrs, private val s
         fun dayStart(): Long = LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()
     }
 }
+
+data class ImportWord(val en: String, val ru: String, val example: String?, val topic: String)
 
 fun CardEntity.toMemory() = Memory(state, stability, difficulty, due, lastReview, reps, lapses)
 

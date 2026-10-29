@@ -51,6 +51,10 @@ interface WordDao {
     )
     suspend fun weakWords(limit: Int): List<WordEntity>
 
+    /** Все известные слова (в нижнем регистре) — чтобы не предлагать их при импорте. */
+    @Query("SELECT lower(en) FROM words")
+    suspend fun allEnglish(): List<String>
+
     // --- синхронизация ---
     @Query("SELECT * FROM words WHERE uid = :uid LIMIT 1")
     suspend fun byUid(uid: String): WordEntity?
