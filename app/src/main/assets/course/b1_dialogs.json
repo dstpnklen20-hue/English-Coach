@@ -1,0 +1,58 @@
+{
+  "dialogs": [
+    {
+      "id": "b1-d-rent",
+      "title": "Снимаем квартиру",
+      "topic": "Переезд",
+      "level": "B1",
+      "intro": "Вы переехали в другую страну и звоните хозяину квартиры по объявлению.",
+      "lines": [
+        { "who": "them", "en": "Hello, this is David. Are you calling about the flat?", "ru": "Здравствуйте, это Дэвид. Вы звоните по поводу квартиры?" },
+        { "who": "me", "hint": "Скажите, что да, и спросите, свободна ли она ещё", "options": ["Yes, I am. Is it still available?", "Yes, I do. Is it still free for take?", "Yes. It is still available is?"], "ru": "Да. Она ещё свободна?" },
+        { "who": "them", "en": "Yes, it is. The rent is 900 dollars a month, bills included.", "ru": "Да. Аренда — 900 долларов в месяц, коммунальные включены." },
+        { "who": "me", "hint": "Спросите, можно ли приехать посмотреть завтра", "options": ["Could I come and see it tomorrow?", "Could I to come and see it tomorrow?", "Can I coming see it tomorrow?"], "ru": "Можно я приеду посмотреть завтра?" },
+        { "who": "them", "en": "Sure. How long are you planning to stay?", "ru": "Конечно. На какой срок планируете?" },
+        { "who": "me", "hint": "Скажите, что хотите подписать договор на год", "options": ["I'd like to sign a contract for a year.", "I'd like sign a contract on a year.", "I like to signing contract for year."], "ru": "Я бы хотел подписать договор на год." },
+        { "who": "them", "en": "That's perfect. I'll need a deposit and a copy of your passport.", "ru": "Отлично. Мне понадобятся залог и копия паспорта." },
+        { "who": "me", "hint": "Скажите, что это не проблема, и спросите, разрешены ли домашние животные", "options": ["No problem. Are pets allowed?", "No problem. Are pets allow?", "No problem. Do pets allowed?"], "ru": "Без проблем. С животными можно?" },
+        { "who": "them", "en": "Small pets are fine. See you tomorrow at six!", "ru": "Небольших можно. До завтра, в шесть!" }
+      ]
+    },
+    {
+      "id": "b1-d-meeting",
+      "title": "Рабочая встреча",
+      "topic": "Работа",
+      "level": "B1",
+      "intro": "Руководитель спрашивает, как дела с проектом. В приложении нашли серьёзный баг.",
+      "lines": [
+        { "who": "them", "en": "So, how is the project going? Are we ready for the release?", "ru": "Ну, как проект? Мы готовы к выпуску?" },
+        { "who": "me", "hint": "Скажите, что почти, но вчера нашли серьёзный баг", "options": ["Almost, but we found a serious bug yesterday.", "Almost, but we have found a serious bug yesterday.", "Almost, but we find a serious bug yesterday."], "ru": "Почти, но вчера мы нашли серьёзный баг." },
+        { "who": "them", "en": "What kind of bug? Is it dangerous for users?", "ru": "Какой баг? Он опасен для пользователей?" },
+        { "who": "me", "hint": "Объясните, что приложение падает, когда сеть недоступна", "options": ["The app crashes when the network isn't available.", "The app crash when the network not available.", "The app is crashing if network don't available."], "ru": "Приложение падает, когда сеть недоступна." },
+        { "who": "them", "en": "I see. How much time do you need to fix it?", "ru": "Понятно. Сколько времени нужно, чтобы исправить?" },
+        { "who": "me", "hint": "Скажите, что если всё пойдёт хорошо, исправите к пятнице", "options": ["If everything goes well, we'll fix it by Friday.", "If everything will go well, we fix it by Friday.", "If everything go well, we'll fix it until Friday."], "ru": "Если всё пойдёт хорошо, исправим к пятнице." },
+        { "who": "them", "en": "OK. Should we move the release date?", "ru": "Хорошо. Перенести дату выпуска?" },
+        { "who": "me", "hint": "Предложите перенести на неделю, чтобы успеть всё проверить", "options": ["I suggest moving it by a week to test everything.", "I suggest to move it a week for test everything.", "I suggest we moving it on a week to testing."], "ru": "Предлагаю перенести на неделю, чтобы всё проверить." },
+        { "who": "them", "en": "Agreed. Send me a short report tonight, please.", "ru": "Договорились. Пришлите мне короткий отчёт вечером." }
+      ]
+    },
+    {
+      "id": "b1-d-movie",
+      "title": "Обсуждаем фильм",
+      "topic": "Фильмы",
+      "level": "B1",
+      "intro": "Вы с другом только что вышли из кино. Поделитесь мнением.",
+      "lines": [
+        { "who": "them", "en": "So, what did you think? I loved it!", "ru": "Ну как тебе? Мне очень понравилось!" },
+        { "who": "me", "hint": "Скажите, что графика впечатляющая, но сюжет слабый", "options": ["The graphics were impressive, but the plot was weak.", "The graphics was impressive, but the plot were weak.", "Graphics impressive were, but plot weak."], "ru": "Графика впечатляющая, но сюжет слабый." },
+        { "who": "them", "en": "Really? I thought the ending was amazing.", "ru": "Правда? А по-моему, концовка была потрясающая." },
+        { "who": "me", "hint": "Скажите, что концовку вы ожидали с самого начала", "options": ["I expected that ending from the beginning.", "I was expecting that ending since the beginning start.", "I expect that ending from beginning."], "ru": "Я ждал такой концовки с самого начала." },
+        { "who": "them", "en": "Fair point. Have you seen the first movie?", "ru": "Справедливо. А первый фильм ты видел?" },
+        { "who": "me", "hint": "Скажите, что да, и по-вашему он был лучше, чем продолжение", "options": ["Yes, and in my opinion it was better than the sequel.", "Yes, and on my opinion it was more better than the sequel.", "Yes, and in my opinion it was gooder than sequel."], "ru": "Да, и по-моему он был лучше продолжения." },
+        { "who": "them", "en": "Maybe. Should we watch it again in English this weekend?", "ru": "Может быть. Посмотрим его снова на английском в выходные?" },
+        { "who": "me", "hint": "Согласитесь, но с субтитрами", "options": ["Sure, but with subtitles, please.", "Sure, but with the subtitle, please give.", "Sure, but on subtitles, please."], "ru": "Давай, но с субтитрами." },
+        { "who": "them", "en": "Deal! I'll bring the snacks.", "ru": "Договорились! Я принесу закуски." }
+      ]
+    }
+  ]
+}

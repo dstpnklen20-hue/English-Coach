@@ -1,0 +1,167 @@
+{
+  "lessons": [
+    {
+      "id": "b1-past-continuous",
+      "title": "Past Continuous: что происходило в момент прошлого",
+      "level": "B1",
+      "theory": [
+        "Past Continuous = was / were + verb-ing. It describes an action in progress at a moment in the past.",
+        "По-русски: «я как раз делал…». I was working at 8 pm. They were playing when I called.",
+        "Часто вместе с Past Simple: длинное фоновое действие (was doing) прерывает короткое (did): I was driving when the phone rang.",
+        "when + короткое действие, while + длинное: While I was cooking, he came home."
+      ],
+      "examples": [
+        ["I was watching a movie when the power went off.", "Я смотрел фильм, когда отключили свет."],
+        ["What were you doing at ten o'clock?", "Что ты делал в десять часов?"],
+        ["While we were building the wall, it started to rain.", "Пока мы строили стену, начался дождь."]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "I ___ a game when you called.", "options": ["played", "am playing", "was playing"], "answer": 2,
+          "why": ["Played — просто факт. Здесь действие шло в момент звонка — нужно was playing.", "Am playing — настоящее. Звонок был в прошлом.", ""] },
+        { "type": "choice", "q": "They ___ dinner at 7 pm yesterday.", "options": ["were having", "was having", "are having"], "answer": 0,
+          "why": ["", "They — множественное число, с ним were, а не was.", "yesterday — прошлое, нужно were having."] },
+        { "type": "input", "q": "She ___ when the alarm rang. (sleep)", "accept": ["was sleeping"], "ru": "Она спала, когда зазвонил будильник.", "hint": "Длинное действие в прошлом: was + sleeping." },
+        { "type": "choice", "q": "While I ___ to work, I saw an accident.", "options": ["drove", "was driving", "were driving"], "answer": 1,
+          "why": ["После while обычно длинное действие — was driving.", "", "I — единственное число, с ним was, а не were."] },
+        { "type": "input", "q": "What ___ you doing at midnight?", "accept": ["were"], "ru": "Что ты делал в полночь?", "hint": "Вопрос: were + you + doing. С you всегда were." },
+        { "type": "order", "accept": ["I was reading when the lights went off"], "ru": "Я читал, когда погас свет.", "hint": "Сначала длинное действие (was reading), потом when + короткое." }
+      ]
+    },
+    {
+      "id": "b1-used-to",
+      "title": "used to: как было раньше",
+      "level": "B1",
+      "theory": [
+        "used to + verb = something was true or happened regularly in the past, but not now.",
+        "По-русски: «раньше я…». I used to play football. (Раньше играл, сейчас нет.)",
+        "Отрицание и вопрос — через did, и тогда use без -d: I didn't use to like coffee. Did you use to live here?",
+        "Не путайте с be used to (привык): I'm used to working late — я привык работать допоздна."
+      ],
+      "examples": [
+        ["I used to live in a small town.", "Раньше я жил в маленьком городе."],
+        ["She didn't use to speak English.", "Раньше она не говорила по-английски."],
+        ["Did you use to play video games?", "Ты раньше играл в видеоигры?"]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "I ___ smoke, but I quit two years ago.", "options": ["use to", "was used to", "used to"], "answer": 2,
+          "why": ["В утверждении форма used to (с -d).", "Was used to значит «привык». Здесь «раньше курил» — used to.", ""] },
+        { "type": "choice", "q": "Did you ___ work in construction?", "options": ["use to", "used to", "using to"], "answer": 0,
+          "why": ["", "После did глагол без -d: use to.", "Такой формы нет. После did — use to."] },
+        { "type": "input", "q": "We ___ to go camping every summer. (use)", "accept": ["used"], "ru": "Раньше мы каждое лето ходили в поход.", "hint": "Утверждение о прошлом: used to." },
+        { "type": "choice", "q": "He didn't ___ like vegetables.", "options": ["used to", "use to", "uses to"], "answer": 1,
+          "why": ["После didn't — use to, без -d.", "", "После didn't глагол в начальной форме, без -s."] },
+        { "type": "choice", "q": "I'm ___ working at night. It's normal for me.", "options": ["use to", "using", "used to"], "answer": 2,
+          "why": ["«Привык» — be used to, всегда с -d.", "Using здесь не подходит. «Я привык» — I'm used to.", ""] },
+        { "type": "order", "accept": ["I used to play football every day"], "ru": "Раньше я играл в футбол каждый день.", "hint": "Кто → used to → действие → как часто." }
+      ]
+    },
+    {
+      "id": "b1-conditionals",
+      "title": "Условия: if + реальное и нереальное",
+      "level": "B1",
+      "theory": [
+        "First conditional (real future): If + Present Simple, will + verb. If it rains, we will stay home.",
+        "После if будущее не ставят: If it rains, а не If it will rain.",
+        "Second conditional (unreal, imaginary): If + Past Simple, would + verb. If I had money, I would buy a house.",
+        "Это «если бы» — про воображаемое сейчас или в будущем. С be часто were для всех: If I were you, I would wait."
+      ],
+      "examples": [
+        ["If you practice every day, you will improve fast.", "Если будешь заниматься каждый день, быстро продвинешься."],
+        ["If I lived in London, I would speak English every day.", "Если бы я жил в Лондоне, говорил бы по-английски каждый день."],
+        ["If I were you, I would take the job.", "На твоём месте я бы взял эту работу."]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "If it ___ tomorrow, we will cancel the match.", "options": ["rains", "will rain", "rained"], "answer": 0,
+          "why": ["", "После if будущее не ставят: if it rains.", "Rained — для «если бы» (нереальное). Здесь реальный план — rains."] },
+        { "type": "choice", "q": "If I had more time, I ___ learn Japanese.", "options": ["will", "would", "am"], "answer": 1,
+          "why": ["If I had — нереальное условие, во второй части would.", "", "После условия нужен would + глагол."] },
+        { "type": "input", "q": "If you ___ now, you will catch the train. (leave)", "accept": ["leave"], "ru": "Если выйдешь сейчас, успеешь на поезд.", "hint": "Реальное условие: после if Present Simple — leave." },
+        { "type": "choice", "q": "If I ___ you, I would talk to the boss.", "options": ["am", "will be", "were"], "answer": 2,
+          "why": ["Am — для реального. «На твоём месте» — нереальное: If I were you.", "После if будущее не ставят. Нужно were.", ""] },
+        { "type": "input", "q": "If we had a bigger budget, we ___ more people. (hire)", "accept": ["would hire"], "ru": "Если бы у нас был бюджет побольше, мы бы наняли больше людей.", "hint": "Нереальное условие (had) → would + глагол." },
+        { "type": "order", "accept": ["If I win the tournament I will buy a new PC"], "ru": "Если выиграю турнир, куплю новый компьютер.", "hint": "If + настоящее время, потом will + действие." }
+      ]
+    },
+    {
+      "id": "b1-passive",
+      "title": "Пассив: что делается, а не кто делает",
+      "level": "B1",
+      "theory": [
+        "Passive = be + past participle (3rd form). We use it when the action is more important than who does it.",
+        "Настоящее: is / are + done. The house is built of brick. Прошлое: was / were + done. The bridge was built in 1990.",
+        "Кто сделал — через by: The game was made by a small team.",
+        "Третья форма: правильные глаголы с -ed (painted), неправильные запоминают: make → made, build → built, write → written, sell → sold."
+      ],
+      "examples": [
+        ["English is spoken in many countries.", "На английском говорят во многих странах."],
+        ["The bug was fixed yesterday.", "Баг исправили вчера."],
+        ["These phones are made in China.", "Эти телефоны производят в Китае."]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "The tower ___ in 2010.", "options": ["was built", "built", "is built"], "answer": 0,
+          "why": ["", "Башня не строила сама. Нужен пассив: was built.", "In 2010 — прошлое, значит was built, а не is built."] },
+        { "type": "choice", "q": "Coffee ___ in Brazil.", "options": ["grows", "is grown", "is grew"], "answer": 1,
+          "why": ["Кофе выращивают люди — пассив: is grown.", "", "После is нужна третья форма: grown, а не grew."] },
+        { "type": "input", "q": "The windows ___ cleaned every week. (be)", "accept": ["are"], "ru": "Окна моют каждую неделю.", "hint": "Windows — множественное число, настоящее время: are + cleaned." },
+        { "type": "choice", "q": "This song was written ___ a famous singer.", "options": ["from", "with", "by"], "answer": 2,
+          "why": ["Кто сделал в пассиве — через by, а не from.", "With — «с помощью чего-то». Автора вводят через by.", ""] },
+        { "type": "input", "q": "The car was ___ last week. (sell)", "accept": ["sold"], "ru": "Машину продали на прошлой неделе.", "hint": "sell — неправильный глагол: третья форма sold." },
+        { "type": "order", "accept": ["The game was made by a small team"], "ru": "Игру сделала маленькая команда.", "hint": "Что → was made → by + кто." }
+      ]
+    },
+    {
+      "id": "b1-relative",
+      "title": "who, which, that: связываем предложения",
+      "level": "B1",
+      "theory": [
+        "Relative clauses add information about a noun. who — for people, which — for things, that — for both.",
+        "The man who lives next door is a builder. The app which I use is free.",
+        "where — для мест: This is the city where I was born.",
+        "whose — «чей»: She's the developer whose game won the prize."
+      ],
+      "examples": [
+        ["I have a friend who works in Canada.", "У меня есть друг, который работает в Канаде."],
+        ["This is the laptop that I bought last year.", "Это ноутбук, который я купил в прошлом году."],
+        ["That's the gym where I train.", "Это зал, где я тренируюсь."]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "The woman ___ called you is my boss.", "options": ["who", "which", "where"], "answer": 0,
+          "why": ["", "Which — для вещей. Про человека — who.", "Where — для мест. Про человека — who."] },
+        { "type": "choice", "q": "I lost the key ___ opens the garage.", "options": ["who", "which", "where"], "answer": 1,
+          "why": ["Who — для людей. Ключ — вещь, нужно which или that.", "", "Where — для мест. Ключ — вещь: which."] },
+        { "type": "input", "q": "This is the hotel ___ we stayed last summer.", "accept": ["where"], "ru": "Это отель, где мы останавливались прошлым летом.", "hint": "Про место, где что-то происходило, — where." },
+        { "type": "choice", "q": "He's the player ___ team won the cup.", "options": ["who", "which", "whose"], "answer": 2,
+          "why": ["Здесь «чья команда» — нужно whose.", "Which — для вещей. «Чей» — whose.", ""] },
+        { "type": "input", "q": "I need a tool ___ can cut metal.", "accept": ["that", "which"], "ru": "Мне нужен инструмент, который режет металл.", "hint": "Инструмент — вещь: which или that." },
+        { "type": "order", "accept": ["I have a friend who lives in London"], "ru": "У меня есть друг, который живёт в Лондоне.", "hint": "Сначала главное (I have a friend), потом who + что о нём." }
+      ]
+    },
+    {
+      "id": "b1-gerund-infinitive",
+      "title": "-ing или to: enjoy doing / want to do",
+      "level": "B1",
+      "theory": [
+        "Some verbs are followed by -ing, others by to + verb. You need to remember them.",
+        "После этих — -ing: enjoy, finish, avoid, mind, keep, stop, suggest. I enjoy playing guitar.",
+        "После этих — to: want, decide, plan, hope, need, learn, agree, promise. I decided to move.",
+        "После предлогов всегда -ing: I'm good at drawing. Thanks for helping. Before leaving…"
+      ],
+      "examples": [
+        ["I enjoy watching movies in English.", "Мне нравится смотреть фильмы на английском."],
+        ["We decided to rent a flat.", "Мы решили снять квартиру."],
+        ["She is interested in learning Spanish.", "Ей интересно учить испанский."]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "I enjoy ___ in the mountains.", "options": ["hiking", "to hike", "hike"], "answer": 0,
+          "why": ["", "После enjoy — форма с -ing, не to.", "После enjoy нужна форма с -ing: hiking."] },
+        { "type": "choice", "q": "They decided ___ a new car.", "options": ["buying", "to buy", "buy"], "answer": 1,
+          "why": ["После decide — to + глагол, не -ing.", "", "После decide нужно to: decided to buy."] },
+        { "type": "input", "q": "Have you finished ___ the report? (write)", "accept": ["writing"], "ru": "Ты закончил писать отчёт?", "hint": "После finish — форма с -ing: writing (e выпадает)." },
+        { "type": "choice", "q": "I'm good at ___ problems.", "options": ["to solve", "solve", "solving"], "answer": 2,
+          "why": ["После предлога at — только -ing.", "После предлога нужна форма с -ing: solving.", ""] },
+        { "type": "input", "q": "We hope ___ abroad next year. (move)", "accept": ["to move"], "ru": "Мы надеемся переехать за границу в следующем году.", "hint": "После hope — to + глагол." },
+        { "type": "order", "accept": ["I want to learn English quickly"], "ru": "Я хочу быстро выучить английский.", "hint": "want + to + глагол, потом что и как." }
+      ]
+    }
+  ]
+}
