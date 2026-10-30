@@ -26,7 +26,10 @@ class UpdateTest {
         val m = CourseContent.parseManifest("""{"version": 2, "levels": ["a1", "b1"], "words": ["a1_words.json"]}""")
         assertEquals(0, m.minApp)
         assertEquals(
-            listOf("a1_grammar.json", "a1_reading.json", "a1_dialogs.json", "b1_grammar.json", "b1_reading.json", "b1_dialogs.json", "a1_words.json"),
+            listOf(
+                "a1_grammar.json", "a1_reading.json", "a1_dialogs.json", "a1_drills.json",
+                "b1_grammar.json", "b1_reading.json", "b1_dialogs.json", "b1_drills.json", "a1_words.json",
+            ),
             m.files,
         )
     }

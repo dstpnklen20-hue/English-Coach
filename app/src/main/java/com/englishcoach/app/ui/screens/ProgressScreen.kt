@@ -80,6 +80,8 @@ fun ProgressScreen() {
     val speaking by remember { c.practice.bestScores(PracticeKind.SPEAKING) }.collectAsStateWithLifecycle(emptyList())
     val dialogs by remember { c.practice.bestScores(PracticeKind.DIALOG) }.collectAsStateWithLifecycle(emptyList())
     val chats by remember { c.practice.bestScores(PracticeKind.AI_CHAT) }.collectAsStateWithLifecycle(emptyList())
+    val drills by remember { c.practice.bestScores(PracticeKind.DRILLS) }.collectAsStateWithLifecycle(emptyList())
+    val drillTotal by produceState(0) { value = c.practice.drills().size }
     val totals by produceState(Triple(0, 0, 0)) {
         value = Triple(c.practice.grammarLessons().size, c.practice.readingTexts().size, c.practice.dialogs().size)
     }
@@ -103,6 +105,7 @@ fun ProgressScreen() {
         dialogsPassed = dialogs.count { it.best >= PASS },
         aiChats = chats.size,
         importedWords = words.count { it.word.source == "import" },
+        drillsPassed = drills.count { it.best >= PASS },
     )
 
     ScreenColumn(title = "Прогресс", subtitle = "Уровень ${settings.level}") {
@@ -124,6 +127,7 @@ fun ProgressScreen() {
             val grammarPassedAll = grammar.count { it.best >= PASS }
             Skill("Грамматика", "уроков на 70%+: $grammarPassedAll из ${totals.first}", ratio(grammarPassedAll, totals.first))
             Skill("Чтение", "текстов на 70%+: ${reading.count { it.best >= PASS }} из ${totals.second}", ratio(reading.count { it.best >= PASS }, totals.second))
+            Skill("Тренировки", "наборов на 70%+: ${stats.drillsPassed} из $drillTotal", ratio(stats.drillsPassed, drillTotal))
             Skill("Аудирование", "лучший диктант: ${listening.maxOfOrNull { it.best } ?: 0}%", (listening.maxOfOrNull { it.best } ?: 0) / 100f)
             val speech = maxOf(speaking.maxOfOrNull { it.best } ?: 0, ratio(stats.dialogsPassed, totals.third).times(100).toInt())
             Skill("Речь", "произношение и диалоги: $speech%", speech / 100f)

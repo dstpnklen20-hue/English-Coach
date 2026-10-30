@@ -181,6 +181,9 @@ interface ActivityDao {
     @Query("SELECT itemId, MAX(correct * 100 / total) AS best FROM activity_log WHERE kind = :kind AND total > 0 GROUP BY itemId")
     fun bestScoresFlow(kind: String): Flow<List<BestScore>>
 
+    @Query("SELECT itemId, MAX(correct * 100 / total) AS best FROM activity_log WHERE kind IN (:kinds) AND total > 0 GROUP BY itemId")
+    fun bestScoresFlow(kinds: List<String>): Flow<List<BestScore>>
+
     @Query("SELECT COUNT(*) FROM activity_log WHERE kind IN (:kinds) AND at >= :since")
     fun countSinceFlow(kinds: List<String>, since: Long): Flow<Int>
 }

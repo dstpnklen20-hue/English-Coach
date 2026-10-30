@@ -1,0 +1,610 @@
+{
+  "sets": [
+    {
+      "id": "a2-tr-work",
+      "kind": "translate",
+      "title": "Работа и технологии",
+      "level": "A2",
+      "topic": "Работа",
+      "phrases": [
+        {
+          "ru": "Вчера я исправил баг.",
+          "en": "I fixed a bug yesterday.",
+          "alt": [
+            "Yesterday I fixed a bug."
+          ],
+          "extra": [
+            "fix",
+            "did"
+          ],
+          "hint": "Past Simple: правильный глагол + -ed."
+        },
+        {
+          "ru": "Мы не закончили проект.",
+          "en": "We didn't finish the project.",
+          "extra": [
+            "finished",
+            "don't"
+          ],
+          "hint": "В прошлом отрицание — didn't + глагол без -ed."
+        },
+        {
+          "ru": "Сейчас я работаю из дома.",
+          "en": "I am working from home now.",
+          "alt": [
+            "Now I am working from home."
+          ],
+          "extra": [
+            "works",
+            "in"
+          ],
+          "hint": "Сейчас, в процессе — am / is / are + -ing."
+        },
+        {
+          "ru": "Мой ноутбук быстрее твоего.",
+          "en": "My laptop is faster than yours.",
+          "extra": [
+            "more",
+            "then",
+            "your"
+          ],
+          "hint": "Короткое прилагательное: fast → faster than. «Твой» без существительного — yours."
+        },
+        {
+          "ru": "Завтра я позвоню клиенту.",
+          "en": "I will call the client tomorrow.",
+          "alt": [
+            "Tomorrow I will call the client."
+          ],
+          "extra": [
+            "calls",
+            "to"
+          ],
+          "hint": "Решение о будущем — will + глагол. Call без to."
+        },
+        {
+          "ru": "Ты когда-нибудь пользовался этим приложением?",
+          "en": "Have you ever used this app?",
+          "extra": [
+            "has",
+            "using"
+          ],
+          "hint": "Опыт в жизни — Present Perfect: Have you ever + 3-я форма."
+        },
+        {
+          "ru": "Мне нужно обновить систему.",
+          "en": "I need to update the system.",
+          "extra": [
+            "needs",
+            "for"
+          ],
+          "hint": "Need to + глагол."
+        },
+        {
+          "ru": "Тебе стоит сохранить файл.",
+          "en": "You should save the file.",
+          "extra": [
+            "to",
+            "saves"
+          ],
+          "hint": "После should — глагол без to."
+        }
+      ]
+    },
+    {
+      "id": "a2-tr-trip",
+      "kind": "translate",
+      "title": "Поездки и планы",
+      "level": "A2",
+      "topic": "Путешествия",
+      "phrases": [
+        {
+          "ru": "Мы собираемся поехать в Турцию.",
+          "en": "We are going to travel to Turkey.",
+          "extra": [
+            "in",
+            "will"
+          ],
+          "hint": "Планы — be going to + глагол. Направление — to."
+        },
+        {
+          "ru": "Наш рейс задержали.",
+          "en": "Our flight was delayed.",
+          "extra": [
+            "is",
+            "delay"
+          ],
+          "hint": "Was + 3-я форма: was delayed — «был задержан»."
+        },
+        {
+          "ru": "Я потерял паспорт.",
+          "en": "I have lost my passport.",
+          "alt": [
+            "I lost my passport."
+          ],
+          "extra": [
+            "losed",
+            "me"
+          ],
+          "hint": "Lose — неправильный глагол: lost. «Мой» — my."
+        },
+        {
+          "ru": "Как добраться до музея?",
+          "en": "How can I get to the museum?",
+          "extra": [
+            "at",
+            "does"
+          ],
+          "hint": "Get to — «добраться до места»."
+        },
+        {
+          "ru": "Здесь дороже, чем дома.",
+          "en": "It is more expensive here than at home.",
+          "alt": [
+            "Here it is more expensive than at home."
+          ],
+          "extra": [
+            "expensiver",
+            "then"
+          ],
+          "hint": "Длинное прилагательное — more expensive than."
+        },
+        {
+          "ru": "Я никогда не был в Лондоне.",
+          "en": "I have never been to London.",
+          "extra": [
+            "was",
+            "not"
+          ],
+          "hint": "Опыт — have never been to + место."
+        },
+        {
+          "ru": "Можно забронировать номер на две ночи?",
+          "en": "Can I book a room for two nights?",
+          "extra": [
+            "on",
+            "night"
+          ],
+          "hint": "Срок — for: for two nights."
+        },
+        {
+          "ru": "Если будет дождь, мы останемся в отеле.",
+          "en": "If it rains, we will stay at the hotel.",
+          "alt": [
+            "We will stay at the hotel if it rains."
+          ],
+          "extra": [
+            "will",
+            "rained"
+          ],
+          "hint": "После if — настоящее время: If it rains, … will …"
+        }
+      ]
+    },
+    {
+      "id": "a2-cl-kitchen",
+      "kind": "cloze",
+      "title": "Fixing the kitchen",
+      "level": "A2",
+      "topic": "Стройка",
+      "text": "Last month we decided to [renovate] our old kitchen. First, we [removed] the old cupboards and checked the walls. One wall was wet, so we called a [plumber]. He found a small [leak] behind the sink and fixed it in an hour. Then my brother and I [painted] the walls white. The new floor was more [expensive] than we planned, but it looks great. The work took three [weeks], and now cooking is a pleasure.",
+      "extra": [
+        "electrician",
+        "cheaper",
+        "built"
+      ],
+      "ru": "В прошлом месяце мы решили отремонтировать старую кухню. Сначала сняли старые шкафы и проверили стены. Одна стена была сырой, поэтому мы вызвали сантехника. Он нашёл небольшую протечку за раковиной и за час её устранил. Потом мы с братом покрасили стены в белый. Новый пол оказался дороже, чем мы планировали, но выглядит отлично. Работа заняла три недели, и теперь готовить — одно удовольствие.",
+      "glossary": {
+        "cupboards": "шкафы",
+        "sink": "раковина",
+        "wet": "сырой, мокрый",
+        "pleasure": "удовольствие",
+        "floor": "пол",
+        "planned": "планировали",
+        "decided": "решили"
+      }
+    },
+    {
+      "id": "a2-cl-mountains",
+      "kind": "cloze",
+      "title": "A trip to the mountains",
+      "level": "A2",
+      "topic": "Путешествия",
+      "text": "In July I went to the mountains with two friends. We [booked] a small hotel online, but when we [arrived], there was a problem: they had no free rooms! The manager was very [polite] and found us another place near the lake. It was even [better] than the first one, with a view of the water. Every day we [walked] for hours and took hundreds of photos. On the last day it started to rain, and our [train] was late. But I'm sure we will [come] back next year.",
+      "extra": [
+        "rude",
+        "worse",
+        "ticket"
+      ],
+      "ru": "В июле я ездил в горы с двумя друзьями. Мы забронировали маленький отель в интернете, но когда приехали, возникла проблема: свободных номеров не было! Администратор был очень вежлив и нашёл нам другое место у озера. Оно оказалось даже лучше первого — с видом на воду. Каждый день мы часами гуляли и сделали сотни фотографий. В последний день пошёл дождь, и наш поезд опоздал. Но я уверен, что мы вернёмся в следующем году.",
+      "glossary": {
+        "lake": "озеро",
+        "hundreds": "сотни",
+        "view": "вид",
+        "sure": "уверен",
+        "online": "онлайн, через интернет",
+        "even": "даже"
+      }
+    },
+    {
+      "id": "a2-m-collocations",
+      "kind": "match",
+      "title": "make, do, take…",
+      "level": "A2",
+      "topic": "Сочетания",
+      "pairs": [
+        {
+          "a": "make",
+          "b": "a mistake",
+          "ru": "сделать ошибку",
+          "example": "Everyone makes a mistake sometimes."
+        },
+        {
+          "a": "do",
+          "b": "your best",
+          "ru": "стараться изо всех сил",
+          "example": "Don't worry, just do your best."
+        },
+        {
+          "a": "take",
+          "b": "part",
+          "ru": "участвовать",
+          "example": "I want to take part in the race."
+        },
+        {
+          "a": "get",
+          "b": "lost",
+          "ru": "заблудиться",
+          "example": "We got lost in the old town."
+        },
+        {
+          "a": "pay",
+          "b": "attention",
+          "ru": "обращать внимание",
+          "example": "Please pay attention to the signs."
+        },
+        {
+          "a": "have",
+          "b": "a good time",
+          "ru": "хорошо провести время",
+          "example": "Did you have a good time at the party?"
+        },
+        {
+          "a": "tell",
+          "b": "the truth",
+          "ru": "говорить правду",
+          "example": "Always tell the truth to your team."
+        },
+        {
+          "a": "keep",
+          "b": "calm",
+          "ru": "сохранять спокойствие",
+          "example": "Keep calm and try again."
+        }
+      ]
+    },
+    {
+      "id": "a2-m-phrasal",
+      "kind": "match",
+      "title": "Фразовые глаголы",
+      "level": "A2",
+      "topic": "Фразовые глаголы",
+      "pairs": [
+        {
+          "a": "get up",
+          "b": "вставать (с постели)",
+          "example": "I get up at seven."
+        },
+        {
+          "a": "wake up",
+          "b": "просыпаться",
+          "example": "I woke up at six today."
+        },
+        {
+          "a": "turn on",
+          "b": "включать",
+          "example": "Turn on the light, please."
+        },
+        {
+          "a": "turn off",
+          "b": "выключать",
+          "example": "Don't forget to turn off your computer."
+        },
+        {
+          "a": "look for",
+          "b": "искать",
+          "example": "I'm looking for my keys."
+        },
+        {
+          "a": "find out",
+          "b": "узнать, выяснить",
+          "example": "Let's find out the price."
+        },
+        {
+          "a": "give up",
+          "b": "бросить, сдаться",
+          "example": "Never give up!"
+        },
+        {
+          "a": "put on",
+          "b": "надевать",
+          "example": "Put on your jacket, it's cold."
+        }
+      ]
+    },
+    {
+      "id": "a2-re-work",
+      "kind": "reply",
+      "title": "На работе",
+      "level": "A2",
+      "topic": "Работа",
+      "items": [
+        {
+          "type": "choice",
+          "q": "Could you send me the file, please?",
+          "ru": "Коллега просит прислать файл.",
+          "options": [
+            "Sure, I'll send it now.",
+            "Yes, I sent.",
+            "No problem, I sending."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Sent — прошедшее и без «его»; нужно обещание: I'll send it.",
+            "Не хватает am: I'm sending it."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "How was your weekend?",
+          "ru": "Понедельник, коллега спрашивает о выходных.",
+          "options": [
+            "It's great, thanks.",
+            "It was great, thanks. I went hiking.",
+            "I will go hiking."
+          ],
+          "answer": 1,
+          "why": [
+            "Выходные прошли — нужно прошедшее время: It was…",
+            "",
+            "Will go — будущее, а выходные уже были."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Are you free for a quick call?",
+          "ru": "Начальник хочет созвониться.",
+          "options": [
+            "Yes, I'm free of charge.",
+            "Sorry, I'm in a meeting. Can we talk at three?",
+            "Yes, I free."
+          ],
+          "answer": 1,
+          "why": [
+            "Free of charge — «бесплатно», это про цену, а не про время.",
+            "",
+            "Нужен глагол am: I'm free."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "The deadline is tomorrow.",
+          "ru": "Менеджер напоминает про срок.",
+          "options": [
+            "Don't worry, I'll finish it today.",
+            "Don't worry, I finished it tomorrow.",
+            "Yes, it is a deadline."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Finished — прошедшее время, оно не сочетается с tomorrow.",
+            "Ответ ничего не говорит о работе и звучит странно."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "The printer isn't working again.",
+          "ru": "Коллега жалуется на принтер.",
+          "options": [
+            "You're welcome.",
+            "Me neither.",
+            "Oh no! Let's call the IT team."
+          ],
+          "answer": 2,
+          "why": [
+            "You're welcome — ответ на «спасибо».",
+            "Me neither — «я тоже нет», так говорят о себе, а не о принтере.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Do you want to grab lunch?",
+          "ru": "Коллега зовёт пообедать вместе.",
+          "options": [
+            "I'd love to! Where?",
+            "Yes, I grab.",
+            "No, I'm grab."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Grab lunch — «перекусить». Короткий ответ: I'd love to или Sure.",
+            "Неверная форма — так не говорят."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Can you explain this part again?",
+          "ru": "Коллега не понял ваше объяснение.",
+          "options": [
+            "No, I explained it.",
+            "Sure. Which part isn't clear?",
+            "Yes, I can explain it yesterday."
+          ],
+          "answer": 1,
+          "why": [
+            "Грубо: «нет, я уже объяснял».",
+            "",
+            "Yesterday — прошлое, оно не сочетается с can explain."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Welcome to the team!",
+          "ru": "Первый день на новой работе.",
+          "options": [
+            "Welcome to you!",
+            "Thanks, you too.",
+            "Thanks! I'm happy to be here."
+          ],
+          "answer": 2,
+          "why": [
+            "Повторять приветствие не нужно — приветствуют вас.",
+            "You too — «и вам того же», но новичок здесь вы.",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a2-re-travel",
+      "kind": "reply",
+      "title": "В поездке",
+      "level": "A2",
+      "topic": "Путешествия",
+      "items": [
+        {
+          "type": "choice",
+          "q": "Can I see your passport, please?",
+          "ru": "Паспортный контроль в аэропорту.",
+          "options": [
+            "Here you are.",
+            "Yes, you can see.",
+            "I see."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Дословно, но звучит странно: просто передайте паспорт со словами Here you are.",
+            "I see — «понятно», а у вас просят паспорт."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "What's the purpose of your visit?",
+          "ru": "Пограничник спрашивает о цели поездки.",
+          "options": [
+            "For two weeks.",
+            "I'm here on holiday.",
+            "By plane."
+          ],
+          "answer": 1,
+          "why": [
+            "For two weeks — ответ на How long…?",
+            "",
+            "By plane — ответ на How did you get here?"
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Window or aisle?",
+          "ru": "Регистрация на рейс: место у окна или у прохода.",
+          "options": [
+            "Yes, window.",
+            "Window, please.",
+            "I like windows."
+          ],
+          "answer": 1,
+          "why": [
+            "Yes не нужно — это вопрос выбора.",
+            "",
+            "I like windows — «я люблю окна», а не выбор места."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Your room is on the third floor.",
+          "ru": "Администратор отеля выдаёт ключ.",
+          "options": [
+            "I'm on the floor.",
+            "It's three.",
+            "Thanks. What time is breakfast?"
+          ],
+          "answer": 2,
+          "why": [
+            "I'm on the floor — «я на полу».",
+            "It's three — повторяет число, но ничего не отвечает.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Excuse me, is this the bus to the airport?",
+          "ru": "Незнакомец на остановке спрашивает вас.",
+          "options": [
+            "Sorry, I'm not sure. Ask the driver.",
+            "Excuse me too.",
+            "Yes, I'm the bus."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Excuse me too — так не отвечают.",
+            "I'm the bus — «я автобус»."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "How long are you staying?",
+          "ru": "Вопрос администратора в отеле.",
+          "options": [
+            "Since Monday.",
+            "For five nights.",
+            "Very long."
+          ],
+          "answer": 1,
+          "why": [
+            "Since Monday — «с понедельника», а спросили, сколько.",
+            "",
+            "Very long — неопределённо; назовите срок."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Would you like some help with your bags?",
+          "ru": "Сотрудник отеля предлагает помочь с сумками.",
+          "options": [
+            "Yes, please. That's very kind.",
+            "Yes, I would like.",
+            "No, I don't help."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "После would like нужно продолжение: Yes, I'd like that — или просто Yes, please.",
+            "I don't help — «я не помогаю». Вежливый отказ: No, thanks, I'm fine."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "I'm afraid the museum is closed today.",
+          "ru": "Вы пришли в музей, охранник говорит.",
+          "options": [
+            "I'm afraid too.",
+            "Thanks, I'm closed.",
+            "Oh, what a pity. When does it open?"
+          ],
+          "answer": 2,
+          "why": [
+            "I'm afraid здесь — «к сожалению», а не «я боюсь».",
+            "I'm closed — «я закрыт».",
+            ""
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -57,6 +57,8 @@ import com.englishcoach.app.ui.ai.AiChatScreen
 import com.englishcoach.app.ui.ai.AiExercisesScreen
 import com.englishcoach.app.ui.ai.TextCheckScreen
 import com.englishcoach.app.ui.practice.DialogScreen
+import com.englishcoach.app.ui.practice.DrillListScreen
+import com.englishcoach.app.ui.practice.DrillScreen
 import com.englishcoach.app.ui.practice.GrammarScreen
 import com.englishcoach.app.ui.practice.SpeakingScreen
 import com.englishcoach.app.ui.practice.ListeningScreen
@@ -185,6 +187,7 @@ private fun AppNavHost(nav: NavHostController, modifier: Modifier) {
                 onAiChat = { nav.navigate(AI_CHAT_ROUTE) },
                 onTextCheck = { nav.navigate(TEXT_CHECK_ROUTE) },
                 onAiExercises = { nav.navigate(AI_EXERCISES_ROUTE) },
+                onDrills = { nav.navigate("drills/$it") },
             )
         }
         composable(AI_CHAT_ROUTE) { AiChatScreen(onClose = { nav.popBackStack() }) }
@@ -194,6 +197,10 @@ private fun AppNavHost(nav: NavHostController, modifier: Modifier) {
         composable("dialog/{id}") { DialogScreen(it.arguments?.getString("id").orEmpty(), onClose = { nav.popBackStack() }) }
         composable("grammar/{id}") { GrammarScreen(it.arguments?.getString("id").orEmpty(), onClose = { nav.popBackStack() }) }
         composable("reading/{id}") { ReadingScreen(it.arguments?.getString("id").orEmpty(), onClose = { nav.popBackStack() }) }
+        composable("drills/{kind}") {
+            DrillListScreen(it.arguments?.getString("kind").orEmpty(), onOpen = { id -> nav.navigate("drill/$id") }, onClose = { nav.popBackStack() })
+        }
+        composable("drill/{id}") { DrillScreen(it.arguments?.getString("id").orEmpty(), onClose = { nav.popBackStack() }) }
         composable(LISTENING_ROUTE) { ListeningScreen(onClose = { nav.popBackStack() }) }
         composable(Tab.Progress.route) { ProgressScreen() }
         composable(Tab.Settings.route) { SettingsScreen(onPlacement = { nav.navigate(PLACEMENT_ROUTE) }) }

@@ -51,7 +51,7 @@ class CourseContent(private val context: Context) {
 
     companion object {
         const val MANIFEST = "manifest.json"
-        private val PARTS = listOf("grammar", "reading", "dialogs")
+        private val PARTS = listOf("grammar", "reading", "dialogs", "drills")
         private val json = Json { ignoreUnknownKeys = true }
 
         fun parseManifest(text: String): Manifest = json.decodeFromString(Manifest.serializer(), text)

@@ -37,7 +37,7 @@ try {
     $sha = (Get-FileHash "$stage\EnglishCoach.apk" -Algorithm SHA256).Hash.ToLower()
 
     $files = @("manifest.json") + $manifest.words
-    foreach ($level in $manifest.levels) { foreach ($part in "grammar", "reading", "dialogs") { $files += "${level}_$part.json" } }
+    foreach ($level in $manifest.levels) { foreach ($part in "grammar", "reading", "dialogs", "drills") { $files += "${level}_$part.json" } }
     foreach ($f in $files) { Copy-Item "$course\$f" "$stage\content\$f" }
 
     $info = [ordered]@{ versionCode = $code; versionName = $name; apk = "EnglishCoach.apk"; sha256 = $sha; notes = $Notes }

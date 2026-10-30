@@ -28,7 +28,7 @@ import com.englishcoach.app.ui.components.LazyScreenColumn
 import com.englishcoach.app.ui.theme.Success
 
 /** Урок/текст считается пройденным при результате от 70%. */
-private const val PASS_PERCENT = 70
+internal const val PASS_PERCENT = 70
 
 @Composable
 fun PracticeScreen(
@@ -40,6 +40,7 @@ fun PracticeScreen(
     onAiChat: () -> Unit,
     onTextCheck: () -> Unit,
     onAiExercises: () -> Unit,
+    onDrills: (String) -> Unit,
 ) {
     val c = LocalAppContainer.current
     val hasKey by c.ai.hasKey.collectAsStateWithLifecycle()
@@ -53,8 +54,18 @@ fun PracticeScreen(
     val readingBest by remember { c.practice.bestScores(PracticeKind.READING) }.collectAsStateWithLifecycle(emptyList())
     val gMap = grammarBest.associate { it.itemId to it.best }
     val rMap = readingBest.associate { it.itemId to it.best }
+    val drills by produceState(c.practice.cachedDrills()) { value = c.practice.drills() }
+    val drillBest by remember { c.practice.bestScores(PracticeKind.DRILLS) }.collectAsStateWithLifecycle(emptyList())
+    val passedDrills = drillBest.filter { it.best >= PASS_PERCENT }.map { it.itemId }.toSet()
 
     LazyScreenColumn(title = "Практика", subtitle = "Уровни A1–B2 · всё работает без интернета") {
+        item { Section("Тренировки · по 3–5 минут") }
+        items(PracticeKind.DRILLS, key = { "drills-$it" }) { kind ->
+            val sets = drills.filter { it.kind == kind }
+            val passed = sets.count { it.id in passedDrills }
+            val info = DrillInfo.of(kind)
+            ItemRow(info.title, info.subtitle + if (sets.isEmpty()) "" else " · пройдено $passed из ${sets.size}", null) { onDrills(kind) }
+        }
         item { Section("Грамматика") }
         items(lessons, key = { it.id }) { l ->
             ItemRow(l.title, "${l.level} · " + (gMap[l.id]?.let { "лучший результат $it%" } ?: "${l.exercises.size} упражнений"), gMap[l.id]) { onGrammar(l.id) }
@@ -90,12 +101,12 @@ private fun Group(content: @Composable () -> Unit) {
 }
 
 @Composable
-private fun Section(title: String) {
+internal fun Section(title: String) {
     Text(title, style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(top = 8.dp))
 }
 
 @Composable
-private fun ItemRow(title: String, subtitle: String, best: Int?, onClick: () -> Unit) {
+internal fun ItemRow(title: String, subtitle: String, best: Int?, onClick: () -> Unit) {
     val passed = best != null && best >= PASS_PERCENT
     Panel(Modifier.clickable(onClick = onClick)) {
         Row(verticalAlignment = Alignment.CenterVertically) {

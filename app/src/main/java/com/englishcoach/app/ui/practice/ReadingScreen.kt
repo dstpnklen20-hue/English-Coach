@@ -81,18 +81,7 @@ fun ReadingScreen(textId: String, onClose: () -> Unit) {
 @Composable
 private fun ReadText(t: ReadingText, onQuestions: () -> Unit) {
     val c = LocalAppContainer.current
-    val scope = rememberCoroutineScope()
     var selected by remember { mutableStateOf<String?>(null) }
-    var translation by remember { mutableStateOf<String?>(null) }
-    var inDictionary by remember { mutableStateOf(true) }
-    var added by remember { mutableStateOf(false) }
-    LaunchedEffect(selected) {
-        val w = selected ?: return@LaunchedEffect
-        translation = c.practice.translate(w, t.glossary)
-        inDictionary = c.practice.inDictionary(w)
-        added = false
-        c.tts.speak(w)
-    }
 
     val highlight = MaterialTheme.colorScheme.primary.copy(alpha = 0.25f)
     val annotated = remember(t.text, selected) {
@@ -118,28 +107,44 @@ private fun ReadText(t: ReadingText, onQuestions: () -> Unit) {
     Panel {
         Text(annotated, style = MaterialTheme.typography.bodyLarge.copy(fontSize = 19.sp, lineHeight = 30.sp))
     }
-    selected?.let { w ->
-        Panel {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Column(Modifier.weight(1f)) {
-                    Text(w, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold)
-                    Text(translation ?: "Нет в словаре", style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                }
-                IconButton(onClick = { c.tts.speak(w) }) {
-                    Icon(Icons.AutoMirrored.Outlined.VolumeUp, "Озвучить", tint = MaterialTheme.colorScheme.primary)
-                }
-            }
-            val tr = translation
-            if (tr != null && !inDictionary) {
-                TextButton(onClick = {
-                    added = true
-                    scope.launch { c.study.addUserWord(w.lowercase(), tr) }
-                }, enabled = !added) { Text(if (added) "Добавлено в «Мои слова»" else "+ В мои слова для карточек") }
-            }
-        }
-    }
+    selected?.let { WordPanel(it, t.glossary) }
     Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         OutlinedButton(onClick = { c.tts.speak(t.text, slow = true) }, modifier = Modifier.weight(1f).heightIn(min = 52.dp)) { Text("Слушать") }
         Button(onClick = onQuestions, modifier = Modifier.weight(1f).heightIn(min = 52.dp)) { Text("К вопросам") }
+    }
+}
+
+/** Перевод нажатого слова: словарь текста → общий → слова курса; озвучка и добавление в «Мои слова». */
+@Composable
+fun WordPanel(w: String, glossary: Map<String, String>) {
+    val c = LocalAppContainer.current
+    val scope = rememberCoroutineScope()
+    var translation by remember(w) { mutableStateOf<String?>(null) }
+    var inDictionary by remember(w) { mutableStateOf(true) }
+    var added by remember(w) { mutableStateOf(false) }
+    var loaded by remember(w) { mutableStateOf(false) }
+    LaunchedEffect(w) {
+        translation = c.practice.translate(w, glossary)
+        loaded = true
+        inDictionary = c.practice.inDictionary(w)
+        c.tts.speak(w)
+    }
+    Panel {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text(w, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold)
+                Text(translation ?: if (loaded) "Нет в словаре" else "…", style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            IconButton(onClick = { c.tts.speak(w) }) {
+                Icon(Icons.AutoMirrored.Outlined.VolumeUp, "Озвучить", tint = MaterialTheme.colorScheme.primary)
+            }
+        }
+        val tr = translation
+        if (tr != null && !inDictionary) {
+            TextButton(onClick = {
+                added = true
+                scope.launch { c.study.addUserWord(w.lowercase(), tr) }
+            }, enabled = !added) { Text(if (added) "Добавлено в «Мои слова»" else "+ В мои слова для карточек") }
+        }
     }
 }

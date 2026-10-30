@@ -92,6 +92,7 @@ data class Stats(
     val dialogsPassed: Int,
     val aiChats: Int,
     val importedWords: Int,
+    val drillsPassed: Int = 0,
 )
 
 data class Achievement(val title: String, val description: String, val unlocked: Boolean)
@@ -107,6 +108,7 @@ object Achievements {
         Achievement("Разговорился", "Пройти диалог без большого числа ошибок", s.dialogsPassed > 0),
         Achievement("Живой собеседник", "Поговорить с ИИ", s.aiChats > 0),
         Achievement("Свой словарь", "Импортировать 20 слов", s.importedWords >= 20),
+        Achievement("Набил руку", "Пройти 10 тренировок на 70%+", s.drillsPassed >= 10),
         Achievement("10 часов английского", "Заниматься в сумме 10 часов", s.totalMinutes >= 600),
     )
 }
