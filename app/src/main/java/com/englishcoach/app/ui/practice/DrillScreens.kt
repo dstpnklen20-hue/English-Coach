@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -41,6 +42,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -254,7 +256,29 @@ private fun ClozeDrill(d: DrillSet, finish: (Int, Int) -> Unit, restart: () -> U
 
     fun nextEmpty(from: Int) = (0 until n).map { (from + it) % n }.firstOrNull { filled[it] < 0 } ?: from
 
-    PracticeFrame(progress = if (checked) 1f else filled.count { it >= 0 }.toFloat() / n, onClose = onClose) {
+    // Банк слов и перевод нажатого слова закреплены внизу: длинный текст прокручивается отдельно
+    val bottom: @Composable () -> Unit = {
+        selected?.let { WordPanel(it, d.glossary) }
+        val used = filled.toSet()
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            bank.indices.filter { it !in used }.forEach { i ->
+                AssistChip(onClick = {
+                    filled[current] = i
+                    current = nextEmpty(current)
+                }, label = { Text(bank[i], style = MaterialTheme.typography.titleMedium) })
+            }
+        }
+        Button(
+            onClick = {
+                checked = true
+                finish(score, n)
+            },
+            enabled = filled.all { it >= 0 },
+            modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp),
+        ) { Text("Проверить") }
+    }
+
+    PracticeFrame(progress = if (checked) 1f else filled.count { it >= 0 }.toFloat() / n, onClose = onClose, bottom = bottom.takeIf { !checked }) {
         Text("${d.topic} · ${d.level}", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
         Text(d.title, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.SemiBold)
         if (!checked) {
@@ -264,7 +288,12 @@ private fun ClozeDrill(d: DrillSet, finish: (Int, Int) -> Unit, restart: () -> U
             )
         }
         Panel {
-            FlowRow(horizontalArrangement = Arrangement.spacedBy(5.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            // Пропуски по центру строки, иначе они «проваливаются» ниже текста
+            FlowRow(
+                horizontalArrangement = Arrangement.spacedBy(5.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+                itemVerticalAlignment = Alignment.CenterVertically,
+            ) {
                 tokens.forEach { t ->
                     when (t) {
                         is Cloze.Word -> {
@@ -295,26 +324,8 @@ private fun ClozeDrill(d: DrillSet, finish: (Int, Int) -> Unit, restart: () -> U
                 }
             }
         }
-        selected?.let { WordPanel(it, d.glossary) }
-        if (!checked) {
-            val used = filled.toSet()
-            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                bank.indices.filter { it !in used }.forEach { i ->
-                    AssistChip(onClick = {
-                        filled[current] = i
-                        current = nextEmpty(current)
-                    }, label = { Text(bank[i], style = MaterialTheme.typography.titleMedium) })
-                }
-            }
-            Button(
-                onClick = {
-                    checked = true
-                    finish(score, n)
-                },
-                enabled = filled.all { it >= 0 },
-                modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp),
-            ) { Text("Проверить") }
-        } else {
+        if (checked) {
+            selected?.let { WordPanel(it, d.glossary) }
             if (d.ru.isNotBlank()) {
                 Panel { Text(d.ru, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) }
             }
@@ -449,12 +460,14 @@ private fun MatchButton(text: String, done: Boolean, selected: Boolean, wrong: B
     OutlinedButton(
         onClick = { if (!done) onClick() },
         modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp),
+        // Узкие поля: на телефоне длинный перевод помещается в две строки, а не в три
+        contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
         colors = if (color != null) {
             ButtonDefaults.outlinedButtonColors(containerColor = color.copy(alpha = if (done) 0.10f else 0.18f), contentColor = color)
         } else {
             ButtonDefaults.outlinedButtonColors()
         },
-    ) { Text(text, style = MaterialTheme.typography.bodyLarge) }
+    ) { Text(text, style = MaterialTheme.typography.bodyLarge, textAlign = TextAlign.Center) }
 }
 
 // ——— Что ответишь? ———

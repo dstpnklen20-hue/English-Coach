@@ -52,9 +52,12 @@ import com.englishcoach.app.data.practice.Exercise
 import com.englishcoach.app.ui.components.Panel
 import com.englishcoach.app.ui.theme.Success
 
-/** Общий каркас полноэкранной практики: крестик, полоса прогресса, прокручиваемое содержимое. */
+/**
+ * Общий каркас полноэкранной практики: крестик, полоса прогресса, прокручиваемое содержимое.
+ * [bottom] — закреплённая под ним часть (банк слов), чтобы на телефоне не листать туда-обратно.
+ */
 @Composable
-fun PracticeFrame(progress: Float?, onClose: () -> Unit, content: @Composable () -> Unit) {
+fun PracticeFrame(progress: Float?, onClose: () -> Unit, bottom: (@Composable () -> Unit)? = null, content: @Composable () -> Unit) {
     Column(Modifier.fillMaxSize().safeDrawingPadding().padding(horizontal = 20.dp, vertical = 8.dp)) {
         Row {
             IconButton(onClick = onClose) { Icon(Icons.Outlined.Close, "Закрыть") }
@@ -71,6 +74,9 @@ fun PracticeFrame(progress: Float?, onClose: () -> Unit, content: @Composable ()
             Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) { content() }
+        if (bottom != null) {
+            Column(Modifier.fillMaxWidth().padding(bottom = 8.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) { bottom() }
+        }
     }
 }
 
