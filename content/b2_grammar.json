@@ -1,0 +1,166 @@
+{
+  "lessons": [
+    {
+      "id": "b2-present-perfect-continuous",
+      "title": "Present Perfect Continuous: делаю уже какое-то время",
+      "level": "B2",
+      "theory": [
+        "Present Perfect Continuous = have / has been + verb-ing. It shows an action that started in the past and is still going on, or has just stopped and the result is visible.",
+        "Use for / since with it: I've been learning English for six months. She has been working here since 2022.",
+        "Compare: I've written three emails (result, how many) — I've been writing emails all morning (process, how long).",
+        "По-русски часто передаётся настоящим временем: «я учу английский уже полгода» = I've been learning English for six months."
+      ],
+      "examples": [
+        ["I've been waiting for the bus for twenty minutes.", "Я жду автобус уже двадцать минут."],
+        ["How long have you been working on this project?", "Сколько ты уже работаешь над этим проектом?"],
+        ["You look tired. Have you been training?", "Ты выглядишь уставшим. Тренировался?"]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "I ___ English for two years.", "options": ["am learning", "have been learning", "learn"], "answer": 1,
+          "why": ["Am learning — просто «сейчас». С for two years нужно have been learning.", "", "Learn — привычка. Длительность до сейчас — have been learning."] },
+        { "type": "choice", "q": "She ___ here since March.", "options": ["has been working", "have been working", "is working"], "answer": 0,
+          "why": ["", "She — третье лицо, нужно has, а не have.", "С since (с какого времени) нужно has been working."] },
+        { "type": "input", "q": "How long ___ you been waiting?", "accept": ["have"], "ru": "Сколько ты уже ждёшь?", "hint": "Вопрос: How long + have + you + been + -ing." },
+        { "type": "choice", "q": "I've been playing this game ___ three hours.", "options": ["since", "during", "for"], "answer": 2,
+          "why": ["Since — с какого момента (since 5 pm). Три часа — это срок: for.", "During — «во время чего-то». Длительность — for.", ""] },
+        { "type": "input", "q": "It ___ been raining all day. (have)", "accept": ["has"], "ru": "Весь день идёт дождь.", "hint": "It — третье лицо: has been." },
+        { "type": "order", "accept": ["I have been working here since 2020"], "ru": "Я работаю здесь с 2020 года.", "hint": "Кто → have been + -ing → где → since + год." }
+      ]
+    },
+    {
+      "id": "b2-past-perfect",
+      "title": "Past Perfect: что случилось раньше другого прошлого",
+      "level": "B2",
+      "theory": [
+        "Past Perfect = had + past participle. It shows that one past action happened before another past action.",
+        "When I arrived, the train had already left. (Сначала ушёл поезд, потом я приехал.)",
+        "Typical words: already, before, after, by the time, never … before.",
+        "Если порядок и так понятен (after, before), можно обойтись Past Simple. Past Perfect нужен, чтобы не перепутать, что было раньше."
+      ],
+      "examples": [
+        ["By the time we got there, the match had finished.", "Когда мы добрались, матч уже закончился."],
+        ["I had never seen snow before I moved to Canada.", "До переезда в Канаду я никогда не видел снега."],
+        ["She told me she had lost her keys.", "Она сказала, что потеряла ключи."]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "When I opened the app, the update ___ already.", "options": ["had installed", "has installed", "installs"], "answer": 0,
+          "why": ["", "Has installed — связь с настоящим. Здесь раньше другого прошлого — had installed.", "Installs — настоящее. Всё произошло в прошлом."] },
+        { "type": "choice", "q": "I ___ never flown before that trip.", "options": ["have", "was", "had"], "answer": 2,
+          "why": ["Have flown — до сейчас. «До той поездки» — прошлое, нужно had flown.", "Was flown — пассив («меня летали»). Нужно had flown.", ""] },
+        { "type": "input", "q": "By the time the police arrived, the thief ___ escaped. (have)", "accept": ["had"], "ru": "Когда приехала полиция, вор уже сбежал.", "hint": "Сначала сбежал, потом приехала полиция: had + escaped." },
+        { "type": "choice", "q": "After he ___ the report, he went home.", "options": ["had finished", "has finished", "finishing"], "answer": 0,
+          "why": ["", "Has finished — настоящее совершённое. Рассказ о прошлом — had finished.", "После he нужен глагол с временем: had finished."] },
+        { "type": "input", "q": "We were late because we ___ the bus. (miss)", "accept": ["had missed", "missed"], "ru": "Мы опоздали, потому что пропустили автобус.", "hint": "Пропустили раньше, чем опоздали: had missed (можно и missed)." },
+        { "type": "order", "accept": ["The game had started before we arrived"], "ru": "Игра началась ещё до того, как мы пришли.", "hint": "Более раннее действие — had + 3-я форма, потом before + Past Simple." }
+      ]
+    },
+    {
+      "id": "b2-third-conditional",
+      "title": "Третий тип условий: если бы тогда…",
+      "level": "B2",
+      "theory": [
+        "Third conditional talks about an imaginary past — things that did not happen: If + had + past participle, would have + past participle.",
+        "If I had studied, I would have passed the exam. (Не учил — не сдал.)",
+        "Short forms: I'd have, wouldn't have. Could have / might have — «мог бы».",
+        "Mixed conditional (прошлое → сейчас): If I had moved abroad, I would speak English better now."
+      ],
+      "examples": [
+        ["If we had left earlier, we wouldn't have missed the flight.", "Если бы мы вышли раньше, не опоздали бы на рейс."],
+        ["She would have won if she hadn't got injured.", "Она бы выиграла, если бы не получила травму."],
+        ["If I had saved my progress, I wouldn't have lost the level.", "Если бы я сохранился, не потерял бы уровень."]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "If I had known, I ___ you.", "options": ["would help", "will help", "would have helped"], "answer": 2,
+          "why": ["Would help — про сейчас. Про прошлое — would have helped.", "Will — реальное будущее. Здесь нереальное прошлое.", ""] },
+        { "type": "choice", "q": "If she ___ harder, she would have passed.", "options": ["had studied", "studied", "would study"], "answer": 0,
+          "why": ["", "Studied — второй тип (сейчас). О прошлом — had studied.", "После if would не ставят. Нужно had studied."] },
+        { "type": "input", "q": "If we had booked earlier, it ___ have been cheaper.", "accept": ["would"], "ru": "Если бы мы забронировали раньше, было бы дешевле.", "hint": "Вторая часть: would have + 3-я форма." },
+        { "type": "choice", "q": "He wouldn't have crashed if he ___ so fast.", "options": ["didn't drive", "hadn't driven", "wouldn't drive"], "answer": 1,
+          "why": ["Didn't drive — про сейчас. О прошлом — hadn't driven.", "", "После if would не ставят. Нужно hadn't driven."] },
+        { "type": "input", "q": "If I ___ taken that job, I would live in London now. (have)", "accept": ["had"], "ru": "Если бы я тогда согласился на ту работу, сейчас жил бы в Лондоне.", "hint": "Смешанный тип: прошлое условие — had + taken, результат сейчас — would live." },
+        { "type": "order", "accept": ["If I had saved the game I would have kept my progress"], "ru": "Если бы я сохранил игру, мой прогресс остался бы.", "hint": "If + had + 3-я форма, потом would have + 3-я форма." }
+      ]
+    },
+    {
+      "id": "b2-reported-speech",
+      "title": "Косвенная речь: он сказал, что…",
+      "level": "B2",
+      "theory": [
+        "Reported speech: when we retell someone's words after said / told, the tense usually moves one step back.",
+        "am / is → was, do → did, did / have done → had done, will → would, can → could.",
+        "\"I'm tired,\" he said. → He said (that) he was tired. \"I will call you.\" → She said she would call me.",
+        "say — без человека (he said that…), tell — с человеком (he told me that…). Вопросы: She asked if I was ready. He asked where I lived (без do / did, прямой порядок слов)."
+      ],
+      "examples": [
+        ["He said he was working from home.", "Он сказал, что работает из дома."],
+        ["She told me she would be late.", "Она сказала мне, что опоздает."],
+        ["The manager asked if we had finished the report.", "Руководитель спросил, закончили ли мы отчёт."]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "\"I like this game.\" → He said he ___ that game.", "options": ["likes", "liked", "has liked"], "answer": 1,
+          "why": ["После said время сдвигается назад: like → liked.", "", "Present Simple в косвенной речи становится Past Simple: liked."] },
+        { "type": "choice", "q": "She ___ me that she was busy.", "options": ["told", "said", "spoke"], "answer": 0,
+          "why": ["", "После said человек без to не ставится. С me — told.", "Spoke не используют для пересказа слов. Нужно told me."] },
+        { "type": "input", "q": "\"I will help you.\" → He said he ___ help me.", "accept": ["would"], "ru": "Он сказал, что поможет мне.", "hint": "will в косвенной речи → would." },
+        { "type": "choice", "q": "He asked me where ___.", "options": ["do I live", "did I live", "I lived"], "answer": 2,
+          "why": ["В косвенном вопросе нет do и порядок прямой: where I lived.", "Did в косвенном вопросе не ставят: where I lived.", ""] },
+        { "type": "input", "q": "\"I can't come.\" → She said she ___ come.", "accept": ["couldn't", "could not"], "ru": "Она сказала, что не может прийти.", "hint": "can't в косвенной речи → couldn't." },
+        { "type": "order", "accept": ["He told me that he had lost his passport"], "ru": "Он сказал мне, что потерял паспорт.", "hint": "He told me that + had + 3-я форма (сдвиг назад)." }
+      ]
+    },
+    {
+      "id": "b2-deduction",
+      "title": "must / might / can't: догадки и выводы",
+      "level": "B2",
+      "theory": [
+        "Modal verbs show how sure we are. must = I'm almost sure it's true; might / may / could = maybe; can't = I'm sure it's not true.",
+        "Present: He must be at home — the lights are on. She can't be tired — she just woke up.",
+        "Past: modal + have + past participle. They must have left. He might have forgotten. She can't have seen us.",
+        "Не путайте: must как «обязан» (You must wear a helmet) и must как «наверняка» (You must be hungry)."
+      ],
+      "examples": [
+        ["You must be tired after the flight.", "Ты, наверное, устал после перелёта."],
+        ["He might have missed the bus.", "Возможно, он опоздал на автобус."],
+        ["That can't be true!", "Не может быть!"]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "The lights are off. They ___ be at home.", "options": ["must", "can't", "might have"], "answer": 1,
+          "why": ["Must — «наверняка дома». Свет выключен — скорее не дома: can't.", "", "Might have нужен с 3-й формой и о прошлом. Здесь про сейчас: can't be."] },
+        { "type": "choice", "q": "You've been working all day. You ___ be exhausted.", "options": ["can't", "must", "mustn't"], "answer": 1,
+          "why": ["Can't — «не может быть». Логично обратное — must.", "", "Mustn't значит «нельзя», а не догадку. Нужно must."] },
+        { "type": "input", "q": "She isn't answering. She ___ have left her phone at home. (might)", "accept": ["might"], "ru": "Она не отвечает. Возможно, она оставила телефон дома.", "hint": "Неуверенная догадка о прошлом: might have + 3-я форма." },
+        { "type": "choice", "q": "He ___ have seen us — we were behind the wall.", "options": ["can't", "must", "should"], "answer": 0,
+          "why": ["", "Must have seen — «наверняка видел». Но мы были за стеной — can't.", "Should have — «следовало бы». Здесь вывод: can't have seen."] },
+        { "type": "input", "q": "The ground is wet. It must ___ rained at night.", "accept": ["have"], "ru": "Земля мокрая. Ночью, наверное, шёл дождь.", "hint": "Вывод о прошлом: must + have + 3-я форма." },
+        { "type": "order", "accept": ["They must have forgotten about the meeting"], "ru": "Наверное, они забыли о встрече.", "hint": "Кто → must have → 3-я форма → о чём." }
+      ]
+    },
+    {
+      "id": "b2-wish",
+      "title": "wish / if only: сожаления",
+      "level": "B2",
+      "theory": [
+        "wish + Past Simple = I'd like the present to be different: I wish I spoke English fluently. (Сейчас не говорю.)",
+        "wish + Past Perfect = regret about the past: I wish I had started earlier. (Не начал раньше — жаль.)",
+        "wish + would = annoyance, I want someone to change: I wish you would stop talking.",
+        "If only — то же самое, но эмоциональнее: If only I had more time! С be часто were: I wish I were taller."
+      ],
+      "examples": [
+        ["I wish I had more free time.", "Жаль, что у меня мало свободного времени."],
+        ["I wish I hadn't sold my old guitar.", "Жаль, что я продал свою старую гитару."],
+        ["If only the game had an offline mode!", "Вот бы в игре был офлайн-режим!"]
+      ],
+      "exercises": [
+        { "type": "choice", "q": "I wish I ___ in a bigger flat.", "options": ["live", "will live", "lived"], "answer": 2,
+          "why": ["После wish о настоящем — Past Simple: lived.", "После wish will не ставят. Нужно lived.", ""] },
+        { "type": "choice", "q": "I wish I ___ that message. It was a mistake.", "options": ["hadn't sent", "didn't send", "don't send"], "answer": 0,
+          "why": ["", "Didn't send — для настоящего. Сожаление о прошлом — hadn't sent.", "После wish настоящее время не ставят. О прошлом — hadn't sent."] },
+        { "type": "input", "q": "If only I ___ learned English at school! (have)", "accept": ["had"], "ru": "Вот бы я выучил английский ещё в школе!", "hint": "Сожаление о прошлом: had + 3-я форма." },
+        { "type": "choice", "q": "I wish my neighbors ___ stop the noise at night.", "options": ["will", "would", "had"], "answer": 1,
+          "why": ["После wish will не ставят. Раздражение — would.", "", "Had stop — ошибка. Хотим, чтобы прекратили: would stop."] },
+        { "type": "input", "q": "I wish I ___ speak English fluently. (can)", "accept": ["could"], "ru": "Жаль, что я не говорю по-английски свободно.", "hint": "После wish can → could." },
+        { "type": "order", "accept": ["I wish I had started learning earlier"], "ru": "Жаль, что я не начал учиться раньше.", "hint": "I wish + had + 3-я форма + что + когда." }
+      ]
+    }
+  ]
+}

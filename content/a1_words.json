@@ -1,0 +1,235 @@
+{
+  "level": "A1",
+  "format": "en|транскрипция|перевод|пример|перевод примера",
+  "topics": [
+    {
+      "name": "Основа",
+      "words": [
+        "hello|həˈloʊ|привет|Hello, my name is Alex.|Привет, меня зовут Алекс.",
+        "goodbye|ɡʊdˈbaɪ|до свидания|Goodbye, see you tomorrow.|До свидания, увидимся завтра.",
+        "please|pliːz|пожалуйста (просьба)|Water, please.|Воды, пожалуйста.",
+        "thank you|ˈθæŋk juː|спасибо|Thank you for your help.|Спасибо за помощь.",
+        "yes|jes|да|Yes, I know.|Да, я знаю.",
+        "no|noʊ|нет|No, thank you.|Нет, спасибо.",
+        "sorry|ˈsɑːri|извините, простите|Sorry, I am late.|Извините, я опоздал.",
+        "good|ɡʊd|хороший|It is a good game.|Это хорошая игра.",
+        "bad|bæd|плохой|The weather is bad today.|Сегодня плохая погода.",
+        "big|bɪɡ|большой|This is a big house.|Это большой дом.",
+        "small|smɔːl|маленький|I have a small car.|У меня маленькая машина.",
+        "new|nuː|новый|I have a new phone.|У меня новый телефон.",
+        "old|oʊld|старый|This building is very old.|Это здание очень старое.",
+        "time|taɪm|время|What time is it?|Который час?"
+      ]
+    },
+    {
+      "name": "Люди",
+      "words": [
+        "man|mæn|мужчина|The man is my neighbor.|Этот мужчина — мой сосед.",
+        "woman|ˈwʊmən|женщина|The woman works in a shop.|Женщина работает в магазине.",
+        "child|tʃaɪld|ребёнок|The child is playing.|Ребёнок играет.",
+        "friend|frend|друг|He is my best friend.|Он мой лучший друг.",
+        "family|ˈfæməli|семья|My family is big.|У меня большая семья.",
+        "mother|ˈmʌðər|мать, мама|My mother likes tea.|Моя мама любит чай.",
+        "father|ˈfɑːðər|отец, папа|My father is a builder.|Мой отец — строитель.",
+        "brother|ˈbrʌðər|брат|My brother plays football.|Мой брат играет в футбол.",
+        "sister|ˈsɪstər|сестра|My sister lives in Moscow.|Моя сестра живёт в Москве.",
+        "name|neɪm|имя|What is your name?|Как тебя зовут?",
+        "people|ˈpiːpəl|люди|Many people live here.|Здесь живёт много людей.",
+        "neighbor|ˈneɪbər|сосед|Our neighbor is very kind.|Наш сосед очень добрый."
+      ]
+    },
+    {
+      "name": "Главные глаголы",
+      "words": [
+        "be|biː|быть|I want to be a pilot.|Я хочу быть пилотом.",
+        "have|hæv|иметь|I have two cats.|У меня две кошки.",
+        "do|duː|делать|What do you do?|Чем ты занимаешься?",
+        "go|ɡoʊ|идти, ехать|We go to work by bus.|Мы ездим на работу на автобусе.",
+        "want|wɑːnt|хотеть|I want some coffee.|Я хочу кофе.",
+        "like|laɪk|нравиться, любить|I like video games.|Я люблю видеоигры.",
+        "know|noʊ|знать|I don't know.|Я не знаю.",
+        "see|siː|видеть|I see a bird.|Я вижу птицу.",
+        "say|seɪ|сказать|What did you say?|Что ты сказал?",
+        "make|meɪk|делать, создавать|I make breakfast every day.|Я готовлю завтрак каждый день.",
+        "take|teɪk|брать|Take my phone.|Возьми мой телефон.",
+        "give|ɡɪv|давать|Give me the key, please.|Дай мне ключ, пожалуйста.",
+        "work|wɜːrk|работать; работа|I work from home.|Я работаю из дома.",
+        "speak|spiːk|говорить (на языке)|I speak a little English.|Я немного говорю по-английски.",
+        "understand|ˌʌndərˈstænd|понимать|I don't understand.|Я не понимаю.",
+        "need|niːd|нуждаться, нужно|I need help.|Мне нужна помощь."
+      ]
+    },
+    {
+      "name": "Дом",
+      "words": [
+        "house|haʊs|дом (здание)|They live in a big house.|Они живут в большом доме.",
+        "room|ruːm|комната|My room is small.|Моя комната маленькая.",
+        "kitchen|ˈkɪtʃɪn|кухня|We eat in the kitchen.|Мы едим на кухне.",
+        "door|dɔːr|дверь|Close the door, please.|Закрой дверь, пожалуйста.",
+        "window|ˈwɪndoʊ|окно|Open the window.|Открой окно.",
+        "bed|bed|кровать|I go to bed at eleven.|Я ложусь спать в одиннадцать.",
+        "table|ˈteɪbəl|стол|The keys are on the table.|Ключи на столе.",
+        "chair|tʃer|стул|Sit on this chair.|Садись на этот стул.",
+        "key|kiː|ключ|Where is my key?|Где мой ключ?",
+        "floor|flɔːr|пол; этаж|I live on the third floor.|Я живу на третьем этаже.",
+        "wall|wɔːl|стена|The wall is white.|Стена белая.",
+        "light|laɪt|свет|Turn on the light.|Включи свет."
+      ]
+    },
+    {
+      "name": "Еда",
+      "words": [
+        "water|ˈwɔːtər|вода|Can I have some water?|Можно мне воды?",
+        "coffee|ˈkɔːfi|кофе|I drink coffee in the morning.|Я пью кофе утром.",
+        "tea|tiː|чай|Do you want tea?|Хочешь чаю?",
+        "bread|bred|хлеб|Buy some bread, please.|Купи хлеба, пожалуйста.",
+        "meat|miːt|мясо|I don't eat meat.|Я не ем мясо.",
+        "egg|eɡ|яйцо|I eat two eggs for breakfast.|На завтрак я ем два яйца.",
+        "apple|ˈæpəl|яблоко|This apple is sweet.|Это яблоко сладкое.",
+        "breakfast|ˈbrekfəst|завтрак|Breakfast is ready.|Завтрак готов.",
+        "dinner|ˈdɪnər|ужин|We have dinner at seven.|Мы ужинаем в семь.",
+        "eat|iːt|есть (кушать)|Let's eat!|Давай поедим!",
+        "drink|drɪŋk|пить; напиток|I drink a lot of water.|Я пью много воды.",
+        "hungry|ˈhʌŋɡri|голодный|I am very hungry.|Я очень голоден."
+      ]
+    },
+    {
+      "name": "Технологии",
+      "words": [
+        "phone|foʊn|телефон|My phone is dead.|У меня сел телефон.",
+        "computer|kəmˈpjuːtər|компьютер|I work on a computer.|Я работаю за компьютером.",
+        "screen|skriːn|экран|The screen is too dark.|Экран слишком тёмный.",
+        "app|æp|приложение|This app helps me learn English.|Это приложение помогает мне учить английский.",
+        "internet|ˈɪntərnet|интернет|The internet is slow today.|Сегодня медленный интернет.",
+        "password|ˈpæswɜːrd|пароль|Don't tell anyone your password.|Никому не говори свой пароль.",
+        "file|faɪl|файл|Save the file.|Сохрани файл.",
+        "download|ˈdaʊnloʊd|скачивать|Download the new version.|Скачай новую версию.",
+        "update|ˈʌpdeɪt|обновление; обновлять|The update is ready.|Обновление готово.",
+        "battery|ˈbætəri|батарея, аккумулятор|The battery is low.|Батарея почти села.",
+        "button|ˈbʌtən|кнопка|Press the red button.|Нажми красную кнопку.",
+        "error|ˈerər|ошибка|I see an error on the screen.|Я вижу ошибку на экране."
+      ]
+    },
+    {
+      "name": "Строительство",
+      "words": [
+        "build|bɪld|строить|They build a new house.|Они строят новый дом.",
+        "builder|ˈbɪldər|строитель|The builder starts work at eight.|Строитель начинает работу в восемь.",
+        "brick|brɪk|кирпич|The wall is made of brick.|Стена из кирпича.",
+        "wood|wʊd|дерево (материал)|The table is made of wood.|Стол сделан из дерева.",
+        "roof|ruːf|крыша|The roof is new.|Крыша новая.",
+        "tool|tuːl|инструмент|I need a tool.|Мне нужен инструмент.",
+        "hammer|ˈhæmər|молоток|Give me the hammer.|Дай мне молоток.",
+        "nail|neɪl|гвоздь|I need ten nails.|Мне нужно десять гвоздей.",
+        "paint|peɪnt|краска; красить|We paint the walls.|Мы красим стены.",
+        "concrete|ˈkɑːŋkriːt|бетон|The floor is concrete.|Пол бетонный.",
+        "measure|ˈmeʒər|измерять|Measure the window.|Измерь окно.",
+        "safety|ˈseɪfti|безопасность|Safety first!|Безопасность прежде всего!"
+      ]
+    },
+    {
+      "name": "Игры",
+      "words": [
+        "game|ɡeɪm|игра|This game is very popular.|Эта игра очень популярна.",
+        "play|pleɪ|играть|Let's play together.|Давай поиграем вместе.",
+        "player|ˈpleɪər|игрок|He is a good player.|Он хороший игрок.",
+        "level|ˈlevəl|уровень|This level is hard.|Этот уровень сложный.",
+        "win|wɪn|побеждать|We can win!|Мы можем победить!",
+        "lose|luːz|проигрывать|I don't want to lose.|Я не хочу проиграть.",
+        "team|tiːm|команда|Join my team.|Присоединяйся к моей команде.",
+        "enemy|ˈenəmi|враг|The enemy is behind you!|Враг позади тебя!",
+        "save|seɪv|сохранять; спасать|Save the game before the boss.|Сохрани игру перед боссом.",
+        "start|stɑːrt|начинать; старт|Press start.|Нажми «старт».",
+        "health|helθ|здоровье|My health is low.|У меня мало здоровья.",
+        "quest|kwest|задание, квест|I finished the quest.|Я выполнил задание."
+      ]
+    },
+    {
+      "name": "Путешествия",
+      "words": [
+        "airport|ˈerpɔːrt|аэропорт|Take me to the airport, please.|Отвезите меня в аэропорт, пожалуйста.",
+        "ticket|ˈtɪkɪt|билет|I have two tickets.|У меня два билета.",
+        "passport|ˈpæspɔːrt|паспорт|Show me your passport, please.|Покажите ваш паспорт, пожалуйста.",
+        "hotel|hoʊˈtel|отель|The hotel is near the sea.|Отель рядом с морем.",
+        "bag|bæɡ|сумка|This is my bag.|Это моя сумка.",
+        "train|treɪn|поезд|The train is late.|Поезд опаздывает.",
+        "city|ˈsɪti|город|It is a beautiful city.|Это красивый город.",
+        "street|striːt|улица|The shop is on this street.|Магазин на этой улице.",
+        "map|mæp|карта|Do you have a map?|У тебя есть карта?",
+        "left|left|налево; левый|Turn left.|Поверни налево.",
+        "right|raɪt|направо; правый; верно|Turn right at the bank.|У банка поверни направо.",
+        "where|wer|где, куда|Where is the station?|Где вокзал?"
+      ]
+    },
+    {
+      "name": "Спорт",
+      "words": [
+        "sport|spɔːrt|спорт|What sport do you like?|Какой спорт тебе нравится?",
+        "football|ˈfʊtbɔːl|футбол|We play football on Sundays.|Мы играем в футбол по воскресеньям.",
+        "run|rʌn|бегать|I run every morning.|Я бегаю каждое утро.",
+        "ball|bɔːl|мяч|Pass me the ball.|Передай мне мяч.",
+        "match|mætʃ|матч|The match starts at nine.|Матч начинается в девять.",
+        "goal|ɡoʊl|гол; цель|What a goal!|Какой гол!",
+        "gym|dʒɪm|спортзал|I go to the gym three times a week.|Я хожу в спортзал три раза в неделю.",
+        "strong|strɔːŋ|сильный|He is very strong.|Он очень сильный.",
+        "fast|fæst|быстрый|She is a fast runner.|Она быстро бегает.",
+        "tired|ˈtaɪərd|уставший|I am tired after training.|Я устал после тренировки.",
+        "swim|swɪm|плавать|Can you swim?|Ты умеешь плавать?",
+        "score|skɔːr|счёт (в игре)|What is the score?|Какой счёт?"
+      ]
+    },
+    {
+      "name": "Время и числа",
+      "words": [
+        "day|deɪ|день|Have a nice day!|Хорошего дня!",
+        "week|wiːk|неделя|See you next week.|Увидимся на следующей неделе.",
+        "year|jɪr|год|I am thirty years old.|Мне тридцать лет.",
+        "today|təˈdeɪ|сегодня|Today is Monday.|Сегодня понедельник.",
+        "tomorrow|təˈmɑːroʊ|завтра|See you tomorrow.|До завтра.",
+        "yesterday|ˈjestərdeɪ|вчера|I was at home yesterday.|Вчера я был дома.",
+        "morning|ˈmɔːrnɪŋ|утро|Good morning!|Доброе утро!",
+        "evening|ˈiːvnɪŋ|вечер|Good evening!|Добрый вечер!",
+        "now|naʊ|сейчас|I am busy now.|Я сейчас занят.",
+        "one|wʌn|один|I have one brother.|У меня один брат.",
+        "two|tuː|два|Two coffees, please.|Два кофе, пожалуйста.",
+        "three|θriː|три|Three days ago.|Три дня назад.",
+        "ten|ten|десять|Wait ten minutes.|Подожди десять минут.",
+        "hundred|ˈhʌndrəd|сто|It costs one hundred dollars.|Это стоит сто долларов."
+      ]
+    },
+    {
+      "name": "Вопросы и связки",
+      "words": [
+        "what|wʌt|что, какой|What is this?|Что это?",
+        "who|huː|кто|Who is he?|Кто он?",
+        "when|wen|когда|When do you start work?|Когда ты начинаешь работу?",
+        "why|waɪ|почему|Why are you late?|Почему ты опоздал?",
+        "how|haʊ|как|How are you?|Как дела?",
+        "how much|haʊ mʌtʃ|сколько (стоит)|How much is it?|Сколько это стоит?",
+        "and|ænd|и|Tea and coffee.|Чай и кофе.",
+        "but|bʌt|но|I like it, but it is expensive.|Мне нравится, но это дорого.",
+        "because|bɪˈkɔːz|потому что|I stay home because I am sick.|Я дома, потому что болею.",
+        "very|ˈveri|очень|Thank you very much!|Большое спасибо!",
+        "here|hɪr|здесь, сюда|Come here.|Иди сюда.",
+        "there|ðer|там|My car is over there.|Моя машина вон там."
+      ]
+    },
+    {
+      "name": "Фильмы и музыка",
+      "words": [
+        "movie|ˈmuːvi|фильм|Let's watch a movie.|Давай посмотрим фильм.",
+        "watch|wɑːtʃ|смотреть|I watch series in English.|Я смотрю сериалы на английском.",
+        "series|ˈsɪriːz|сериал|This series has five seasons.|В этом сериале пять сезонов.",
+        "episode|ˈepɪsoʊd|серия, эпизод|One more episode!|Ещё одну серию!",
+        "actor|ˈæktər|актёр|He is my favorite actor.|Он мой любимый актёр.",
+        "story|ˈstɔːri|история, сюжет|The story is very interesting.|Сюжет очень интересный.",
+        "funny|ˈfʌni|смешной|This movie is so funny.|Этот фильм такой смешной.",
+        "scary|ˈskeri|страшный|I don't like scary movies.|Я не люблю страшные фильмы.",
+        "listen|ˈlɪsən|слушать|Listen to me.|Послушай меня.",
+        "music|ˈmjuːzɪk|музыка|I love this music.|Я люблю эту музыку.",
+        "favorite|ˈfeɪvərɪt|любимый|What is your favorite movie?|Какой твой любимый фильм?",
+        "end|end|конец|I don't like the end.|Мне не нравится концовка."
+      ]
+    }
+  ]
+}

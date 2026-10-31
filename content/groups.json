@@ -1,0 +1,1331 @@
+{
+ "groups": [
+  {
+   "id": "irregular",
+   "title": "Неправильные глаголы",
+   "level": "A1–B1",
+   "about": "65 самых нужных глаголов с тремя формами: go — went — gone. Вторая форма — прошлое (I went), третья — после have (I have gone).",
+   "modes": [
+    "forms",
+    "gap",
+    "order"
+   ],
+   "items": [
+    {
+     "forms": [
+      "be",
+      "was/were",
+      "been"
+     ],
+     "ru": "быть",
+     "example": "I have been to London twice.",
+     "exampleRu": "Я был в Лондоне дважды."
+    },
+    {
+     "forms": [
+      "have",
+      "had",
+      "had"
+     ],
+     "ru": "иметь",
+     "example": "We had a long meeting today.",
+     "exampleRu": "Сегодня у нас было долгое совещание."
+    },
+    {
+     "forms": [
+      "do",
+      "did",
+      "done"
+     ],
+     "ru": "делать",
+     "example": "I did my homework in the evening.",
+     "exampleRu": "Я сделал домашнее задание вечером."
+    },
+    {
+     "forms": [
+      "go",
+      "went",
+      "gone"
+     ],
+     "ru": "идти, ехать",
+     "example": "We went to the beach last summer.",
+     "exampleRu": "Прошлым летом мы ездили на пляж."
+    },
+    {
+     "forms": [
+      "get",
+      "got",
+      "got/gotten"
+     ],
+     "ru": "получать; становиться",
+     "example": "I got a new job in May.",
+     "exampleRu": "В мае я получил новую работу."
+    },
+    {
+     "forms": [
+      "make",
+      "made",
+      "made"
+     ],
+     "ru": "делать, создавать",
+     "example": "She made a great website.",
+     "exampleRu": "Она сделала отличный сайт."
+    },
+    {
+     "forms": [
+      "say",
+      "said",
+      "said"
+     ],
+     "ru": "сказать",
+     "example": "He said hello to everyone.",
+     "exampleRu": "Он со всеми поздоровался."
+    },
+    {
+     "forms": [
+      "see",
+      "saw",
+      "seen"
+     ],
+     "ru": "видеть",
+     "example": "Have you seen my keys?",
+     "exampleRu": "Ты не видел мои ключи?"
+    },
+    {
+     "forms": [
+      "come",
+      "came",
+      "come"
+     ],
+     "ru": "приходить",
+     "example": "They came home late.",
+     "exampleRu": "Они пришли домой поздно."
+    },
+    {
+     "forms": [
+      "take",
+      "took",
+      "taken"
+     ],
+     "ru": "брать",
+     "example": "I took a taxi to the airport.",
+     "exampleRu": "Я поехал в аэропорт на такси."
+    },
+    {
+     "forms": [
+      "give",
+      "gave",
+      "given"
+     ],
+     "ru": "давать",
+     "example": "My friend gave me a book.",
+     "exampleRu": "Друг подарил мне книгу."
+    },
+    {
+     "forms": [
+      "know",
+      "knew",
+      "known"
+     ],
+     "ru": "знать",
+     "example": "I knew the answer.",
+     "exampleRu": "Я знал ответ."
+    },
+    {
+     "forms": [
+      "think",
+      "thought",
+      "thought"
+     ],
+     "ru": "думать",
+     "example": "I thought it was easy.",
+     "exampleRu": "Я думал, что это легко."
+    },
+    {
+     "forms": [
+      "tell",
+      "told",
+      "told"
+     ],
+     "ru": "рассказать, сказать",
+     "example": "She told me a funny story.",
+     "exampleRu": "Она рассказала мне смешную историю."
+    },
+    {
+     "forms": [
+      "find",
+      "found",
+      "found"
+     ],
+     "ru": "находить",
+     "example": "We found a small cafe near the hotel.",
+     "exampleRu": "Мы нашли маленькое кафе рядом с отелем."
+    },
+    {
+     "forms": [
+      "leave",
+      "left",
+      "left"
+     ],
+     "ru": "уходить, оставлять",
+     "example": "I left my phone at home.",
+     "exampleRu": "Я оставил телефон дома."
+    },
+    {
+     "forms": [
+      "feel",
+      "felt",
+      "felt"
+     ],
+     "ru": "чувствовать",
+     "example": "I felt tired after the match.",
+     "exampleRu": "После матча я чувствовал усталость."
+    },
+    {
+     "forms": [
+      "bring",
+      "brought",
+      "brought"
+     ],
+     "ru": "приносить",
+     "example": "He brought pizza for the team.",
+     "exampleRu": "Он принёс пиццу для команды."
+    },
+    {
+     "forms": [
+      "buy",
+      "bought",
+      "bought"
+     ],
+     "ru": "покупать",
+     "example": "I bought a new laptop last week.",
+     "exampleRu": "На прошлой неделе я купил новый ноутбук."
+    },
+    {
+     "forms": [
+      "begin",
+      "began",
+      "begun"
+     ],
+     "ru": "начинать",
+     "example": "The game began at eight.",
+     "exampleRu": "Игра началась в восемь."
+    },
+    {
+     "forms": [
+      "keep",
+      "kept",
+      "kept"
+     ],
+     "ru": "держать, хранить",
+     "example": "We kept all the old photos.",
+     "exampleRu": "Мы сохранили все старые фотографии."
+    },
+    {
+     "forms": [
+      "hold",
+      "held",
+      "held"
+     ],
+     "ru": "держать; проводить (встречу)",
+     "example": "They held a meeting on Monday.",
+     "exampleRu": "В понедельник они провели совещание."
+    },
+    {
+     "forms": [
+      "write",
+      "wrote",
+      "written"
+     ],
+     "ru": "писать",
+     "example": "I have written three emails today.",
+     "exampleRu": "Сегодня я написал три письма."
+    },
+    {
+     "forms": [
+      "stand",
+      "stood",
+      "stood"
+     ],
+     "ru": "стоять",
+     "example": "We stood in the rain for an hour.",
+     "exampleRu": "Мы час стояли под дождём."
+    },
+    {
+     "forms": [
+      "hear",
+      "heard",
+      "heard"
+     ],
+     "ru": "слышать",
+     "example": "I heard a strange noise.",
+     "exampleRu": "Я услышал странный шум."
+    },
+    {
+     "forms": [
+      "let",
+      "let",
+      "let"
+     ],
+     "ru": "позволять",
+     "example": "My boss let me work from home.",
+     "exampleRu": "Начальник разрешил мне работать из дома."
+    },
+    {
+     "forms": [
+      "mean",
+      "meant",
+      "meant"
+     ],
+     "ru": "значить, иметь в виду",
+     "example": "Sorry, I meant something different.",
+     "exampleRu": "Извини, я имел в виду другое."
+    },
+    {
+     "forms": [
+      "meet",
+      "met",
+      "met"
+     ],
+     "ru": "встречать, знакомиться",
+     "example": "We met at the station.",
+     "exampleRu": "Мы встретились на вокзале."
+    },
+    {
+     "forms": [
+      "run",
+      "ran",
+      "run"
+     ],
+     "ru": "бегать; руководить",
+     "example": "I ran five kilometres this morning.",
+     "exampleRu": "Сегодня утром я пробежал пять километров."
+    },
+    {
+     "forms": [
+      "pay",
+      "paid",
+      "paid"
+     ],
+     "ru": "платить",
+     "example": "I paid for the tickets online.",
+     "exampleRu": "Я оплатил билеты онлайн."
+    },
+    {
+     "forms": [
+      "sit",
+      "sat",
+      "sat"
+     ],
+     "ru": "сидеть",
+     "example": "We sat in the front row.",
+     "exampleRu": "Мы сидели в первом ряду."
+    },
+    {
+     "forms": [
+      "speak",
+      "spoke",
+      "spoken"
+     ],
+     "ru": "говорить",
+     "example": "I have spoken to the client.",
+     "exampleRu": "Я поговорил с клиентом."
+    },
+    {
+     "forms": [
+      "lose",
+      "lost",
+      "lost"
+     ],
+     "ru": "терять; проигрывать",
+     "example": "Our team lost the final.",
+     "exampleRu": "Наша команда проиграла финал."
+    },
+    {
+     "forms": [
+      "send",
+      "sent",
+      "sent"
+     ],
+     "ru": "отправлять",
+     "example": "I sent you the file.",
+     "exampleRu": "Я отправил тебе файл."
+    },
+    {
+     "forms": [
+      "build",
+      "built",
+      "built"
+     ],
+     "ru": "строить",
+     "example": "They built a new bridge in 2020.",
+     "exampleRu": "В 2020 году построили новый мост."
+    },
+    {
+     "forms": [
+      "understand",
+      "understood",
+      "understood"
+     ],
+     "ru": "понимать",
+     "example": "I understood everything.",
+     "exampleRu": "Я всё понял."
+    },
+    {
+     "forms": [
+      "spend",
+      "spent",
+      "spent"
+     ],
+     "ru": "тратить; проводить (время)",
+     "example": "We spent a week in Spain.",
+     "exampleRu": "Мы провели неделю в Испании."
+    },
+    {
+     "forms": [
+      "learn",
+      "learnt/learned",
+      "learnt/learned"
+     ],
+     "ru": "учить, узнавать",
+     "example": "I learned to swim as a child.",
+     "exampleRu": "Я научился плавать в детстве."
+    },
+    {
+     "forms": [
+      "sleep",
+      "slept",
+      "slept"
+     ],
+     "ru": "спать",
+     "example": "I slept badly last night.",
+     "exampleRu": "Этой ночью я плохо спал."
+    },
+    {
+     "forms": [
+      "drive",
+      "drove",
+      "driven"
+     ],
+     "ru": "водить машину",
+     "example": "Have you ever driven a truck?",
+     "exampleRu": "Ты когда-нибудь водил грузовик?"
+    },
+    {
+     "forms": [
+      "eat",
+      "ate",
+      "eaten"
+     ],
+     "ru": "есть",
+     "example": "I have never eaten sushi.",
+     "exampleRu": "Я никогда не ел суши."
+    },
+    {
+     "forms": [
+      "drink",
+      "drank",
+      "drunk"
+     ],
+     "ru": "пить",
+     "example": "I drank too much coffee today.",
+     "exampleRu": "Сегодня я выпил слишком много кофе."
+    },
+    {
+     "forms": [
+      "fall",
+      "fell",
+      "fallen"
+     ],
+     "ru": "падать",
+     "example": "My phone fell into the water.",
+     "exampleRu": "Мой телефон упал в воду."
+    },
+    {
+     "forms": [
+      "forget",
+      "forgot",
+      "forgotten"
+     ],
+     "ru": "забывать",
+     "example": "I forgot my password again.",
+     "exampleRu": "Я опять забыл пароль."
+    },
+    {
+     "forms": [
+      "choose",
+      "chose",
+      "chosen"
+     ],
+     "ru": "выбирать",
+     "example": "We chose the cheaper hotel.",
+     "exampleRu": "Мы выбрали отель подешевле."
+    },
+    {
+     "forms": [
+      "break",
+      "broke",
+      "broken"
+     ],
+     "ru": "ломать",
+     "example": "Someone has broken the printer.",
+     "exampleRu": "Кто-то сломал принтер."
+    },
+    {
+     "forms": [
+      "win",
+      "won",
+      "won"
+     ],
+     "ru": "побеждать, выигрывать",
+     "example": "Our team won the cup.",
+     "exampleRu": "Наша команда выиграла кубок."
+    },
+    {
+     "forms": [
+      "teach",
+      "taught",
+      "taught"
+     ],
+     "ru": "учить (кого-то)",
+     "example": "My dad taught me to drive.",
+     "exampleRu": "Папа научил меня водить."
+    },
+    {
+     "forms": [
+      "catch",
+      "caught",
+      "caught"
+     ],
+     "ru": "ловить; успеть на",
+     "example": "We caught the last train.",
+     "exampleRu": "Мы успели на последний поезд."
+    },
+    {
+     "forms": [
+      "fly",
+      "flew",
+      "flown"
+     ],
+     "ru": "летать",
+     "example": "I have never flown business class.",
+     "exampleRu": "Я никогда не летал бизнес-классом."
+    },
+    {
+     "forms": [
+      "wear",
+      "wore",
+      "worn"
+     ],
+     "ru": "носить (одежду)",
+     "example": "He wore a helmet on the site.",
+     "exampleRu": "На стройке он был в каске."
+    },
+    {
+     "forms": [
+      "sell",
+      "sold",
+      "sold"
+     ],
+     "ru": "продавать",
+     "example": "They sold their old car.",
+     "exampleRu": "Они продали старую машину."
+    },
+    {
+     "forms": [
+      "put",
+      "put",
+      "put"
+     ],
+     "ru": "класть, ставить",
+     "example": "I put the keys on the table.",
+     "exampleRu": "Я положил ключи на стол."
+    },
+    {
+     "forms": [
+      "cut",
+      "cut",
+      "cut"
+     ],
+     "ru": "резать",
+     "example": "She cut the cake into eight pieces.",
+     "exampleRu": "Она разрезала торт на восемь кусков."
+    },
+    {
+     "forms": [
+      "cost",
+      "cost",
+      "cost"
+     ],
+     "ru": "стоить",
+     "example": "The tickets cost fifty euros.",
+     "exampleRu": "Билеты стоили пятьдесят евро."
+    },
+    {
+     "forms": [
+      "hit",
+      "hit",
+      "hit"
+     ],
+     "ru": "ударять, попадать",
+     "example": "The ball hit the window.",
+     "exampleRu": "Мяч попал в окно."
+    },
+    {
+     "forms": [
+      "read",
+      "read",
+      "read"
+     ],
+     "ru": "читать",
+     "example": "I read the whole book in two days.",
+     "exampleRu": "Я прочитал всю книгу за два дня."
+    },
+    {
+     "forms": [
+      "grow",
+      "grew",
+      "grown"
+     ],
+     "ru": "расти; выращивать",
+     "example": "The company grew very fast.",
+     "exampleRu": "Компания росла очень быстро."
+    },
+    {
+     "forms": [
+      "draw",
+      "drew",
+      "drawn"
+     ],
+     "ru": "рисовать",
+     "example": "My son drew a robot.",
+     "exampleRu": "Сын нарисовал робота."
+    },
+    {
+     "forms": [
+      "swim",
+      "swam",
+      "swum"
+     ],
+     "ru": "плавать",
+     "example": "We swam in the lake every morning.",
+     "exampleRu": "Каждое утро мы плавали в озере."
+    },
+    {
+     "forms": [
+      "ride",
+      "rode",
+      "ridden"
+     ],
+     "ru": "ездить (на велосипеде, верхом)",
+     "example": "I rode my bike to work.",
+     "exampleRu": "Я ездил на работу на велосипеде."
+    },
+    {
+     "forms": [
+      "show",
+      "showed",
+      "shown"
+     ],
+     "ru": "показывать",
+     "example": "He showed us the new office.",
+     "exampleRu": "Он показал нам новый офис."
+    },
+    {
+     "forms": [
+      "steal",
+      "stole",
+      "stolen"
+     ],
+     "ru": "красть",
+     "example": "Someone stole my bike.",
+     "exampleRu": "У меня украли велосипед."
+    },
+    {
+     "forms": [
+      "hide",
+      "hid",
+      "hidden"
+     ],
+     "ru": "прятать",
+     "example": "The cat hid under the bed.",
+     "exampleRu": "Кошка спряталась под кроватью."
+    },
+    {
+     "forms": [
+      "throw",
+      "threw",
+      "thrown"
+     ],
+     "ru": "бросать",
+     "example": "He threw the ball to me.",
+     "exampleRu": "Он бросил мне мяч."
+    }
+   ]
+  },
+  {
+   "id": "phrasal",
+   "title": "Фразовые глаголы: быт и работа",
+   "level": "A2–B1",
+   "about": "Глагол + маленькое слово = новый смысл: look after — присматривать, give up — сдаться.",
+   "modes": [
+    "meaning",
+    "gap",
+    "order"
+   ],
+   "items": [
+    {
+     "en": "look after",
+     "ru": "присматривать, заботиться",
+     "example": "Can you look after my dog this weekend?",
+     "exampleRu": "Можешь присмотреть за моей собакой в выходные?"
+    },
+    {
+     "en": "look for",
+     "ru": "искать",
+     "example": "Can you help me look for my keys?",
+     "exampleRu": "Поможешь мне поискать ключи?"
+    },
+    {
+     "en": "find out",
+     "ru": "выяснить, узнать",
+     "example": "Let's find out what happened.",
+     "exampleRu": "Давай выясним, что случилось."
+    },
+    {
+     "en": "give up",
+     "ru": "бросить, сдаться",
+     "example": "Don't give up now!",
+     "exampleRu": "Не сдавайся сейчас!"
+    },
+    {
+     "en": "turn down",
+     "ru": "убавить; отклонить",
+     "example": "Please turn down the music, I'm on a call.",
+     "exampleRu": "Пожалуйста, сделай музыку тише, я разговариваю."
+    },
+    {
+     "en": "set up",
+     "ru": "настроить; основать",
+     "example": "I need to set up my new phone.",
+     "exampleRu": "Мне нужно настроить новый телефон."
+    },
+    {
+     "en": "figure out",
+     "ru": "разобраться, понять",
+     "example": "I can't figure out this bug.",
+     "exampleRu": "Не могу разобраться с этим багом."
+    },
+    {
+     "en": "run out of",
+     "ru": "закончиться (о запасе)",
+     "example": "We will run out of time.",
+     "exampleRu": "У нас закончится время."
+    },
+    {
+     "en": "put off",
+     "ru": "откладывать",
+     "example": "Don't put off the meeting again.",
+     "exampleRu": "Не откладывай встречу снова."
+    },
+    {
+     "en": "come back",
+     "ru": "вернуться",
+     "example": "When will you come back?",
+     "exampleRu": "Когда ты вернёшься?"
+    },
+    {
+     "en": "pick up",
+     "ru": "забрать (кого-то); подобрать",
+     "example": "I'll pick up the kids at five.",
+     "exampleRu": "Я заберу детей в пять."
+    },
+    {
+     "en": "check in",
+     "ru": "зарегистрироваться (в отеле, на рейс)",
+     "example": "We need to check in at the hotel first.",
+     "exampleRu": "Сначала нам нужно заселиться в отель."
+    },
+    {
+     "en": "fill in",
+     "ru": "заполнить (форму)",
+     "example": "Please fill in this form.",
+     "exampleRu": "Пожалуйста, заполните эту форму."
+    },
+    {
+     "en": "carry on",
+     "ru": "продолжать",
+     "example": "Carry on, you're doing well.",
+     "exampleRu": "Продолжай, у тебя хорошо получается."
+    },
+    {
+     "en": "break down",
+     "ru": "сломаться (о машине, технике)",
+     "example": "Old cars often break down in winter.",
+     "exampleRu": "Старые машины зимой часто ломаются."
+    },
+    {
+     "en": "get on with",
+     "ru": "ладить с",
+     "example": "I get on with my neighbours.",
+     "exampleRu": "Я лажу с соседями."
+    },
+    {
+     "en": "deal with",
+     "ru": "разбираться, справляться с",
+     "example": "I will deal with this problem tomorrow.",
+     "exampleRu": "Я разберусь с этой проблемой завтра."
+    },
+    {
+     "en": "call back",
+     "ru": "перезвонить",
+     "example": "Can I call back in ten minutes?",
+     "exampleRu": "Можно я перезвоню через десять минут?"
+    },
+    {
+     "en": "show up",
+     "ru": "появиться, прийти",
+     "example": "He didn't show up at the meeting.",
+     "exampleRu": "Он не пришёл на встречу."
+    }
+   ]
+  },
+  {
+   "id": "prepositions",
+   "title": "Предлоги: at, on, in",
+   "level": "A1–A2",
+   "about": "at — точка и точное время, on — поверхность и дни, in — внутри, месяцы и годы.",
+   "modes": [
+    "gap",
+    "order"
+   ],
+   "items": [
+    {
+     "en": "at seven o'clock",
+     "ru": "at — точное время",
+     "example": "The meeting starts at seven o'clock.",
+     "exampleRu": "Встреча начинается в семь часов.",
+     "answer": "at"
+    },
+    {
+     "en": "at night",
+     "ru": "at night — ночью",
+     "example": "I often work at night.",
+     "exampleRu": "Я часто работаю ночью.",
+     "answer": "at"
+    },
+    {
+     "en": "at the station",
+     "ru": "at — точка, место встречи",
+     "example": "Let's meet at the station.",
+     "exampleRu": "Давай встретимся на вокзале.",
+     "answer": "at"
+    },
+    {
+     "en": "at work",
+     "ru": "at work / at home — на работе / дома",
+     "example": "I'm still at work.",
+     "exampleRu": "Я ещё на работе.",
+     "answer": "at"
+    },
+    {
+     "en": "at home",
+     "ru": "at home — дома",
+     "example": "She is at home now.",
+     "exampleRu": "Она сейчас дома.",
+     "answer": "at"
+    },
+    {
+     "en": "at the door",
+     "ru": "at — у (двери, стола)",
+     "example": "Someone is at the door.",
+     "exampleRu": "Кто-то у двери.",
+     "answer": "at"
+    },
+    {
+     "en": "on Monday",
+     "ru": "on — дни недели",
+     "example": "We have a meeting on Monday.",
+     "exampleRu": "У нас встреча в понедельник.",
+     "answer": "on"
+    },
+    {
+     "en": "on 5 May",
+     "ru": "on — даты",
+     "example": "My birthday is on 5 May.",
+     "exampleRu": "Мой день рождения 5 мая.",
+     "answer": "on"
+    },
+    {
+     "en": "on my birthday",
+     "ru": "on — конкретный день",
+     "example": "I got a bike on my birthday.",
+     "exampleRu": "На день рождения мне подарили велосипед.",
+     "answer": "on"
+    },
+    {
+     "en": "on the table",
+     "ru": "on — на поверхности",
+     "example": "Your keys are on the table.",
+     "exampleRu": "Твои ключи на столе.",
+     "answer": "on"
+    },
+    {
+     "en": "on the wall",
+     "ru": "on — на стене",
+     "example": "There is a map on the wall.",
+     "exampleRu": "На стене висит карта.",
+     "answer": "on"
+    },
+    {
+     "en": "on the second floor",
+     "ru": "on — этаж",
+     "example": "Our office is on the second floor.",
+     "exampleRu": "Наш офис на втором этаже.",
+     "answer": "on"
+    },
+    {
+     "en": "on the bus",
+     "ru": "on — в автобусе, поезде, самолёте",
+     "example": "I read books on the bus.",
+     "exampleRu": "Я читаю книги в автобусе.",
+     "answer": "on"
+    },
+    {
+     "en": "in May",
+     "ru": "in — месяцы",
+     "example": "We moved to Kazan in May.",
+     "exampleRu": "Мы переехали в Казань в мае.",
+     "answer": "in"
+    },
+    {
+     "en": "in 2020",
+     "ru": "in — годы",
+     "example": "The bridge was built in 2020.",
+     "exampleRu": "Мост построили в 2020 году.",
+     "answer": "in"
+    },
+    {
+     "en": "in summer",
+     "ru": "in — времена года",
+     "example": "It is very hot here in summer.",
+     "exampleRu": "Летом здесь очень жарко.",
+     "answer": "in"
+    },
+    {
+     "en": "in the morning",
+     "ru": "in the morning / evening — утром / вечером",
+     "example": "I drink coffee in the morning.",
+     "exampleRu": "Утром я пью кофе.",
+     "answer": "in"
+    },
+    {
+     "en": "in two days",
+     "ru": "in — через (сколько-то времени)",
+     "example": "The project ends in two days.",
+     "exampleRu": "Проект заканчивается через два дня.",
+     "answer": "in"
+    },
+    {
+     "en": "in the box",
+     "ru": "in — внутри",
+     "example": "The cables are in the box.",
+     "exampleRu": "Кабели в коробке.",
+     "answer": "in"
+    },
+    {
+     "en": "in London",
+     "ru": "in — города и страны",
+     "example": "My sister lives in London.",
+     "exampleRu": "Моя сестра живёт в Лондоне.",
+     "answer": "in"
+    },
+    {
+     "en": "in the car",
+     "ru": "in — в машине, такси",
+     "example": "I left my bag in the car.",
+     "exampleRu": "Я оставил сумку в машине.",
+     "answer": "in"
+    },
+    {
+     "en": "in the photo",
+     "ru": "in — на фото, картинке",
+     "example": "Who is that man in the photo?",
+     "exampleRu": "Кто этот мужчина на фото?",
+     "answer": "in"
+    }
+   ]
+  },
+  {
+   "id": "linkers",
+   "title": "Слова-связки",
+   "level": "A2–B1",
+   "about": "Связывают мысли в речь: because, so, however, although. Без них фразы звучат рублено.",
+   "modes": [
+    "meaning",
+    "gap",
+    "order"
+   ],
+   "items": [
+    {
+     "en": "because",
+     "ru": "потому что",
+     "example": "I stayed home because I was ill.",
+     "exampleRu": "Я остался дома, потому что заболел."
+    },
+    {
+     "en": "so",
+     "ru": "поэтому, так что",
+     "example": "It was raining, so we took a taxi.",
+     "exampleRu": "Шёл дождь, поэтому мы взяли такси."
+    },
+    {
+     "en": "but",
+     "ru": "но",
+     "example": "The flat is small but cheap.",
+     "exampleRu": "Квартира маленькая, но дешёвая."
+    },
+    {
+     "en": "although",
+     "ru": "хотя",
+     "example": "Although it was late, we kept working.",
+     "exampleRu": "Хотя было поздно, мы продолжали работать."
+    },
+    {
+     "en": "however",
+     "ru": "однако",
+     "example": "The app is fast. However, it drains the battery.",
+     "exampleRu": "Приложение быстрое. Однако оно сажает батарею."
+    },
+    {
+     "en": "therefore",
+     "ru": "следовательно, поэтому",
+     "example": "The server is old; therefore, we need a new one.",
+     "exampleRu": "Сервер старый, поэтому нам нужен новый."
+    },
+    {
+     "en": "unless",
+     "ru": "если не",
+     "example": "We will miss the train unless we hurry.",
+     "exampleRu": "Мы опоздаем на поезд, если не поторопимся."
+    },
+    {
+     "en": "while",
+     "ru": "пока, в то время как",
+     "example": "I listen to podcasts while I drive.",
+     "exampleRu": "Я слушаю подкасты, пока веду машину."
+    },
+    {
+     "en": "despite",
+     "ru": "несмотря на",
+     "example": "We played despite the rain.",
+     "exampleRu": "Мы играли, несмотря на дождь."
+    },
+    {
+     "en": "instead",
+     "ru": "вместо этого",
+     "example": "I didn't take the bus; I walked instead.",
+     "exampleRu": "Я не поехал на автобусе, а пошёл пешком."
+    },
+    {
+     "en": "finally",
+     "ru": "наконец",
+     "example": "After three hours, we finally found the bug.",
+     "exampleRu": "Через три часа мы наконец нашли баг."
+    },
+    {
+     "en": "for example",
+     "ru": "например",
+     "example": "I like team sports, for example, football.",
+     "exampleRu": "Я люблю командные виды спорта, например футбол."
+    },
+    {
+     "en": "as soon as",
+     "ru": "как только",
+     "example": "Call me as soon as you land.",
+     "exampleRu": "Позвони мне, как только приземлишься."
+    },
+    {
+     "en": "in case",
+     "ru": "на случай, если",
+     "example": "Take an umbrella in case it rains.",
+     "exampleRu": "Возьми зонт на случай дождя."
+    },
+    {
+     "en": "until",
+     "ru": "пока не, до",
+     "example": "Wait here until I come back.",
+     "exampleRu": "Подожди здесь, пока я не вернусь."
+    },
+    {
+     "en": "also",
+     "ru": "также, тоже",
+     "example": "She speaks English and also knows some French.",
+     "exampleRu": "Она говорит по-английски и ещё немного знает французский."
+    }
+   ]
+  },
+  {
+   "id": "false-friends",
+   "title": "Ложные друзья переводчика",
+   "level": "A2–B2",
+   "about": "Похожи на русские слова, но значат другое: magazine — журнал, а не магазин.",
+   "modes": [
+    "meaning",
+    "gap"
+   ],
+   "items": [
+    {
+     "en": "magazine",
+     "ru": "журнал",
+     "example": "I read a car magazine on the plane.",
+     "exampleRu": "В самолёте я читал автомобильный журнал.",
+     "note": "не «магазин» — это shop"
+    },
+    {
+     "en": "actual",
+     "ru": "настоящий, фактический",
+     "example": "The actual price was higher.",
+     "exampleRu": "Фактическая цена оказалась выше.",
+     "note": "не «актуальный» — это relevant"
+    },
+    {
+     "en": "accurate",
+     "ru": "точный",
+     "example": "The map is very accurate.",
+     "exampleRu": "Карта очень точная.",
+     "note": "не «аккуратный» — это neat, tidy"
+    },
+    {
+     "en": "fabric",
+     "ru": "ткань",
+     "example": "This jacket is made of soft fabric.",
+     "exampleRu": "Эта куртка из мягкой ткани.",
+     "note": "не «фабрика» — это factory"
+    },
+    {
+     "en": "sympathetic",
+     "ru": "сочувствующий",
+     "example": "My boss was very sympathetic.",
+     "exampleRu": "Начальник очень сочувствовал.",
+     "note": "не «симпатичный» — это nice, good-looking"
+    },
+    {
+     "en": "decade",
+     "ru": "десятилетие",
+     "example": "Prices doubled in a decade.",
+     "exampleRu": "За десять лет цены выросли вдвое.",
+     "note": "не «декада» (10 дней)"
+    },
+    {
+     "en": "data",
+     "ru": "данные",
+     "example": "We lost all the data.",
+     "exampleRu": "Мы потеряли все данные.",
+     "note": "не «дата» — это date"
+    },
+    {
+     "en": "prospect",
+     "ru": "перспектива",
+     "example": "There is no prospect of a pay rise.",
+     "exampleRu": "Перспективы повышения зарплаты нет.",
+     "note": "не «проспект» — это avenue"
+    },
+    {
+     "en": "conductor",
+     "ru": "дирижёр; кондуктор",
+     "example": "The conductor checked our tickets.",
+     "exampleRu": "Кондуктор проверил наши билеты.",
+     "note": "не «проводник тока» в быту"
+    },
+    {
+     "en": "replica",
+     "ru": "точная копия",
+     "example": "This sword is a replica.",
+     "exampleRu": "Этот меч — копия.",
+     "note": "не «реплика» в разговоре — это remark, line"
+    },
+    {
+     "en": "intelligent",
+     "ru": "умный",
+     "example": "She is an intelligent student.",
+     "exampleRu": "Она умная студентка.",
+     "note": "не «интеллигентный» — это cultured, well-mannered"
+    },
+    {
+     "en": "novel",
+     "ru": "роман (книга)",
+     "example": "I'm reading a novel by Orwell.",
+     "exampleRu": "Я читаю роман Оруэлла.",
+     "note": "не «новелла» — это short story"
+    },
+    {
+     "en": "realize",
+     "ru": "осознать, понять",
+     "example": "I didn't realize it was so late.",
+     "exampleRu": "Я не понял, что уже так поздно.",
+     "note": "не «реализовать» — это carry out"
+    },
+    {
+     "en": "lunatic",
+     "ru": "сумасшедший",
+     "example": "He drives like a lunatic.",
+     "exampleRu": "Он водит как сумасшедший.",
+     "note": "не «лунатик» — это sleepwalker"
+    },
+    {
+     "en": "complexion",
+     "ru": "цвет лица",
+     "example": "She has a pale complexion.",
+     "exampleRu": "У неё бледный цвет лица.",
+     "note": "не «комплекция» — это build"
+    },
+    {
+     "en": "angina",
+     "ru": "стенокардия",
+     "example": "My grandfather has angina.",
+     "exampleRu": "У дедушки стенокардия.",
+     "note": "не «ангина» — это sore throat"
+    }
+   ]
+  },
+  {
+   "id": "collocations",
+   "title": "make, do, take, have",
+   "level": "A2–B1",
+   "about": "С какими словами какой глагол: make a mistake, do homework, take a photo, have breakfast.",
+   "modes": [
+    "gap",
+    "order"
+   ],
+   "items": [
+    {
+     "en": "make a mistake",
+     "ru": "сделать ошибку",
+     "example": "Everyone can make a mistake.",
+     "exampleRu": "Каждый может ошибиться.",
+     "answer": "make"
+    },
+    {
+     "en": "make money",
+     "ru": "зарабатывать деньги",
+     "example": "It's hard to make money from games.",
+     "exampleRu": "На играх трудно заработать.",
+     "answer": "make"
+    },
+    {
+     "en": "make noise",
+     "ru": "шуметь",
+     "example": "Please don't make noise after ten.",
+     "exampleRu": "Пожалуйста, не шумите после десяти.",
+     "answer": "make"
+    },
+    {
+     "en": "make an effort",
+     "ru": "постараться, приложить усилие",
+     "example": "You need to make an effort.",
+     "exampleRu": "Тебе нужно постараться.",
+     "answer": "make"
+    },
+    {
+     "en": "make progress",
+     "ru": "делать успехи",
+     "example": "You make progress every week.",
+     "exampleRu": "Ты делаешь успехи каждую неделю.",
+     "answer": "make"
+    },
+    {
+     "en": "do homework",
+     "ru": "делать домашнее задание",
+     "example": "I usually do homework after dinner.",
+     "exampleRu": "Обычно я делаю домашку после ужина.",
+     "answer": "do"
+    },
+    {
+     "en": "do the dishes",
+     "ru": "мыть посуду",
+     "example": "Can you do the dishes tonight?",
+     "exampleRu": "Помоешь посуду сегодня вечером?",
+     "answer": "do"
+    },
+    {
+     "en": "do business",
+     "ru": "вести дела",
+     "example": "We do business with a company in Dubai.",
+     "exampleRu": "Мы ведём дела с компанией в Дубае.",
+     "answer": "do"
+    },
+    {
+     "en": "do your best",
+     "ru": "стараться изо всех сил",
+     "example": "Just do your best.",
+     "exampleRu": "Просто старайся изо всех сил.",
+     "answer": "do"
+    },
+    {
+     "en": "do someone a favour",
+     "ru": "сделать одолжение",
+     "example": "Can you do me a favour?",
+     "exampleRu": "Можешь сделать мне одолжение?",
+     "answer": "do"
+    },
+    {
+     "en": "take a taxi",
+     "ru": "взять такси",
+     "example": "We can take a taxi to the airport.",
+     "exampleRu": "Можем поехать в аэропорт на такси.",
+     "answer": "take"
+    },
+    {
+     "en": "take a photo",
+     "ru": "сфотографировать",
+     "example": "Can you take a photo of us?",
+     "exampleRu": "Сфотографируешь нас?",
+     "answer": "take"
+    },
+    {
+     "en": "take part",
+     "ru": "участвовать",
+     "example": "I want to take part in the race.",
+     "exampleRu": "Я хочу участвовать в забеге.",
+     "answer": "take"
+    },
+    {
+     "en": "take medicine",
+     "ru": "принимать лекарство",
+     "example": "Don't forget to take your medicine.",
+     "exampleRu": "Не забудь принять лекарство.",
+     "answer": "take"
+    },
+    {
+     "en": "have breakfast",
+     "ru": "завтракать",
+     "example": "We have breakfast at eight.",
+     "exampleRu": "Мы завтракаем в восемь.",
+     "answer": "have"
+    },
+    {
+     "en": "have a party",
+     "ru": "устроить вечеринку",
+     "example": "Let's have a party on Friday.",
+     "exampleRu": "Давай устроим вечеринку в пятницу.",
+     "answer": "have"
+    },
+    {
+     "en": "have fun",
+     "ru": "веселиться, хорошо провести время",
+     "example": "Have fun at the concert!",
+     "exampleRu": "Повеселись на концерте!",
+     "answer": "have"
+    },
+    {
+     "en": "have a good time",
+     "ru": "хорошо провести время",
+     "example": "Did you have a good time?",
+     "exampleRu": "Хорошо провели время?",
+     "answer": "have"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,212 @@
+{
+  "level": "B2",
+  "format": "en|транскрипция|перевод|пример|перевод примера",
+  "topics": [
+    {
+      "name": "Работа и бизнес",
+      "words": [
+        "negotiate|nɪˈɡoʊʃieɪt|вести переговоры, договариваться|We negotiated a better price with the supplier.|Мы договорились с поставщиком о лучшей цене.",
+        "expertise|ˌekspɜːrˈtiːz|опыт, компетенция|We need someone with expertise in security.|Нам нужен специалист по безопасности.",
+        "workload|ˈwɜːrkloʊd|нагрузка, объём работы|My workload doubled after the launch.|После запуска моя нагрузка удвоилась.",
+        "remote|rɪˈmoʊt|удалённый|I've had a remote job for two years.|У меня удалённая работа уже два года.",
+        "freelance|ˈfriːlæns|фриланс, внештатный|She works freelance as a designer.|Она работает дизайнером на фрилансе.",
+        "invoice|ˈɪnvɔɪs|счёт-фактура, счёт клиенту|I'll send you the invoice by email.|Я пришлю вам счёт по почте.",
+        "revenue|ˈrevənuː|выручка, доход (компании)|The company's revenue grew by twenty percent.|Выручка компании выросла на двадцать процентов.",
+        "competitor|kəmˈpetɪtər|конкурент|Our main competitor released a cheaper product.|Наш главный конкурент выпустил продукт дешевле.",
+        "strategy|ˈstrætədʒi|стратегия|We need a clear strategy for next year.|Нам нужна чёткая стратегия на следующий год.",
+        "launch|lɔːntʃ|запуск; запускать|The launch is planned for June.|Запуск запланирован на июнь.",
+        "feedback|ˈfiːdbæk|отзыв, обратная связь|Thanks for the feedback — it really helps.|Спасибо за отзыв — это очень помогает.",
+        "priority|praɪˈɔːrəti|приоритет|Fixing this bug is our top priority.|Исправить этот баг — наш главный приоритет."
+      ]
+    },
+    {
+      "name": "Технологии и ИИ",
+      "words": [
+        "algorithm|ˈælɡərɪðəm|алгоритм|The algorithm recommends videos you might like.|Алгоритм рекомендует видео, которые могут понравиться.",
+        "encryption|ɪnˈkrɪpʃən|шифрование|Encryption protects your messages.|Шифрование защищает ваши сообщения.",
+        "privacy|ˈpraɪvəsi|конфиденциальность, частная жизнь|Read the privacy policy before you sign up.|Прочитайте политику конфиденциальности перед регистрацией.",
+        "vulnerability|ˌvʌlnərəˈbɪləti|уязвимость|Hackers used a vulnerability in the old version.|Хакеры воспользовались уязвимостью в старой версии.",
+        "interface|ˈɪntərfeɪs|интерфейс|The new interface is much cleaner.|Новый интерфейс намного чище.",
+        "cloud|klaʊd|облако (хранилище)|All my photos are stored in the cloud.|Все мои фото хранятся в облаке.",
+        "automation|ˌɔːtəˈmeɪʃən|автоматизация|Automation saves us ten hours a week.|Автоматизация экономит нам десять часов в неделю.",
+        "artificial intelligence|ˌɑːrtɪfɪʃəl ɪnˈtelɪdʒəns|искусственный интеллект|Artificial intelligence is changing many jobs.|Искусственный интеллект меняет многие профессии.",
+        "deploy|dɪˈplɔɪ|развёртывать, выкатывать (версию)|We deploy a new version every Friday.|Мы выкатываем новую версию каждую пятницу.",
+        "compatible|kəmˈpætəbəl|совместимый|Is this charger compatible with my phone?|Эта зарядка подходит к моему телефону?",
+        "maintenance|ˈmeɪntənəns|обслуживание, техработы|The server is down for maintenance.|Сервер отключён на техобслуживание.",
+        "bandwidth|ˈbændwɪdθ|пропускная способность; ресурс (на дела)|I don't have the bandwidth for another project.|У меня нет ресурса на ещё один проект."
+      ]
+    },
+    {
+      "name": "Стройка и инженерия",
+      "words": [
+        "structure|ˈstrʌktʃər|конструкция, структура|The structure must survive strong winds.|Конструкция должна выдерживать сильный ветер.",
+        "reinforced|ˌriːɪnˈfɔːrst|армированный, усиленный|The walls are made of reinforced concrete.|Стены из железобетона.",
+        "load-bearing|ˈloʊd berɪŋ|несущий|You can't remove a load-bearing wall.|Несущую стену убирать нельзя.",
+        "ventilation|ˌventɪˈleɪʃən|вентиляция|Poor ventilation causes mold in the bathroom.|Плохая вентиляция вызывает плесень в ванной.",
+        "waterproof|ˈwɔːtərpruːf|водонепроницаемый|Use waterproof paint in the basement.|Используйте влагостойкую краску в подвале.",
+        "demolish|dɪˈmɑːlɪʃ|сносить (здание)|They demolished the old factory last year.|Старый завод снесли в прошлом году.",
+        "surveyor|sərˈveɪər|геодезист; оценщик (строений)|The surveyor checked the land before we bought it.|Геодезист проверил участок перед покупкой.",
+        "excavator|ˈekskəveɪtər|экскаватор|The excavator dug the foundation in two days.|Экскаватор вырыл котлован за два дня.",
+        "engineer|ˌendʒɪˈnɪr|инженер|The engineer approved the new design.|Инженер утвердил новый проект.",
+        "regulation|ˌreɡjəˈleɪʃən|норма, правило (официальное)|Building regulations are strict here.|Строительные нормы здесь строгие.",
+        "inspection|ɪnˈspekʃən|проверка, инспекция|The house passed the safety inspection.|Дом прошёл проверку безопасности.",
+        "sustainable|səˈsteɪnəbəl|экологичный, устойчивый|They build sustainable houses from wood.|Они строят экологичные дома из дерева."
+      ]
+    },
+    {
+      "name": "Кино, игры, медиа",
+      "words": [
+        "genre|ˈʒɑːnrə|жанр|Horror is my least favorite genre.|Хоррор — мой самый нелюбимый жанр.",
+        "cast|kæst|актёрский состав|The cast of this series is fantastic.|Актёрский состав этого сериала потрясающий.",
+        "adaptation|ˌædæpˈteɪʃən|экранизация; адаптация|The movie is an adaptation of a famous game.|Фильм — экранизация известной игры.",
+        "narrative|ˈnærətɪv|повествование, сюжетная линия|The game has a strong narrative.|У игры сильная сюжетная линия.",
+        "immersive|ɪˈmɜːrsɪv|с эффектом погружения|VR makes the experience really immersive.|VR даёт настоящее погружение.",
+        "gameplay|ˈɡeɪmpleɪ|игровой процесс, геймплей|The story is weak, but the gameplay is great.|Сюжет слабый, но геймплей отличный.",
+        "critic|ˈkrɪtɪk|критик|Critics loved the film, but audiences didn't.|Критикам фильм понравился, а зрителям нет.",
+        "audience|ˈɔːdiəns|зрители, аудитория|The audience laughed for the whole show.|Зрители смеялись всё шоу.",
+        "franchise|ˈfræntʃaɪz|франшиза|It's the tenth movie in the franchise.|Это десятый фильм франшизы.",
+        "streaming|ˈstriːmɪŋ|стриминг, потоковое видео|Streaming services produce their own shows.|Стриминговые сервисы снимают свои шоу.",
+        "mechanics|məˈkænɪks|механика (игры)|The combat mechanics are easy to learn.|Боевую механику легко освоить.",
+        "masterpiece|ˈmæstərpiːs|шедевр|Many people call this game a masterpiece.|Многие называют эту игру шедевром."
+      ]
+    },
+    {
+      "name": "Жизнь за границей",
+      "words": [
+        "immigration|ˌɪmɪˈɡreɪʃən|иммиграция|The immigration process took eight months.|Иммиграционный процесс занял восемь месяцев.",
+        "residence|ˈrezɪdəns|проживание; место жительства|I applied for a residence permit.|Я подал на вид на жительство.",
+        "paperwork|ˈpeɪpərwɜːrk|бумаги, оформление документов|There is so much paperwork when you move.|При переезде столько бумажной волокиты.",
+        "bureaucracy|bjʊˈrɑːkrəsi|бюрократия|Bureaucracy here is slow but fair.|Бюрократия здесь медленная, но честная.",
+        "adapt|əˈdæpt|приспосабливаться|It took me a year to adapt to the climate.|Мне понадобился год, чтобы привыкнуть к климату.",
+        "homesick|ˈhoʊmsɪk|тоскующий по дому|I felt homesick during the first winter.|Первой зимой я скучал по дому.",
+        "culture shock|ˈkʌltʃər ʃɑːk|культурный шок|Culture shock is normal in the first months.|Культурный шок — это нормально в первые месяцы.",
+        "integrate|ˈɪntɪɡreɪt|интегрироваться, влиться|Learning the language helps you integrate.|Знание языка помогает влиться.",
+        "fluent|ˈfluːənt|свободно владеющий (языком)|My goal is to become fluent in English.|Моя цель — свободно говорить по-английски.",
+        "relocate|ˌriːˈloʊkeɪt|переезжать (по работе), перевозить|The company offered to relocate me to Berlin.|Компания предложила перевезти меня в Берлин.",
+        "settle|ˈsetəl|обосноваться, устроиться|We settled in a small town near the sea.|Мы обосновались в маленьком городке у моря.",
+        "background|ˈbækɡraʊnd|происхождение, опыт; фон|People here come from different backgrounds.|Люди здесь разного происхождения."
+      ]
+    },
+    {
+      "name": "Спорт и здоровье",
+      "words": [
+        "performance|pərˈfɔːrməns|результат, выступление; производительность|Sleep improves your performance.|Сон улучшает ваши результаты.",
+        "endurance|ɪnˈdʊrəns|выносливость|Long runs build endurance.|Длинные пробежки развивают выносливость.",
+        "recovery|rɪˈkʌvəri|восстановление|Recovery is as important as training.|Восстановление так же важно, как тренировка.",
+        "nutrition|nuːˈtrɪʃən|питание|Good nutrition helps you build muscle.|Правильное питание помогает набрать мышцы.",
+        "routine|ruːˈtiːn|распорядок, привычный режим|My morning routine starts with a run.|Моё утро начинается с пробежки.",
+        "intense|ɪnˈtens|интенсивный, напряжённый|The training was short but intense.|Тренировка была короткой, но интенсивной.",
+        "physical|ˈfɪzɪkəl|физический|The job requires good physical health.|Работа требует хорошего физического здоровья.",
+        "mental|ˈmentəl|психический, умственный|Sport is good for your mental health.|Спорт полезен для психического здоровья.",
+        "motivation|ˌmoʊtɪˈveɪʃən|мотивация|Deadlines give me extra motivation.|Дедлайны дают мне дополнительную мотивацию.",
+        "substitute|ˈsʌbstɪtuːt|запасной (игрок); замена|The substitute scored the winning goal.|Запасной забил победный гол.",
+        "tactics|ˈtæktɪks|тактика|The coach changed tactics at half-time.|В перерыве тренер сменил тактику.",
+        "defeat|dɪˈfiːt|поражение; побеждать|The team learned a lot from that defeat.|Команда многому научилась на том поражении."
+      ]
+    },
+    {
+      "name": "Споры и аргументы",
+      "words": [
+        "argument|ˈɑːrɡjəmənt|довод, аргумент; ссора|That's a strong argument.|Это сильный довод.",
+        "evidence|ˈevɪdəns|доказательства|There is no evidence that it works.|Нет доказательств, что это работает.",
+        "claim|kleɪm|утверждать; утверждение|He claims that he finished first.|Он утверждает, что финишировал первым.",
+        "assume|əˈsuːm|предполагать, считать (без проверки)|I assumed you already knew.|Я думал, ты уже знаешь.",
+        "admit|ədˈmɪt|признавать|I admit that I was wrong.|Признаю, что был неправ.",
+        "deny|dɪˈnaɪ|отрицать|He denied breaking the window.|Он отрицал, что разбил окно.",
+        "persuade|pərˈsweɪd|уговорить, убедить|She persuaded the team to try a new tool.|Она уговорила команду попробовать новый инструмент.",
+        "criticize|ˈkrɪtɪsaɪz|критиковать|Fans criticized the new ending.|Фанаты раскритиковали новую концовку.",
+        "obvious|ˈɑːbviəs|очевидный|The answer seems obvious now.|Теперь ответ кажется очевидным.",
+        "controversial|ˌkɑːntrəˈvɜːrʃəl|спорный, вызывающий споры|AI in art is a controversial topic.|ИИ в искусстве — спорная тема.",
+        "bias|ˈbaɪəs|предвзятость|Every news site has some bias.|У каждого новостного сайта есть предвзятость.",
+        "compromise|ˈkɑːmprəmaɪz|компромисс; идти на компромисс|We found a compromise that works for everyone.|Мы нашли компромисс, который устроил всех."
+      ]
+    },
+    {
+      "name": "Деньги и экономика",
+      "words": [
+        "investment|ɪnˈvestmənt|вложение, инвестиция|Learning English is the best investment.|Изучение английского — лучшее вложение.",
+        "inflation|ɪnˈfleɪʃən|инфляция|Inflation made everything more expensive.|Из-за инфляции всё подорожало.",
+        "economy|ɪˈkɑːnəmi|экономика|The economy is growing slowly.|Экономика растёт медленно.",
+        "profit|ˈprɑːfɪt|прибыль|The shop made a small profit this year.|В этом году магазин получил небольшую прибыль.",
+        "loss|lɔːs|убыток, потеря|The company reported a loss.|Компания объявила об убытках.",
+        "expense|ɪkˈspens|расход, затрата|Rent is our biggest expense.|Аренда — наша самая большая статья расходов.",
+        "mortgage|ˈmɔːrɡɪdʒ|ипотека|They took a mortgage to buy the house.|Они взяли ипотеку на покупку дома.",
+        "refund|ˈriːfʌnd|возврат денег|I asked for a refund because the game didn't work.|Я попросил вернуть деньги, потому что игра не работала.",
+        "fee|fiː|плата, сбор, комиссия|There is no fee for the first transfer.|За первый перевод комиссии нет.",
+        "wealthy|ˈwelθi|богатый, состоятельный|It's a wealthy neighborhood.|Это богатый район.",
+        "crisis|ˈkraɪsɪs|кризис|Many people lost jobs during the crisis.|Во время кризиса многие потеряли работу.",
+        "benefit|ˈbenɪfɪt|выгода, польза; льгота|The job has good benefits, like health insurance.|У работы хорошие льготы, например медстраховка."
+      ]
+    },
+    {
+      "name": "Описания B2",
+      "words": [
+        "efficient|ɪˈfɪʃənt|эффективный, экономичный|The new engine is more efficient.|Новый двигатель экономичнее.",
+        "flexible|ˈfleksəbəl|гибкий|I have flexible working hours.|У меня гибкий график.",
+        "essential|ɪˈsenʃəl|необходимый, важнейший|Good tools are essential for this job.|Хорошие инструменты необходимы для этой работы.",
+        "significant|sɪɡˈnɪfɪkənt|значительный|There was a significant increase in sales.|Продажи значительно выросли.",
+        "accurate|ˈækjərət|точный|The map isn't very accurate.|Карта не очень точная.",
+        "relevant|ˈreləvənt|уместный, имеющий отношение|Only include relevant experience in your CV.|Указывайте в резюме только подходящий опыт.",
+        "reasonable|ˈriːzənəbəl|разумный, приемлемый|The price is reasonable for this quality.|Цена разумная для такого качества.",
+        "curious|ˈkjʊriəs|любопытный, любознательный|I'm curious how it works.|Мне любопытно, как это работает.",
+        "frustrating|ˈfrʌstreɪtɪŋ|досадный, выводящий из себя|Losing at the last level is so frustrating.|Проиграть на последнем уровне — так обидно.",
+        "overwhelming|ˌoʊvərˈwelmɪŋ|ошеломляющий, непосильный|The first week at the new job was overwhelming.|Первая неделя на новой работе была непосильной.",
+        "ambitious|æmˈbɪʃəs|амбициозный|It's an ambitious plan, but we can do it.|План амбициозный, но мы справимся.",
+        "reluctant|rɪˈlʌktənt|неохотный|He was reluctant to change his routine.|Он неохотно менял свой распорядок."
+      ]
+    },
+    {
+      "name": "Глаголы B2",
+      "words": [
+        "approach|əˈproʊtʃ|подход; подходить (к задаче)|We need a different approach.|Нам нужен другой подход.",
+        "consider|kənˈsɪdər|рассматривать, обдумывать|Have you considered moving abroad?|Ты думал о переезде за границу?",
+        "determine|dɪˈtɜːrmɪn|определять|The test determines your level.|Тест определяет ваш уровень.",
+        "emphasize|ˈemfəsaɪz|подчёркивать|The coach emphasized the importance of rest.|Тренер подчеркнул важность отдыха.",
+        "establish|ɪˈstæblɪʃ|основывать, устанавливать|The company was established in 2015.|Компания основана в 2015 году.",
+        "involve|ɪnˈvɑːlv|включать, вовлекать|The job involves a lot of travel.|Работа связана с частыми поездками.",
+        "maintain|meɪnˈteɪn|поддерживать, обслуживать|It's hard to maintain an old house.|Старый дом трудно содержать.",
+        "obtain|əbˈteɪn|получать (официально)|You must obtain a visa before you travel.|Перед поездкой нужно получить визу.",
+        "pursue|pərˈsuː|стремиться, заниматься (целью)|She decided to pursue a career in design.|Она решила строить карьеру в дизайне.",
+        "recognize|ˈrekəɡnaɪz|узнавать; признавать|I didn't recognize him with a beard.|Я не узнал его с бородой.",
+        "rely|rɪˈlaɪ|полагаться|You can rely on me.|Можешь на меня положиться.",
+        "struggle|ˈstrʌɡəl|с трудом справляться, бороться|I struggle with English phrasal verbs.|Мне трудно даются фразовые глаголы.",
+        "tend|tend|быть склонным, обычно (делать)|I tend to work better in the morning.|Утром я обычно работаю лучше.",
+        "handle|ˈhændəl|справляться, разбираться с|Can you handle this task alone?|Справишься с этой задачей сам?"
+      ]
+    },
+    {
+      "name": "Фразовые глаголы",
+      "words": [
+        "figure out|ˈfɪɡjər aʊt|разобраться, понять|I can't figure out how this works.|Не могу разобраться, как это работает.",
+        "come up with|kʌm ʌp wɪð|придумать|She came up with a great idea.|Она придумала отличную идею.",
+        "give up|ɡɪv ʌp|сдаваться, бросать|Don't give up — you're almost there.|Не сдавайся — ты почти у цели.",
+        "look forward to|lʊk ˈfɔːrwərd tə|ждать с нетерпением|I'm looking forward to the weekend.|Жду не дождусь выходных.",
+        "put off|pʊt ɔːf|откладывать|Stop putting off your English lessons!|Хватит откладывать уроки английского!",
+        "run out of|rʌn aʊt əv|заканчиваться (о запасе)|We ran out of cement.|У нас закончился цемент.",
+        "turn down|tɜːrn daʊn|отклонять, отказываться|I turned down the job offer.|Я отказался от предложения о работе.",
+        "get along with|ɡet əˈlɔːŋ wɪð|ладить с|I get along with my colleagues.|Я лажу с коллегами.",
+        "carry on|ˈkæri ɑːn|продолжать|Carry on, I'm listening.|Продолжай, я слушаю.",
+        "set up|set ʌp|настраивать, устанавливать; основывать|It took an hour to set up the router.|Настройка роутера заняла час.",
+        "find out|faɪnd aʊt|узнать, выяснить|I found out the truth yesterday.|Вчера я узнал правду.",
+        "deal with|diːl wɪð|разбираться с, иметь дело с|I'll deal with the client tomorrow.|С клиентом я разберусь завтра."
+      ]
+    },
+    {
+      "name": "Связки B2",
+      "words": [
+        "moreover|mɔːrˈoʊvər|более того|The flat is cheap. Moreover, it's near the metro.|Квартира дешёвая. Более того, рядом с метро.",
+        "nevertheless|ˌnevərðəˈles|тем не менее|It was raining. Nevertheless, the match continued.|Шёл дождь. Тем не менее матч продолжился.",
+        "whereas|werˈæz|тогда как, в то время как|I like action games, whereas my brother prefers puzzles.|Я люблю экшен, а брат предпочитает головоломки.",
+        "otherwise|ˈʌðərwaɪz|иначе, в противном случае|Save your progress, otherwise you'll lose it.|Сохраните прогресс, иначе потеряете его.",
+        "on the other hand|ɑːn ði ˈʌðər hænd|с другой стороны|It's expensive. On the other hand, it lasts for years.|Это дорого. С другой стороны, служит годами.",
+        "as a result|æz ə rɪˈzʌlt|в результате|He trained every day. As a result, he won.|Он тренировался каждый день. В результате победил.",
+        "even though|ˈiːvən ðoʊ|хотя, даже несмотря на то что|Even though I was tired, I finished the lesson.|Хотя я устал, я закончил урок.",
+        "as long as|æz lɔːŋ æz|при условии что, пока|You can borrow it as long as you return it.|Можешь взять, если вернёшь.",
+        "rather than|ˈræðər ðæn|вместо того чтобы, а не|I'd rather walk than take the bus.|Я лучше пройдусь, чем поеду на автобусе.",
+        "apparently|əˈpærəntli|судя по всему, как оказалось|Apparently, the meeting was cancelled.|Судя по всему, встречу отменили.",
+        "definitely|ˈdefɪnətli|определённо, точно|I'll definitely visit you next summer.|Я точно приеду к тебе следующим летом.",
+        "in spite of|ɪn spaɪt əv|несмотря на|In spite of the delay, we arrived on time.|Несмотря на задержку, мы прибыли вовремя."
+      ]
+    }
+  ]
+}

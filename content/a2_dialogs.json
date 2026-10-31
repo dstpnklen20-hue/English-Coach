@@ -1,0 +1,57 @@
+{
+  "dialogs": [
+    {
+      "id": "a2-d-interview",
+      "title": "Собеседование",
+      "topic": "Работа",
+      "level": "A2",
+      "intro": "Вас собеседуют на работу в IT-компанию.",
+      "lines": [
+        { "who": "them", "en": "Good morning! Please have a seat. Tell me about yourself.", "ru": "Доброе утро! Присаживайтесь. Расскажите о себе." },
+        { "who": "me", "hint": "Скажите, что работаете с компьютерами три года", "options": ["I have worked with computers for three years.", "I work with computers since three years.", "I am working computers three years."], "ru": "Я работаю с компьютерами три года." },
+        { "who": "them", "en": "Why do you want to work here?", "ru": "Почему вы хотите работать у нас?" },
+        { "who": "me", "hint": "Скажите, что хотите учиться и расти", "options": ["Because I want to learn and grow.", "Because I want learn and grow.", "For I wanting to learn."], "ru": "Потому что хочу учиться и расти." },
+        { "who": "them", "en": "What is your biggest strength?", "ru": "Ваша самая сильная сторона?" },
+        { "who": "me", "hint": "Скажите, что очень быстро учитесь", "options": ["I learn very fast.", "I learn very fastly.", "I am learn fast."], "ru": "Я очень быстро учусь." },
+        { "who": "them", "en": "Great. Do you have any questions for us?", "ru": "Отлично. У вас есть вопросы к нам?" },
+        { "who": "me", "hint": "Спросите, когда можно начать", "options": ["When can I start?", "When I can start?", "When start I can?"], "ru": "Когда я могу начать?" },
+        { "who": "them", "en": "Next Monday, if everything is OK. We will call you.", "ru": "В следующий понедельник, если всё в порядке. Мы вам позвоним." }
+      ]
+    },
+    {
+      "id": "a2-d-shop",
+      "title": "Магазин электроники",
+      "topic": "Покупки",
+      "level": "A2",
+      "intro": "Вы выбираете новый телефон.",
+      "lines": [
+        { "who": "them", "en": "Hi! Can I help you?", "ru": "Здравствуйте! Чем помочь?" },
+        { "who": "me", "hint": "Скажите, что ищете телефон с хорошей батареей", "options": ["I'm looking for a phone with a good battery.", "I look a phone with good battery.", "I'm looking a phone for good battery."], "ru": "Я ищу телефон с хорошей батареей." },
+        { "who": "them", "en": "This one is very popular. The battery lasts two days.", "ru": "Этот очень популярен. Батарея держит два дня." },
+        { "who": "me", "hint": "Спросите, сколько он стоит", "options": ["How much does it cost?", "How much it costs?", "How many does it cost?"], "ru": "Сколько он стоит?" },
+        { "who": "them", "en": "Four hundred dollars.", "ru": "Четыреста долларов." },
+        { "who": "me", "hint": "Скажите, что это дороже, чем вы хотели", "options": ["It's more expensive than I wanted.", "It's expensiver than I wanted.", "It's more expensive that I want."], "ru": "Это дороже, чем я хотел." },
+        { "who": "them", "en": "We have a ten percent discount today.", "ru": "Сегодня у нас скидка десять процентов." },
+        { "who": "me", "hint": "Скажите: «Хорошо, я его возьму»", "options": ["OK, I'll take it.", "OK, I take it tomorrow.", "OK, I'm going take it."], "ru": "Хорошо, я его возьму." },
+        { "who": "them", "en": "Great choice! Here is your receipt.", "ru": "Отличный выбор! Вот ваш чек." }
+      ]
+    },
+    {
+      "id": "a2-d-doctor",
+      "title": "У врача",
+      "topic": "Здоровье",
+      "level": "A2",
+      "intro": "Вы пришли к врачу после тренировки.",
+      "lines": [
+        { "who": "them", "en": "Hello. What's the problem?", "ru": "Здравствуйте. Что беспокоит?" },
+        { "who": "me", "hint": "Скажите, что болит колено", "options": ["My knee hurts.", "My knee is hurting me very pain.", "I have knee hurts."], "ru": "У меня болит колено." },
+        { "who": "them", "en": "When did it start?", "ru": "Когда это началось?" },
+        { "who": "me", "hint": "Скажите: вчера после тренировки", "options": ["After training yesterday.", "After training tomorrow.", "Since training yesterday ago."], "ru": "Вчера после тренировки." },
+        { "who": "them", "en": "I see. You should rest for a week and take this medicine.", "ru": "Понятно. Вам стоит отдохнуть неделю и принимать это лекарство." },
+        { "who": "me", "hint": "Спросите, можно ли вам бегать", "options": ["Can I go running?", "Can I to run?", "Do I can run?"], "ru": "Можно мне бегать?" },
+        { "who": "them", "en": "No, you mustn't run for two weeks.", "ru": "Нет, бегать нельзя две недели." },
+        { "who": "me", "hint": "Поблагодарите доктора", "options": ["Thank you, doctor.", "Thanks you, doctor.", "Thank to you, doctor."], "ru": "Спасибо, доктор." }
+      ]
+    }
+  ]
+}

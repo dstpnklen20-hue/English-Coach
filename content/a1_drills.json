@@ -1,0 +1,578 @@
+{
+  "sets": [
+    {
+      "id": "a1-tr-day",
+      "kind": "translate",
+      "title": "Мой день",
+      "level": "A1",
+      "topic": "Каждый день",
+      "phrases": [
+        {
+          "ru": "Я работаю в офисе.",
+          "en": "I work in an office.",
+          "extra": [
+            "works",
+            "a"
+          ],
+          "hint": "После I глагол без -s: I work. Перед гласным звуком — an: an office."
+        },
+        {
+          "ru": "Она любит видеоигры.",
+          "en": "She likes video games.",
+          "extra": [
+            "like",
+            "is"
+          ],
+          "hint": "He / she / it — глагол с -s: she likes."
+        },
+        {
+          "ru": "Мы не смотрим телевизор.",
+          "en": "We don't watch TV.",
+          "extra": [
+            "doesn't",
+            "not"
+          ],
+          "hint": "Отрицание: don't + глагол. Для he / she — doesn't."
+        },
+        {
+          "ru": "Где ты живёшь?",
+          "en": "Where do you live?",
+          "extra": [
+            "does",
+            "are"
+          ],
+          "hint": "Вопрос: Where + do + you + глагол."
+        },
+        {
+          "ru": "У меня есть брат.",
+          "en": "I have a brother.",
+          "extra": [
+            "has",
+            "am"
+          ],
+          "hint": "I have, а he / she has."
+        },
+        {
+          "ru": "Он встаёт в семь.",
+          "en": "He gets up at seven.",
+          "extra": [
+            "get",
+            "in"
+          ],
+          "hint": "Время по часам — at seven. He — gets."
+        },
+        {
+          "ru": "Мой телефон новый.",
+          "en": "My phone is new.",
+          "extra": [
+            "are",
+            "me"
+          ],
+          "hint": "В английском нужен глагол is: My phone is new."
+        },
+        {
+          "ru": "Я умею плавать.",
+          "en": "I can swim.",
+          "extra": [
+            "to",
+            "swims"
+          ],
+          "hint": "После can — глагол без to и без -s."
+        }
+      ]
+    },
+    {
+      "id": "a1-tr-travel",
+      "kind": "translate",
+      "title": "В дороге",
+      "level": "A1",
+      "topic": "Путешествия",
+      "phrases": [
+        {
+          "ru": "Где вокзал?",
+          "en": "Where is the station?",
+          "extra": [
+            "are",
+            "it"
+          ],
+          "hint": "Один предмет — is: Where is…?"
+        },
+        {
+          "ru": "Мне нужен билет.",
+          "en": "I need a ticket.",
+          "extra": [
+            "needs",
+            "an"
+          ],
+          "hint": "I need. Перед согласным звуком — a: a ticket."
+        },
+        {
+          "ru": "Сколько это стоит?",
+          "en": "How much is it?",
+          "extra": [
+            "many",
+            "are"
+          ],
+          "hint": "Цена — how much (many — для того, что считают по штукам)."
+        },
+        {
+          "ru": "Я из России.",
+          "en": "I am from Russia.",
+          "extra": [
+            "at",
+            "is"
+          ],
+          "hint": "Откуда вы — from. После I — am."
+        },
+        {
+          "ru": "Автобус опаздывает.",
+          "en": "The bus is late.",
+          "extra": [
+            "are",
+            "a"
+          ],
+          "hint": "«Опаздывает» — is late. Конкретный автобус — the bus."
+        },
+        {
+          "ru": "Можно мне воды?",
+          "en": "Can I have some water?",
+          "extra": [
+            "has",
+            "many"
+          ],
+          "hint": "Просьба: Can I have…? Вода не считается по штукам — some water."
+        },
+        {
+          "ru": "Отель очень хороший.",
+          "en": "The hotel is very good.",
+          "extra": [
+            "are",
+            "much"
+          ],
+          "hint": "Very + прилагательное: very good."
+        },
+        {
+          "ru": "Я не говорю по-французски.",
+          "en": "I don't speak French.",
+          "extra": [
+            "doesn't",
+            "no"
+          ],
+          "hint": "Отрицание с I — don't + глагол."
+        }
+      ]
+    },
+    {
+      "id": "a1-cl-day",
+      "kind": "cloze",
+      "title": "My working day",
+      "level": "A1",
+      "topic": "Работа",
+      "text": "My name is Leo. I [work] in an office in the city. I [get] up at seven and [have] breakfast. Then I [go] to work by bus. At work I [write] code for phone apps. I like my job, but it is not [easy]. In the evening I [play] video games or [listen] to music.",
+      "extra": [
+        "sleep",
+        "cold"
+      ],
+      "ru": "Меня зовут Лео. Я работаю в офисе в городе. Встаю в семь и завтракаю. Потом еду на работу на автобусе. На работе я пишу код для приложений на телефоне. Мне нравится моя работа, но она непростая. Вечером я играю в видеоигры или слушаю музыку.",
+      "glossary": {
+        "code": "код",
+        "apps": "приложения",
+        "breakfast": "завтрак",
+        "evening": "вечер",
+        "city": "город"
+      }
+    },
+    {
+      "id": "a1-cl-football",
+      "kind": "cloze",
+      "title": "Football on Saturday",
+      "level": "A1",
+      "topic": "Спорт",
+      "text": "On Saturday I [play] football with my friends. We [meet] at the park at ten. My friend Tom is very [fast], and he always [scores] goals. After the game we are [hungry|tired], so we [eat] pizza in a small cafe. Then I [take] the bus home. I am [tired|hungry], but happy.",
+      "extra": [
+        "slow",
+        "drinks"
+      ],
+      "ru": "В субботу я играю в футбол с друзьями. Мы встречаемся в парке в десять. Мой друг Том очень быстрый и всегда забивает голы. После игры мы голодные, поэтому едим пиццу в маленьком кафе. Потом я еду домой на автобусе. Я устал, но счастлив.",
+      "glossary": {
+        "scores": "забивает",
+        "goals": "голы",
+        "hungry": "голодный",
+        "tired": "уставший",
+        "always": "всегда"
+      }
+    },
+    {
+      "id": "a1-m-verbs",
+      "kind": "match",
+      "title": "Глагол + слово",
+      "level": "A1",
+      "topic": "Сочетания",
+      "pairs": [
+        {
+          "a": "play",
+          "b": "football",
+          "ru": "играть в футбол",
+          "example": "We play football on Sundays."
+        },
+        {
+          "a": "take",
+          "b": "a photo",
+          "ru": "сфотографировать",
+          "example": "Can you take a photo of us?"
+        },
+        {
+          "a": "go",
+          "b": "shopping",
+          "ru": "ходить по магазинам",
+          "example": "I go shopping on Saturday."
+        },
+        {
+          "a": "have",
+          "b": "breakfast",
+          "ru": "завтракать",
+          "example": "I have breakfast at eight."
+        },
+        {
+          "a": "watch",
+          "b": "TV",
+          "ru": "смотреть телевизор",
+          "example": "My dad watches TV every evening."
+        },
+        {
+          "a": "listen to",
+          "b": "music",
+          "ru": "слушать музыку",
+          "example": "I listen to music on the bus."
+        },
+        {
+          "a": "ride",
+          "b": "a bike",
+          "ru": "кататься на велосипеде",
+          "example": "She rides a bike to work."
+        },
+        {
+          "a": "brush",
+          "b": "my teeth",
+          "ru": "чистить зубы",
+          "example": "I brush my teeth twice a day."
+        }
+      ]
+    },
+    {
+      "id": "a1-m-qa",
+      "kind": "match",
+      "title": "Вопрос — ответ",
+      "level": "A1",
+      "topic": "Знакомство",
+      "pairs": [
+        {
+          "a": "How are you?",
+          "b": "I'm fine, thanks."
+        },
+        {
+          "a": "What's your name?",
+          "b": "I'm Leo."
+        },
+        {
+          "a": "Where are you from?",
+          "b": "From Russia."
+        },
+        {
+          "a": "How old are you?",
+          "b": "Thirty."
+        },
+        {
+          "a": "What do you do?",
+          "b": "I'm a builder."
+        },
+        {
+          "a": "Do you like games?",
+          "b": "Yes, I do."
+        },
+        {
+          "a": "Can you swim?",
+          "b": "No, I can't."
+        },
+        {
+          "a": "Where is the bus stop?",
+          "b": "Over there."
+        }
+      ]
+    },
+    {
+      "id": "a1-re-meet",
+      "kind": "reply",
+      "title": "Знакомство и вежливость",
+      "level": "A1",
+      "topic": "Общение",
+      "items": [
+        {
+          "type": "choice",
+          "q": "Hi! How are you?",
+          "ru": "Коллега здоровается утром.",
+          "options": [
+            "Fine, thanks. And you?",
+            "I'm thirty.",
+            "Yes, I am."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Это ответ на How old are you? — «Сколько тебе лет?»",
+            "Yes, I am — ответ на вопрос «да/нет», например Are you OK?"
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Nice to meet you.",
+          "ru": "Вас знакомят с новым коллегой.",
+          "options": [
+            "Thank you very much.",
+            "Nice to meet you too.",
+            "Goodbye."
+          ],
+          "answer": 1,
+          "why": [
+            "В ответ на «приятно познакомиться» говорят то же самое + too.",
+            "",
+            "Goodbye — «до свидания», а разговор только начался."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Thank you!",
+          "ru": "Вы помогли другу, он благодарит.",
+          "options": [
+            "Please.",
+            "Sorry.",
+            "You're welcome."
+          ],
+          "answer": 2,
+          "why": [
+            "Please — «пожалуйста» при просьбе, а не в ответ на «спасибо».",
+            "Sorry — «извините», вы ни в чём не виноваты.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Sorry, I'm late.",
+          "ru": "Друг опоздал на встречу.",
+          "options": [
+            "No problem.",
+            "You're welcome.",
+            "Me too."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "You're welcome — ответ на «спасибо», а не на «извини».",
+            "Me too — «я тоже», но опоздали не вы."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "What do you do?",
+          "ru": "Новый знакомый спрашивает о вас.",
+          "options": [
+            "I'm fine.",
+            "I'm a programmer.",
+            "I do it."
+          ],
+          "answer": 1,
+          "why": [
+            "I'm fine — ответ на How are you?",
+            "",
+            "What do you do? — «Кем ты работаешь?», а I do it — «я это делаю»."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Where are you from?",
+          "ru": "Вопрос в игровом чате.",
+          "options": [
+            "I'm at home.",
+            "From nine to six.",
+            "I'm from Russia."
+          ],
+          "answer": 2,
+          "why": [
+            "I'm at home — «я дома», а спросили, откуда вы.",
+            "From nine to six — время работы, а не страна.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Can you help me?",
+          "ru": "Коллега просит помочь.",
+          "options": [
+            "Yes, of course.",
+            "Yes, I help.",
+            "No, thank you."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Короткий ответ на Can you…? — Yes, I can или Yes, of course.",
+            "No, thank you — отказ от предложения, а вас просят о помощи."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "See you tomorrow!",
+          "ru": "Конец рабочего дня.",
+          "options": [
+            "Good morning!",
+            "See you!",
+            "Nice to meet you."
+          ],
+          "answer": 1,
+          "why": [
+            "Good morning — приветствие утром, а вы прощаетесь.",
+            "",
+            "Nice to meet you говорят при знакомстве."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1-re-cafe",
+      "kind": "reply",
+      "title": "В кафе и магазине",
+      "level": "A1",
+      "topic": "Покупки",
+      "items": [
+        {
+          "type": "choice",
+          "q": "Can I help you?",
+          "ru": "Вы заходите в магазин.",
+          "options": [
+            "Yes, I'm looking for a charger.",
+            "Yes, you can help.",
+            "I'm fine, thanks."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Дословно, но звучит странно — лучше сразу сказать, что вы ищете.",
+            "I'm fine — ответ на How are you?"
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "What would you like?",
+          "ru": "Официант в кафе.",
+          "options": [
+            "I like coffee.",
+            "A coffee, please.",
+            "Yes, please."
+          ],
+          "answer": 1,
+          "why": [
+            "I like coffee — «я люблю кофе» вообще, а заказ звучит иначе.",
+            "",
+            "Yes, please — ответ на вопрос «да/нет», а спросили «что»."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Small or large?",
+          "ru": "Вам предлагают выбрать размер кофе.",
+          "options": [
+            "Yes, small.",
+            "It's small.",
+            "Small, please."
+          ],
+          "answer": 2,
+          "why": [
+            "Yes не нужно — это вопрос выбора, а не «да/нет».",
+            "It's small — «он маленький», описание, а не выбор.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "That's five dollars.",
+          "ru": "Кассир называет цену.",
+          "options": [
+            "Here you are.",
+            "You're welcome.",
+            "How are you?"
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "You're welcome — ответ на «спасибо».",
+            "Вопрос «как дела?» здесь не к месту."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Card or cash?",
+          "ru": "Кассир спрашивает, как вы платите.",
+          "options": [
+            "Yes, card.",
+            "By card, please.",
+            "I have money."
+          ],
+          "answer": 1,
+          "why": [
+            "Yes не нужно — вас просят выбрать.",
+            "",
+            "I have money — «у меня есть деньги», это не ответ на вопрос."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Anything else?",
+          "ru": "Продавец уточняет заказ.",
+          "options": [
+            "No, that's all, thanks.",
+            "No, I'm not.",
+            "Yes, it is."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "No, I'm not — ответ на вопросы с Are you…?",
+            "Yes, it is — ответ на вопросы с Is it…?"
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Is this seat free?",
+          "ru": "В кафе кто-то спрашивает про стул рядом с вами.",
+          "options": [
+            "Yes, I am.",
+            "No, thank you.",
+            "Yes, please sit down."
+          ],
+          "answer": 2,
+          "why": [
+            "Yes, I am — ответ на вопрос с Are you…?",
+            "No, thank you — отказ от предложения; про место так не отвечают.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Enjoy your meal!",
+          "ru": "Официант приносит еду.",
+          "options": [
+            "Thanks!",
+            "Sorry!",
+            "Good night!"
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Sorry — «извините», извиняться не за что.",
+            "Good night — «спокойной ночи», так говорят перед сном."
+          ]
+        }
+      ]
+    }
+  ]
+}
