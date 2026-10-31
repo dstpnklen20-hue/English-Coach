@@ -1,5 +1,6 @@
 package com.englishcoach.app.data.db
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
@@ -22,6 +23,10 @@ data class WordEntity(
     val level: String,
     val source: String = "course",
     val updatedAt: Long = System.currentTimeMillis(),
+    /** Отмечено «знаю это слово»: не показывается ни в повторениях, ни в новых. Прогресс карточек сохраняется. */
+    @ColumnInfo(defaultValue = "0") val known: Boolean = false,
+    /** Когда отметку поставили или сняли — для синхронизации (новее побеждает); 0 — ни разу. */
+    @ColumnInfo(defaultValue = "0") val knownAt: Long = 0,
 )
 
 /** Карточка повторения со состоянием FSRS. Одно слово — несколько карточек по направлениям. */

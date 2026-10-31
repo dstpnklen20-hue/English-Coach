@@ -67,6 +67,25 @@ class ReviewViewModel(private val c: AppContainer) : ViewModel() {
         showNext()
     }
 
+    /**
+     * «Знаю это слово»: все его карточки уходят из этой сессии и из будущих повторений.
+     * Если уходили новые карточки — на их место берутся следующие новые слова, лимит дня не тратится.
+     */
+    fun markKnown() {
+        val cur = ui.current ?: return
+        val wordId = cur.word.id
+        val removedNew = (queue.filter { it.word.id == wordId } + cur).count { it.card.state == 0 }
+        queue.removeAll { it.word.id == wordId }
+        viewModelScope.launch {
+            saves.withLock { c.study.setKnown(wordId, true) }
+            val more = c.study.moreNewCards(queue.map { it.card.id }.toSet() + cur.card.id, removedNew)
+            queue.addAll(more)
+            // Очередь могла кончиться, пока подбирались новые слова, — тогда сразу показать следующее
+            if (ui.current == null && more.isNotEmpty()) showNext() else ui = ui.copy(remaining = queue.size + if (ui.current != null) 1 else 0)
+        }
+        showNext()
+    }
+
     fun speak(text: String, slow: Boolean = false) = c.tts.speak(text, slow)
 
     private fun showNext() {

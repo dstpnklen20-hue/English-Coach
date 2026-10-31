@@ -41,6 +41,10 @@ data class CardDto(
 @Serializable
 data class ReviewDto(val uid: String, val cardUid: String, val rating: Int, val reviewedAt: Long, val durationMs: Long)
 
+/** Отметка «знаю» у слова (любого, и курса тоже): uid слова, отмечено ли, когда изменено. */
+@Serializable
+data class KnownDto(val uid: String, val known: Boolean, val at: Long)
+
 @Serializable
 data class ActivityDto(
     val uid: String, val kind: String, val itemId: String, val correct: Int, val total: Int, val durationMs: Long, val at: Long,
@@ -52,9 +56,11 @@ object Kind {
     const val REVIEW = "review"
     const val ACTIVITY = "activity"
     const val SETTINGS = "settings"
+    /** Появилось в 1.3.0; старые версии такие записи пропускают. */
+    const val KNOWN = "known"
 
-    /** Порядок применения: слово раньше своих карточек, карточка раньше своих ответов. */
-    val ORDER = listOf(WORD, CARD, REVIEW, ACTIVITY, SETTINGS)
+    /** Порядок применения: слово раньше своих карточек и отметки, карточка раньше своих ответов. */
+    val ORDER = listOf(WORD, KNOWN, CARD, REVIEW, ACTIVITY, SETTINGS)
 }
 
 /**
@@ -128,6 +134,9 @@ class SyncRepository(
         db.wordDao().ownChangedSince(since).forEach { w ->
             out += record(Kind.WORD, w.uid, w.updatedAt, WordDto(w.uid, w.en, w.ru, w.transcription, w.example, w.exampleRu, w.topic, w.level, w.source, w.updatedAt))
         }
+        db.wordDao().knownChangedSince(since).forEach { w ->
+            out += record(Kind.KNOWN, w.uid, w.knownAt, KnownDto(w.uid, w.known, w.knownAt))
+        }
         db.cardDao().touchedSince(since).forEach { (c, w) ->
             out += record(Kind.CARD, c.uid, c.updatedAt, CardDto(c.uid, w.uid, c.direction, c.due, c.stability, c.difficulty, c.reps, c.lapses, c.state, c.lastReview, c.updatedAt))
         }
@@ -177,6 +186,11 @@ class SyncRepository(
                             exampleRu = d.exampleRu, topic = d.topic, level = d.level, updatedAt = d.updatedAt),
                     )
                 }
+            }
+            Kind.KNOWN -> {
+                val d = json.decodeFromJsonElement<KnownDto>(r.data)
+                val word = db.wordDao().byUid(d.uid) ?: return
+                if (newer(d.at, word.knownAt)) db.wordDao().setKnown(word.id, d.known, d.at)
             }
             Kind.CARD -> {
                 val d = json.decodeFromJsonElement<CardDto>(r.data)

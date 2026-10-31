@@ -33,6 +33,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -92,6 +93,10 @@ fun ReviewScreen(onClose: () -> Unit) {
                         val revealed = if (item.card.id == ui.current?.card?.id) ui.revealed else true
                         CardFace(item, revealed, onReveal = vm::reveal, onSpeak = vm::speak)
                     }
+                }
+                // Знакомое слово можно убрать насовсем — и при первом показе, и в повторении; вернуть — в «Словах»
+                TextButton(onClick = vm::markKnown, modifier = Modifier.align(Alignment.CenterHorizontally)) {
+                    Text(if (cur.card.state == 0) "Я уже знаю это слово" else "Знаю это слово — больше не показывать")
                 }
                 AnimatedContent(
                     ui.revealed,

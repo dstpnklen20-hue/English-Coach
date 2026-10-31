@@ -8,10 +8,11 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [WordEntity::class, CardEntity::class, ReviewLogEntity::class, ActivityEntity::class],
-    version = 2,
+    version = 3,
     exportSchema = true,
     // v2: таблица activity_log (практика) — Room сам создаёт её при обновлении, данные сохраняются
-    autoMigrations = [AutoMigration(from = 1, to = 2)],
+    // v3: у слов отметка «знаю» (known, knownAt)
+    autoMigrations = [AutoMigration(from = 1, to = 2), AutoMigration(from = 2, to = 3)],
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun wordDao(): WordDao

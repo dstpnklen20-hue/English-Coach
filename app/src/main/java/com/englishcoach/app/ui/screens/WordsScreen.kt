@@ -17,11 +17,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material.icons.outlined.Done
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -49,11 +51,13 @@ import kotlinx.coroutines.launch
 /** Слово считается выученным, когда все его карточки держатся в памяти ≥ 21 дня. */
 private const val KNOWN_STABILITY_DAYS = 21.0
 
-private enum class Status(val label: String) { New("Новые"), Learning("Учу"), Known("Знаю") }
+/** Выучено — запомнено по повторениям; Знаю — отмечено вручную, в повторениях не показывается. */
+private enum class Status(val label: String) { New("Новые"), Learning("Учу"), Learned("Выучено"), Known("Знаю") }
 
 private fun WordProgress.status() = when {
+    word.known -> Status.Known
     maxReps == 0 -> Status.New
-    minStability >= KNOWN_STABILITY_DAYS -> Status.Known
+    minStability >= KNOWN_STABILITY_DAYS -> Status.Learned
     else -> Status.Learning
 }
 
@@ -61,7 +65,8 @@ private fun WordProgress.status() = when {
 private fun Status.color(): Color = when (this) {
     Status.New -> MaterialTheme.colorScheme.outline
     Status.Learning -> Warm
-    Status.Known -> Success
+    Status.Learned -> Success
+    Status.Known -> MaterialTheme.colorScheme.primary
 }
 
 @Composable
@@ -70,14 +75,18 @@ fun WordsScreen(onImport: () -> Unit) {
     val words by remember { c.db.wordDao().progressFlow() }.collectAsStateWithLifecycle(emptyList())
     var query by rememberSaveable { mutableStateOf("") }
     var topic by rememberSaveable { mutableStateOf<String?>(null) }
+    var status by rememberSaveable { mutableStateOf<Status?>(null) }
     var adding by rememberSaveable { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
 
     val topics = remember(words) { words.map { it.word.topic }.distinct() }
     val counts = remember(words) { words.groupingBy { it.status() }.eachCount() }
-    val shown = remember(words, query, topic) {
+    val shown = remember(words, query, topic, status) {
         val q = query.trim().lowercase()
-        words.filter { (topic == null || it.word.topic == topic) && (q.isEmpty() || q in it.word.en.lowercase() || q in it.word.ru.lowercase()) }
+        words.filter {
+            (topic == null || it.word.topic == topic) && (status == null || it.status() == status) &&
+                (q.isEmpty() || q in it.word.en.lowercase() || q in it.word.ru.lowercase())
+        }
     }
 
     Box(Modifier.fillMaxSize()) {
@@ -91,16 +100,15 @@ fun WordsScreen(onImport: () -> Unit) {
                     Text("Слова", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f))
                     TextButton(onClick = onImport) { Text("Импорт") }
                 }
-                Row(Modifier.padding(vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                    Status.entries.forEach { s ->
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Box(Modifier.size(8.dp).background(s.color(), CircleShape))
-                            Text(
-                                "  ${s.label}: ${counts[s] ?: 0}",
-                                style = MaterialTheme.typography.labelLarge,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                        }
+                // Счётчики статусов — они же фильтр: «Знаю» открывает список отмеченных слов, откуда их можно вернуть
+                LazyRow(Modifier.padding(vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    items(Status.entries) { s ->
+                        FilterChip(
+                            selected = status == s,
+                            onClick = { status = if (status == s) null else s },
+                            label = { Text("${s.label}: ${counts[s] ?: 0}") },
+                            leadingIcon = { Box(Modifier.size(8.dp).background(s.color(), CircleShape)) },
+                        )
                     }
                 }
                 OutlinedTextField(
@@ -121,8 +129,16 @@ fun WordsScreen(onImport: () -> Unit) {
                     }
                 }
             }
+            if (status == Status.Known && shown.isEmpty()) {
+                item {
+                    Text(
+                        "Здесь будут слова, отмеченные «знаю», — в повторении или кнопкой ✓ в списке. Они не показываются в карточках, пока вы не вернёте их в изучение.",
+                        style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
             items(shown, key = { it.word.id }) { wp ->
-                WordRow(wp, onClick = { c.tts.speak(wp.word.en) })
+                WordRow(wp, onClick = { c.tts.speak(wp.word.en) }, onKnown = { known -> scope.launch { c.study.setKnown(wp.word.id, known) } })
             }
         }
         FloatingActionButton(
@@ -144,7 +160,7 @@ fun WordsScreen(onImport: () -> Unit) {
 }
 
 @Composable
-private fun WordRow(wp: WordProgress, onClick: () -> Unit) {
+private fun WordRow(wp: WordProgress, onClick: () -> Unit, onKnown: (Boolean) -> Unit) {
     val s = wp.status()
     Row(
         Modifier.fillMaxWidth()
@@ -159,7 +175,14 @@ private fun WordRow(wp: WordProgress, onClick: () -> Unit) {
             Text(wp.word.en, style = MaterialTheme.typography.titleMedium)
             Text(wp.word.ru, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
-        Text(wp.word.topic, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        if (s == Status.Known) {
+            TextButton(onClick = { onKnown(false) }) { Text("Вернуть в изучение") }
+        } else {
+            Text(wp.word.topic, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            IconButton(onClick = { onKnown(true) }) {
+                Icon(Icons.Outlined.Done, "Знаю это слово", tint = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        }
     }
 }
 

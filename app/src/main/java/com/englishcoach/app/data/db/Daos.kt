@@ -39,14 +39,14 @@ interface WordDao {
 
     /** Слова курса уровня, которые ещё ни разу не повторялись — для быстрой проверки «знаю / не знаю». */
     @Query(
-        """SELECT w.* FROM words w WHERE w.level = :level AND w.source = 'course'
+        """SELECT w.* FROM words w WHERE w.level = :level AND w.source = 'course' AND w.known = 0
            AND NOT EXISTS (SELECT 1 FROM cards c WHERE c.wordId = w.id AND c.reps > 0) ORDER BY w.id""",
     )
     suspend fun untouched(level: String): List<WordEntity>
 
     /** Слова, которые чаще забываются: больше провалов, ниже стабильность. Только уже начатые. */
     @Query(
-        """SELECT w.* FROM words w JOIN cards c ON c.wordId = w.id WHERE c.reps > 0
+        """SELECT w.* FROM words w JOIN cards c ON c.wordId = w.id WHERE c.reps > 0 AND w.known = 0
            GROUP BY w.id ORDER BY MAX(c.lapses) DESC, MIN(c.stability) ASC LIMIT :limit""",
     )
     suspend fun weakWords(limit: Int): List<WordEntity>
@@ -66,6 +66,13 @@ interface WordDao {
     @Update
     suspend fun update(word: WordEntity)
 
+    /** Поставить или снять «знаю»; updatedAt не трогаем — отметка синхронизируется отдельной записью. */
+    @Query("UPDATE words SET known = :known, knownAt = :at WHERE id = :id")
+    suspend fun setKnown(id: Long, known: Boolean, at: Long)
+
+    @Query("SELECT * FROM words WHERE knownAt > 0 AND knownAt >= :since")
+    suspend fun knownChangedSince(since: Long): List<WordEntity>
+
     @Query("SELECT * FROM words WHERE lower(en) = :en LIMIT 1")
     suspend fun findByEnglish(en: String): WordEntity?
 
@@ -77,21 +84,24 @@ interface WordDao {
     suspend fun listeningSentences(limit: Int): List<WordEntity>
 }
 
+/** Слово не отмечено «знаю» — только такие карточки попадают в повторение и в новые. */
+private const val NOT_KNOWN = "c.wordId NOT IN (SELECT id FROM words WHERE known = 1)"
+
 // Новая карточка RU→EN доступна только после первого показа EN→RU того же слова:
 // сначала узнаём слово, потом учимся его вспоминать.
-private const val NEW_AVAILABLE = """c.state = 0 AND (c.direction = 0 OR EXISTS (
+private const val NEW_AVAILABLE = """c.state = 0 AND $NOT_KNOWN AND (c.direction = 0 OR EXISTS (
     SELECT 1 FROM cards c0 WHERE c0.wordId = c.wordId AND c0.direction = 0 AND c0.state != 0))"""
 
 @Dao
 interface CardDao {
-    @Query("SELECT COUNT(*) FROM cards WHERE state != 0 AND due <= :now")
+    @Query("SELECT COUNT(*) FROM cards c WHERE c.state != 0 AND c.due <= :now AND $NOT_KNOWN")
     fun dueCountFlow(now: Long): Flow<Int>
 
     @Query("SELECT COUNT(*) FROM cards c WHERE $NEW_AVAILABLE")
     fun newAvailableCountFlow(): Flow<Int>
 
     @Transaction
-    @Query("SELECT * FROM cards WHERE state != 0 AND due <= :now ORDER BY due LIMIT :limit")
+    @Query("SELECT * FROM cards c WHERE c.state != 0 AND c.due <= :now AND $NOT_KNOWN ORDER BY c.due LIMIT :limit")
     suspend fun dueCards(now: Long, limit: Int): List<CardWithWord>
 
     @Transaction
@@ -107,8 +117,8 @@ interface CardDao {
     @Query("SELECT * FROM cards WHERE wordId = :wordId")
     suspend fun forWord(wordId: Long): List<CardEntity>
 
-    /** Сколько слов начато (хотя бы одна карточка повторена) — для цели. */
-    @Query("SELECT COUNT(DISTINCT wordId) FROM cards WHERE reps > 0")
+    /** Сколько слов в запасе: начатые (хотя бы одна карточка повторена) и отмеченные «знаю» — для цели. */
+    @Query("SELECT COUNT(*) FROM words w WHERE w.known = 1 OR EXISTS (SELECT 1 FROM cards c WHERE c.wordId = w.id AND c.reps > 0)")
     fun startedWordsFlow(): Flow<Int>
 
     // --- синхронизация ---

@@ -90,8 +90,9 @@ fun ProgressScreen() {
         value = c.practice.grammarLessons().filter { it.level == "A1" }.map { it.id }.toSet()
     }
     val today = dayOf(rememberNow().value)
-    val started = words.count { it.maxReps > 0 }
-    val known = words.count { it.maxReps > 0 && it.minStability >= KNOWN_DAYS }
+    // Отмеченные «знаю» входят в запас слов и считаются выученными
+    val started = words.count { it.maxReps > 0 || it.word.known }
+    val known = words.count { it.word.known || (it.maxReps > 0 && it.minStability >= KNOWN_DAYS) }
     val stats = Stats(
         answers = days.sumOf { it.answers },
         totalMinutes = (days.sumOf { it.ms } / 60_000).toInt(),

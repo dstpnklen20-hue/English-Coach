@@ -29,5 +29,14 @@ class SyncRecordsTest {
         val order = Kind.ORDER
         assertTrue(order.indexOf(Kind.WORD) < order.indexOf(Kind.CARD))
         assertTrue(order.indexOf(Kind.CARD) < order.indexOf(Kind.REVIEW))
+        assertTrue(order.indexOf(Kind.WORD) < order.indexOf(Kind.KNOWN))
+    }
+
+    @Test
+    fun knownMarkSurvivesRoundTrip() {
+        val mark = KnownDto("course:A1:hello", known = true, at = 1_700_000_000_000)
+        assertEquals(mark, json.decodeFromJsonElement<KnownDto>(json.encodeToJsonElement(mark)))
+        // Снятая отметка тоже синхронизируется: известно, что слово вернули в изучение
+        assertFalse(json.decodeFromJsonElement<KnownDto>(json.encodeToJsonElement(mark.copy(known = false))).known)
     }
 }
