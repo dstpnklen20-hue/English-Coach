@@ -39,6 +39,27 @@ class DrillsTest {
     }
 
     @Test
+    fun easyLevelIsShorterAndWithoutTraps() {
+        val all = listOf("a1", "a2", "b1", "b2").flatMap { DrillFile.parse(File("src/main/assets/course/${it}_drills.json").readText()) }
+        val tr = all.first { it.kind == PracticeKind.TRANSLATE }
+        val easy = Levels.adapt(tr, Difficulty.EASY)
+        assertEquals(Levels.EASY_COUNT, easy.phrases.size)
+        assertTrue(easy.phrases.all { it.extra.isEmpty() })
+        assertEquals(tr, Levels.adapt(tr, Difficulty.HARD))
+        assertTrue(Levels.adapt(all.first { it.kind == PracticeKind.CLOZE }, Difficulty.EASY).extra.isEmpty())
+        assertEquals(Levels.EASY_COUNT, Levels.adapt(all.first { it.kind == PracticeKind.MATCH }, Difficulty.EASY).pairs.size)
+        // «Что ответишь?»: два варианта, верный остаётся верным, объяснение — у неверного
+        all.filter { it.kind == PracticeKind.REPLY }.forEach { d ->
+            Levels.adapt(d, Difficulty.EASY, kotlin.random.Random(3)).items.zip(d.items).forEach { (e, o) ->
+                assertEquals(2, e.options.size)
+                assertEquals(o.options[o.answer], e.options[e.answer])
+                assertEquals("", e.why[e.answer])
+                assertTrue(e.why[1 - e.answer].isNotBlank())
+            }
+        }
+    }
+
+    @Test
     fun brokenSetIsRejected() {
         val bad = """{"sets": [{"id": "x", "kind": "cloze", "title": "t", "level": "A1", "text": "no gaps here"}]}"""
         assertTrue(runCatching { DrillFile.parse(bad) }.isFailure)

@@ -75,5 +75,37 @@ object Tiles {
 
 /** Сопоставление пар: каждая ошибка снимает один балл, но не ниже нуля. */
 object Match {
+    /** Время на сложном уровне. */
+    const val HARD_SECONDS = 60
+
     fun score(pairs: Int, mistakes: Int): Int = (pairs - mistakes).coerceAtLeast(0)
+}
+
+/**
+ * Тот же набор под уровень сложности. Лёгкий: короче (5 заданий), без лишних слов-ловушек, в «Что ответишь?» —
+ * два варианта вместо трёх. Обычный и сложный — набор целиком (сложный меняет способ ответа на экране).
+ */
+object Levels {
+    const val EASY_COUNT = 5
+
+    fun adapt(d: DrillSet, level: Difficulty, random: kotlin.random.Random = kotlin.random.Random.Default): DrillSet {
+        if (level != Difficulty.EASY) return d
+        return when (d.kind) {
+            PracticeKind.TRANSLATE -> d.copy(phrases = d.phrases.take(EASY_COUNT).map { it.copy(extra = emptyList()) })
+            PracticeKind.CLOZE -> d.copy(extra = emptyList())
+            PracticeKind.MATCH -> d.copy(pairs = d.pairs.shuffled(random).take(EASY_COUNT))
+            else -> d.copy(items = d.items.take(EASY_COUNT).map { twoOptions(it, random) })
+        }
+    }
+
+    /** Верный вариант и один неверный (со своим объяснением), в случайном порядке. */
+    private fun twoOptions(ex: Exercise, random: kotlin.random.Random): Exercise {
+        val wrong = ex.options.indices.filter { it != ex.answer }.randomOrNull(random) ?: return ex
+        val keep = listOf(ex.answer, wrong).shuffled(random)
+        return ex.copy(
+            options = keep.map { ex.options[it] },
+            answer = keep.indexOf(ex.answer),
+            why = if (ex.why.isEmpty()) emptyList() else keep.map { ex.why.getOrElse(it) { "" } },
+        )
+    }
 }

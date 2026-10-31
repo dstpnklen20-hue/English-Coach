@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.VolumeUp
 import androidx.compose.material3.AssistChip
@@ -22,6 +24,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -42,12 +45,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.englishcoach.app.data.practice.Answers
 import com.englishcoach.app.data.practice.Cloze
+import com.englishcoach.app.data.practice.Difficulty
+import com.englishcoach.app.data.practice.Levels
 import com.englishcoach.app.data.practice.DrillSet
 import com.englishcoach.app.data.practice.Match
 import com.englishcoach.app.data.practice.Phrase
@@ -95,6 +102,7 @@ fun DrillListScreen(kind: String, onOpen: (String) -> Unit, onClose: () -> Unit)
     PracticeFrame(progress = null, onClose = onClose) {
         Text(info.title, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.SemiBold)
         Text(info.about, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        DifficultyPicker(kind)
         all.filter { it.kind == kind }.groupBy { it.level }.forEach { (level, sets) ->
             Section("Уровень $level")
             sets.forEach { d ->
@@ -113,41 +121,72 @@ fun DrillListScreen(kind: String, onOpen: (String) -> Unit, onClose: () -> Unit)
 fun DrillScreen(setId: String, onClose: () -> Unit) {
     val c = LocalAppContainer.current
     val set by produceState<DrillSet?>(null, setId) { value = c.practice.drills().firstOrNull { it.id == setId } }
-    val d = set ?: return
+    val original = set ?: return
+    // Уровень берётся при открытии и не меняется до выхода: «Ещё раз» — на том же уровне
+    val level = remember(setId) { c.difficulty.get(original.kind) }
+    val d = remember(original, level) { Levels.adapt(original, level) }
     val scope = rememberCoroutineScope()
     var startedAt by rememberSaveable { mutableLongStateOf(System.currentTimeMillis()) }
+    var raised by remember { mutableStateOf<Difficulty?>(null) }
     val finish = { correct: Int, total: Int ->
         val ms = System.currentTimeMillis() - startedAt
         scope.launch { c.practice.log(d.kind, d.id, correct, total, ms) }
-        Unit
+        raised = c.difficulty.record(d.kind, correct, total)
     }
-    val restart = { startedAt = System.currentTimeMillis() }
+    val restart = {
+        startedAt = System.currentTimeMillis()
+        raised = null
+    }
+    val run = DrillRun(level, raised, finish, restart, onClose)
     when (d.kind) {
-        PracticeKind.TRANSLATE -> TranslateDrill(d, finish, restart, onClose)
-        PracticeKind.CLOZE -> ClozeDrill(d, finish, restart, onClose)
-        PracticeKind.MATCH -> MatchDrill(d, finish, restart, onClose)
-        else -> ReplyDrill(d, finish, restart, onClose)
+        PracticeKind.TRANSLATE -> TranslateDrill(d, run)
+        PracticeKind.CLOZE -> ClozeDrill(d, run)
+        PracticeKind.MATCH -> MatchDrill(d, run)
+        else -> ReplyDrill(d, run)
     }
+}
+
+/** Общее для прохождения набора: уровень, повышение уровня после итога, запись результата, повтор, выход. */
+private class DrillRun(
+    val level: Difficulty,
+    val raised: Difficulty?,
+    val finish: (Int, Int) -> Unit,
+    val restart: () -> Unit,
+    val onClose: () -> Unit,
+) {
+    /** Подпись уровня к заголовку задания (обычный не подписываем). */
+    val tag: String get() = if (level == Difficulty.NORMAL) "" else " · ${level.label.lowercase()}"
+}
+
+/** Итог набора: сообщение о повышении уровня и счёт. */
+@Composable
+private fun DrillResult(run: DrillRun, correct: Int, total: Int, onRetry: () -> Unit) {
+    RaisedNote(run.raised)
+    ResultBlock(correct, total, onRetry = { onRetry(); run.restart() }, onClose = run.onClose)
 }
 
 // ——— Скажи по-английски ———
 
 @Composable
-private fun TranslateDrill(d: DrillSet, finish: (Int, Int) -> Unit, restart: () -> Unit, onClose: () -> Unit) {
+private fun TranslateDrill(d: DrillSet, run: DrillRun) {
     val n = d.phrases.size
     var idx by rememberSaveable { mutableIntStateOf(0) }
     var correct by rememberSaveable { mutableIntStateOf(0) }
-    PracticeFrame(progress = idx.toFloat() / n, onClose = onClose) {
+    val typed = run.level == Difficulty.HARD
+    PracticeFrame(progress = idx.toFloat() / n, onClose = run.onClose) {
         if (idx >= n) {
-            ResultBlock(correct, n, onRetry = { idx = 0; correct = 0; restart() }, onClose = onClose)
+            DrillResult(run, correct, n) { idx = 0; correct = 0 }
             return@PracticeFrame
         }
-        Text("Фраза ${idx + 1} из $n · соберите по-английски", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
+        Text(
+            "Фраза ${idx + 1} из $n · " + (if (typed) "напишите по-английски" else "соберите по-английски") + run.tag,
+            style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary,
+        )
         key(idx) {
-            TranslateTask(d.phrases[idx]) { ok ->
+            TranslateTask(d.phrases[idx], typed = typed, hintFirst = run.level == Difficulty.EASY) { ok ->
                 if (ok) correct++
                 idx++
-                if (idx == n) finish(correct, n)
+                if (idx == n) run.finish(correct, n)
             }
         }
     }
@@ -155,8 +194,10 @@ private fun TranslateDrill(d: DrillSet, finish: (Int, Int) -> Unit, restart: () 
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun TranslateTask(p: Phrase, onDone: (Boolean) -> Unit) {
+private fun TranslateTask(p: Phrase, typed: Boolean, hintFirst: Boolean, onDone: (Boolean) -> Unit) {
     val c = LocalAppContainer.current
+    // Сложный уровень: фраза вводится с клавиатуры (верны и другие порядки из alt)
+    var text by remember(p) { mutableStateOf("") }
     val words = remember(p) { Tiles.of(p) }
     // Индексы плиток, чтобы одинаковые слова не путались
     val pool = remember(p) { mutableStateListOf<Int>().apply { addAll(words.indices.shuffled()) } }
@@ -171,22 +212,38 @@ private fun TranslateTask(p: Phrase, onDone: (Boolean) -> Unit) {
     AnimatedVisibility(shown, enter = Motion.exerciseEnter) {
         Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Panel { Text(p.ru, style = MaterialTheme.typography.headlineSmall) }
-            Panel {
-                FlowRow(Modifier.heightIn(min = 40.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    picked.toList().forEach { i ->
-                        AssistChip(onClick = { if (!finished) { picked.remove(i); pool.add(i) } }, label = { Text(words[i], fontWeight = FontWeight.SemiBold) })
+            // Лёгкий уровень: правило видно сразу, ещё до ответа
+            if (hintFirst && !finished) p.hint?.let { HintCard(it) }
+            if (typed) {
+                OutlinedTextField(
+                    value = text,
+                    onValueChange = { if (!finished) text = it },
+                    modifier = Modifier.fillMaxWidth(),
+                    placeholder = { Text("Фраза по-английски") },
+                    keyboardOptions = KeyboardOptions(autoCorrectEnabled = false),
+                    shape = MaterialTheme.shapes.medium,
+                )
+            } else {
+                Panel {
+                    FlowRow(Modifier.heightIn(min = 40.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                        picked.toList().forEach { i ->
+                            AssistChip(onClick = { if (!finished) { picked.remove(i); pool.add(i) } }, label = { Text(words[i], fontWeight = FontWeight.SemiBold) })
+                        }
                     }
                 }
             }
             if (!finished) {
-                FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    pool.toList().forEach { i ->
-                        AssistChip(onClick = { pool.remove(i); picked.add(i) }, label = { Text(words[i]) })
+                if (!typed) {
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                        pool.toList().forEach { i ->
+                            AssistChip(onClick = { pool.remove(i); picked.add(i) }, label = { Text(words[i]) })
+                        }
                     }
                 }
                 Button(
                     onClick = {
-                        if (Tiles.isRight(p, picked.map { words[it] })) {
+                        val right = if (typed) Answers.matches(text, listOf(p.en) + p.alt) else Tiles.isRight(p, picked.map { words[it] })
+                        if (right) {
                             solved = true
                             hint = null
                             c.tts.speak(p.en)
@@ -195,7 +252,7 @@ private fun TranslateTask(p: Phrase, onDone: (Boolean) -> Unit) {
                             hint = p.hint ?: "Пока неверно. Проверьте порядок слов и уберите лишние."
                         }
                     },
-                    enabled = picked.isNotEmpty(),
+                    enabled = if (typed) text.isNotBlank() else picked.isNotEmpty(),
                     modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp),
                 ) { Text("Проверить") }
                 hint?.let {
@@ -240,50 +297,81 @@ private val WORD = Regex("[A-Za-z']+")
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun ClozeDrill(d: DrillSet, finish: (Int, Int) -> Unit, restart: () -> Unit, onClose: () -> Unit) {
+private fun ClozeDrill(d: DrillSet, run: DrillRun) {
     val c = LocalAppContainer.current
+    val typedMode = run.level == Difficulty.HARD
     var attempt by rememberSaveable { mutableIntStateOf(0) }
     val tokens = remember(d) { Cloze.parse(d.text) }
     val gaps = remember(tokens) { tokens.filterIsInstance<Cloze.Gap>() }
     val bank = remember(d, attempt) { Cloze.bank(d.text, d.extra).shuffled() }
-    // filled[номер пропуска] — индекс слова из банка или -1
+    // filled[номер пропуска] — индекс слова из банка или -1; на сложном уровне вместо банка — typed (вписанное слово)
     val filled = remember(d, attempt) { mutableStateListOf<Int>().apply { repeat(gaps.size) { add(-1) } } }
+    val typed = remember(d, attempt) { mutableStateListOf<String>().apply { repeat(gaps.size) { add("") } } }
     var current by remember(d, attempt) { mutableIntStateOf(0) }
     var checked by remember(d, attempt) { mutableStateOf(false) }
     var selected by remember(d, attempt) { mutableStateOf<String?>(null) }
+    var input by remember(d, attempt) { mutableStateOf("") }
     val n = gaps.size
-    val score = gaps.count { Cloze.isRight(it, bank.getOrNull(filled[it.index])) }
 
-    fun nextEmpty(from: Int) = (0 until n).map { (from + it) % n }.firstOrNull { filled[it] < 0 } ?: from
+    fun word(i: Int): String? = if (typedMode) typed[i].ifBlank { null } else bank.getOrNull(filled[i])
+    fun clear(i: Int) = if (typedMode) typed[i] = "" else filled[i] = -1
+    val score = gaps.count { Cloze.isRight(it, word(it.index)) }
+    val filledCount = (0 until n).count { word(it) != null }
 
-    // Банк слов и перевод нажатого слова закреплены внизу: длинный текст прокручивается отдельно
+    fun nextEmpty(from: Int) = (0 until n).map { (from + it) % n }.firstOrNull { word(it) == null } ?: from
+
+    // Банк слов (или поле ввода) и перевод нажатого слова закреплены внизу: длинный текст прокручивается отдельно
     val bottom: @Composable () -> Unit = {
         selected?.let { WordPanel(it, d.glossary) }
-        val used = filled.toSet()
-        FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            bank.indices.filter { it !in used }.forEach { i ->
-                AssistChip(onClick = {
-                    filled[current] = i
+        if (typedMode) {
+            val put = {
+                if (input.isNotBlank()) {
+                    typed[current] = input.trim()
+                    input = ""
                     current = nextEmpty(current)
-                }, label = { Text(bank[i], style = MaterialTheme.typography.titleMedium) })
+                }
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                OutlinedTextField(
+                    value = input,
+                    onValueChange = { input = it },
+                    modifier = Modifier.weight(1f),
+                    placeholder = { Text("Слово для пропуска ${current + 1}") },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(autoCorrectEnabled = false, imeAction = ImeAction.Done),
+                    keyboardActions = KeyboardActions(onDone = { put() }),
+                    shape = MaterialTheme.shapes.medium,
+                )
+                OutlinedButton(onClick = put, enabled = input.isNotBlank(), modifier = Modifier.heightIn(min = 52.dp)) { Text("Вставить") }
+            }
+        } else {
+            val used = filled.toSet()
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                bank.indices.filter { it !in used }.forEach { i ->
+                    AssistChip(onClick = {
+                        filled[current] = i
+                        current = nextEmpty(current)
+                    }, label = { Text(bank[i], style = MaterialTheme.typography.titleMedium) })
+                }
             }
         }
         Button(
             onClick = {
                 checked = true
-                finish(score, n)
+                run.finish(score, n)
             },
-            enabled = filled.all { it >= 0 },
+            enabled = filledCount == n,
             modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp),
         ) { Text("Проверить") }
     }
 
-    PracticeFrame(progress = if (checked) 1f else filled.count { it >= 0 }.toFloat() / n, onClose = onClose, bottom = bottom.takeIf { !checked }) {
-        Text("${d.topic} · ${d.level}", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
+    PracticeFrame(progress = if (checked) 1f else filledCount.toFloat() / n, onClose = run.onClose, bottom = bottom.takeIf { !checked }) {
+        Text("${d.topic} · ${d.level}${run.tag}", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
         Text(d.title, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.SemiBold)
         if (!checked) {
             Text(
-                "Нажмите на пропуск, затем на слово ниже. Нажатие на заполненный пропуск освобождает его. Любое слово текста — перевод.",
+                (if (typedMode) "Нажмите на пропуск и впишите слово внизу." else "Нажмите на пропуск, затем на слово ниже.") +
+                    " Нажатие на заполненный пропуск освобождает его. Любое слово текста — перевод.",
                 style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
@@ -306,15 +394,17 @@ private fun ClozeDrill(d: DrillSet, finish: (Int, Int) -> Unit, restart: () -> U
                             )
                         }
                         is Cloze.Gap -> Row(verticalAlignment = Alignment.CenterVertically) {
-                            val word = bank.getOrNull(filled[t.index])
+                            val word = word(t.index)
                             GapChip(
                                 word = word,
                                 active = !checked && t.index == current,
                                 result = if (checked) Cloze.isRight(t, word) else null,
                                 right = t.accept.first(),
+                                // Лёгкий уровень: в пустом пропуске видна первая буква
+                                letter = if (run.level == Difficulty.EASY) t.accept.first().take(1) else null,
                             ) {
                                 if (!checked) {
-                                    if (filled[t.index] >= 0) filled[t.index] = -1
+                                    clear(t.index)
                                     current = t.index
                                 }
                             }
@@ -332,14 +422,14 @@ private fun ClozeDrill(d: DrillSet, finish: (Int, Int) -> Unit, restart: () -> U
             OutlinedButton(onClick = { c.tts.speak(gaps.fold(d.text) { s, g -> s.replaceFirst(Regex("\\[[^\\]]*\\]"), g.accept.first()) }, slow = true) }, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
                 Text("Послушать текст")
             }
-            ResultBlock(score, n, onRetry = { attempt++; restart() }, onClose = onClose)
+            DrillResult(run, score, n) { attempt++ }
         }
     }
 }
 
 /** Пропуск в тексте: пустой (подчёркивание), заполненный или проверенный (зелёный / красный с верным словом). */
 @Composable
-private fun GapChip(word: String?, active: Boolean, result: Boolean?, right: String, onClick: () -> Unit) {
+private fun GapChip(word: String?, active: Boolean, result: Boolean?, right: String, letter: String? = null, onClick: () -> Unit) {
     val color = when (result) {
         true -> Success
         false -> MaterialTheme.colorScheme.error
@@ -356,7 +446,7 @@ private fun GapChip(word: String?, active: Boolean, result: Boolean?, right: Str
                 if (word != null) Text(word, style = MaterialTheme.typography.bodyLarge.copy(fontSize = 19.sp), color = color, textDecoration = TextDecoration.LineThrough)
                 Text(" $right", style = MaterialTheme.typography.bodyLarge.copy(fontSize = 19.sp), fontWeight = FontWeight.SemiBold, color = Success)
             } else {
-                Text(word ?: "______", style = MaterialTheme.typography.bodyLarge.copy(fontSize = 19.sp), fontWeight = FontWeight.SemiBold, color = color)
+                Text(word ?: ((letter ?: "") + "_____"), style = MaterialTheme.typography.bodyLarge.copy(fontSize = 19.sp), fontWeight = FontWeight.SemiBold, color = color)
             }
         }
     }
@@ -365,8 +455,9 @@ private fun GapChip(word: String?, active: Boolean, result: Boolean?, right: Str
 // ——— Пары слов ———
 
 @Composable
-private fun MatchDrill(d: DrillSet, finish: (Int, Int) -> Unit, restart: () -> Unit, onClose: () -> Unit) {
+private fun MatchDrill(d: DrillSet, run: DrillRun) {
     val c = LocalAppContainer.current
+    val timed = run.level == Difficulty.HARD
     var attempt by rememberSaveable { mutableIntStateOf(0) }
     val n = d.pairs.size
     val left = remember(d, attempt) { d.pairs.indices.shuffled() }
@@ -376,6 +467,22 @@ private fun MatchDrill(d: DrillSet, finish: (Int, Int) -> Unit, restart: () -> U
     var selR by remember(d, attempt) { mutableStateOf<Int?>(null) }
     var wrong by remember(d, attempt) { mutableStateOf<Pair<Int, Int>?>(null) }
     var mistakes by remember(d, attempt) { mutableIntStateOf(0) }
+    // Сложный уровень: на все пары — минута; несобранные пары не засчитываются
+    var secondsLeft by remember(d, attempt) { mutableIntStateOf(Match.HARD_SECONDS) }
+    var timeUp by remember(d, attempt) { mutableStateOf(false) }
+    val over = done.size == n || timeUp
+
+    LaunchedEffect(d, attempt, timed) {
+        if (!timed) return@LaunchedEffect
+        while (secondsLeft > 0 && done.size < n) {
+            delay(1000)
+            secondsLeft--
+        }
+        if (done.size < n) {
+            timeUp = true
+            run.finish(Match.score(done.size, mistakes), n)
+        }
+    }
 
     // Неверная пара коротко подсвечивается красным и сбрасывается
     LaunchedEffect(wrong) {
@@ -394,16 +501,20 @@ private fun MatchDrill(d: DrillSet, finish: (Int, Int) -> Unit, restart: () -> U
             done.add(l)
             val p = d.pairs[l]
             c.tts.speak(p.example.ifBlank { p.a })
-            if (done.size == n) finish(Match.score(n, mistakes), n)
+            if (done.size == n) run.finish(Match.score(n, mistakes), n)
         } else {
             mistakes++
             wrong = l to r
         }
     }
 
-    PracticeFrame(progress = done.size.toFloat() / n, onClose = onClose) {
-        if (done.size == n) {
-            Text("Все пары собраны", style = MaterialTheme.typography.titleMedium, color = Success)
+    PracticeFrame(progress = done.size.toFloat() / n, onClose = run.onClose) {
+        if (over) {
+            if (timeUp) {
+                Text("Время вышло: собрано ${done.size} из $n", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.error)
+            } else {
+                Text("Все пары собраны", style = MaterialTheme.typography.titleMedium, color = Success)
+            }
             Panel {
                 d.pairs.forEach { p ->
                     // Сочетание (make + a decision) пишется слитно с переводом ниже; пара «слово — перевод» — через тире
@@ -420,11 +531,11 @@ private fun MatchDrill(d: DrillSet, finish: (Int, Int) -> Unit, restart: () -> U
                     }
                 }
             }
-            ResultBlock(Match.score(n, mistakes), n, onRetry = { attempt++; restart() }, onClose = onClose)
+            DrillResult(run, Match.score(done.size, mistakes), n) { attempt++ }
             return@PracticeFrame
         }
         Text(
-            "Нажмите слово слева, затем подходящее справа · ошибок: $mistakes",
+            "Нажмите слово слева, затем подходящее справа · ошибок: $mistakes" + (if (timed) " · осталось ${secondsLeft} с" else run.tag),
             style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary,
         )
         Text(d.title, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.SemiBold)
@@ -473,21 +584,23 @@ private fun MatchButton(text: String, done: Boolean, selected: Boolean, wrong: B
 // ——— Что ответишь? ———
 
 @Composable
-private fun ReplyDrill(d: DrillSet, finish: (Int, Int) -> Unit, restart: () -> Unit, onClose: () -> Unit) {
+private fun ReplyDrill(d: DrillSet, run: DrillRun) {
     val c = LocalAppContainer.current
     val n = d.items.size
+    // Сложный уровень: реплику только слышно, текст — по кнопке
+    val byEar = run.level == Difficulty.HARD
     var idx by rememberSaveable { mutableIntStateOf(0) }
     var correct by rememberSaveable { mutableIntStateOf(0) }
-    PracticeFrame(progress = idx.toFloat() / n, onClose = onClose) {
+    PracticeFrame(progress = idx.toFloat() / n, onClose = run.onClose) {
         if (idx >= n) {
-            ResultBlock(correct, n, onRetry = { idx = 0; correct = 0; restart() }, onClose = onClose)
+            DrillResult(run, correct, n) { idx = 0; correct = 0 }
             return@PracticeFrame
         }
         val item = d.items[idx]
         LaunchedEffect(idx) { c.tts.speak(item.q) }
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
-                "Ситуация ${idx + 1} из $n",
+                "Ситуация ${idx + 1} из $n" + run.tag,
                 style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary, modifier = Modifier.weight(1f),
             )
             IconButton(onClick = { c.tts.speak(item.q) }) {
@@ -495,11 +608,22 @@ private fun ReplyDrill(d: DrillSet, finish: (Int, Int) -> Unit, restart: () -> U
             }
         }
         item.ru?.let { Text(it, style = MaterialTheme.typography.bodyLarge) }
-        // Ситуация уже показана выше — в самом упражнении только реплика и варианты
-        ExerciseView(remember(item) { item.copy(ru = null) }) { ok ->
+        if (byEar) {
+            var showText by remember(idx) { mutableStateOf(false) }
+            Panel {
+                if (showText) {
+                    Text(item.q, style = MaterialTheme.typography.headlineSmall)
+                } else {
+                    Text("Послушайте, что вам сказали, и выберите ответ.", style = MaterialTheme.typography.bodyLarge)
+                    TextButton(onClick = { showText = true }) { Text("Показать текст реплики") }
+                }
+            }
+        }
+        // Ситуация уже показана выше — в самом упражнении только реплика (на слух — и её нет) и варианты
+        ExerciseView(remember(item) { item.copy(ru = null, q = if (byEar) "" else item.q) }) { ok ->
             if (ok) correct++
             idx++
-            if (idx == n) finish(correct, n)
+            if (idx == n) run.finish(correct, n)
         }
     }
 }
