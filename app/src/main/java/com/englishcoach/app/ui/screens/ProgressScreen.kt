@@ -44,6 +44,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.englishcoach.app.data.Settings
 import com.englishcoach.app.data.Streak
 import com.englishcoach.app.data.db.DayTotal
+import com.englishcoach.app.data.practice.Groups
 import com.englishcoach.app.data.practice.PracticeKind
 import com.englishcoach.app.data.progress.Achievements
 import com.englishcoach.app.data.progress.GoalPlan
@@ -82,6 +83,8 @@ fun ProgressScreen() {
     val chats by remember { c.practice.bestScores(PracticeKind.AI_CHAT) }.collectAsStateWithLifecycle(emptyList())
     val drills by remember { c.practice.bestScores(PracticeKind.DRILLS) }.collectAsStateWithLifecycle(emptyList())
     val drillTotal by produceState(0) { value = c.practice.drills().size }
+    val groupList by produceState(c.practice.cachedGroups()) { value = c.practice.groups() }
+    val groupNet by remember { c.practice.groupNetFlow() }.collectAsStateWithLifecycle(emptyMap())
     val totals by produceState(Triple(0, 0, 0)) {
         value = Triple(c.practice.grammarLessons().size, c.practice.readingTexts().size, c.practice.dialogs().size)
     }
@@ -129,6 +132,9 @@ fun ProgressScreen() {
             Skill("Грамматика", "уроков на 70%+: $grammarPassedAll из ${totals.first}", ratio(grammarPassedAll, totals.first))
             Skill("Чтение", "текстов на 70%+: ${reading.count { it.best >= PASS }} из ${totals.second}", ratio(reading.count { it.best >= PASS }, totals.second))
             Skill("Тренировки", "наборов на 70%+: ${stats.drillsPassed} из $drillTotal", ratio(stats.drillsPassed, drillTotal))
+            val groupWords = groupList.sumOf { it.items.size }
+            val groupMastered = groupList.sumOf { Groups.mastered(it, groupNet) }
+            Skill("Группы слов", "выучено $groupMastered из $groupWords", ratio(groupMastered, groupWords))
             Skill("Аудирование", "лучший диктант: ${listening.maxOfOrNull { it.best } ?: 0}%", (listening.maxOfOrNull { it.best } ?: 0) / 100f)
             val speech = maxOf(speaking.maxOfOrNull { it.best } ?: 0, ratio(stats.dialogsPassed, totals.third).times(100).toInt())
             Skill("Речь", "произношение и диалоги: $speech%", speech / 100f)

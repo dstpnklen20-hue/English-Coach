@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "minApp": 4,
+  "version": 3,
+  "minApp": 5,
   "levels": ["a1", "a2", "b1", "b2"],
   "words": ["a1_words.json", "a2_words.json", "b1_words.json", "b2_words.json"]
 }

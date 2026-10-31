@@ -49,6 +49,8 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import com.englishcoach.app.data.practice.Answers
 import com.englishcoach.app.data.practice.Exercise
+import com.englishcoach.app.data.practice.Phrase
+import com.englishcoach.app.data.practice.Tiles
 import com.englishcoach.app.ui.components.Panel
 import com.englishcoach.app.ui.theme.Success
 
@@ -219,7 +221,7 @@ private fun InputExercise(ex: Exercise, st: ExerciseState) {
         value = text,
         onValueChange = { if (!st.finished) text = it },
         modifier = Modifier.fillMaxWidth(),
-        placeholder = { Text("Впишите пропущенное слово") },
+        placeholder = { Text(ex.placeholder ?: "Впишите пропущенное слово") },
         singleLine = true,
         keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.None, autoCorrectEnabled = false, imeAction = ImeAction.Done),
         keyboardActions = KeyboardActions(onDone = { check() }),
@@ -234,8 +236,8 @@ private fun InputExercise(ex: Exercise, st: ExerciseState) {
 @Composable
 private fun OrderExercise(ex: Exercise, st: ExerciseState) {
     val target = ex.accept.firstOrNull().orEmpty()
-    // Индексы слов, чтобы одинаковые слова («the», «the») не путались
-    val words = remember(ex) { target.split(" ") }
+    // Индексы слов, чтобы одинаковые слова («the», «the») не путались; без точки и заглавной — они выдают начало и конец
+    val words = remember(ex) { Tiles.of(Phrase(ru = "", en = target)) }
     val pool = remember(ex) { mutableStateListOf<Int>().apply { addAll(words.indices.shuffled()) } }
     val picked = remember(ex) { mutableStateListOf<Int>() }
 

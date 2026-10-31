@@ -177,6 +177,8 @@ data class DayTotal(val day: String, val ms: Long, val answers: Int)
 /** Лучший результат по уроку/тексту в процентах. */
 data class BestScore(val itemId: String, val best: Int)
 
+data class ItemNet(val itemId: String, val net: Int)
+
 @Dao
 interface ActivityDao {
     @Insert
@@ -193,6 +195,10 @@ interface ActivityDao {
 
     @Query("SELECT itemId, MAX(correct * 100 / total) AS best FROM activity_log WHERE kind IN (:kinds) AND total > 0 GROUP BY itemId")
     fun bestScoresFlow(kinds: List<String>): Flow<List<BestScore>>
+
+    /** По каждому itemId: верные ответы минус неверные (для слов групп). */
+    @Query("SELECT itemId, SUM(CASE WHEN correct > 0 THEN 1 ELSE -1 END) AS net FROM activity_log WHERE kind = :kind GROUP BY itemId")
+    fun netFlow(kind: String): Flow<List<ItemNet>>
 
     @Query("SELECT COUNT(*) FROM activity_log WHERE kind IN (:kinds) AND at >= :since")
     fun countSinceFlow(kinds: List<String>, since: Long): Flow<Int>

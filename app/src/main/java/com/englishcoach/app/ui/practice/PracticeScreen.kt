@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.englishcoach.app.data.practice.Groups
 import com.englishcoach.app.data.practice.PracticeKind
 import com.englishcoach.app.ui.LocalAppContainer
 import com.englishcoach.app.ui.components.Panel
@@ -41,6 +42,7 @@ fun PracticeScreen(
     onTextCheck: () -> Unit,
     onAiExercises: () -> Unit,
     onDrills: (String) -> Unit,
+    onGroup: (String) -> Unit,
 ) {
     val c = LocalAppContainer.current
     val hasKey by c.ai.hasKey.collectAsStateWithLifecycle()
@@ -57,6 +59,8 @@ fun PracticeScreen(
     val drills by produceState(c.practice.cachedDrills()) { value = c.practice.drills() }
     val drillBest by remember { c.practice.bestScores(PracticeKind.DRILLS) }.collectAsStateWithLifecycle(emptyList())
     val passedDrills = drillBest.filter { it.best >= PASS_PERCENT }.map { it.itemId }.toSet()
+    val groups by produceState(c.practice.cachedGroups()) { value = c.practice.groups() }
+    val groupNet by remember { c.practice.groupNetFlow() }.collectAsStateWithLifecycle(emptyMap())
 
     LazyScreenColumn(title = "Практика", subtitle = "Уровни A1–B2 · всё работает без интернета") {
         item { Section("Тренировки · по 3–5 минут") }
@@ -65,6 +69,11 @@ fun PracticeScreen(
             val passed = sets.count { it.id in passedDrills }
             val info = DrillInfo.of(kind)
             ItemRow(info.title, info.subtitle + if (sets.isEmpty()) "" else " · пройдено $passed из ${sets.size}", null) { onDrills(kind) }
+        }
+        item { Section("Группы слов") }
+        items(groups, key = { "group-${it.id}" }) { g ->
+            val mastered = Groups.mastered(g, groupNet)
+            ItemRow(g.title, "${g.level} · выучено $mastered из ${g.items.size}", if (mastered == g.items.size) 100 else null) { onGroup(g.id) }
         }
         item { Section("Грамматика") }
         items(lessons, key = { it.id }) { l ->

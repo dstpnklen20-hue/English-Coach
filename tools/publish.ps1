@@ -36,7 +36,7 @@ try {
     Copy-Item "$root\app\build\outputs\apk\release\app-release.apk" "$stage\EnglishCoach.apk"
     $sha = (Get-FileHash "$stage\EnglishCoach.apk" -Algorithm SHA256).Hash.ToLower()
 
-    $files = @("manifest.json") + $manifest.words
+    $files = @("manifest.json", "groups.json") + $manifest.words
     foreach ($level in $manifest.levels) { foreach ($part in "grammar", "reading", "dialogs", "drills") { $files += "${level}_$part.json" } }
     foreach ($f in $files) { Copy-Item "$course\$f" "$stage\content\$f" }
 

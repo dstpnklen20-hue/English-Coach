@@ -8,6 +8,7 @@ import com.englishcoach.app.data.db.BestScore
 import com.englishcoach.app.data.db.WordEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -28,6 +29,8 @@ data class Exercise(
     val ru: String? = null,
     val hint: String? = null,
     val why: List<String> = emptyList(),
+    /** Подсказка в пустом поле ввода (для «input»), если стандартная не подходит. */
+    val placeholder: String? = null,
 ) {
     /** Подсказка к конкретной ошибке: объяснение выбранного варианта, иначе общее правило. */
     fun hintFor(option: Int?): String? =
@@ -131,14 +134,24 @@ object PracticeKind {
     const val REPLY = "reply"
     val DRILLS = listOf(TRANSLATE, CLOZE, MATCH, REPLY)
 
+    // Группы слов: тренировка целиком (итог, время) и ответ по каждому слову (для «выучено»)
+    const val GROUP = "group"
+    const val GROUP_ITEM = "group_item"
+
     /** Шаг «Практика» сессии дня — понимание и письмо; шаг «Речь» — говорение и общение. */
-    val PRACTICE_STEP = listOf(GRAMMAR, READING, LISTENING, AI_WRITING, AI_EXERCISES) + DRILLS
+    val PRACTICE_STEP = listOf(GRAMMAR, READING, LISTENING, AI_WRITING, AI_EXERCISES, GROUP) + DRILLS
     val SPEECH_STEP = listOf(SPEAKING, DIALOG, AI_CHAT)
 }
 
 /** Материалы практики (встроенные или скачанные — см. [CourseContent]) и учёт пройденного. */
 class PracticeRepository(private val content: CourseContent, private val db: AppDatabase) {
-    private class Bank(val grammar: List<GrammarLesson>, val reading: ReadingBank, val dialogs: List<Dialog>, val drills: List<DrillSet>)
+    private class Bank(
+        val grammar: List<GrammarLesson>,
+        val reading: ReadingBank,
+        val dialogs: List<Dialog>,
+        val drills: List<DrillSet>,
+        val groups: List<WordGroup>,
+    )
 
     // Заполняется из фонового потока (предзагрузка при старте), читается с главного
     @Volatile private var bank: Bank? = null
@@ -154,11 +167,14 @@ class PracticeRepository(private val content: CourseContent, private val db: App
 
     suspend fun drills(): List<DrillSet> = bank().drills
 
+    suspend fun groups(): List<WordGroup> = bank().groups
+
     /** Уже загруженные материалы (или пусто) — без ожидания, для первого кадра экрана. */
     fun cachedGrammar(): List<GrammarLesson> = bank?.grammar.orEmpty()
     fun cachedTexts(): List<ReadingText> = bank?.reading?.texts.orEmpty()
     fun cachedDialogs(): List<Dialog> = bank?.dialogs.orEmpty()
     fun cachedDrills(): List<DrillSet> = bank?.drills.orEmpty()
+    fun cachedGroups(): List<WordGroup> = bank?.groups.orEmpty()
 
     /** Проверка скачанного набора теми же классами, что при чтении; бросает исключение, если файл битый. */
     fun validate(levels: List<String>, read: (String) -> String) {
@@ -177,6 +193,7 @@ class PracticeRepository(private val content: CourseContent, private val db: App
             .reduce { a, b -> ReadingBank(a.common + b.common, a.texts + b.texts) },
         dialogs = levels.flatMap { json.decodeFromString<DialogBank>(read("${it}_dialogs.json")).dialogs },
         drills = levels.flatMap { DrillFile.parse(read("${it}_drills.json")) },
+        groups = Groups.parse(read(Groups.FILE)),
     )
 
     fun bestScores(kind: String): Flow<List<BestScore>> = db.activityDao().bestScoresFlow(kind)
@@ -186,6 +203,9 @@ class PracticeRepository(private val content: CourseContent, private val db: App
 
     /** Сколько упражнений данных видов сделано сегодня. */
     fun doneTodayFlow(kinds: List<String>): Flow<Int> = db.activityDao().countSinceFlow(kinds, StudyRepository.dayStart())
+
+    /** Счёт по словам групп: id слова → верные ответы минус ошибки. */
+    fun groupNetFlow(): Flow<Map<String, Int>> = db.activityDao().netFlow(PracticeKind.GROUP_ITEM).map { l -> l.associate { it.itemId to it.net } }
 
     suspend fun log(kind: String, itemId: String, correct: Int, total: Int, durationMs: Long) =
         db.activityDao().insert(

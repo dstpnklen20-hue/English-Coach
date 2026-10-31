@@ -11,6 +11,7 @@ import com.englishcoach.app.data.content.CourseContent
 import com.englishcoach.app.data.update.Updater
 import com.englishcoach.app.data.db.AppDatabase
 import com.englishcoach.app.data.fsrs.Fsrs
+import com.englishcoach.app.data.practice.DifficultyStore
 import com.englishcoach.app.data.practice.PracticeRepository
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -33,6 +34,7 @@ class AppContainer(val app: Application) {
     val content: CourseContent by lazy { CourseContent(app) }
     val seeder: CourseSeeder by lazy { CourseSeeder(app, content, db) }
     val practice: PracticeRepository by lazy { PracticeRepository(content, db) }
+    val difficulty: DifficultyStore by lazy { DifficultyStore(app) }
     val updater: Updater by lazy { Updater(app, content, practice, seeder) }
     val ai: AiRepository by lazy { AiRepository(app, settings) }
     val tutor: AiTutor by lazy { AiTutor(ai, settings) }

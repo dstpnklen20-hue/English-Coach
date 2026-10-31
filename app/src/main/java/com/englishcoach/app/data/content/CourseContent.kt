@@ -17,7 +17,7 @@ class CourseContent(private val context: Context) {
     @Serializable
     data class Manifest(val version: Int, val minApp: Int = 0, val levels: List<String>, val words: List<String>) {
         /** Все файлы набора, кроме самого описания. */
-        val files: List<String> get() = levels.flatMap { l -> PARTS.map { "${l}_$it.json" } } + words
+        val files: List<String> get() = levels.flatMap { l -> PARTS.map { "${l}_$it.json" } } + words + COMMON
     }
 
     private val dir = File(context.filesDir, "course")
@@ -52,6 +52,8 @@ class CourseContent(private val context: Context) {
     companion object {
         const val MANIFEST = "manifest.json"
         private val PARTS = listOf("grammar", "reading", "dialogs", "drills")
+        /** Общие для всех уровней файлы: группы слов. */
+        private val COMMON = listOf("groups.json")
         private val json = Json { ignoreUnknownKeys = true }
 
         fun parseManifest(text: String): Manifest = json.decodeFromString(Manifest.serializer(), text)
