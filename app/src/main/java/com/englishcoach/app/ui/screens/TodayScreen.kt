@@ -22,6 +22,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -49,7 +50,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 @Composable
-fun TodayScreen(onStudyWords: () -> Unit, onPlacement: () -> Unit, onPractice: () -> Unit) {
+fun TodayScreen(onStudyWords: () -> Unit, onRecap: () -> Unit, onPlacement: () -> Unit, onPractice: () -> Unit) {
     val c = LocalAppContainer.current
     val now by rememberNow()
     val today = dayOf(now)
@@ -127,6 +128,9 @@ fun TodayScreen(onStudyWords: () -> Unit, onPlacement: () -> Unit, onPractice: (
             }
             Button(onClick = onStudyWords, enabled = due + new > 0, modifier = Modifier.fillMaxWidth()) {
                 Text(if (due + new > 0) "Начать · ${due + new} карточек" else "Слова на сегодня пройдены")
+            }
+            if (started > 0) {
+                OutlinedButton(onClick = onRecap, modifier = Modifier.fillMaxWidth()) { Text("Повторить пройденные слова") }
             }
         }
 

@@ -69,6 +69,8 @@ class StudyRepository(private val db: AppDatabase, val fsrs: Fsrs, private val s
     /** Отметка «знаю это слово» (или её снятие — «вернуть в изучение»). Карточки и их прогресс FSRS не меняются. */
     suspend fun setKnown(wordId: Long, known: Boolean) = db.wordDao().setKnown(wordId, known, System.currentTimeMillis())
 
+    suspend fun studiedCards(): List<CardWithWord> = db.cardDao().studiedCards()
+
     /** Новые карточки сверх уже взятых в очередь — на место слов, отмеченных «знаю» во время сессии. */
     suspend fun moreNewCards(exclude: Set<Long>, count: Int): List<CardWithWord> =
         if (count <= 0) emptyList() else db.cardDao().newCards(exclude.size + count).filter { it.card.id !in exclude }.take(count)

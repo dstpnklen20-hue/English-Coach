@@ -108,6 +108,14 @@ interface CardDao {
     @Query("SELECT * FROM cards c WHERE $NEW_AVAILABLE ORDER BY c.direction DESC, c.wordId LIMIT :limit")
     suspend fun newCards(limit: Int): List<CardWithWord>
 
+    /** Все карточки слов, которые уже начаты или отмечены «знаю» — для повторения вне расписания. */
+    @Transaction
+    @Query(
+        """SELECT * FROM cards WHERE wordId IN (SELECT wordId FROM cards WHERE reps > 0)
+           OR wordId IN (SELECT id FROM words WHERE known = 1)""",
+    )
+    suspend fun studiedCards(): List<CardWithWord>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAll(cards: List<CardEntity>): List<Long>
 

@@ -49,6 +49,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.englishcoach.app.AppContainer
 import com.englishcoach.app.ui.placement.PlacementScreen
+import com.englishcoach.app.ui.review.RecapScreen
 import com.englishcoach.app.ui.review.ReviewScreen
 import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -81,6 +82,7 @@ private const val AI_CHAT_ROUTE = "ai-chat"
 private const val TEXT_CHECK_ROUTE = "ai-text"
 private const val AI_EXERCISES_ROUTE = "ai-exercises"
 private const val IMPORT_ROUTE = "import"
+private const val RECAP_ROUTE = "recap"
 
 private enum class Tab(val route: String, val label: String, val icon: ImageVector) {
     Today("today", "Сегодня", Icons.Outlined.TaskAlt),
@@ -171,13 +173,21 @@ private fun AppNavHost(nav: NavHostController, modifier: Modifier) {
         composable(Tab.Today.route) {
             TodayScreen(
                 onStudyWords = { nav.navigate(REVIEW_ROUTE) },
+                onRecap = { nav.navigate(RECAP_ROUTE) },
                 onPlacement = { nav.navigate(PLACEMENT_ROUTE) },
                 onPractice = { nav.goTo(Tab.Practice.route) },
             )
         }
-        composable(REVIEW_ROUTE) { ReviewScreen(onClose = { nav.popBackStack() }) }
+        composable(REVIEW_ROUTE) {
+            ReviewScreen(
+                onClose = { nav.popBackStack() },
+                // Экран повторения заменяется: «Назад» из пройденных слов ведёт сразу на прежний раздел
+                onRecap = { nav.navigate(RECAP_ROUTE) { popUpTo(REVIEW_ROUTE) { inclusive = true } } },
+            )
+        }
+        composable(RECAP_ROUTE) { RecapScreen(onClose = { nav.popBackStack() }) }
         composable(PLACEMENT_ROUTE) { PlacementScreen(onClose = { nav.popBackStack() }) }
-        composable(Tab.Words.route) { WordsScreen(onImport = { nav.navigate(IMPORT_ROUTE) }) }
+        composable(Tab.Words.route) { WordsScreen(onImport = { nav.navigate(IMPORT_ROUTE) }, onRecap = { nav.navigate(RECAP_ROUTE) }) }
         composable(IMPORT_ROUTE) { ImportScreen(onClose = { nav.popBackStack() }) }
         composable(Tab.Practice.route) {
             PracticeScreen(

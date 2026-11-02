@@ -70,7 +70,7 @@ private fun Status.color(): Color = when (this) {
 }
 
 @Composable
-fun WordsScreen(onImport: () -> Unit) {
+fun WordsScreen(onImport: () -> Unit, onRecap: () -> Unit) {
     val c = LocalAppContainer.current
     val words by remember { c.db.wordDao().progressFlow() }.collectAsStateWithLifecycle(emptyList())
     var query by rememberSaveable { mutableStateOf("") }
@@ -98,6 +98,7 @@ fun WordsScreen(onImport: () -> Unit) {
             item {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text("Слова", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f))
+                    TextButton(onClick = onRecap) { Text("Повторить") }
                     TextButton(onClick = onImport) { Text("Импорт") }
                 }
                 // Счётчики статусов — они же фильтр: «Знаю» открывает список отмеченных слов, откуда их можно вернуть

@@ -52,7 +52,7 @@ import com.englishcoach.app.ui.theme.Success
 import com.englishcoach.app.ui.theme.Warm
 
 @Composable
-fun ReviewScreen(onClose: () -> Unit) {
+fun ReviewScreen(onClose: () -> Unit, onRecap: () -> Unit) {
     val container = LocalAppContainer.current
     val vm: ReviewViewModel = viewModel(factory = viewModelFactory { initializer { ReviewViewModel(container) } })
     val ui = vm.ui
@@ -76,7 +76,7 @@ fun ReviewScreen(onClose: () -> Unit) {
         val cur = ui.current
         when {
             ui.loading -> Box(Modifier.fillMaxSize(), Alignment.Center) { CircularProgressIndicator() }
-            cur == null -> Finished(ui.done, onClose)
+            cur == null -> Finished(ui.done, onClose, onRecap)
             else -> {
                 // Новая карточка мягко сменяет прошлую; уходящая остаётся открытой, пока гаснет
                 AnimatedContent(
@@ -116,7 +116,7 @@ fun ReviewScreen(onClose: () -> Unit) {
 }
 
 @Composable
-private fun CardFace(item: CardWithWord, revealed: Boolean, onReveal: () -> Unit, onSpeak: (String, Boolean) -> Unit) {
+internal fun CardFace(item: CardWithWord, revealed: Boolean, onReveal: () -> Unit, onSpeak: (String, Boolean) -> Unit) {
     val w = item.word
     val enFirst = item.card.direction == 0
     Panel(Modifier.clickable(enabled = !revealed, onClick = onReveal)) {
@@ -195,7 +195,7 @@ private fun RatingButtons(previews: Map<Rating, String>, onRate: (Rating) -> Uni
 }
 
 @Composable
-private fun Finished(done: Int, onClose: () -> Unit) {
+private fun Finished(done: Int, onClose: () -> Unit, onRecap: () -> Unit) {
     Column(
         Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -211,6 +211,8 @@ private fun Finished(done: Int, onClose: () -> Unit) {
             textAlign = TextAlign.Center,
         )
         Spacer(Modifier.height(24.dp))
+        Button(onClick = onRecap) { Text("Повторить пройденные слова") }
+        Spacer(Modifier.height(8.dp))
         Button(onClick = onClose, colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent, contentColor = MaterialTheme.colorScheme.primary)) {
             Text("Назад")
         }

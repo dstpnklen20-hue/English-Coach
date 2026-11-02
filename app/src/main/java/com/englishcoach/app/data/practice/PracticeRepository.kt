@@ -138,6 +138,9 @@ object PracticeKind {
     const val GROUP = "group"
     const val GROUP_ITEM = "group_item"
 
+    /** Повторение пройденных слов вне расписания: идёт в минуты дня, но шаги сессии не закрывает. */
+    const val WORD_RECAP = "word_recap"
+
     /** Шаг «Практика» сессии дня — понимание и письмо; шаг «Речь» — говорение и общение. */
     val PRACTICE_STEP = listOf(GRAMMAR, READING, LISTENING, AI_WRITING, AI_EXERCISES, GROUP) + DRILLS
     val SPEECH_STEP = listOf(SPEAKING, DIALOG, AI_CHAT)
