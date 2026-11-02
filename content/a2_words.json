@@ -1,0 +1,194 @@
+{
+  "level": "A2",
+  "format": "en|транскрипция|перевод|пример|перевод примера",
+  "topics": [
+    {
+      "name": "Работа",
+      "words": [
+        "job|dʒɑːb|работа, должность|I have a new job.|У меня новая работа.",
+        "salary|ˈsæləri|зарплата|The salary is good.|Зарплата хорошая.",
+        "boss|bɔːs|начальник|My boss is very busy.|Мой начальник очень занят.",
+        "meeting|ˈmiːtɪŋ|встреча, совещание|The meeting starts at ten.|Совещание начинается в десять.",
+        "office|ˈɔːfɪs|офис|I work in an office.|Я работаю в офисе.",
+        "colleague|ˈkɑːliːɡ|коллега|My colleague helps me.|Мой коллега помогает мне.",
+        "task|tæsk|задача|I have three tasks today.|У меня сегодня три задачи.",
+        "deadline|ˈdedlaɪn|срок сдачи|The deadline is on Friday.|Срок сдачи в пятницу.",
+        "earn|ɜːrn|зарабатывать|He earns a lot of money.|Он зарабатывает много денег.",
+        "experience|ɪkˈspɪriəns|опыт|I have five years of experience.|У меня пять лет опыта.",
+        "interview|ˈɪntərvjuː|собеседование|I have a job interview tomorrow.|Завтра у меня собеседование.",
+        "busy|ˈbɪzi|занятой|I am busy this week.|Я занят на этой неделе."
+      ]
+    },
+    {
+      "name": "Технологии",
+      "words": [
+        "website|ˈwebsaɪt|сайт|Check our website.|Загляните на наш сайт.",
+        "account|əˈkaʊnt|аккаунт, учётная запись|Create an account.|Создайте аккаунт.",
+        "message|ˈmesɪdʒ|сообщение|Send me a message.|Пришли мне сообщение.",
+        "install|ɪnˈstɔːl|устанавливать|Install the app on your phone.|Установи приложение на телефон.",
+        "delete|dɪˈliːt|удалять|Don't delete this file.|Не удаляй этот файл.",
+        "search|sɜːrtʃ|искать; поиск|Search for the answer online.|Поищи ответ в интернете.",
+        "online|ˌɑːnˈlaɪn|онлайн, в сети|I am online now.|Я сейчас в сети.",
+        "charge|tʃɑːrdʒ|заряжать|I need to charge my phone.|Мне нужно зарядить телефон.",
+        "keyboard|ˈkiːbɔːrd|клавиатура|My keyboard is broken.|Моя клавиатура сломана.",
+        "settings|ˈsetɪŋz|настройки|Open the settings.|Открой настройки.",
+        "connect|kəˈnekt|подключать(ся)|Connect to the Wi-Fi.|Подключись к Wi-Fi.",
+        "program|ˈproʊɡræm|программа|This program is free.|Эта программа бесплатная."
+      ]
+    },
+    {
+      "name": "Строительство",
+      "words": [
+        "ladder|ˈlædər|лестница (приставная)|Hold the ladder, please.|Подержи лестницу, пожалуйста.",
+        "cement|sɪˈment|цемент|We need more cement.|Нам нужно больше цемента.",
+        "pipe|paɪp|труба|The pipe is broken.|Труба сломана.",
+        "wire|waɪər|провод|Don't touch that wire!|Не трогай этот провод!",
+        "drill|drɪl|дрель; сверлить|I need a drill.|Мне нужна дрель.",
+        "glass|ɡlæs|стекло; стакан|The window glass is broken.|Оконное стекло разбито.",
+        "heavy|ˈhevi|тяжёлый|This box is too heavy.|Эта коробка слишком тяжёлая.",
+        "repair|rɪˈper|ремонтировать; ремонт|We repair old houses.|Мы ремонтируем старые дома.",
+        "foundation|faʊnˈdeɪʃən|фундамент|The foundation is ready.|Фундамент готов.",
+        "stairs|sterz|лестница (в доме)|Go up the stairs.|Поднимись по лестнице.",
+        "crane|kreɪn|подъёмный кран|The crane lifts the bricks.|Кран поднимает кирпичи.",
+        "plan|plæn|план; планировать|Look at the plan of the house.|Посмотри на план дома."
+      ]
+    },
+    {
+      "name": "Игры",
+      "words": [
+        "character|ˈkærəktər|персонаж; характер|Choose your character.|Выбери своего персонажа.",
+        "weapon|ˈwepən|оружие|Pick up the weapon.|Подбери оружие.",
+        "reward|rɪˈwɔːrd|награда|You get a reward for the quest.|За задание ты получаешь награду.",
+        "skill|skɪl|навык|Upgrade your skills.|Прокачай навыки.",
+        "upgrade|ˈʌpɡreɪd|улучшение; улучшать|Buy an upgrade.|Купи улучшение.",
+        "attack|əˈtæk|атаковать; атака|Attack the enemy!|Атакуй врага!",
+        "defend|dɪˈfend|защищать|Defend the base!|Защищай базу!",
+        "mission|ˈmɪʃən|миссия|The mission is complete.|Миссия выполнена.",
+        "coin|kɔɪn|монета|Collect the coins.|Собери монеты.",
+        "inventory|ˈɪnvəntɔːri|инвентарь|My inventory is full.|Мой инвентарь полон.",
+        "respawn|ˌriːˈspɔːn|возрождаться (в игре)|Wait, I will respawn.|Подожди, я сейчас возрожусь.",
+        "tournament|ˈtʊrnəmənt|турнир|We won the tournament.|Мы выиграли турнир."
+      ]
+    },
+    {
+      "name": "Путешествия",
+      "words": [
+        "luggage|ˈlʌɡɪdʒ|багаж|Where is my luggage?|Где мой багаж?",
+        "flight|flaɪt|рейс, полёт|My flight is at six.|Мой рейс в шесть.",
+        "booking|ˈbʊkɪŋ|бронирование|I have a booking for two nights.|У меня бронь на две ночи.",
+        "abroad|əˈbrɔːd|за границей|I want to work abroad.|Я хочу работать за границей.",
+        "border|ˈbɔːrdər|граница|We crossed the border.|Мы пересекли границу.",
+        "delay|dɪˈleɪ|задержка|There is a two-hour delay.|Задержка два часа.",
+        "guide|ɡaɪd|гид; путеводитель|Our guide speaks English.|Наш гид говорит по-английски.",
+        "sightseeing|ˈsaɪtsiːɪŋ|осмотр достопримечательностей|We went sightseeing.|Мы ходили смотреть достопримечательности.",
+        "currency|ˈkɜːrənsi|валюта|What is the local currency?|Какая здесь местная валюта?",
+        "visa|ˈviːzə|виза|Do I need a visa?|Мне нужна виза?",
+        "journey|ˈdʒɜːrni|путешествие, поездка|The journey was long.|Поездка была долгой.",
+        "arrive|əˈraɪv|прибывать|We arrive at noon.|Мы прибываем в полдень."
+      ]
+    },
+    {
+      "name": "Город",
+      "words": [
+        "bus|bʌs|автобус|I take the bus to work.|Я езжу на работу на автобусе.",
+        "station|ˈsteɪʃən|станция, вокзал|The station is near.|Станция рядом.",
+        "corner|ˈkɔːrnər|угол|The cafe is on the corner.|Кафе на углу.",
+        "bridge|brɪdʒ|мост|Cross the bridge.|Перейди мост.",
+        "traffic|ˈtræfɪk|движение, пробки|The traffic is terrible today.|Сегодня ужасные пробки.",
+        "park|pɑːrk|парк; парковать|Park the car here.|Припаркуй машину здесь.",
+        "shop|ʃɑːp|магазин|The shop is closed.|Магазин закрыт.",
+        "bank|bæŋk|банк|The bank opens at nine.|Банк открывается в девять.",
+        "hospital|ˈhɑːspɪtəl|больница|He is in the hospital.|Он в больнице.",
+        "straight|streɪt|прямо|Go straight on.|Иди прямо.",
+        "far|fɑːr|далеко|Is it far from here?|Это далеко отсюда?",
+        "near|nɪr|рядом, близко|The hotel is near the station.|Отель рядом с вокзалом."
+      ]
+    },
+    {
+      "name": "Покупки",
+      "words": [
+        "price|praɪs|цена|What is the price?|Какая цена?",
+        "cheap|tʃiːp|дешёвый|This shirt is cheap.|Эта рубашка дешёвая.",
+        "expensive|ɪkˈspensɪv|дорогой|The phone is too expensive.|Телефон слишком дорогой.",
+        "pay|peɪ|платить|Can I pay by card?|Можно заплатить картой?",
+        "buy|baɪ|покупать|I want to buy a new game.|Я хочу купить новую игру.",
+        "sell|sel|продавать|They sell old cars.|Они продают старые машины.",
+        "cost|kɔːst|стоить|How much does it cost?|Сколько это стоит?",
+        "change|tʃeɪndʒ|сдача; менять|Keep the change.|Сдачи не надо.",
+        "receipt|rɪˈsiːt|чек|Can I have the receipt?|Можно чек?",
+        "discount|ˈdɪskaʊnt|скидка|Is there a discount?|Есть скидка?",
+        "size|saɪz|размер|What size do you need?|Какой размер вам нужен?",
+        "try on|traɪ ɑːn|примерять|Can I try it on?|Можно примерить?"
+      ]
+    },
+    {
+      "name": "Здоровье и спорт",
+      "words": [
+        "doctor|ˈdɑːktər|врач|I need a doctor.|Мне нужен врач.",
+        "headache|ˈhedeɪk|головная боль|I have a headache.|У меня болит голова.",
+        "pain|peɪn|боль|I feel pain in my back.|Я чувствую боль в спине.",
+        "medicine|ˈmedɪsən|лекарство|Take this medicine twice a day.|Принимай это лекарство дважды в день.",
+        "sick|sɪk|больной|I feel sick today.|Мне сегодня плохо.",
+        "healthy|ˈhelθi|здоровый|Eat healthy food.|Ешь здоровую еду.",
+        "exercise|ˈeksərsaɪz|упражнение; заниматься спортом|I exercise every morning.|Я занимаюсь спортом каждое утро.",
+        "training|ˈtreɪnɪŋ|тренировка|The training was hard.|Тренировка была тяжёлой.",
+        "coach|koʊtʃ|тренер|Our coach is strict.|Наш тренер строгий.",
+        "weight|weɪt|вес|Lift the weight slowly.|Поднимай вес медленно.",
+        "injury|ˈɪndʒəri|травма|He has a knee injury.|У него травма колена.",
+        "rest|rest|отдых; отдыхать|You need some rest.|Тебе нужно отдохнуть."
+      ]
+    },
+    {
+      "name": "Чувства и характер",
+      "words": [
+        "happy|ˈhæpi|счастливый|I am happy today.|Я сегодня счастлив.",
+        "sad|sæd|грустный|Why are you sad?|Почему ты грустишь?",
+        "angry|ˈæŋɡri|злой, сердитый|Don't be angry.|Не злись.",
+        "worried|ˈwɜːrid|обеспокоенный|I am worried about the exam.|Я переживаю из-за экзамена.",
+        "bored|bɔːrd|скучающий|I am bored at home.|Мне скучно дома.",
+        "excited|ɪkˈsaɪtɪd|радостно взволнованный|I am excited about the trip.|Я в предвкушении поездки.",
+        "kind|kaɪnd|добрый|She is very kind.|Она очень добрая.",
+        "lazy|ˈleɪzi|ленивый|Don't be lazy!|Не ленись!",
+        "friendly|ˈfrendli|дружелюбный|The people here are friendly.|Здесь дружелюбные люди.",
+        "afraid|əˈfreɪd|испуганный; бояться|I am afraid of dogs.|Я боюсь собак.",
+        "calm|kɑːm|спокойный|Stay calm.|Сохраняй спокойствие.",
+        "proud|praʊd|гордый|I am proud of you.|Я горжусь тобой."
+      ]
+    },
+    {
+      "name": "Время и планы",
+      "words": [
+        "weekend|ˌwiːkˈend|выходные|What are you doing this weekend?|Что делаешь в эти выходные?",
+        "soon|suːn|скоро|See you soon.|До скорого.",
+        "later|ˈleɪtər|позже|Call me later.|Позвони мне позже.",
+        "early|ˈɜːrli|рано|I get up early.|Я встаю рано.",
+        "late|leɪt|поздно; поздний|It is late, let's go home.|Уже поздно, пойдём домой.",
+        "already|ɔːlˈredi|уже|I have already finished.|Я уже закончил.",
+        "usually|ˈjuːʒuəli|обычно|I usually walk to work.|Обычно я хожу на работу пешком.",
+        "sometimes|ˈsʌmtaɪmz|иногда|Sometimes I play chess.|Иногда я играю в шахматы.",
+        "never|ˈnevər|никогда|I never drink coffee at night.|Я никогда не пью кофе вечером.",
+        "future|ˈfjuːtʃər|будущее|Think about the future.|Подумай о будущем.",
+        "month|mʌnθ|месяц|I start next month.|Я начинаю в следующем месяце.",
+        "hour|ˈaʊər|час|The film is two hours long.|Фильм длится два часа."
+      ]
+    },
+    {
+      "name": "Глаголы A2",
+      "words": [
+        "remember|rɪˈmembər|помнить|I remember your name.|Я помню твоё имя.",
+        "forget|fərˈɡet|забывать|Don't forget your keys.|Не забудь ключи.",
+        "decide|dɪˈsaɪd|решать|I decided to learn English.|Я решил учить английский.",
+        "try|traɪ|пытаться, пробовать|Try again.|Попробуй ещё раз.",
+        "help|help|помогать; помощь|Can you help me?|Можешь помочь?",
+        "wait|weɪt|ждать|Wait for me!|Подожди меня!",
+        "find|faɪnd|находить|I can't find my phone.|Не могу найти телефон.",
+        "explain|ɪkˈspleɪn|объяснять|Can you explain it again?|Можешь объяснить ещё раз?",
+        "agree|əˈɡriː|соглашаться|I agree with you.|Я с тобой согласен.",
+        "believe|bɪˈliːv|верить|I believe you.|Я тебе верю.",
+        "choose|tʃuːz|выбирать|Choose one answer.|Выбери один ответ.",
+        "hope|hoʊp|надеяться|I hope you are well.|Надеюсь, у тебя всё хорошо.",
+        "learn|lɜːrn|учить, изучать|I learn English every day.|Я учу английский каждый день."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "common": {
+    "i": "я", "you": "ты, вы", "he": "он", "she": "она", "it": "это, оно", "we": "мы", "they": "они",
+    "my": "мой", "your": "твой, ваш", "his": "его", "her": "её", "our": "наш", "their": "их",
+    "a": "артикль «один, какой-то»", "an": "артикль «один» (перед гласным)", "the": "артикль «тот самый»",
+    "is": "есть, является (be)", "am": "есть (be, с I)", "are": "есть (be, с we/you/they)",
+    "was": "был", "were": "были", "in": "в", "on": "на", "at": "в, у, на", "to": "к, в; частица перед глаголом",
+    "for": "для, за", "with": "с", "from": "из, от", "of": "из (родительный падеж)", "after": "после",
+    "before": "перед, до", "every": "каждый", "this": "этот", "that": "тот; что", "not": "не",
+    "so": "так; поэтому", "all": "все", "some": "несколько, немного", "many": "много", "lot": "много (a lot)",
+    "then": "потом", "also": "также", "has": "имеет (have)", "had": "имел; ел (have)", "did": "вспомогательный глагол прошлого",
+    "do": "делать; вспомогательный глагол", "near": "рядом", "last": "прошлый; последний", "next": "следующий",
+    "again": "снова", "think": "думать", "about": "о, про", "sometimes": "иногда", "never": "никогда",
+    "went": "пошёл, поехал (go)", "saw": "видел (see)", "won": "выиграл (win)", "nine": "девять", "five": "пять"
+  },
+  "texts": [
+    {
+      "id": "a1-r-game",
+      "title": "My favorite game",
+      "topic": "Игры",
+      "level": "A1",
+      "text": "I like video games. My favorite game is about a small city. In the game, I build houses, roads and shops. I play with my friend Max. He is a good player. We play every evening after work. Sometimes the game is hard, but we never stop. Last week we finished a big quest, and our city won a prize.",
+      "glossary": {
+        "video": "видео", "roads": "дороги", "road": "дорога", "shops": "магазины", "shop": "магазин",
+        "houses": "дома", "hard": "трудный", "stop": "останавливаться, бросать", "finished": "закончили",
+        "finish": "заканчивать", "prize": "приз"
+      },
+      "questions": [
+        { "type": "choice", "q": "Что автор строит в игре?", "options": ["Дома, дороги и магазины", "Машины и поезда", "Роботов"], "answer": 0 },
+        { "type": "choice", "q": "Когда они играют?", "options": ["Каждое утро", "Каждый вечер после работы", "По воскресеньям"], "answer": 1 },
+        { "type": "choice", "q": "Что случилось на прошлой неделе?", "options": ["Они проиграли", "Закончили большое задание", "Купили новую игру"], "answer": 1 }
+      ]
+    },
+    {
+      "id": "a1-r-site",
+      "title": "At the building site",
+      "topic": "Строительство",
+      "level": "A1",
+      "text": "My father is a builder. He works on a building site near our house. Every morning he puts on a helmet and safety boots. Today the team is building a new school. The walls are brick, and the roof is wood. My father measures the windows and the doors. The work is hard, but he likes it. In the evening he is tired and hungry.",
+      "glossary": {
+        "building": "строительный; здание; строит", "site": "площадка, место", "puts": "кладёт (puts on — надевает)",
+        "helmet": "каска", "boots": "ботинки", "school": "школа", "hard": "тяжёлый, трудный"
+      },
+      "questions": [
+        { "type": "choice", "q": "Кем работает отец?", "options": ["Строителем", "Водителем", "Учителем"], "answer": 0 },
+        { "type": "choice", "q": "Что команда строит сегодня?", "options": ["Новую школу", "Новый отель", "Мост"], "answer": 0 },
+        { "type": "choice", "q": "Из чего крыша?", "options": ["Из кирпича", "Из дерева", "Из бетона"], "answer": 1 }
+      ]
+    },
+    {
+      "id": "a1-r-london",
+      "title": "A trip to London",
+      "topic": "Путешествия",
+      "level": "A1",
+      "text": "Last summer I went to London with my sister. We took a train from the airport to the city. Our hotel was small but nice. Every day we walked a lot. We saw the river, old streets and big parks. The weather was good. We ate fish and chips and drank a lot of tea. I want to go to London again next year.",
+      "glossary": {
+        "trip": "поездка", "summer": "лето", "took": "сели на, взяли (take)", "nice": "приятный, хороший",
+        "walked": "гуляли, ходили пешком", "river": "река", "parks": "парки", "park": "парк", "weather": "погода",
+        "ate": "ели (eat)", "fish": "рыба", "chips": "картошка фри", "drank": "пили (drink)", "london": "Лондон"
+      },
+      "questions": [
+        { "type": "choice", "q": "С кем автор ездил в Лондон?", "options": ["С братом", "С сестрой", "С другом"], "answer": 1 },
+        { "type": "choice", "q": "Каким был отель?", "options": ["Большим и дорогим", "Маленьким, но хорошим", "Старым и плохим"], "answer": 1 },
+        { "type": "choice", "q": "Что автор хочет сделать в следующем году?", "options": ["Снова поехать в Лондон", "Купить дом", "Выучить французский"], "answer": 0 }
+      ]
+    },
+    {
+      "id": "a1-r-phone",
+      "title": "My old phone",
+      "topic": "Технологии",
+      "level": "A1",
+      "text": "My phone is three years old. The battery is weak now, and the screen is small. I use it for music, maps and messages. Yesterday the phone stopped working. I saw an error on the screen. I downloaded an update, and now it works again. But I think I need a new phone. Which phone do you have?",
+      "glossary": {
+        "weak": "слабый", "use": "использовать", "messages": "сообщения", "message": "сообщение",
+        "stopped": "перестал", "working": "работать (stopped working — перестал работать)", "which": "какой, который"
+      },
+      "questions": [
+        { "type": "choice", "q": "Что не так с телефоном?", "options": ["Слабая батарея и маленький экран", "Нет интернета", "Сломана кнопка"], "answer": 0 },
+        { "type": "choice", "q": "Как автор исправил ошибку?", "options": ["Скачал обновление", "Купил новый телефон", "Отнёс в ремонт"], "answer": 0 },
+        { "type": "choice", "q": "Что думает автор?", "options": ["Телефон отличный", "Нужен новый телефон", "Нужно больше приложений"], "answer": 1 }
+      ]
+    },
+    {
+      "id": "a1-r-football",
+      "title": "Sunday football",
+      "topic": "Спорт",
+      "level": "A1",
+      "text": "Every Sunday I play football with my friends. We meet at nine in the park. There are ten players, five in each team. I am not very fast, but I am strong. Last Sunday our team won three to two. I scored the last goal! After the match we were tired, so we went to a cafe and had lunch.",
+      "glossary": {
+        "sunday": "воскресенье", "meet": "встречаться", "park": "парк", "each": "каждый",
+        "scored": "забил (score)", "cafe": "кафе", "lunch": "обед (had lunch — пообедали)", "friends": "друзья"
+      },
+      "questions": [
+        { "type": "choice", "q": "Сколько игроков в каждой команде?", "options": ["Десять", "Пять", "Девять"], "answer": 1 },
+        { "type": "choice", "q": "Какой автор?", "options": ["Очень быстрый", "Сильный, но не очень быстрый", "Высокий"], "answer": 1 },
+        { "type": "choice", "q": "Что было после матча?", "options": ["Пошли обедать в кафе", "Пошли домой спать", "Смотрели фильм"], "answer": 0 }
+      ]
+    }
+  ]
+}

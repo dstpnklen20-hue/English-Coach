@@ -1,0 +1,75 @@
+{
+  "common": {
+    "decided": "решил", "thought": "думал (think)", "felt": "чувствовал (feel)", "became": "стал (become)", "found": "нашёл (find)",
+    "spent": "потратил, провёл (spend)", "built": "построил (build)", "began": "начал (begin)", "kept": "продолжал; хранил (keep)",
+    "enough": "достаточно", "few": "мало; несколько (a few)", "whole": "целый, весь", "several": "несколько", "each": "каждый",
+    "during": "во время", "without": "без", "until": "до тех пор пока, до", "half": "половина", "own": "свой, собственный",
+    "even": "даже", "else": "ещё, другой", "anymore": "больше (не)", "worth": "стоит (it's worth it — оно того стоит)"
+  },
+  "texts": [
+    {
+      "id": "b1-r-moving",
+      "title": "Starting again in Canada",
+      "topic": "Переезд",
+      "level": "B1",
+      "text": "Two years ago, Mark decided to move from his small town to Canada. He was a builder, and he had heard that Canadian companies were looking for skilled workers. The first months were hard. Although he had studied English for a year, he couldn't understand people on the phone, and the local accent was very different from the videos he had watched. He rented a tiny room and worked for a contractor who paid him less than other workers. However, Mark didn't give up. He took evening classes, watched hockey with his neighbors and practiced speaking every day. After a year, he got a construction permit and found a better job. Now he manages a small team. \"The language was the biggest wall,\" he says, \"but every wall can be built — or broken — one brick at a time.\"",
+      "glossary": {
+        "skilled": "квалифицированный", "accent": "акцент", "tiny": "крошечный", "give": "давать (give up — сдаваться)",
+        "classes": "занятия, курсы", "hockey": "хоккей", "heard": "слышал (hear)", "broken": "сломан(ный) (break)"
+      },
+      "questions": [
+        { "type": "choice", "q": "Why did Mark choose Canada?", "options": ["Companies needed skilled workers", "His family lived there", "He wanted to play hockey"], "answer": 0 },
+        { "type": "choice", "q": "What was the hardest part at first?", "options": ["Finding a room", "Understanding people", "The cold weather"], "answer": 1 },
+        { "type": "choice", "q": "What does Mark do now?", "options": ["He teaches English", "He works alone for a contractor", "He manages a team"], "answer": 2 }
+      ]
+    },
+    {
+      "id": "b1-r-indie",
+      "title": "A game made by two people",
+      "topic": "Игры",
+      "level": "B1",
+      "text": "Lena and Tom met at university, where they both studied programming. They always talked about making their own game, and three years ago they finally started. During the day they worked as developers for a bank; in the evenings they built their game. The plot was simple: a robot is looking for its creator in an empty city. They couldn't afford artists, so Lena learned to draw the graphics herself. The first version was full of bugs, and only a few people played it. Instead of giving up, they read every review and improved the game step by step. When the full version was released last spring, it sold more than one hundred thousand copies in a month. Now they don't work at the bank anymore. \"We never expected this,\" Tom says. \"We just wanted to finish something of our own.\"",
+      "glossary": {
+        "university": "университет", "programming": "программирование", "robot": "робот", "creator": "создатель",
+        "empty": "пустой", "artists": "художники", "copies": "копии, экземпляры", "herself": "сама"
+      },
+      "questions": [
+        { "type": "choice", "q": "When did Lena and Tom work on the game?", "options": ["Every morning", "In the evenings, after their jobs", "Only on holidays"], "answer": 1 },
+        { "type": "choice", "q": "Why did Lena draw the graphics?", "options": ["They couldn't pay artists", "She studied art", "Tom asked her to"], "answer": 0 },
+        { "type": "choice", "q": "What did they do after the first version?", "options": ["They stopped the project", "They sold it to a bank", "They read reviews and improved it"], "answer": 2 }
+      ]
+    },
+    {
+      "id": "b1-r-marathon",
+      "title": "My first marathon",
+      "topic": "Спорт",
+      "level": "B1",
+      "text": "A year ago I couldn't run five kilometers without stopping. My doctor told me that I should do more exercise, so I made a plan: I would run a marathon before my thirtieth birthday. I downloaded an app, bought comfortable shoes and started with short runs three times a week. In the second month I got a knee injury because I didn't warm up properly. I had to rest for three weeks, and I almost quit. A friend suggested joining a running club, and that changed everything. The coach showed us how to stretch and how to increase the distance slowly. Last Sunday I finished the city marathon in four hours and twenty minutes. It wasn't a record, of course, but when I crossed the finish line, the fans were cheering, and I felt like a champion.",
+      "glossary": {
+        "kilometers": "километры", "marathon": "марафон", "thirtieth": "тридцатый", "knee": "колено",
+        "properly": "как следует", "club": "клуб", "distance": "дистанция, расстояние", "crossed": "пересёк", "line": "линия (finish line — финишная черта)"
+      },
+      "questions": [
+        { "type": "choice", "q": "Why did the author start running?", "options": ["A friend asked him", "He wanted to win money", "The doctor advised more exercise"], "answer": 2 },
+        { "type": "choice", "q": "What caused the injury?", "options": ["He didn't warm up properly", "He fell in the park", "His shoes were bad"], "answer": 0 },
+        { "type": "choice", "q": "What helped him most?", "options": ["A new app", "Joining a running club", "Running every day alone"], "answer": 1 }
+      ]
+    },
+    {
+      "id": "b1-r-smart-home",
+      "title": "Is a smart home worth it?",
+      "topic": "Технологии",
+      "level": "B1",
+      "text": "When we finished the renovation of our flat, we decided to make it \"smart\". We installed smart lights, a robot vacuum cleaner and a camera at the door. Everything can be controlled from one app on the phone. Some features are really useful: the heating turns on half an hour before we come home, and the lights switch off when nobody is in the room, which reduces our electricity bill. However, not everything is perfect. Last month the network was down for a whole day, and we couldn't even open the garage. The setup was also more complicated than we expected, and some devices need a monthly subscription. My advice? Start with one or two reliable devices, compare prices and read reviews. A smart home is comfortable, but it should make your life easier, not more annoying.",
+      "glossary": {
+        "flat": "квартира", "vacuum": "вакуум (vacuum cleaner — пылесос)", "cleaner": "уборщик; чистящее средство", "controlled": "управляется", "heating": "отопление",
+        "switch": "переключатель (switch off — выключать)", "nobody": "никто", "electricity": "электричество", "perfect": "идеальный", "setup": "настройка", "monthly": "ежемесячный"
+      },
+      "questions": [
+        { "type": "choice", "q": "How does the smart home save money?", "options": ["The app is free", "Lights switch off in empty rooms", "The camera is cheap"], "answer": 1 },
+        { "type": "choice", "q": "What happened last month?", "options": ["The robot broke", "They lost the phone", "The network didn't work for a day"], "answer": 2 },
+        { "type": "choice", "q": "What does the author advise?", "options": ["Start with a few reliable devices", "Buy everything at once", "Never use subscriptions"], "answer": 0 }
+      ]
+    }
+  ]
+}

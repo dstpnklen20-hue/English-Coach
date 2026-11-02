@@ -1,0 +1,79 @@
+{
+  "common": {
+    "rather": "довольно; скорее", "though": "хотя; впрочем", "unlike": "в отличие от", "within": "в пределах, в течение",
+    "whether": "ли (whether or not — так или иначе)", "able": "способный (be able to — мочь)",
+    "turned": "повернул(ся) (turned out — оказалось)", "realized": "понял, осознал", "noticed": "заметил", "brought": "принёс (bring)",
+    "taught": "учил, научил (teach)", "chose": "выбрал (choose)", "understood": "понял (understand)", "seemed": "казалось",
+    "towards": "к, по направлению к", "nowadays": "в наше время", "anyway": "в любом случае", "whole": "целый"
+  },
+  "texts": [
+    {
+      "id": "b2-r-remote",
+      "title": "Working from anywhere",
+      "topic": "Работа",
+      "level": "B2",
+      "text": "Three years ago, Anna's company announced that employees could work from anywhere. At first she was thrilled: no commute, flexible hours and the freedom to travel. She spent one winter in Portugal and the next spring in Georgia, working from cafés and rented flats. However, the reality turned out to be more complicated than the photos on social media. Unstable internet connections made video calls frustrating, and time differences meant she sometimes had to join meetings at midnight. Even worse, she realized she had stopped talking to her colleagues about anything except work. \"I'd been so focused on the freedom that I hadn't noticed how isolated I'd become,\" she admits. Nowadays Anna has found a compromise. She rents a desk in a coworking space, visits the office once a month and sets strict limits on her working hours. \"Remote work isn't a dream or a nightmare,\" she says. \"It's a tool. Whether it works depends on how you use it.\"",
+      "glossary": {
+        "announced": "объявила", "thrilled": "в восторге", "freedom": "свобода", "reality": "реальность",
+        "social": "социальный (social media — соцсети)", "media": "СМИ, медиа", "unstable": "нестабильный", "isolated": "изолированный, одинокий",
+        "coworking": "коворкинг", "space": "пространство, место", "strict": "строгий", "limits": "границы, ограничения", "nightmare": "кошмар"
+      },
+      "questions": [
+        { "type": "choice", "q": "What was the biggest unexpected problem for Anna?", "options": ["Her salary went down", "She felt isolated from people", "She couldn't find a flat"], "answer": 1 },
+        { "type": "choice", "q": "Why did she sometimes join meetings at midnight?", "options": ["Because of time differences", "Because she preferred working at night", "Because her internet was faster then"], "answer": 0 },
+        { "type": "choice", "q": "What is Anna's opinion of remote work now?", "options": ["It's a perfect lifestyle", "It's a mistake she regrets", "It's a tool that depends on how you use it"], "answer": 2 }
+      ]
+    },
+    {
+      "id": "b2-r-wooden",
+      "title": "The return of wooden skyscrapers",
+      "topic": "Строительство",
+      "level": "B2",
+      "text": "For more than a century, tall buildings have been made of steel and reinforced concrete. Recently, however, engineers have been rediscovering a much older material: wood. Modern \"mass timber\" consists of thin layers of wood glued together under pressure, which makes the panels surprisingly strong. Supporters claim that it is more sustainable than concrete, because trees absorb carbon dioxide while they grow, whereas producing cement releases huge amounts of it. Wooden panels are also lighter, so the foundation can be smaller, and they are made in factories, which means construction sites are quieter and projects finish faster. Critics, on the other hand, point to the risk of fire. Supporters reply that thick timber burns slowly and forms a protective black layer on the outside, so the load-bearing structure remains stable for a long time. Building regulations in many countries have already been changed to allow wooden towers of up to eighteen floors. If the trend continues, the skyline of the future might look surprisingly natural.",
+      "glossary": {
+        "century": "век, столетие", "steel": "сталь", "rediscovering": "заново открывают", "timber": "древесина, лесоматериал",
+        "layers": "слои", "glued": "склеенные", "pressure": "давление", "absorb": "поглощать", "carbon": "углерод (carbon dioxide — углекислый газ)", "dioxide": "диоксид",
+        "releases": "выделяет", "protective": "защитный", "skyline": "силуэт города на фоне неба", "trend": "тенденция"
+      },
+      "questions": [
+        { "type": "choice", "q": "Why do supporters say wood is more sustainable?", "options": ["It is cheaper to transport", "Trees absorb carbon dioxide", "It never needs repairs"], "answer": 1 },
+        { "type": "choice", "q": "What is the main concern of critics?", "options": ["Noise on construction sites", "The weight of the panels", "The risk of fire"], "answer": 2 },
+        { "type": "choice", "q": "Why can the foundation be smaller?", "options": ["Wooden panels are lighter", "The buildings are shorter", "Regulations require it"], "answer": 0 }
+      ]
+    },
+    {
+      "id": "b2-r-esports",
+      "title": "Is esports a real career?",
+      "topic": "Игры",
+      "level": "B2",
+      "text": "When Daniel told his parents that he wanted to become a professional gamer, they assumed it was a phase. He was sixteen, and he had been playing a team shooter for eight hours a day. Two years later, he signed his first contract with an esports organization. The reality of professional gaming, he explains, has little to do with having fun. Players follow a strict routine: tactics meetings in the morning, scrimmages against other teams in the afternoon and video analysis of their mistakes in the evening. Many teams now employ coaches, psychologists and even nutrition experts, because physical and mental health have a significant impact on performance. Careers are short, though. Reaction time tends to decline in a player's mid-twenties, and only a small percentage of players earn enough to live on. That is why Daniel is studying computer science online. \"Esports taught me discipline and teamwork,\" he says. \"But I'd be naive to rely only on it. I want a plan B.\"",
+      "glossary": {
+        "professional": "профессиональный", "phase": "период, этап (пройдёт)", "shooter": "шутер", "organization": "организация",
+        "scrimmages": "тренировочные матчи", "analysis": "разбор, анализ", "psychologists": "психологи", "impact": "влияние",
+        "reaction": "реакция (reaction time — скорость реакции)", "decline": "снижаться", "percentage": "процент", "discipline": "дисциплина", "naive": "наивный"
+      },
+      "questions": [
+        { "type": "choice", "q": "How did Daniel's parents react at first?", "options": ["They thought it would pass", "They bought him a new PC", "They found him a coach"], "answer": 0 },
+        { "type": "choice", "q": "Why do teams employ psychologists and nutrition experts?", "options": ["To attract sponsors", "Health affects performance", "It is required by law"], "answer": 1 },
+        { "type": "choice", "q": "Why is Daniel studying computer science?", "options": ["His parents forced him", "He wants to make games", "Esports careers are short and risky"], "answer": 2 }
+      ]
+    },
+    {
+      "id": "b2-r-culture-shock",
+      "title": "Four stages of culture shock",
+      "topic": "Переезд",
+      "level": "B2",
+      "text": "Psychologists often describe culture shock in four stages. The first is the \"honeymoon\": everything in the new country seems exciting, from the food to the architecture. After a few weeks or months comes frustration. Simple tasks, such as opening a bank account or understanding a joke, suddenly feel exhausting, and many people feel homesick. Some even consider going back. The third stage is adjustment. You start to recognize patterns, you make a few local friends and the language stops being a wall. Finally comes adaptation: you feel comfortable in both cultures, even though you will probably never lose your accent. Experts emphasize that these stages are not the same for everyone, and people can move back and forth between them. Their advice is surprisingly practical: learn the language before you move rather than after, keep a routine, join clubs or sports teams, and don't compare your first year abroad with your whole life at home. As one expat put it, \"It gets easier — not because the country changes, but because you do.\"",
+      "glossary": {
+        "stages": "этапы", "honeymoon": "медовый месяц", "architecture": "архитектура", "frustration": "разочарование, раздражение",
+        "exhausting": "изматывающий", "adjustment": "привыкание, приспособление", "patterns": "закономерности",
+        "adaptation": "адаптация", "forth": "вперёд (back and forth — туда-обратно)", "practical": "практичный", "expat": "экспат (живущий за границей)"
+      },
+      "questions": [
+        { "type": "choice", "q": "What happens in the second stage?", "options": ["Everything seems exciting", "People feel comfortable in both cultures", "Simple tasks feel exhausting"], "answer": 2 },
+        { "type": "choice", "q": "When do experts suggest learning the language?", "options": ["Before moving", "After the first year", "Only if you plan to stay"], "answer": 0 },
+        { "type": "choice", "q": "According to the expat, why does it get easier?", "options": ["The country becomes friendlier", "The person changes", "Life abroad gets cheaper"], "answer": 1 }
+      ]
+    }
+  ]
+}

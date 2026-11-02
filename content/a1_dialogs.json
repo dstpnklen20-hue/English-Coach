@@ -1,0 +1,71 @@
+{
+  "dialogs": [
+    {
+      "id": "a1-d-cafe",
+      "title": "В кафе",
+      "topic": "Еда",
+      "intro": "Вы заказываете кофе. Отвечайте кнопками или голосом.",
+      "lines": [
+        { "who": "them", "en": "Hi! What can I get you?", "ru": "Привет! Что вам принести?" },
+        { "who": "me", "hint": "Попросите кофе", "options": ["A coffee, please.", "I am a coffee.", "Coffee is big."], "ru": "Кофе, пожалуйста." },
+        { "who": "them", "en": "Small or big?", "ru": "Маленький или большой?" },
+        { "who": "me", "hint": "Скажите, что большой", "options": ["Big, please.", "Yes, I big.", "I want small big."], "ru": "Большой, пожалуйста." },
+        { "who": "them", "en": "Anything to eat?", "ru": "Что-нибудь поесть?" },
+        { "who": "me", "hint": "Вежливо откажитесь", "options": ["No, thank you.", "No eat.", "I not hungry thank."], "ru": "Нет, спасибо." },
+        { "who": "them", "en": "That's four dollars.", "ru": "С вас четыре доллара." },
+        { "who": "me", "hint": "Спросите, можно ли оплатить картой", "options": ["Can I pay by card?", "I can card?", "Do card pay?"], "ru": "Можно оплатить картой?" },
+        { "who": "them", "en": "Sure. Have a nice day!", "ru": "Конечно. Хорошего дня!" }
+      ]
+    },
+    {
+      "id": "a1-d-airport",
+      "title": "В аэропорту",
+      "topic": "Путешествия",
+      "intro": "Регистрация на рейс в Лондон.",
+      "lines": [
+        { "who": "them", "en": "Good morning. Your passport, please.", "ru": "Доброе утро. Ваш паспорт, пожалуйста." },
+        { "who": "me", "hint": "Отдайте паспорт: «Вот, пожалуйста»", "options": ["Here you are.", "Here is you.", "It is passport me."], "ru": "Вот, пожалуйста." },
+        { "who": "them", "en": "Where are you flying today?", "ru": "Куда вы летите сегодня?" },
+        { "who": "me", "hint": "Скажите, что в Лондон", "options": ["To London.", "In London fly.", "London is go."], "ru": "В Лондон." },
+        { "who": "them", "en": "Do you have any bags?", "ru": "У вас есть багаж?" },
+        { "who": "me", "hint": "Скажите, что одна сумка", "options": ["Yes, one bag.", "Yes, I am bag.", "One bags have."], "ru": "Да, одна сумка." },
+        { "who": "them", "en": "Here is your ticket. Gate twelve.", "ru": "Вот ваш билет. Выход двенадцать." },
+        { "who": "me", "hint": "Спросите, где выход", "options": ["Where is the gate?", "Where gate is?", "What is gate where?"], "ru": "Где выход?" },
+        { "who": "them", "en": "Go straight and turn left.", "ru": "Идите прямо и поверните налево." },
+        { "who": "me", "hint": "Поблагодарите", "options": ["Thank you very much!", "Thanks you much!", "Very thank!"], "ru": "Большое спасибо!" }
+      ]
+    },
+    {
+      "id": "a1-d-site",
+      "title": "Первый день на стройке",
+      "topic": "Строительство",
+      "intro": "Вы новый строитель. Знакомитесь с бригадиром.",
+      "lines": [
+        { "who": "them", "en": "Hi, are you the new builder?", "ru": "Привет, ты новый строитель?" },
+        { "who": "me", "hint": "Скажите «да» и что вас зовут Лео", "options": ["Yes, I am. My name is Leo.", "Yes, I is Leo.", "Yes, name me Leo."], "ru": "Да. Меня зовут Лео." },
+        { "who": "them", "en": "Nice to meet you. Can you use a hammer?", "ru": "Приятно познакомиться. Умеешь работать молотком?" },
+        { "who": "me", "hint": "Скажите, что умеете", "options": ["Yes, I can.", "Yes, I can to.", "Yes, I am can."], "ru": "Да, умею." },
+        { "who": "them", "en": "Good. Today we paint the walls.", "ru": "Хорошо. Сегодня красим стены." },
+        { "who": "me", "hint": "Спросите, где краска", "options": ["Where is the paint?", "Where paint is it?", "Paint where?"], "ru": "Где краска?" },
+        { "who": "them", "en": "It's in the blue box. And don't forget your helmet!", "ru": "В синей коробке. И не забудь каску!" },
+        { "who": "me", "hint": "Ответьте: «Хорошо, спасибо!»", "options": ["OK, thank you!", "OK, thanks you!", "Good, thank!"], "ru": "Хорошо, спасибо!" }
+      ]
+    },
+    {
+      "id": "a1-d-game",
+      "title": "Игровой чат",
+      "topic": "Игры",
+      "intro": "Вас зовут в команду в онлайн-игре.",
+      "lines": [
+        { "who": "them", "en": "Hey! Do you want to join our team?", "ru": "Привет! Хочешь в нашу команду?" },
+        { "who": "me", "hint": "Согласитесь", "options": ["Sure, I want to join!", "Yes, I join want.", "Sure, I am join."], "ru": "Конечно, хочу!" },
+        { "who": "them", "en": "What level are you?", "ru": "Какой у тебя уровень?" },
+        { "who": "me", "hint": "Скажите, что у вас десятый уровень", "options": ["I am level ten.", "My level is ten years.", "I have ten level."], "ru": "У меня десятый уровень." },
+        { "who": "them", "en": "Cool. The enemy is near the castle. Are you ready?", "ru": "Круто. Враг у замка. Готов?" },
+        { "who": "me", "hint": "Скажите, что готовы", "options": ["Yes, I'm ready!", "Yes, I ready!", "Yes, ready I am is!"], "ru": "Да, готов!" },
+        { "who": "them", "en": "Great game! We won!", "ru": "Отличная игра! Мы выиграли!" },
+        { "who": "me", "hint": "Ответьте: «Хорошая игра! Спасибо, команда!»", "options": ["Good game! Thanks, team!", "Good game! Thank team you!", "Game good, thanks you!"], "ru": "Хорошая игра! Спасибо, команда!" }
+      ]
+    }
+  ]
+}

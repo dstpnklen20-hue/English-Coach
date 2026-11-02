@@ -1,0 +1,612 @@
+{
+  "sets": [
+    {
+      "id": "b1-tr-opinions",
+      "kind": "translate",
+      "title": "Мнения и споры",
+      "level": "B1",
+      "topic": "Общение",
+      "phrases": [
+        {
+          "ru": "По-моему, эта игра переоценена.",
+          "en": "In my opinion, this game is overrated.",
+          "alt": [
+            "This game is overrated in my opinion."
+          ],
+          "extra": [
+            "on",
+            "overrating"
+          ],
+          "hint": "In my opinion — «по-моему» (не on my opinion)."
+        },
+        {
+          "ru": "Я с тобой не согласен.",
+          "en": "I don't agree with you.",
+          "extra": [
+            "am",
+            "to"
+          ],
+          "hint": "Agree — глагол: I don't agree (не I am not agree)."
+        },
+        {
+          "ru": "Если бы у меня было больше времени, я бы выучил японский.",
+          "en": "If I had more time, I would learn Japanese.",
+          "alt": [
+            "I would learn Japanese if I had more time."
+          ],
+          "extra": [
+            "have",
+            "will"
+          ],
+          "hint": "Нереальное условие: If + прошедшее, would + глагол."
+        },
+        {
+          "ru": "Его уже починили.",
+          "en": "It has already been fixed.",
+          "extra": [
+            "have",
+            "fixing"
+          ],
+          "hint": "Пассив в Present Perfect: has been + 3-я форма."
+        },
+        {
+          "ru": "Я привык работать по ночам.",
+          "en": "I am used to working at night.",
+          "extra": [
+            "work",
+            "use"
+          ],
+          "hint": "Be used to + -ing — «привык к»."
+        },
+        {
+          "ru": "Это зависит от цены.",
+          "en": "It depends on the price.",
+          "extra": [
+            "of",
+            "from"
+          ],
+          "hint": "Depend on — «зависеть от» (не from)."
+        },
+        {
+          "ru": "Мне кажется, он прав.",
+          "en": "I think he is right.",
+          "extra": [
+            "true",
+            "has"
+          ],
+          "hint": "«Прав» — right; true — «правдивый, верный» о фактах."
+        },
+        {
+          "ru": "Давай обсудим это завтра.",
+          "en": "Let's discuss it tomorrow.",
+          "extra": [
+            "about",
+            "discussing"
+          ],
+          "hint": "Discuss без about: discuss it."
+        }
+      ]
+    },
+    {
+      "id": "b1-tr-tech",
+      "kind": "translate",
+      "title": "Технологии и баги",
+      "level": "B1",
+      "topic": "Технологии",
+      "phrases": [
+        {
+          "ru": "Приложение вылетает, когда я нажимаю эту кнопку.",
+          "en": "The app crashes when I press this button.",
+          "extra": [
+            "will",
+            "pressed"
+          ],
+          "hint": "После when — настоящее время."
+        },
+        {
+          "ru": "Я пытаюсь найти причину проблемы.",
+          "en": "I'm trying to find the cause of the problem.",
+          "extra": [
+            "finding",
+            "reason"
+          ],
+          "hint": "Try to + глагол. «Причина чего-то» — the cause of (или the reason for)."
+        },
+        {
+          "ru": "Данные сохраняются автоматически.",
+          "en": "The data is saved automatically.",
+          "extra": [
+            "saves",
+            "automatic"
+          ],
+          "hint": "Пассив: is + 3-я форма. Наречие — automatically."
+        },
+        {
+          "ru": "Ты не мог бы проверить мой код?",
+          "en": "Could you check my code?",
+          "extra": [
+            "checking",
+            "me"
+          ],
+          "hint": "Вежливая просьба — Could you + глагол."
+        },
+        {
+          "ru": "Раньше я пользовался Windows.",
+          "en": "I used to use Windows.",
+          "extra": [
+            "uses",
+            "am"
+          ],
+          "hint": "Used to + глагол — привычка в прошлом, которой больше нет."
+        },
+        {
+          "ru": "Сервер, который мы купили, уже устарел.",
+          "en": "The server that we bought is already outdated.",
+          "alt": [
+            "The server we bought is already outdated."
+          ],
+          "extra": [
+            "who",
+            "buyed"
+          ],
+          "hint": "Для предметов — that / which, не who. Buy → bought."
+        },
+        {
+          "ru": "Перед обновлением нужно сделать резервную копию файлов.",
+          "en": "We need to back up the files before the update.",
+          "alt": [
+            "Before the update we need to back up the files."
+          ],
+          "extra": [
+            "backup",
+            "after"
+          ],
+          "hint": "Глагол — back up (раздельно), существительное — a backup."
+        },
+        {
+          "ru": "Если ты перезагрузишь телефон, он заработает.",
+          "en": "If you restart the phone, it will work.",
+          "alt": [
+            "It will work if you restart the phone."
+          ],
+          "extra": [
+            "will",
+            "worked"
+          ],
+          "hint": "Реальное условие: If + настоящее, will + глагол."
+        }
+      ]
+    },
+    {
+      "id": "b1-cl-bug",
+      "kind": "cloze",
+      "title": "The bug that ruined Friday",
+      "level": "B1",
+      "topic": "Технологии",
+      "text": "On Friday afternoon our app suddenly started to [crash] for thousands of users. My manager asked me to [find] the cause as quickly as possible. At first I thought the problem was in the new update, but the logs [showed] something different: the database was [running] out of space. While I was cleaning old data, my colleague [contacted] the users and explained the situation. By eight o'clock everything was [working] again. On Monday we had a meeting to [discuss] how to avoid such problems in the future, and we [agreed] to check the server every week.",
+      "extra": [
+        "solve",
+        "told",
+        "discussed"
+      ],
+      "ru": "В пятницу днём наше приложение вдруг начало вылетать у тысяч пользователей. Менеджер попросил меня как можно быстрее найти причину. Сначала я думал, что проблема в новом обновлении, но журналы показали другое: в базе данных заканчивалось место. Пока я чистил старые данные, коллега связался с пользователями и объяснил ситуацию. К восьми часам всё снова работало. В понедельник мы собрались обсудить, как избежать таких проблем в будущем, и договорились проверять сервер каждую неделю.",
+      "glossary": {
+        "logs": "журналы работы программы (логи)",
+        "database": "база данных",
+        "suddenly": "вдруг",
+        "colleague": "коллега",
+        "avoid": "избегать",
+        "cause": "причина",
+        "space": "место",
+        "thousands": "тысячи"
+      }
+    },
+    {
+      "id": "b1-cl-site",
+      "kind": "cloze",
+      "title": "Safety first",
+      "level": "B1",
+      "topic": "Стройка",
+      "text": "Last week a new worker [joined] our team on the building site. Before he could start, he had to [complete] a short safety course. The instructor explained that a helmet must [be] worn at all times, even during breaks. He also showed us how to [check] a ladder before climbing it. If you [notice] a damaged cable, you should report it immediately. Some people think these rules are boring, but they [save] lives. In the last two years nobody on our site has been [injured], and we are proud of that.",
+      "extra": [
+        "wear",
+        "injuring",
+        "saving"
+      ],
+      "ru": "На прошлой неделе к нашей бригаде на стройке присоединился новый рабочий. Прежде чем начать, он должен был пройти короткий курс по технике безопасности. Инструктор объяснил, что каску нужно носить всегда, даже в перерывах. Ещё он показал, как проверять стремянку, прежде чем на неё залезть. Если заметили повреждённый кабель, нужно сразу сообщить. Некоторые считают эти правила скучными, но они спасают жизни. За последние два года на нашей площадке никто не пострадал, и мы этим гордимся.",
+      "glossary": {
+        "site": "площадка",
+        "helmet": "каска",
+        "ladder": "лестница, стремянка",
+        "climbing": "залезая (climb — залезать)",
+        "damaged": "повреждённый",
+        "cable": "кабель",
+        "report": "сообщать",
+        "immediately": "немедленно",
+        "proud": "гордый",
+        "worn": "носить (wear — worn)",
+        "safety": "безопасность"
+      }
+    },
+    {
+      "id": "b1-m-work",
+      "kind": "match",
+      "title": "Сочетания: работа",
+      "level": "B1",
+      "topic": "Сочетания",
+      "pairs": [
+        {
+          "a": "make",
+          "b": "progress",
+          "ru": "добиваться успехов",
+          "example": "You've made real progress this month."
+        },
+        {
+          "a": "take",
+          "b": "responsibility",
+          "ru": "брать ответственность",
+          "example": "A good leader takes responsibility for mistakes."
+        },
+        {
+          "a": "do",
+          "b": "research",
+          "ru": "проводить исследование",
+          "example": "We did some research before launching the app."
+        },
+        {
+          "a": "run",
+          "b": "a business",
+          "ru": "вести бизнес",
+          "example": "My uncle runs a small business."
+        },
+        {
+          "a": "pay",
+          "b": "a compliment",
+          "ru": "сделать комплимент",
+          "example": "She paid me a compliment on my presentation."
+        },
+        {
+          "a": "solve",
+          "b": "a problem",
+          "ru": "решить проблему",
+          "example": "We solved the problem in an hour."
+        },
+        {
+          "a": "meet",
+          "b": "the requirements",
+          "ru": "соответствовать требованиям",
+          "example": "Your CV meets all the requirements."
+        },
+        {
+          "a": "apply",
+          "b": "for a job",
+          "ru": "подать заявку на работу",
+          "example": "I applied for a job in Canada."
+        }
+      ]
+    },
+    {
+      "id": "b1-m-phrasal",
+      "kind": "match",
+      "title": "Фразовые глаголы",
+      "level": "B1",
+      "topic": "Фразовые глаголы",
+      "pairs": [
+        {
+          "a": "put off",
+          "b": "откладывать",
+          "example": "Don't put off the meeting again."
+        },
+        {
+          "a": "figure out",
+          "b": "разобраться, понять",
+          "example": "I can't figure out how this works."
+        },
+        {
+          "a": "come up with",
+          "b": "придумать",
+          "example": "She came up with a great idea."
+        },
+        {
+          "a": "run out of",
+          "b": "закончиться (о запасе)",
+          "example": "We've run out of coffee."
+        },
+        {
+          "a": "look forward to",
+          "b": "ждать с нетерпением",
+          "example": "I'm looking forward to the holiday."
+        },
+        {
+          "a": "set up",
+          "b": "настроить, наладить",
+          "example": "Can you help me set up the router?"
+        },
+        {
+          "a": "get along with",
+          "b": "ладить с",
+          "example": "I get along with my new colleagues."
+        },
+        {
+          "a": "carry on",
+          "b": "продолжать",
+          "example": "Carry on, you're doing great."
+        }
+      ]
+    },
+    {
+      "id": "b1-re-meetings",
+      "kind": "reply",
+      "title": "Meetings and calls",
+      "level": "B1",
+      "topic": "Работа",
+      "items": [
+        {
+          "type": "choice",
+          "q": "Sorry, you're on mute.",
+          "ru": "You're speaking in a video call, but nobody can hear you.",
+          "options": [
+            "Oh, sorry! Can you hear me now?",
+            "Sorry, I'm not mute.",
+            "Yes, I am speaking."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Mute здесь — выключенный микрофон, а не «немой». Включите звук и переспросите.",
+            "Вас не слышат — нужно включить микрофон и уточнить, слышно ли теперь."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "What do you think about the new design?",
+          "ru": "Your manager asks for your opinion.",
+          "options": [
+            "I think so.",
+            "To be honest, I like it, but the buttons are too small.",
+            "Yes, I think."
+          ],
+          "answer": 1,
+          "why": [
+            "I think so — «думаю, да», ответ на вопрос «да/нет».",
+            "",
+            "Спросили, что вы думаете, — нужен ответ по сути."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Could we move the meeting to Thursday?",
+          "ru": "A client wants to change the date.",
+          "options": [
+            "Yes, move it.",
+            "I can't move.",
+            "Thursday works for me."
+          ],
+          "answer": 2,
+          "why": [
+            "Звучит как приказ — грубовато для клиента.",
+            "I can't move — «я не могу двигаться».",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "I'm afraid we're running out of time.",
+          "ru": "The meeting is almost over.",
+          "options": [
+            "Let's finish the rest by email, then.",
+            "I'm not afraid.",
+            "Let's run faster."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "I'm afraid здесь — «боюсь, что…», вежливое начало, а не страх.",
+            "Run out of time — «время заканчивается», бежать никуда не нужно."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Can you walk me through the report?",
+          "ru": "A colleague wants you to explain your report.",
+          "options": [
+            "Sure, let's go for a walk.",
+            "Sure. Let me share my screen and go through the main points.",
+            "No, I can't walk."
+          ],
+          "answer": 1,
+          "why": [
+            "Walk someone through — «объяснить шаг за шагом», а не гулять.",
+            "",
+            "Речь не о ходьбе — вас просят объяснить отчёт."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Let's touch base next week.",
+          "ru": "A partner is ending the call.",
+          "options": [
+            "What base?",
+            "Sounds good. Talk to you next week!",
+            "I'll touch it."
+          ],
+          "answer": 1,
+          "why": [
+            "Touch base — «созвониться, свериться», устойчивое выражение.",
+            "",
+            "Это не «потрогать» — выражение значит «свяжемся»."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Do you mind if I record this call?",
+          "ru": "An interview is about to start.",
+          "options": [
+            "Yes, I mind. Go ahead.",
+            "I'm not mind.",
+            "Not at all, go ahead."
+          ],
+          "answer": 2,
+          "why": [
+            "Yes, I mind — «да, я против», а потом вы разрешаете — противоречие.",
+            "Неверная форма: I don't mind.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Thanks for your help with the presentation!",
+          "ru": "A colleague thanks you.",
+          "options": [
+            "Any time! It went really well.",
+            "Yes, it was my help.",
+            "Thanks to you too."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Звучит неестественно и хвастливо.",
+            "Благодарить в ответ не за что — скажите Any time или You're welcome."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b1-re-friends",
+      "kind": "reply",
+      "title": "Friends and plans",
+      "level": "B1",
+      "topic": "Общение",
+      "items": [
+        {
+          "type": "choice",
+          "q": "Are you up for a game tonight?",
+          "ru": "A friend invites you to play online.",
+          "options": [
+            "I'm up at seven.",
+            "Sure, I'm in! What time?",
+            "Yes, I'm up."
+          ],
+          "answer": 1,
+          "why": [
+            "Up for — «хочешь ли, готов ли», а не «встаю».",
+            "",
+            "I'm up — «я не сплю», это не ответ на приглашение."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "I failed my driving test again.",
+          "ru": "Your friend is upset.",
+          "options": [
+            "Oh no, I'm sorry to hear that. You'll pass next time.",
+            "Congratulations!",
+            "Good for you!"
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Congratulations — поздравление, а у друга неудача.",
+            "Good for you — «молодец, рад за тебя», здесь неуместно."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Have you seen the new Batman film?",
+          "ru": "A friend asks about a film.",
+          "options": [
+            "Yes, I have seen it yesterday.",
+            "Not yet. Is it worth watching?",
+            "Yes, I see."
+          ],
+          "answer": 1,
+          "why": [
+            "С yesterday нужен Past Simple: I saw it yesterday.",
+            "",
+            "I see — «понятно», это не ответ."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Would you rather go to the beach or the mountains?",
+          "ru": "Friends are planning a holiday.",
+          "options": [
+            "Yes, I would.",
+            "I rather mountains.",
+            "I'd rather go to the mountains — I hate the heat."
+          ],
+          "answer": 2,
+          "why": [
+            "Это вопрос выбора, а не «да/нет».",
+            "Нужно I'd (I would) rather + глагол.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "How come you're so tired?",
+          "ru": "A friend notices you look tired.",
+          "options": [
+            "I stayed up late playing a new game.",
+            "I come by bus.",
+            "Because I'm come."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "How come — «как так вышло, почему», а не «как ты пришёл».",
+            "Неверная форма; нужна причина: I stayed up late…"
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Let's split the bill.",
+          "ru": "Dinner with friends is over.",
+          "options": [
+            "Let's break it.",
+            "Good idea. Let's pay half each.",
+            "I'll cut it."
+          ],
+          "answer": 1,
+          "why": [
+            "Break — «сломать»; split the bill — «разделить счёт».",
+            "",
+            "Речь о деньгах, а не о том, чтобы разрезать."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "I'm thinking of quitting my job.",
+          "ru": "Your friend tells you about their plans.",
+          "options": [
+            "I'm thinking too.",
+            "Quit thinking!",
+            "Really? What made you decide that?"
+          ],
+          "answer": 2,
+          "why": [
+            "I'm thinking too — «я тоже думаю», разговор это не поддерживает.",
+            "Quit thinking — «перестань думать», грубо.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "It's on me tonight.",
+          "ru": "Your friend wants to pay for dinner.",
+          "options": [
+            "That's very kind of you. Next time it's on me!",
+            "What is on you?",
+            "It's on the table."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "It's on me — «я угощаю», устойчивое выражение.",
+            "Речь не о том, где что лежит, — друг угощает."
+          ]
+        }
+      ]
+    }
+  ]
+}
