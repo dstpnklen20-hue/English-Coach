@@ -573,6 +573,224 @@
           ]
         }
       ]
+    },
+    {
+      "id": "a1-tr-uni",
+      "kind": "translate",
+      "title": "В университете",
+      "level": "A1",
+      "topic": "Учёба",
+      "phrases": [
+        {
+          "ru": "Я студент первого курса.",
+          "en": "I am a first-year student.",
+          "extra": [
+            "is",
+            "an"
+          ],
+          "hint": "I am. Перед согласным звуком — a: a first-year student."
+        },
+        {
+          "ru": "Во сколько начинается пара?",
+          "en": "What time does the class start?",
+          "extra": [
+            "do",
+            "starts"
+          ],
+          "hint": "Вопрос: What time + does + the class + глагол без -s."
+        },
+        {
+          "ru": "Можно задать вопрос?",
+          "en": "Can I ask a question?",
+          "extra": [
+            "asks",
+            "to"
+          ],
+          "hint": "После can — глагол без to и без -s."
+        },
+        {
+          "ru": "Я не понимаю это задание.",
+          "en": "I don't understand this task.",
+          "extra": [
+            "doesn't",
+            "not"
+          ],
+          "hint": "С I отрицание — don't + глагол."
+        },
+        {
+          "ru": "Повторите, пожалуйста.",
+          "en": "Can you repeat that, please?",
+          "extra": [
+            "repeats",
+            "it"
+          ],
+          "hint": "Вежливая просьба: Can you + глагол … please?"
+        },
+        {
+          "ru": "Давай сделаем домашку вместе.",
+          "en": "Let's do the homework together.",
+          "extra": [
+            "make",
+            "doing"
+          ],
+          "hint": "Homework — с do. Let's + глагол без to."
+        },
+        {
+          "ru": "У нас экзамен в пятницу.",
+          "en": "We have an exam on Friday.",
+          "extra": [
+            "has",
+            "in"
+          ],
+          "hint": "Дни недели — on: on Friday. We have."
+        },
+        {
+          "ru": "Где библиотека?",
+          "en": "Where is the library?",
+          "extra": [
+            "are",
+            "it"
+          ],
+          "hint": "Один предмет — is: Where is…?"
+        }
+      ]
+    },
+    {
+      "id": "a1-re-uni",
+      "kind": "reply",
+      "title": "На паре и на перерыве",
+      "level": "A1",
+      "topic": "Учёба",
+      "items": [
+        {
+          "type": "choice",
+          "q": "Can you open your books, please?",
+          "ru": "Преподаватель начинает занятие.",
+          "options": [
+            "Yes, of course.",
+            "Yes, I can books.",
+            "No, thank you."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Нужно просто согласиться: Yes, of course или Sure.",
+            "No, thank you — отказ от предложения, а это просьба преподавателя."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Do you have a pen?",
+          "ru": "Одногруппник что-то ищет.",
+          "options": [
+            "Yes, I have. Here you are.",
+            "Yes, I do. Here you are.",
+            "Yes, it is."
+          ],
+          "answer": 1,
+          "why": [
+            "Короткий ответ на Do you have…? — Yes, I do, а не Yes, I have.",
+            "",
+            "Yes, it is — ответ на вопрос с Is it…?"
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Is this English class?",
+          "ru": "Вы заходите в аудиторию, кто-то спрашивает.",
+          "options": [
+            "I don't know English.",
+            "No, I'm not.",
+            "Yes, it is. Come in!"
+          ],
+          "answer": 2,
+          "why": [
+            "Спросили про занятие, а не про ваш английский.",
+            "No, I'm not — ответ на Are you…?",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "What's the homework?",
+          "ru": "Одногруппник пропустил конец пары.",
+          "options": [
+            "Exercise five on page twenty.",
+            "I did it yesterday.",
+            "Homework is good."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Спросили, что задано, а не сделали ли вы.",
+            "Ответ ничего не сообщает о задании."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Do you want to get a coffee in the break?",
+          "ru": "Одногруппник зовёт на перерыве.",
+          "options": [
+            "Yes, I want coffee break.",
+            "Sure, let's go!",
+            "I am coffee."
+          ],
+          "answer": 1,
+          "why": [
+            "Звучит неестественно; короткий ответ — Sure или Yes, let's go.",
+            "",
+            "I am coffee — «я кофе»."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Sorry, I'm late.",
+          "ru": "Студент опоздал на пару.",
+          "options": [
+            "You're welcome.",
+            "Me too.",
+            "Come in and sit down, please."
+          ],
+          "answer": 2,
+          "why": [
+            "You're welcome — ответ на «спасибо».",
+            "Me too — но опоздали не вы.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "How was the exam?",
+          "ru": "Друг спрашивает после экзамена.",
+          "options": [
+            "It was OK, but the last question was hard.",
+            "It is tomorrow, thanks.",
+            "Yes, I was."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Экзамен уже был — спросили, как прошёл.",
+            "Yes, I was — ответ на Were you…?"
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "See you tomorrow!",
+          "ru": "Конец учебного дня.",
+          "options": [
+            "Good morning!",
+            "Bye! See you!",
+            "Nice to meet you."
+          ],
+          "answer": 1,
+          "why": [
+            "Good morning — утреннее приветствие, а вы прощаетесь.",
+            "",
+            "Nice to meet you говорят при знакомстве."
+          ]
+        }
+      ]
     }
   ]
 }

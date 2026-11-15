@@ -95,6 +95,72 @@
         { "type": "choice", "q": "Какой автор?", "options": ["Очень быстрый", "Сильный, но не очень быстрый", "Высокий"], "answer": 1 },
         { "type": "choice", "q": "Что было после матча?", "options": ["Пошли обедать в кафе", "Пошли домой спать", "Смотрели фильм"], "answer": 0 }
       ]
+    },
+    {
+      "id": "a1-r-university",
+      "title": "My first week at university",
+      "topic": "Университет",
+      "level": "A1",
+      "text": "This is my first week at university. I study computer science. My group has twenty students, and they are very friendly. Every day we have three or four classes. My favorite subject is English, because the teacher is funny and we talk a lot. The math lectures are difficult for me. In the break I drink coffee with my classmate Max. After classes we often go to the library and do our homework together. I am tired in the evening, but I am happy.",
+      "glossary": {
+        "computer": "компьютерный",
+        "science": "наука (computer science — информатика)",
+        "favorite": "любимый",
+        "because": "потому что",
+        "math": "математика",
+        "lectures": "лекции",
+        "difficult": "трудный",
+        "often": "часто",
+        "happy": "счастливый",
+        "friendly": "дружелюбный"
+      },
+      "questions": [
+        {
+          "type": "choice",
+          "q": "Что изучает автор?",
+          "options": [
+            "Информатику",
+            "Математику",
+            "Английский"
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Математика — только трудные лекции, а изучает он computer science.",
+            "Английский — любимый предмет, но специальность — computer science."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Почему автору нравится английский?",
+          "options": [
+            "Там мало домашки",
+            "Преподаватель смешной, и они много говорят",
+            "Это лёгкий предмет"
+          ],
+          "answer": 1,
+          "why": [
+            "О домашке в тексте не говорится.",
+            "",
+            "В тексте нет слова «лёгкий» — причина в преподавателе: the teacher is funny."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Что автор делает после пар?",
+          "options": [
+            "Идёт домой спать",
+            "Работает",
+            "Делает домашку в библиотеке с Максом"
+          ],
+          "answer": 2,
+          "why": [
+            "Он устаёт вечером, но после пар идёт в библиотеку.",
+            "О работе в тексте нет.",
+            ""
+          ]
+        }
+      ]
     }
   ]
 }

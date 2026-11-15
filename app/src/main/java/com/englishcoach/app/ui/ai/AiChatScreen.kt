@@ -60,7 +60,7 @@ import com.englishcoach.app.ui.theme.Success
 import com.englishcoach.app.ui.theme.Warm
 import kotlinx.coroutines.launch
 
-val AI_TOPICS = listOf("Игры", "Строительство", "Путешествия", "Технологии", "Спорт", "Фильмы", "Свободная тема")
+val AI_TOPICS = listOf("Университет", "Знакомства и общение", "Игры", "Строительство", "Путешествия", "Технологии", "Спорт", "Фильмы", "Свободная тема")
 
 /** Строка чата: реплика ученика (с разбором) или ответ собеседника. */
 sealed interface ChatItem {

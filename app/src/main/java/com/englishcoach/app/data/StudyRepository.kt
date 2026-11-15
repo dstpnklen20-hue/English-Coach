@@ -10,7 +10,9 @@ import com.englishcoach.app.data.db.WordEntity
 import com.englishcoach.app.data.fsrs.Fsrs
 import com.englishcoach.app.data.fsrs.Memory
 import com.englishcoach.app.data.fsrs.Rating
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import java.time.LocalDate
@@ -21,12 +23,14 @@ class StudyRepository(private val db: AppDatabase, val fsrs: Fsrs, private val s
 
     fun dueCountFlow(now: Long): Flow<Int> = db.cardDao().dueCountFlow(now)
 
-    /** Сколько новых карточек ещё можно показать сегодня (каждое слово — две карточки). */
-    fun newTodayCountFlow(): Flow<Int> = combine(
-        db.cardDao().newAvailableCountFlow(),
-        db.reviewLogDao().introducedSinceFlow(dayStart()),
-        settings.flow,
-    ) { available, introduced, s -> minOf(available, (s.newWordsPerDay * 2 - introduced).coerceAtLeast(0)) }
+    /** Сколько новых карточек ещё можно показать сегодня (каждое слово — две карточки); отложенные темы не считаются. */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    fun newTodayCountFlow(): Flow<Int> = settings.flow.flatMapLatest { s ->
+        combine(
+            db.cardDao().newAvailableCountFlow(s.laterTopics.toList()),
+            db.reviewLogDao().introducedSinceFlow(dayStart()),
+        ) { available, introduced -> minOf(available, (s.newWordsPerDay * 2 - introduced).coerceAtLeast(0)) }
+    }
 
     fun dayTotalsFlow(): Flow<List<DayTotal>> = db.reviewLogDao().dayTotalsFlow()
 
@@ -36,9 +40,9 @@ class StudyRepository(private val db: AppDatabase, val fsrs: Fsrs, private val s
     /** Очередь на сессию: сначала карточки к повторению, затем новые в пределах лимита. */
     suspend fun loadQueue(now: Long): List<CardWithWord> {
         val due = db.cardDao().dueCards(now, MAX_REVIEWS)
-        val limit = settings.current().newWordsPerDay * 2
-        val newLimit = (limit - db.reviewLogDao().introducedSince(dayStart())).coerceAtLeast(0)
-        return due + db.cardDao().newCards(newLimit)
+        val s = settings.current()
+        val newLimit = (s.newWordsPerDay * 2 - db.reviewLogDao().introducedSince(dayStart())).coerceAtLeast(0)
+        return due + newCards(newLimit)
     }
 
     /** Новое состояние карточки по FSRS — без записи в базу, чтобы экран не ждал диск. */
@@ -73,7 +77,13 @@ class StudyRepository(private val db: AppDatabase, val fsrs: Fsrs, private val s
 
     /** Новые карточки сверх уже взятых в очередь — на место слов, отмеченных «знаю» во время сессии. */
     suspend fun moreNewCards(exclude: Set<Long>, count: Int): List<CardWithWord> =
-        if (count <= 0) emptyList() else db.cardDao().newCards(exclude.size + count).filter { it.card.id !in exclude }.take(count)
+        if (count <= 0) emptyList() else newCards(exclude.size + count).filter { it.card.id !in exclude }.take(count)
+
+    /** Новые карточки с учётом тем: «сначала» — первыми, «позже» — не берутся. */
+    private suspend fun newCards(limit: Int): List<CardWithWord> {
+        val s = settings.current()
+        return db.cardDao().newCards(limit, s.firstTopics.toList(), s.laterTopics.toList())
+    }
 
     suspend fun addUserWord(en: String, ru: String) {
         db.withTransaction {

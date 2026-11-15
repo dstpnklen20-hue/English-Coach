@@ -189,6 +189,48 @@
         "hope|hoʊp|надеяться|I hope you are well.|Надеюсь, у тебя всё хорошо.",
         "learn|lɜːrn|учить, изучать|I learn English every day.|Я учу английский каждый день."
       ]
+    },
+    {
+      "name": "Учёба",
+      "words": [
+        "lecture|ˈlektʃər|лекция|The lecture lasts ninety minutes.|Лекция длится девяносто минут.",
+        "seminar|ˈsemɪnɑːr|семинар|We discuss the topic at the seminar.|Тему обсуждаем на семинаре.",
+        "professor|prəˈfesər|профессор, преподаватель вуза|The professor gave us a lot of work.|Профессор дал нам много работы.",
+        "timetable|ˈtaɪmteɪbəl|расписание занятий|Check the timetable for Monday.|Посмотри расписание на понедельник.",
+        "semester|sɪˈmestər|семестр|The second semester starts in February.|Второй семестр начинается в феврале.",
+        "assignment|əˈsaɪnmənt|задание (письменное)|The assignment is due next week.|Задание нужно сдать на следующей неделе.",
+        "essay|ˈeseɪ|эссе, сочинение|I have to write an essay in English.|Мне нужно написать эссе на английском.",
+        "grade|ɡreɪd|оценка|I got a good grade for my project.|Я получил хорошую оценку за проект.",
+        "presentation|ˌprezənˈteɪʃən|презентация, доклад|My presentation is on Thursday.|Мой доклад в четверг.",
+        "project|ˈprɑːdʒekt|проект|We are doing a project in a team.|Мы делаем проект в команде.",
+        "pass|pæs|сдать (экзамен)|I hope I pass the exam.|Надеюсь, я сдам экзамен.",
+        "fail|feɪl|провалить, не сдать|He failed the test, but he will try again.|Он не сдал тест, но попробует снова.",
+        "miss|mɪs|пропустить; скучать|I missed the first class today.|Сегодня я пропустил первую пару.",
+        "attend|əˈtend|посещать|You must attend all seminars.|Нужно посещать все семинары.",
+        "notes|noʊts|конспект, записи|Can I copy your notes?|Можно переписать твой конспект?",
+        "translate|trænzˈleɪt|переводить|Can you translate this word?|Можешь перевести это слово?"
+      ]
+    },
+    {
+      "name": "Общение и знакомства",
+      "words": [
+        "introduce|ˌɪntrəˈduːs|представить, познакомить|Let me introduce my friend Anna.|Позволь представить мою подругу Анну.",
+        "invite|ɪnˈvaɪt|приглашать|They invited me to a party.|Меня пригласили на вечеринку.",
+        "party|ˈpɑːrti|вечеринка|The party is at Max's place.|Вечеринка у Макса.",
+        "join|dʒɔɪn|присоединиться|Do you want to join us?|Хочешь присоединиться к нам?",
+        "hang out|hæŋ aʊt|проводить время, тусоваться|We often hang out after classes.|Мы часто гуляем после пар.",
+        "borrow|ˈbɑːroʊ|взять на время|Can I borrow your pen?|Можно взять твою ручку?",
+        "lend|lend|дать на время, одолжить|Can you lend me your charger?|Одолжишь мне зарядку?",
+        "joke|dʒoʊk|шутка; шутить|It was just a joke.|Это была просто шутка.",
+        "disagree|ˌdɪsəˈɡriː|не соглашаться|Sorry, I disagree with you.|Извини, я с тобой не согласен.",
+        "guess|ɡes|угадывать; полагать|Guess what happened!|Угадай, что случилось!",
+        "mean|miːn|иметь в виду, значить|What do you mean?|Что ты имеешь в виду?",
+        "worry|ˈwɜːri|волноваться|Don't worry, everything is fine.|Не волнуйся, всё в порядке.",
+        "shy|ʃaɪ|застенчивый|I was shy on my first day.|В первый день я стеснялся.",
+        "polite|pəˈlaɪt|вежливый|Be polite to the teachers.|Будь вежлив с преподавателями.",
+        "serious|ˈsɪriəs|серьёзный|Are you serious?|Ты серьёзно?",
+        "weird|wɪrd|странный|That was a weird question.|Это был странный вопрос."
+      ]
     }
   ]
 }

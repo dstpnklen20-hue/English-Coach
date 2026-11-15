@@ -51,6 +51,14 @@ interface WordDao {
     )
     suspend fun weakWords(limit: Int): List<WordEntity>
 
+    /** Темы в порядке курса: сколько слов и сколько уже начато или отмечено «знаю». */
+    @Query(
+        """SELECT w.topic AS topic, MIN(w.level) AS level, COUNT(*) AS total,
+           SUM(CASE WHEN w.known = 1 OR EXISTS (SELECT 1 FROM cards c WHERE c.wordId = w.id AND c.reps > 0) THEN 1 ELSE 0 END) AS started
+           FROM words w GROUP BY w.topic ORDER BY MIN(w.id)""",
+    )
+    fun topicsFlow(): Flow<List<TopicCount>>
+
     /** Все известные слова (в нижнем регистре) — чтобы не предлагать их при импорте. */
     @Query("SELECT lower(en) FROM words")
     suspend fun allEnglish(): List<String>
@@ -87,6 +95,9 @@ interface WordDao {
 /** Слово не отмечено «знаю» — только такие карточки попадают в повторение и в новые. */
 private const val NOT_KNOWN = "c.wordId NOT IN (SELECT id FROM words WHERE known = 1)"
 
+/** Слово не из отложенной темы («позже») — для новых карточек; повторение начатых слов идёт как обычно. */
+private const val NOT_LATER = "c.wordId NOT IN (SELECT id FROM words WHERE topic IN (:later))"
+
 // Новая карточка RU→EN доступна только после первого показа EN→RU того же слова:
 // сначала узнаём слово, потом учимся его вспоминать.
 private const val NEW_AVAILABLE = """c.state = 0 AND $NOT_KNOWN AND (c.direction = 0 OR EXISTS (
@@ -97,16 +108,20 @@ interface CardDao {
     @Query("SELECT COUNT(*) FROM cards c WHERE c.state != 0 AND c.due <= :now AND $NOT_KNOWN")
     fun dueCountFlow(now: Long): Flow<Int>
 
-    @Query("SELECT COUNT(*) FROM cards c WHERE $NEW_AVAILABLE")
-    fun newAvailableCountFlow(): Flow<Int>
+    @Query("SELECT COUNT(*) FROM cards c WHERE $NEW_AVAILABLE AND $NOT_LATER")
+    fun newAvailableCountFlow(later: List<String>): Flow<Int>
 
     @Transaction
     @Query("SELECT * FROM cards c WHERE c.state != 0 AND c.due <= :now AND $NOT_KNOWN ORDER BY c.due LIMIT :limit")
     suspend fun dueCards(now: Long, limit: Int): List<CardWithWord>
 
+    /** Новые по порядку: сначала обратные карточки начатых слов, затем слова тем «сначала», затем остальные. */
     @Transaction
-    @Query("SELECT * FROM cards c WHERE $NEW_AVAILABLE ORDER BY c.direction DESC, c.wordId LIMIT :limit")
-    suspend fun newCards(limit: Int): List<CardWithWord>
+    @Query(
+        """SELECT c.* FROM cards c JOIN words w ON w.id = c.wordId WHERE $NEW_AVAILABLE AND $NOT_LATER
+           ORDER BY c.direction DESC, CASE WHEN w.topic IN (:first) THEN 0 ELSE 1 END, c.wordId LIMIT :limit""",
+    )
+    suspend fun newCards(limit: Int, first: List<String>, later: List<String>): List<CardWithWord>
 
     /** Все карточки слов, которые уже начаты или отмечены «знаю» — для повторения вне расписания. */
     @Transaction
@@ -184,6 +199,8 @@ data class DayTotal(val day: String, val ms: Long, val answers: Int)
 
 /** Лучший результат по уроку/тексту в процентах. */
 data class BestScore(val itemId: String, val best: Int)
+
+data class TopicCount(val topic: String, val level: String, val total: Int, val started: Int)
 
 data class ItemNet(val itemId: String, val net: Int)
 

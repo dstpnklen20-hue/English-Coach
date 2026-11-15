@@ -230,6 +230,48 @@
         "favorite|ˈfeɪvərɪt|любимый|What is your favorite movie?|Какой твой любимый фильм?",
         "end|end|конец|I don't like the end.|Мне не нравится концовка."
       ]
+    },
+    {
+      "name": "Университет",
+      "words": [
+        "university|ˌjuːnɪˈvɜːrsəti|университет|I study at a big university.|Я учусь в большом университете.",
+        "student|ˈstuːdənt|студент|I am a first-year student.|Я студент первого курса.",
+        "teacher|ˈtiːtʃər|преподаватель, учитель|Our teacher speaks very fast.|Наш преподаватель говорит очень быстро.",
+        "class|klæs|пара, занятие; группа|My first class starts at nine.|Моя первая пара начинается в девять.",
+        "lesson|ˈlesən|урок, занятие|Today's lesson was interesting.|Сегодняшнее занятие было интересным.",
+        "homework|ˈhoʊmwɜːrk|домашнее задание|I do my homework in the evening.|Я делаю домашку вечером.",
+        "exam|ɪɡˈzæm|экзамен|We have an exam on Friday.|В пятницу у нас экзамен.",
+        "question|ˈkwestʃən|вопрос|Can I ask a question?|Можно задать вопрос?",
+        "answer|ˈænsər|ответ; отвечать|I don't know the answer.|Я не знаю ответа.",
+        "study|ˈstʌdi|учиться, изучать|I study computer science.|Я изучаю информатику.",
+        "notebook|ˈnoʊtbʊk|тетрадь; ноутбук|Write it in your notebook.|Запиши это в тетрадь.",
+        "library|ˈlaɪbreri|библиотека|Let's meet in the library.|Давай встретимся в библиотеке.",
+        "classmate|ˈklæsmeɪt|одногруппник, одноклассник|My classmate helps me with English.|Одногруппник помогает мне с английским.",
+        "subject|ˈsʌbdʒɪkt|предмет (учебный)|Math is my favorite subject.|Математика — мой любимый предмет.",
+        "group|ɡruːp|группа|There are twenty people in my group.|В моей группе двадцать человек.",
+        "break|breɪk|перерыв|We have a short break at eleven.|В одиннадцать у нас короткий перерыв."
+      ]
+    },
+    {
+      "name": "Общение",
+      "words": [
+        "hi|haɪ|привет|Hi! How are you?|Привет! Как дела?",
+        "nice|naɪs|приятный, хороший|Nice to meet you.|Приятно познакомиться.",
+        "thanks|θæŋks|спасибо|Thanks for your help!|Спасибо за помощь!",
+        "meet|miːt|встречаться; знакомиться|Let's meet after class.|Давай встретимся после пары.",
+        "talk|tɔːk|разговаривать|Can we talk for a minute?|Можем поговорить минутку?",
+        "chat|tʃæt|болтать; чат|We chat on the phone every day.|Мы каждый день переписываемся в телефоне.",
+        "call|kɔːl|звонить; звонок|I will call you tonight.|Я позвоню тебе вечером.",
+        "ask|æsk|спрашивать, просить|Ask the teacher, she knows.|Спроси преподавателя, она знает.",
+        "tell|tel|рассказывать, сказать|Tell me about your day.|Расскажи мне о своём дне.",
+        "laugh|læf|смеяться|We laughed a lot at lunch.|Мы много смеялись за обедом.",
+        "idea|aɪˈdiːə|идея|That's a good idea!|Отличная идея!",
+        "together|təˈɡeðər|вместе|Let's do the homework together.|Давай сделаем домашку вместе.",
+        "free|friː|свободный; бесплатный|Are you free on Saturday?|Ты свободен в субботу?",
+        "sure|ʃʊr|конечно; уверенный|Sure, no problem!|Конечно, без проблем!",
+        "maybe|ˈmeɪbi|может быть|Maybe we can go tomorrow.|Может, сходим завтра.",
+        "really|ˈriːəli|правда, действительно|Really? I didn't know that.|Правда? Я этого не знал."
+      ]
     }
   ]
 }

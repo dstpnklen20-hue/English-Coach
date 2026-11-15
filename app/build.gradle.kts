@@ -15,8 +15,8 @@ android {
         applicationId = "com.englishcoach.app"
         minSdk = 26
         targetSdk = 37
-        versionCode = 6
-        versionName = "1.4.0"
+        versionCode = 7
+        versionName = "1.5.0"
     }
 
     // Ключ релиза и пароли лежат вне репозитория; путь можно переопределить свойством englishSigning

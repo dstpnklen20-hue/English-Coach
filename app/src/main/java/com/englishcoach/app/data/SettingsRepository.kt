@@ -38,6 +38,9 @@ data class Settings(
     val goalDeadline: Long = 0,
     val goalStartDay: Long = 0,
     val goalStartWords: Int = 0,
+    /** Темы новых слов: «сначала» — новые слова берутся из них первыми; «позже» — новые не показываются, пока тему не вернут. */
+    val firstTopics: Set<String> = emptySet(),
+    val laterTopics: Set<String> = emptySet(),
 )
 
 /**
@@ -57,11 +60,15 @@ data class SyncedSettings(
     val goalDeadline: Long = 0,
     val goalStartDay: Long = 0,
     val goalStartWords: Int = 0,
+    // Темы (с 1.5.0) — списки отсортированы, чтобы сравнение не зависело от порядка
+    val firstTopics: List<String> = emptyList(),
+    val laterTopics: List<String> = emptyList(),
 ) {
     companion object {
         fun of(s: Settings) = SyncedSettings(
             s.newWordsPerDay, s.sessionMinutes, s.paletteId, s.placementDone, s.level,
             s.goalLevel, s.goalWords, s.goalDeadline, s.goalStartDay, s.goalStartWords,
+            s.firstTopics.sorted(), s.laterTopics.sorted(),
         )
     }
 }
@@ -87,6 +94,8 @@ class SettingsRepository(private val context: Context) {
         val goalDeadline = longPreferencesKey("goal_deadline")
         val goalStartDay = longPreferencesKey("goal_start_day")
         val goalStartWords = intPreferencesKey("goal_start_words")
+        val firstTopics = stringSetPreferencesKey("first_topics")
+        val laterTopics = stringSetPreferencesKey("later_topics")
     }
 
     val flow: Flow<Settings> = context.dataStore.data.map(::fromPrefs)
@@ -106,6 +115,8 @@ class SettingsRepository(private val context: Context) {
             goalDeadline = remote.goalDeadline,
             goalStartDay = remote.goalStartDay,
             goalStartWords = remote.goalStartWords,
+            firstTopics = remote.firstTopics.toSet(),
+            laterTopics = remote.laterTopics.toSet(),
             syncedUpdatedAt = updatedAt,
         )
     }
@@ -134,6 +145,8 @@ class SettingsRepository(private val context: Context) {
             p[K.goalDeadline] = s.goalDeadline
             p[K.goalStartDay] = s.goalStartDay
             p[K.goalStartWords] = s.goalStartWords
+            p[K.firstTopics] = s.firstTopics
+            p[K.laterTopics] = s.laterTopics
         }
     }
 
@@ -158,6 +171,8 @@ class SettingsRepository(private val context: Context) {
             goalDeadline = p[K.goalDeadline] ?: d.goalDeadline,
             goalStartDay = p[K.goalStartDay] ?: d.goalStartDay,
             goalStartWords = p[K.goalStartWords] ?: d.goalStartWords,
+            firstTopics = p[K.firstTopics] ?: d.firstTopics,
+            laterTopics = p[K.laterTopics] ?: d.laterTopics,
         )
     }
 }

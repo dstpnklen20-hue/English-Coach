@@ -69,6 +69,75 @@
         { "type": "choice", "q": "Что случилось в третьей игре?", "options": ["У лучшего игрока был лаг", "Команда сдалась", "Игра сломалась"], "answer": 0 },
         { "type": "choice", "q": "Чем закончился турнир для команды?", "options": ["Проиграли в полуфинале", "Выиграли турнир", "Не прошли первый матч"], "answer": 0 }
       ]
+    },
+    {
+      "id": "a2-r-project",
+      "title": "Our group project",
+      "topic": "Университет",
+      "level": "A2",
+      "text": "Last month our professor gave us a big project: we had to create a simple app for students. There were four people in our team, and at first it was hard to agree on anything. Anna wanted to start immediately, but Max wanted to plan everything first. In the end we made a timetable and shared the tasks. I designed the screens, Anna wrote the code, and Max prepared the presentation. Two days before the deadline the app crashed, so we stayed at the university until late. Finally we fixed it and got a good grade. I learned that teamwork is not only about skills, but also about talking to people.",
+      "glossary": {
+        "simple": "простой",
+        "create": "создавать",
+        "immediately": "сразу, немедленно",
+        "anything": "что-либо",
+        "shared": "распределили (share)",
+        "designed": "разработал, нарисовал",
+        "prepared": "подготовил",
+        "crashed": "сломалось, «упало»",
+        "stayed": "остались",
+        "fixed": "исправили",
+        "teamwork": "командная работа",
+        "skills": "навыки",
+        "finally": "наконец"
+      },
+      "questions": [
+        {
+          "type": "choice",
+          "q": "Что было трудно в начале?",
+          "options": [
+            "Договориться в команде",
+            "Найти компьютер",
+            "Понять задание"
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "О компьютерах в тексте нет.",
+            "Задание было понятно: сделать приложение для студентов."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Чем занимался автор?",
+          "options": [
+            "Писал код",
+            "Рисовал экраны",
+            "Готовил доклад"
+          ],
+          "answer": 1,
+          "why": [
+            "Код писала Анна.",
+            "",
+            "Доклад готовил Макс."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Что автор понял в конце?",
+          "options": [
+            "Нужно начинать сразу",
+            "Важны не только навыки, но и общение",
+            "Лучше работать одному"
+          ],
+          "answer": 1,
+          "why": [
+            "Так хотела Анна, но вывод автора другой.",
+            "",
+            "Наоборот: речь о командной работе."
+          ]
+        }
+      ]
     }
   ]
 }

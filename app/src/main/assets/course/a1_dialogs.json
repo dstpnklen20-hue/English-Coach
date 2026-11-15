@@ -66,6 +66,154 @@
         { "who": "them", "en": "Great game! We won!", "ru": "Отличная игра! Мы выиграли!" },
         { "who": "me", "hint": "Ответьте: «Хорошая игра! Спасибо, команда!»", "options": ["Good game! Thanks, team!", "Good game! Thank team you!", "Game good, thanks you!"], "ru": "Хорошая игра! Спасибо, команда!" }
       ]
+    },
+    {
+      "id": "a1-d-classmate",
+      "title": "Новый одногруппник",
+      "topic": "Университет",
+      "level": "A1",
+      "intro": "Первая неделя учёбы. Рядом с вами садится новый студент.",
+      "lines": [
+        {
+          "who": "them",
+          "en": "Hi! Is this seat free?",
+          "ru": "Привет! Это место свободно?"
+        },
+        {
+          "who": "me",
+          "hint": "Скажите, что свободно, и предложите сесть",
+          "options": [
+            "Yes, it is. Sit down, please.",
+            "Yes, I am free.",
+            "No, thank you."
+          ],
+          "ru": "Да. Садись, пожалуйста."
+        },
+        {
+          "who": "them",
+          "en": "Thanks! I'm Max. What's your name?",
+          "ru": "Спасибо! Я Макс. Как тебя зовут?"
+        },
+        {
+          "who": "me",
+          "hint": "Представьтесь и скажите, что приятно познакомиться",
+          "options": [
+            "I'm Leo. Nice to meet you.",
+            "My name Leo. Nice meet you.",
+            "I Leo. You are nice."
+          ],
+          "ru": "Я Лео. Приятно познакомиться."
+        },
+        {
+          "who": "them",
+          "en": "Nice to meet you too. Are you in group five?",
+          "ru": "Мне тоже. Ты из пятой группы?"
+        },
+        {
+          "who": "me",
+          "hint": "Да, вы из пятой группы",
+          "options": [
+            "Yes, I am. Are you in my group too?",
+            "Yes, I do. You in my group?",
+            "Yes, I'm group."
+          ],
+          "ru": "Да. Ты тоже в моей группе?"
+        },
+        {
+          "who": "them",
+          "en": "Yes! Great. Do you know the next class?",
+          "ru": "Да! Отлично. Не знаешь, какая следующая пара?"
+        },
+        {
+          "who": "me",
+          "hint": "Скажите, что следующая пара — английский в аудитории 12",
+          "options": [
+            "It's English, in room twelve.",
+            "It English, room twelve in.",
+            "Is English on room twelve."
+          ],
+          "ru": "Английский, в аудитории двенадцать."
+        },
+        {
+          "who": "them",
+          "en": "Cool. Let's go together after the break.",
+          "ru": "Круто. Пойдём вместе после перерыва."
+        }
+      ]
+    },
+    {
+      "id": "a1-d-teacher",
+      "title": "Вопрос преподавателю",
+      "topic": "Университет",
+      "level": "A1",
+      "intro": "После пары вы подходите к преподавателю.",
+      "lines": [
+        {
+          "who": "them",
+          "en": "Yes? Do you have a question?",
+          "ru": "Да? У вас вопрос?"
+        },
+        {
+          "who": "me",
+          "hint": "Скажите, что не поняли домашнее задание",
+          "options": [
+            "Yes. I don't understand the homework.",
+            "Yes. I not understand homework.",
+            "Yes. I am not understand."
+          ],
+          "ru": "Да. Я не понимаю домашнее задание."
+        },
+        {
+          "who": "them",
+          "en": "No problem. Which part is difficult?",
+          "ru": "Без проблем. Какая часть трудная?"
+        },
+        {
+          "who": "me",
+          "hint": "Скажите, что упражнение три",
+          "options": [
+            "Exercise three is difficult for me.",
+            "Exercise three difficult for me.",
+            "For me exercise three are difficult."
+          ],
+          "ru": "Упражнение три для меня трудное."
+        },
+        {
+          "who": "them",
+          "en": "Read the text first, then answer the questions.",
+          "ru": "Сначала прочитайте текст, потом ответьте на вопросы."
+        },
+        {
+          "who": "me",
+          "hint": "Спросите, когда нужно сдать",
+          "options": [
+            "When do we need to give it?",
+            "When we need give it?",
+            "When need we give it?"
+          ],
+          "ru": "Когда нужно сдать?"
+        },
+        {
+          "who": "them",
+          "en": "On Monday. Can you come at ten?",
+          "ru": "В понедельник. Можете прийти в десять?"
+        },
+        {
+          "who": "me",
+          "hint": "Да, можете, и поблагодарите",
+          "options": [
+            "Yes, I can. Thank you very much!",
+            "Yes, I can come. Thanks you!",
+            "Yes, I come. Thank."
+          ],
+          "ru": "Да, могу. Большое спасибо!"
+        },
+        {
+          "who": "them",
+          "en": "You're welcome. See you on Monday.",
+          "ru": "Пожалуйста. До понедельника."
+        }
+      ]
     }
   ]
 }

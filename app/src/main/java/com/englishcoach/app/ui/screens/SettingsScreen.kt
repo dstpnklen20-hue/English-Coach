@@ -68,7 +68,7 @@ private val SESSION_OPTIONS = listOf(15, 20, 30, 45, 60)
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun SettingsScreen(onPlacement: () -> Unit) {
+fun SettingsScreen(onPlacement: () -> Unit, onTopics: () -> Unit) {
     val c = LocalAppContainer.current
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -102,6 +102,17 @@ fun SettingsScreen(onPlacement: () -> Unit) {
                     FilterChip(selected = s.sessionMinutes == m, onClick = { update { it.copy(sessionMinutes = m) } }, label = { Text("$m мин") })
                 }
             }
+        }
+
+        Panel(Modifier.clickable(onClick = onTopics)) {
+            Text("Темы новых слов", style = MaterialTheme.typography.titleMedium)
+            Text(
+                when {
+                    s.firstTopics.isEmpty() && s.laterTopics.isEmpty() -> "Все темы по порядку курса. Можно выбрать, что учить в первую очередь, а что отложить."
+                    else -> "Сначала: ${s.firstTopics.size} · отложено: ${s.laterTopics.size}"
+                },
+                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
         }
 
         Section("Напоминания")

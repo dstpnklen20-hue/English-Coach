@@ -605,6 +605,250 @@
           ]
         }
       ]
+    },
+    {
+      "id": "a2-tr-talk",
+      "kind": "translate",
+      "title": "Учёба и общение",
+      "level": "A2",
+      "topic": "Учёба",
+      "phrases": [
+        {
+          "ru": "Я пропустил первую пару.",
+          "en": "I missed the first class.",
+          "extra": [
+            "miss",
+            "lost"
+          ],
+          "hint": "Пропустить занятие — miss; в прошлом missed."
+        },
+        {
+          "ru": "Можно переписать твой конспект?",
+          "en": "Can I copy your notes?",
+          "extra": [
+            "copies",
+            "you"
+          ],
+          "hint": "После can — глагол без -s. «Твой» — your."
+        },
+        {
+          "ru": "Мне нужно сдать эссе к пятнице.",
+          "en": "I need to hand in my essay by Friday.",
+          "extra": [
+            "until",
+            "give"
+          ],
+          "hint": "Сдать работу — hand in. Срок «к» — by."
+        },
+        {
+          "ru": "Ты придёшь на вечеринку в субботу?",
+          "en": "Are you coming to the party on Saturday?",
+          "alt": [
+            "Are you coming to the party on Saturday?"
+          ],
+          "extra": [
+            "at",
+            "do"
+          ],
+          "hint": "План на ближайшее — Present Continuous: Are you coming…?"
+        },
+        {
+          "ru": "Давай встретимся после лекции.",
+          "en": "Let's meet after the lecture.",
+          "extra": [
+            "meeting",
+            "before"
+          ],
+          "hint": "Let's + глагол без to."
+        },
+        {
+          "ru": "Я волнуюсь из-за экзамена.",
+          "en": "I'm worried about the exam.",
+          "extra": [
+            "for",
+            "worry"
+          ],
+          "hint": "Волноваться о чём-то — be worried about."
+        },
+        {
+          "ru": "Можешь одолжить мне зарядку?",
+          "en": "Can you lend me your charger?",
+          "extra": [
+            "borrow",
+            "to"
+          ],
+          "hint": "Lend — дать на время (тебе), borrow — взять на время (себе)."
+        },
+        {
+          "ru": "Что ты имеешь в виду?",
+          "en": "What do you mean?",
+          "extra": [
+            "does",
+            "think"
+          ],
+          "hint": "Иметь в виду — mean: What do you mean?"
+        }
+      ]
+    },
+    {
+      "id": "a2-re-friends",
+      "kind": "reply",
+      "title": "Знакомства и планы",
+      "level": "A2",
+      "topic": "Общение",
+      "items": [
+        {
+          "type": "choice",
+          "q": "Hi, I don't think we've met. I'm Kate.",
+          "ru": "На вечеринке к вам подходит девушка.",
+          "options": [
+            "Hi, Kate! I'm Leo. Nice to meet you.",
+            "Yes, we didn't meet.",
+            "I'm fine, thanks."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Звучит странно; просто представьтесь в ответ.",
+            "I'm fine — ответ на How are you?"
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "So, what do you study?",
+          "ru": "Новая знакомая спрашивает об учёбе.",
+          "options": [
+            "I study at nine o'clock.",
+            "Computer science. It's my second year.",
+            "Yes, I study."
+          ],
+          "answer": 1,
+          "why": [
+            "Спросили что, а не когда.",
+            "",
+            "Нужно назвать предмет или специальность."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "We're going to the cinema tonight. Do you want to join us?",
+          "ru": "Одногруппники зовут в кино.",
+          "options": [
+            "Yes, I join.",
+            "I'm not cinema.",
+            "I'd love to! What time?"
+          ],
+          "answer": 2,
+          "why": [
+            "Нужно would like / love to: I'd love to.",
+            "Бессмысленная фраза.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Could you lend me your notes from Monday?",
+          "ru": "Одногруппник пропустил пару.",
+          "options": [
+            "Sure, I'll send you a photo.",
+            "Yes, I borrow you.",
+            "No, I'm lend."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Borrow — брать себе; здесь нужно согласиться дать.",
+            "Неверная форма — так не говорят."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "I failed the test.",
+          "ru": "Друг расстроен.",
+          "options": [
+            "Congratulations!",
+            "Don't worry, you'll pass next time.",
+            "Me too pass."
+          ],
+          "answer": 1,
+          "why": [
+            "Поздравлять тут не с чем.",
+            "",
+            "Неверная форма и не к месту."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "What do you think about the new professor?",
+          "ru": "Одногруппник спрашивает ваше мнение.",
+          "options": [
+            "I think so.",
+            "Yes, I think.",
+            "She's strict, but her lectures are interesting."
+          ],
+          "answer": 2,
+          "why": [
+            "I think so — «думаю, да», ответ на вопрос «да/нет».",
+            "Спросили, что вы думаете, — нужен ответ по сути.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Are you free this weekend?",
+          "ru": "Друг хочет что-то предложить.",
+          "options": [
+            "I'm not sure yet. Why?",
+            "I'm free of charge.",
+            "Yes, it's weekend."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Free of charge — «бесплатно».",
+            "Ответ не о ваших планах."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Guess what? I got the highest grade!",
+          "ru": "Одногруппница делится новостью.",
+          "options": [
+            "Guess what too.",
+            "Wow, well done! You worked so hard.",
+            "I'm sorry to hear that."
+          ],
+          "answer": 1,
+          "why": [
+            "Так не отвечают — порадуйтесь за неё.",
+            "",
+            "I'm sorry to hear that — сочувствие плохой новости."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a2-cl-exams",
+      "kind": "cloze",
+      "title": "Exam week",
+      "level": "A2",
+      "topic": "Учёба",
+      "text": "Next week is exam week, and everyone in my group is a little [worried]. Yesterday I [missed] a lecture, so I asked Anna to send me her [notes]. We decided to [study] together in the library every evening. Max is good at math, so he will [explain] the difficult topics. I am better at English, so I will [help] them with the essay. If we work as a team, I'm sure we will all [pass].",
+      "extra": [
+        "fail",
+        "lend",
+        "boring"
+      ],
+      "ru": "На следующей неделе сессия, и все в моей группе немного волнуются. Вчера я пропустил лекцию, поэтому попросил Анну прислать конспект. Мы решили каждый вечер заниматься вместе в библиотеке. Макс хорошо знает математику, так что объяснит трудные темы. Я лучше в английском, поэтому помогу им с эссе. Если будем работать командой, уверен, сдадим все.",
+      "glossary": {
+        "everyone": "все",
+        "decided": "решили",
+        "difficult": "трудный",
+        "topics": "темы",
+        "better": "лучше",
+        "team": "команда",
+        "essay": "эссе"
+      }
     }
   ]
 }

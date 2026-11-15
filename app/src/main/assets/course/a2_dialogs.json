@@ -52,6 +52,134 @@
         { "who": "them", "en": "No, you mustn't run for two weeks.", "ru": "Нет, бегать нельзя две недели." },
         { "who": "me", "hint": "Поблагодарите доктора", "options": ["Thank you, doctor.", "Thanks you, doctor.", "Thank to you, doctor."], "ru": "Спасибо, доктор." }
       ]
+    },
+    {
+      "id": "a2-d-project",
+      "title": "Групповой проект",
+      "topic": "Университет",
+      "level": "A2",
+      "intro": "Вы с одногруппниками делите работу над проектом.",
+      "lines": [
+        {
+          "who": "them",
+          "en": "OK, we have two weeks for the project. Who wants to do the slides?",
+          "ru": "Итак, на проект две недели. Кто хочет сделать слайды?"
+        },
+        {
+          "who": "me",
+          "hint": "Скажите, что можете сделать слайды",
+          "options": [
+            "I can do the slides. I'm good at design.",
+            "I can make the slides. I good at design.",
+            "I do can slides."
+          ],
+          "ru": "Я могу сделать слайды. У меня хорошо с дизайном."
+        },
+        {
+          "who": "them",
+          "en": "Great! Anna will find the information. And the presentation?",
+          "ru": "Отлично! Анна найдёт информацию. А доклад?"
+        },
+        {
+          "who": "me",
+          "hint": "Предложите выступить вместе",
+          "options": [
+            "Why don't we present it together?",
+            "Why we don't present together?",
+            "Why not we presenting together?"
+          ],
+          "ru": "Почему бы нам не выступить вместе?"
+        },
+        {
+          "who": "them",
+          "en": "Good idea. When can we meet next time?",
+          "ru": "Хорошая идея. Когда встретимся в следующий раз?"
+        },
+        {
+          "who": "me",
+          "hint": "Предложите четверг после лекции",
+          "options": [
+            "How about Thursday after the lecture?",
+            "How about on Thursday after lecture is?",
+            "What about Thursday after lecture we meet?"
+          ],
+          "ru": "Как насчёт четверга после лекции?"
+        },
+        {
+          "who": "them",
+          "en": "Thursday works for me. Let's create a group chat.",
+          "ru": "Мне подходит четверг. Давайте создадим общий чат."
+        },
+        {
+          "who": "me",
+          "hint": "Скажите, что создадите чат сегодня вечером",
+          "options": [
+            "I'll create it tonight.",
+            "I create it tonight will.",
+            "I'm create it in tonight."
+          ],
+          "ru": "Я создам его сегодня вечером."
+        }
+      ]
+    },
+    {
+      "id": "a2-d-missed",
+      "title": "Пропустил пару",
+      "topic": "Университет",
+      "level": "A2",
+      "intro": "Вы пропустили лекцию и пишете одногруппнице.",
+      "lines": [
+        {
+          "who": "them",
+          "en": "Hey! Where were you this morning?",
+          "ru": "Привет! Где ты был утром?"
+        },
+        {
+          "who": "me",
+          "hint": "Скажите, что проспали",
+          "options": [
+            "I overslept. My alarm didn't ring.",
+            "I oversleeped. My alarm not ring.",
+            "I was oversleep. Alarm didn't rang."
+          ],
+          "ru": "Я проспал. Будильник не прозвенел."
+        },
+        {
+          "who": "them",
+          "en": "Oh no! The professor talked about the exam.",
+          "ru": "Ой! Профессор рассказывал про экзамен."
+        },
+        {
+          "who": "me",
+          "hint": "Попросите конспект",
+          "options": [
+            "Could you send me your notes, please?",
+            "Could you sent me your notes?",
+            "Can you sending me notes?"
+          ],
+          "ru": "Можешь прислать свой конспект, пожалуйста?"
+        },
+        {
+          "who": "them",
+          "en": "Sure. The exam is on the 20th, and there are three questions.",
+          "ru": "Конечно. Экзамен двадцатого, будет три вопроса."
+        },
+        {
+          "who": "me",
+          "hint": "Поблагодарите и предложите угостить кофе",
+          "options": [
+            "Thanks a lot! Let me buy you a coffee.",
+            "Thanks a lot! Let me to buy you coffee.",
+            "Many thank! I buy you coffee let."
+          ],
+          "ru": "Огромное спасибо! Давай я угощу тебя кофе."
+        },
+        {
+          "who": "them",
+          "en": "Deal! See you tomorrow.",
+          "ru": "Договорились! До завтра."
+        }
+      ]
     }
   ]
 }

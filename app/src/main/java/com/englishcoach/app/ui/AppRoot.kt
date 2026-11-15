@@ -69,6 +69,7 @@ import com.englishcoach.app.ui.practice.PracticeScreen
 import com.englishcoach.app.ui.practice.ReadingScreen
 import com.englishcoach.app.ui.screens.ProgressScreen
 import com.englishcoach.app.ui.screens.SettingsScreen
+import com.englishcoach.app.ui.screens.TopicsScreen
 import com.englishcoach.app.ui.screens.TodayScreen
 import com.englishcoach.app.ui.screens.WordsScreen
 
@@ -83,6 +84,7 @@ private const val TEXT_CHECK_ROUTE = "ai-text"
 private const val AI_EXERCISES_ROUTE = "ai-exercises"
 private const val IMPORT_ROUTE = "import"
 private const val RECAP_ROUTE = "recap"
+private const val TOPICS_ROUTE = "topics"
 
 private enum class Tab(val route: String, val label: String, val icon: ImageVector) {
     Today("today", "Сегодня", Icons.Outlined.TaskAlt),
@@ -221,7 +223,8 @@ private fun AppNavHost(nav: NavHostController, modifier: Modifier) {
         composable("drill/{id}") { DrillScreen(it.arguments?.getString("id").orEmpty(), onClose = { nav.popBackStack() }) }
         composable(LISTENING_ROUTE) { ListeningScreen(onClose = { nav.popBackStack() }) }
         composable(Tab.Progress.route) { ProgressScreen() }
-        composable(Tab.Settings.route) { SettingsScreen(onPlacement = { nav.navigate(PLACEMENT_ROUTE) }) }
+        composable(Tab.Settings.route) { SettingsScreen(onPlacement = { nav.navigate(PLACEMENT_ROUTE) }, onTopics = { nav.navigate(TOPICS_ROUTE) }) }
+        composable(TOPICS_ROUTE) { TopicsScreen(onClose = { nav.popBackStack() }) }
     }
 }
 
