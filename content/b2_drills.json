@@ -1,0 +1,616 @@
+{
+  "sets": [
+    {
+      "id": "b2-tr-arguments",
+      "kind": "translate",
+      "title": "Аргументы и переговоры",
+      "level": "B2",
+      "topic": "Работа",
+      "phrases": [
+        {
+          "ru": "Если бы мы начали раньше, мы бы успели к сроку.",
+          "en": "If we had started earlier, we would have met the deadline.",
+          "alt": [
+            "We would have met the deadline if we had started earlier."
+          ],
+          "extra": [
+            "will",
+            "meet"
+          ],
+          "hint": "Третий тип условия: If + had + 3-я форма, would have + 3-я форма."
+        },
+        {
+          "ru": "Он сказал, что закончит отчёт к пятнице.",
+          "en": "He said that he would finish the report by Friday.",
+          "alt": [
+            "He said he would finish the report by Friday."
+          ],
+          "extra": [
+            "will",
+            "until"
+          ],
+          "hint": "Косвенная речь: will → would. «К сроку» — by, а не until."
+        },
+        {
+          "ru": "Мы работаем над этим проектом уже три месяца.",
+          "en": "We have been working on this project for three months.",
+          "extra": [
+            "since",
+            "are"
+          ],
+          "hint": "Действие длится до сих пор — have been + -ing + for."
+        },
+        {
+          "ru": "Полностью согласен.",
+          "en": "I couldn't agree more.",
+          "extra": [
+            "less",
+            "can"
+          ],
+          "hint": "Couldn't agree more — «полностью согласен» (больше согласиться невозможно)."
+        },
+        {
+          "ru": "Жаль, что я не сказал ему правду.",
+          "en": "I wish I had told him the truth.",
+          "extra": [
+            "said",
+            "have"
+          ],
+          "hint": "Сожаление о прошлом: wish + had + 3-я форма. Tell someone the truth."
+        },
+        {
+          "ru": "Он, должно быть, забыл о встрече.",
+          "en": "He must have forgotten about the meeting.",
+          "extra": [
+            "forgot",
+            "should"
+          ],
+          "hint": "Уверенная догадка о прошлом — must have + 3-я форма."
+        },
+        {
+          "ru": "С учётом всех обстоятельств, это хорошая сделка.",
+          "en": "All things considered, it's a good deal.",
+          "alt": [
+            "It's a good deal, all things considered."
+          ],
+          "extra": [
+            "considering",
+            "do"
+          ],
+          "hint": "All things considered — устойчивое «с учётом всего»."
+        },
+        {
+          "ru": "Давайте не будем принимать поспешных решений.",
+          "en": "Let's not make any hasty decisions.",
+          "extra": [
+            "do",
+            "don't"
+          ],
+          "hint": "Decision — с make. Отрицание с let's — let's not."
+        }
+      ]
+    },
+    {
+      "id": "b2-tr-abroad",
+      "kind": "translate",
+      "title": "Жизнь за границей",
+      "level": "B2",
+      "topic": "Переезд",
+      "phrases": [
+        {
+          "ru": "Я до сих пор не привык к местной еде.",
+          "en": "I still haven't got used to the local food.",
+          "extra": [
+            "use",
+            "didn't"
+          ],
+          "hint": "Get used to — «привыкнуть»; still haven't — «до сих пор не»."
+        },
+        {
+          "ru": "Мне пришлось открыть счёт в банке.",
+          "en": "I had to open a bank account.",
+          "extra": [
+            "must",
+            "opened"
+          ],
+          "hint": "Must в прошлом — had to."
+        },
+        {
+          "ru": "Если бы я лучше знал язык, мне было бы проще найти работу.",
+          "en": "If I knew the language better, it would be easier to find a job.",
+          "alt": [
+            "It would be easier to find a job if I knew the language better."
+          ],
+          "extra": [
+            "know",
+            "will"
+          ],
+          "hint": "Нереальное условие в настоящем: If + прошедшее, would + глагол."
+        },
+        {
+          "ru": "Квартиру, которую мы сняли, отремонтировали в прошлом году.",
+          "en": "The flat we rented was renovated last year.",
+          "extra": [
+            "is",
+            "renovating"
+          ],
+          "hint": "Пассив в прошлом: was + 3-я форма."
+        },
+        {
+          "ru": "Документы должны быть готовы к понедельнику.",
+          "en": "The documents should be ready by Monday.",
+          "extra": [
+            "until",
+            "to"
+          ],
+          "hint": "«К сроку» — by."
+        },
+        {
+          "ru": "Я скучаю по друзьям больше, чем ожидал.",
+          "en": "I miss my friends more than I expected.",
+          "extra": [
+            "about",
+            "then"
+          ],
+          "hint": "Miss — «скучать по», без предлога. «Чем» — than."
+        },
+        {
+          "ru": "Без твоей помощи я бы не справился.",
+          "en": "I couldn't have done it without your help.",
+          "alt": [
+            "Without your help I couldn't have done it."
+          ],
+          "extra": [
+            "can't",
+            "did"
+          ],
+          "hint": "Couldn't have + 3-я форма — «не смог бы (тогда)»."
+        },
+        {
+          "ru": "Я бы посоветовал сначала выучить базовые фразы.",
+          "en": "I would recommend learning basic phrases first.",
+          "extra": [
+            "to",
+            "learn"
+          ],
+          "hint": "После recommend — -ing: recommend learning."
+        }
+      ]
+    },
+    {
+      "id": "b2-cl-ai",
+      "kind": "cloze",
+      "title": "AI at work: friend or threat?",
+      "level": "B2",
+      "topic": "Технологии",
+      "text": "When our company first [started] using AI tools, many developers were worried that they would be [replaced]. A year later, the situation looks quite different. The tools have [taken] over routine tasks such as writing tests and documentation, which has [freed] up time for more creative work. However, the code they suggest is not always [reliable], so every change still has to be [reviewed] by a person. Our team lead puts it this way: AI is a powerful assistant, but it can't take [responsibility] for the final decision. In other words, the skill that matters most now is not typing code quickly, but [judging] whether the code is right.",
+      "extra": [
+        "replacing",
+        "given",
+        "typing"
+      ],
+      "ru": "Когда наша компания впервые начала пользоваться ИИ-инструментами, многие разработчики боялись, что их заменят. Год спустя ситуация выглядит совсем иначе. Инструменты взяли на себя рутину вроде написания тестов и документации, и это освободило время для более творческой работы. Однако код, который они предлагают, не всегда надёжен, поэтому каждое изменение по-прежнему проверяет человек. Наш тимлид говорит так: ИИ — мощный помощник, но он не может отвечать за окончательное решение. Иначе говоря, самый важный навык теперь — не быстро набирать код, а оценивать, правильный ли он.",
+      "glossary": {
+        "routine": "рутинный",
+        "documentation": "документация",
+        "creative": "творческий",
+        "however": "однако",
+        "suggest": "предлагать",
+        "powerful": "мощный",
+        "assistant": "помощник",
+        "whether": "ли",
+        "matters": "имеет значение",
+        "worried": "обеспокоенный"
+      }
+    },
+    {
+      "id": "b2-cl-bridge",
+      "kind": "cloze",
+      "title": "Inspecting an old bridge",
+      "level": "B2",
+      "topic": "Стройка",
+      "text": "The bridge over the river was [built] in 1962, and for years nobody paid much attention to it. Last spring engineers carried out a detailed [inspection] and found serious cracks in two of the supports. If the problem had been [ignored], the bridge might have collapsed within a few years. The city council had two options: to repair the old structure or to [replace] it completely. Repairs would have been cheaper in the short [term], but the engineers argued that a new bridge would [last] much longer. After a heated debate, the council [approved] the more expensive plan. Construction is [expected] to take eighteen months.",
+      "extra": [
+        "rejected",
+        "noticed",
+        "period"
+      ],
+      "ru": "Мост через реку построили в 1962 году, и много лет на него почти не обращали внимания. Прошлой весной инженеры провели подробное обследование и нашли серьёзные трещины в двух опорах. Если бы проблему проигнорировали, мост мог бы обрушиться в ближайшие годы. У городского совета было два варианта: отремонтировать старое сооружение или полностью его заменить. В краткосрочной перспективе ремонт обошёлся бы дешевле, но инженеры доказывали, что новый мост прослужит гораздо дольше. После жарких споров совет одобрил более дорогой план. Строительство, как ожидается, займёт полтора года.",
+      "glossary": {
+        "cracks": "трещины",
+        "supports": "опоры",
+        "collapsed": "обрушился",
+        "council": "совет (городской)",
+        "structure": "сооружение",
+        "heated": "жаркий (heated debate — жаркий спор)",
+        "debate": "спор, обсуждение",
+        "repairs": "ремонт",
+        "argued": "доказывали, утверждали",
+        "completely": "полностью",
+        "detailed": "подробный",
+        "engineers": "инженеры",
+        "within": "в течение"
+      }
+    },
+    {
+      "id": "b2-m-adjectives",
+      "kind": "match",
+      "title": "Сильные сочетания",
+      "level": "B2",
+      "topic": "Сочетания",
+      "pairs": [
+        {
+          "a": "heavy",
+          "b": "rain",
+          "ru": "проливной дождь",
+          "example": "The match was cancelled because of heavy rain."
+        },
+        {
+          "a": "strong",
+          "b": "coffee",
+          "ru": "крепкий кофе",
+          "example": "I need a strong coffee before the meeting."
+        },
+        {
+          "a": "high",
+          "b": "expectations",
+          "ru": "большие ожидания",
+          "example": "Fans had high expectations for the sequel."
+        },
+        {
+          "a": "tight",
+          "b": "deadline",
+          "ru": "сжатый срок",
+          "example": "We're working to a tight deadline."
+        },
+        {
+          "a": "vast",
+          "b": "majority",
+          "ru": "подавляющее большинство",
+          "example": "The vast majority of users liked the update."
+        },
+        {
+          "a": "sharp",
+          "b": "increase",
+          "ru": "резкий рост",
+          "example": "There was a sharp increase in prices."
+        },
+        {
+          "a": "deep",
+          "b": "sleep",
+          "ru": "глубокий сон",
+          "example": "He fell into a deep sleep after the flight."
+        },
+        {
+          "a": "narrow",
+          "b": "escape",
+          "ru": "чудом спастись",
+          "example": "It was a narrow escape — the car missed us by inches."
+        }
+      ]
+    },
+    {
+      "id": "b2-m-phrasal",
+      "kind": "match",
+      "title": "Фразовые глаголы B2",
+      "level": "B2",
+      "topic": "Фразовые глаголы",
+      "pairs": [
+        {
+          "a": "phase out",
+          "b": "постепенно отказаться",
+          "example": "The company will phase out the old model."
+        },
+        {
+          "a": "iron out",
+          "b": "уладить (мелкие проблемы)",
+          "example": "We need to iron out a few details."
+        },
+        {
+          "a": "back up",
+          "b": "поддержать, подтвердить",
+          "example": "Can you back up your claim with data?"
+        },
+        {
+          "a": "rule out",
+          "b": "исключить (вариант)",
+          "example": "We can't rule out a delay."
+        },
+        {
+          "a": "weigh up",
+          "b": "взвесить (за и против)",
+          "example": "Weigh up the pros and cons before you move."
+        },
+        {
+          "a": "stand out",
+          "b": "выделяться",
+          "example": "Her CV really stands out."
+        },
+        {
+          "a": "bring up",
+          "b": "поднять (тему)",
+          "example": "Don't bring up politics at dinner."
+        },
+        {
+          "a": "fall through",
+          "b": "сорваться (о плане, сделке)",
+          "example": "The deal fell through at the last minute."
+        }
+      ]
+    },
+    {
+      "id": "b2-re-negotiation",
+      "kind": "reply",
+      "title": "Tactful answers at work",
+      "level": "B2",
+      "topic": "Работа",
+      "items": [
+        {
+          "type": "choice",
+          "q": "Can you have it done by tomorrow morning?",
+          "ru": "Your client asks for an unrealistic deadline.",
+          "options": [
+            "No. Impossible.",
+            "That would be tight. Could we agree on Thursday instead?",
+            "Yes, no problem, I'll try maybe."
+          ],
+          "answer": 1,
+          "why": [
+            "Слишком резко для клиента: лучше предложить альтернативу.",
+            "",
+            "Yes и maybe противоречат друг другу — клиент не поймёт, будет ли готово."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "I think we should cut the testing phase to save money.",
+          "ru": "A colleague makes a proposal you disagree with.",
+          "options": [
+            "I see where you're coming from, but skipping tests could cost us more later.",
+            "You're wrong.",
+            "OK, whatever."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Прямое «вы неправы» звучит резко; лучше признать довод и возразить.",
+            "Whatever — «да как хочешь», звучит пренебрежительно."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "We're going to have to let some people go.",
+          "ru": "Your manager talks about the company's problems.",
+          "options": [
+            "Where are they going?",
+            "That's tough news. Is my position affected?",
+            "Let them go, then."
+          ],
+          "answer": 1,
+          "why": [
+            "Let someone go — «уволить», а не отпустить в поездку.",
+            "",
+            "Звучит так, будто вы поддерживаете увольнения."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Would you be open to a lower price?",
+          "ru": "A buyer wants a discount.",
+          "options": [
+            "I'm always open.",
+            "No discount. Never.",
+            "We might be able to offer five percent if you sign for a year."
+          ],
+          "answer": 2,
+          "why": [
+            "Open to — «готовы рассмотреть»; вопрос про скидку, а не про часы работы.",
+            "Слишком резко: в переговорах обычно отвечают встречным условием.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "With all due respect, I don't think that will work.",
+          "ru": "A colleague politely disagrees with you.",
+          "options": [
+            "Fair enough. What would you suggest instead?",
+            "Thank you for your respect.",
+            "Yes, it will!"
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "With all due respect — вежливое начало несогласия, а не комплимент.",
+            "Спор без аргументов не продвигает обсуждение."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Let's take this offline.",
+          "ru": "During a big meeting, your discussion with one person gets too long.",
+          "options": [
+            "But my internet is fine.",
+            "Sure, I'll message you after the meeting.",
+            "Let's go offline together."
+          ],
+          "answer": 1,
+          "why": [
+            "Take it offline — «обсудим отдельно, не на общем собрании», интернет ни при чём.",
+            "",
+            "Дословное понимание не подходит: это идиома «обсудим отдельно»."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "I'll be honest with you — the first draft needs a lot of work.",
+          "ru": "Your boss gives feedback.",
+          "options": [
+            "Why are you honest?",
+            "No, it doesn't.",
+            "I appreciate the honesty. Which parts should I focus on first?"
+          ],
+          "answer": 2,
+          "why": [
+            "Вопрос звучит странно и обиженно.",
+            "Отрицать отзыв без аргументов — непрофессионально.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Could you keep me in the loop?",
+          "ru": "A manager from another team asks you.",
+          "options": [
+            "What loop?",
+            "Of course. I'll copy you on all the emails.",
+            "I'll keep you inside."
+          ],
+          "answer": 1,
+          "why": [
+            "Keep in the loop — «держать в курсе», устойчивое выражение.",
+            "",
+            "Дословный перевод не подходит: вас просят держать в курсе."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b2-re-everyday",
+      "kind": "reply",
+      "title": "Complaints and small talk",
+      "level": "B2",
+      "topic": "Общение",
+      "items": [
+        {
+          "type": "choice",
+          "q": "I'm sorry, but we've given your room to someone else.",
+          "ru": "You arrive at a hotel late at night.",
+          "options": [
+            "That's unacceptable. I booked and paid in advance — what can you offer me?",
+            "Oh, OK, no problem, bye.",
+            "Sorry for that."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Вы остаётесь без жилья — стоит вежливо, но твёрдо потребовать решения.",
+            "Извиняться должны не вы."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Long time no see! What have you been up to?",
+          "ru": "You meet an old friend.",
+          "options": [
+            "I'm up to the fifth floor.",
+            "Not much — I've been busy with a new job. And you?",
+            "Yes, long time."
+          ],
+          "answer": 1,
+          "why": [
+            "Up to здесь — «чем занимался», а не «наверх».",
+            "",
+            "Спросили, чем вы занимались, — нужен рассказ, а не согласие."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Is this your first time in Edinburgh?",
+          "ru": "A stranger starts a conversation in a café.",
+          "options": [
+            "Yes, I'm first.",
+            "No, I've been here once before — I just love the place.",
+            "I'm in Edinburgh since Monday."
+          ],
+          "answer": 1,
+          "why": [
+            "I'm first — «я первый» (например, в очереди), а не о поездке.",
+            "",
+            "С since нужен Present Perfect: I've been here since Monday."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Your parcel has been delayed by a week.",
+          "ru": "A delivery company calls you.",
+          "options": [
+            "Congratulations.",
+            "I'm delayed too.",
+            "That's really inconvenient. Is there any way to speed it up?"
+          ],
+          "answer": 2,
+          "why": [
+            "Поздравлять тут не с чем.",
+            "Бессмысленный ответ: задержали посылку, а не вас.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Do you mind me asking how much you paid for it?",
+          "ru": "A neighbour likes your new bike.",
+          "options": [
+            "Not at all — it was about six hundred dollars.",
+            "Yes, I don't mind.",
+            "I paid by card."
+          ],
+          "answer": 0,
+          "why": [
+            "",
+            "Yes на Do you mind… значит «я против», и цену вы так и не назвали.",
+            "Спросили сколько, а не чем платили."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "I couldn't help overhearing — are you from Russia?",
+          "ru": "Someone next to you on a train.",
+          "options": [
+            "You couldn't help me?",
+            "Yes, I am! Have you been there?",
+            "No help, thanks."
+          ],
+          "answer": 1,
+          "why": [
+            "Couldn't help + -ing — «не мог не…», а не про помощь.",
+            "",
+            "Помощь никто не предлагает — человек просто услышал ваш разговор."
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "I'm afraid there's been a mix-up with your order.",
+          "ru": "A waiter brings you the wrong dish.",
+          "options": [
+            "Don't be afraid.",
+            "What a mix!",
+            "No worries. Could I still get the pasta I ordered?"
+          ],
+          "answer": 2,
+          "why": [
+            "I'm afraid — вежливое «к сожалению», а не страх.",
+            "Mix-up — «путаница», а не смесь.",
+            ""
+          ]
+        },
+        {
+          "type": "choice",
+          "q": "Fancy a coffee before the meeting?",
+          "ru": "A colleague in the UK invites you.",
+          "options": [
+            "Yes, it's very fancy.",
+            "I'd love one, thanks.",
+            "No, I'm not fancy."
+          ],
+          "answer": 1,
+          "why": [
+            "Fancy здесь — «хочешь?» (британское), а не «модный».",
+            "",
+            "Fancy a coffee? — приглашение выпить кофе."
+          ]
+        }
+      ]
+    }
+  ]
+}

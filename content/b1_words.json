@@ -1,0 +1,199 @@
+{
+  "level": "B1",
+  "format": "en|транскрипция|перевод|пример|перевод примера",
+  "topics": [
+    {
+      "name": "Карьера",
+      "words": [
+        "career|kəˈrɪr|карьера|She wants a career in IT.|Она хочет сделать карьеру в IT.",
+        "manager|ˈmænɪdʒər|менеджер, руководитель|My manager approved the plan.|Мой руководитель одобрил план.",
+        "client|ˈklaɪənt|клиент|The client asked for a new design.|Клиент попросил новый дизайн.",
+        "contract|ˈkɑːntrækt|договор, контракт|I signed the contract yesterday.|Я подписал договор вчера.",
+        "promotion|prəˈmoʊʃən|повышение (в должности)|He got a promotion last year.|В прошлом году его повысили.",
+        "responsibility|rɪˌspɑːnsəˈbɪləti|ответственность, обязанность|Safety is my responsibility.|Безопасность — моя обязанность.",
+        "opportunity|ˌɑːpərˈtuːnəti|возможность, шанс|This job is a great opportunity.|Эта работа — отличная возможность.",
+        "schedule|ˈskedʒuːl|расписание, график|My schedule is full this week.|На этой неделе мой график забит.",
+        "hire|haɪər|нанимать|They want to hire two developers.|Они хотят нанять двух разработчиков.",
+        "quit|kwɪt|уходить (с работы), бросать|He quit his job and moved abroad.|Он ушёл с работы и уехал за границу.",
+        "report|rɪˈpɔːrt|отчёт; сообщать|I need to finish the report by Friday.|Мне нужно закончить отчёт к пятнице.",
+        "employee|ɪmˈplɔɪiː|сотрудник, работник|The company has fifty employees.|В компании пятьдесят сотрудников."
+      ]
+    },
+    {
+      "name": "Технологии",
+      "words": [
+        "device|dɪˈvaɪs|устройство|This app works on every device.|Это приложение работает на любом устройстве.",
+        "software|ˈsɔːftwer|программы, ПО|We need new software for the office.|Офису нужны новые программы.",
+        "hardware|ˈhɑːrdwer|железо, оборудование|The problem is in the hardware, not the code.|Проблема в железе, а не в коде.",
+        "data|ˈdeɪtə|данные|Don't lose your data — make a copy.|Не потеряйте данные — сделайте копию.",
+        "network|ˈnetwɜːrk|сеть|The network is down again.|Сеть снова не работает.",
+        "server|ˈsɜːrvər|сервер|The game server is very slow today.|Игровой сервер сегодня очень медленный.",
+        "backup|ˈbækʌp|резервная копия|I make a backup every week.|Я делаю резервную копию каждую неделю.",
+        "feature|ˈfiːtʃər|функция, возможность|The new version has a dark mode feature.|В новой версии есть тёмная тема.",
+        "bug|bʌɡ|ошибка в программе, баг|The developers fixed the bug quickly.|Разработчики быстро исправили баг.",
+        "developer|dɪˈveləpər|разработчик|He works as a mobile developer.|Он работает мобильным разработчиком.",
+        "browser|ˈbraʊzər|браузер|Open the link in your browser.|Откройте ссылку в браузере.",
+        "storage|ˈstɔːrɪdʒ|память, хранилище|My phone is out of storage.|На телефоне закончилась память."
+      ]
+    },
+    {
+      "name": "Строительство",
+      "words": [
+        "construction|kənˈstrʌkʃən|строительство|The construction will take two years.|Строительство займёт два года.",
+        "beam|biːm|балка|They put a steel beam under the roof.|Под крышу положили стальную балку.",
+        "insulation|ˌɪnsəˈleɪʃən|утеплитель, изоляция|Good insulation keeps the house warm.|Хороший утеплитель держит дом тёплым.",
+        "plumbing|ˈplʌmɪŋ|сантехника, водопровод|The plumbing in this old house is bad.|Водопровод в этом старом доме плохой.",
+        "electrician|ɪˌlekˈtrɪʃən|электрик|We called an electrician to fix the wires.|Мы вызвали электрика починить провода.",
+        "blueprint|ˈbluːprɪnt|чертёж, проект|Check the blueprint before you start.|Проверьте чертёж, прежде чем начать.",
+        "estimate|ˈestɪmət|смета, оценка|The builder sent us an estimate.|Строитель прислал нам смету.",
+        "renovation|ˌrenəˈveɪʃən|ремонт, реконструкция|The renovation cost more than we planned.|Ремонт обошёлся дороже, чем мы планировали.",
+        "contractor|ˈkɑːntræktər|подрядчик|The contractor finished the job on time.|Подрядчик закончил работу вовремя.",
+        "material|məˈtɪriəl|материал|We ordered the materials online.|Мы заказали материалы онлайн.",
+        "permit|ˈpɜːrmɪt|разрешение (документ)|You need a permit to build a second floor.|Чтобы надстроить второй этаж, нужно разрешение.",
+        "scaffolding|ˈskæfəldɪŋ|строительные леса|The workers are standing on the scaffolding.|Рабочие стоят на лесах."
+      ]
+    },
+    {
+      "name": "Игры и фильмы",
+      "words": [
+        "plot|plɑːt|сюжет|The plot of this game is amazing.|Сюжет этой игры потрясающий.",
+        "scene|siːn|сцена|The last scene made me cry.|Последняя сцена заставила меня плакать.",
+        "subtitles|ˈsʌbtaɪtlz|субтитры|I watch movies with English subtitles.|Я смотрю фильмы с английскими субтитрами.",
+        "soundtrack|ˈsaʊndtræk|саундтрек, музыка к фильму|The soundtrack is better than the movie.|Музыка лучше самого фильма.",
+        "director|dəˈrektər|режиссёр|Who is the director of this film?|Кто режиссёр этого фильма?",
+        "sequel|ˈsiːkwəl|продолжение, сиквел|The sequel comes out next year.|Продолжение выйдет в следующем году.",
+        "review|rɪˈvjuː|отзыв, обзор|I always read reviews before I buy a game.|Я всегда читаю обзоры, прежде чем купить игру.",
+        "release|rɪˈliːs|выпуск; выпускать|The release date is in March.|Дата выхода — в марте.",
+        "graphics|ˈɡræfɪks|графика|The graphics look very realistic.|Графика выглядит очень реалистично.",
+        "multiplayer|ˌmʌltiˈpleɪər|сетевая игра, мультиплеер|I prefer multiplayer games with friends.|Я предпочитаю сетевые игры с друзьями.",
+        "difficulty|ˈdɪfɪkəlti|сложность, трудность|I play on the hardest difficulty.|Я играю на самой высокой сложности.",
+        "spoiler|ˈspɔɪlər|спойлер|No spoilers, please! I haven't finished it.|Без спойлеров, пожалуйста! Я ещё не досмотрел."
+      ]
+    },
+    {
+      "name": "Путешествия и переезд",
+      "words": [
+        "accommodation|əˌkɑːməˈdeɪʃən|жильё (на время)|Accommodation in the city center is expensive.|Жильё в центре города дорогое.",
+        "destination|ˌdestɪˈneɪʃən|место назначения|Our final destination is Lisbon.|Наш конечный пункт — Лиссабон.",
+        "rent|rent|аренда; снимать (жильё)|The rent is too high in this area.|Аренда в этом районе слишком высокая.",
+        "landlord|ˈlændlɔːrd|арендодатель, хозяин жилья|The landlord fixed the heating.|Хозяин квартиры починил отопление.",
+        "move|muːv|переезжать; двигать|We want to move to another country.|Мы хотим переехать в другую страну.",
+        "citizen|ˈsɪtɪzən|гражданин|She became a citizen after five years.|Через пять лет она стала гражданкой.",
+        "embassy|ˈembəsi|посольство|I have an appointment at the embassy.|У меня запись в посольство.",
+        "customs|ˈkʌstəmz|таможня|We waited at customs for an hour.|Мы час ждали на таможне.",
+        "insurance|ɪnˈʃʊrəns|страховка|Don't travel without health insurance.|Не путешествуйте без медицинской страховки.",
+        "commute|kəˈmjuːt|дорога на работу; ездить на работу|My commute takes forty minutes.|Дорога на работу занимает сорок минут.",
+        "neighborhood|ˈneɪbərhʊd|район, окрестности|It's a quiet and safe neighborhood.|Это тихий и безопасный район.",
+        "local|ˈloʊkəl|местный|Ask a local for directions.|Спросите дорогу у местного жителя."
+      ]
+    },
+    {
+      "name": "Спорт",
+      "words": [
+        "competition|ˌkɑːmpəˈtɪʃən|соревнование, конкуренция|He won the national competition.|Он выиграл национальное соревнование.",
+        "opponent|əˈpoʊnənt|соперник, противник|Our opponent was much stronger.|Наш соперник был намного сильнее.",
+        "champion|ˈtʃæmpiən|чемпион|She is the world champion in boxing.|Она чемпионка мира по боксу.",
+        "referee|ˌrefəˈriː|судья (в спорте)|The referee gave him a red card.|Судья показал ему красную карточку.",
+        "league|liːɡ|лига|Our team plays in the top league.|Наша команда играет в высшей лиге.",
+        "fan|fæn|болельщик, фанат|The fans were singing all game.|Болельщики пели всю игру.",
+        "muscle|ˈmʌsəl|мышца|My muscles hurt after the gym.|После зала у меня болят мышцы.",
+        "warm up|wɔːrm ʌp|разминаться|Always warm up before you run.|Всегда разминайтесь перед бегом.",
+        "stretch|stretʃ|растягиваться, растяжка|Stretch for five minutes after training.|Сделайте растяжку пять минут после тренировки.",
+        "record|ˈrekərd|рекорд; запись|He broke the world record.|Он побил мировой рекорд.",
+        "draw|drɔː|ничья; рисовать|The match ended in a draw.|Матч закончился вничью.",
+        "cheer|tʃɪr|болеть (за кого-то), подбадривать|We cheered for our team.|Мы болели за нашу команду."
+      ]
+    },
+    {
+      "name": "Общение и мнения",
+      "words": [
+        "opinion|əˈpɪnjən|мнение|In my opinion, the first movie was better.|По-моему, первый фильм был лучше.",
+        "argue|ˈɑːrɡjuː|спорить|They always argue about politics.|Они всегда спорят о политике.",
+        "discuss|dɪˈskʌs|обсуждать|Let's discuss it at the meeting.|Давайте обсудим это на встрече.",
+        "suggest|səɡˈdʒest|предлагать, советовать|I suggest we start earlier.|Предлагаю начать пораньше.",
+        "advice|ədˈvaɪs|совет|Can you give me some advice?|Можешь дать мне совет?",
+        "mention|ˈmenʃən|упоминать|He didn't mention the price.|Он не упомянул цену.",
+        "complain|kəmˈpleɪn|жаловаться|The neighbors complained about the noise.|Соседи пожаловались на шум.",
+        "apologize|əˈpɑːlədʒaɪz|извиняться|I apologize for the delay.|Прошу прощения за задержку.",
+        "convince|kənˈvɪns|убеждать|She convinced me to try again.|Она убедила меня попробовать снова.",
+        "point|pɔɪnt|мысль, смысл; точка зрения|I see your point, but I disagree.|Я понимаю вашу мысль, но не согласен.",
+        "honest|ˈɑːnɪst|честный|To be honest, I didn't like it.|Честно говоря, мне не понравилось.",
+        "rude|ruːd|грубый, невежливый|It's rude to interrupt people.|Перебивать людей невежливо."
+      ]
+    },
+    {
+      "name": "Деньги и быт",
+      "words": [
+        "budget|ˈbʌdʒɪt|бюджет|We have a small budget for the trip.|У нас небольшой бюджет на поездку.",
+        "bill|bɪl|счёт (к оплате)|Did you pay the electricity bill?|Ты оплатил счёт за электричество?",
+        "income|ˈɪnkʌm|доход|My income grew this year.|В этом году мой доход вырос.",
+        "tax|tæks|налог|Taxes are high in this country.|В этой стране высокие налоги.",
+        "spend|spend|тратить; проводить (время)|I spend too much money on games.|Я трачу слишком много денег на игры.",
+        "afford|əˈfɔːrd|позволить себе (по деньгам)|We can't afford a new car now.|Сейчас мы не можем позволить себе новую машину.",
+        "cash|kæʃ|наличные|Do you accept cash?|Вы принимаете наличные?",
+        "savings|ˈseɪvɪŋz|сбережения|I used my savings to buy a laptop.|Я купил ноутбук на свои сбережения.",
+        "debt|det|долг|He paid off all his debts.|Он выплатил все свои долги.",
+        "appointment|əˈpɔɪntmənt|запись, встреча (назначенная)|I have a dentist appointment at five.|У меня запись к стоматологу на пять.",
+        "delivery|dɪˈlɪvəri|доставка|Delivery is free for orders over fifty dollars.|Доставка бесплатна для заказов от пятидесяти долларов.",
+        "subscription|səbˈskrɪpʃən|подписка|I cancelled my streaming subscription.|Я отменил подписку на стриминг."
+      ]
+    },
+    {
+      "name": "Описания",
+      "words": [
+        "available|əˈveɪləbəl|доступный, свободный|Is this room available tonight?|Этот номер свободен сегодня?",
+        "reliable|rɪˈlaɪəbəl|надёжный|I need a reliable car for work.|Мне нужна надёжная машина для работы.",
+        "confident|ˈkɑːnfɪdənt|уверенный|I feel more confident when I speak English now.|Теперь я увереннее говорю по-английски.",
+        "comfortable|ˈkʌmftərbəl|удобный, комфортный|These shoes are very comfortable.|Эти ботинки очень удобные.",
+        "dangerous|ˈdeɪndʒərəs|опасный|Working on a roof is dangerous.|Работать на крыше опасно.",
+        "necessary|ˈnesəseri|необходимый|Is it necessary to book in advance?|Нужно ли бронировать заранее?",
+        "similar|ˈsɪmələr|похожий|Our ideas are very similar.|Наши идеи очень похожи.",
+        "useful|ˈjuːsfəl|полезный|This app is really useful.|Это приложение действительно полезное.",
+        "complicated|ˈkɑːmplɪkeɪtɪd|сложный, запутанный|The rules of this game are complicated.|Правила этой игры запутанные.",
+        "annoying|əˈnɔɪɪŋ|раздражающий|The ads in this app are annoying.|Реклама в этом приложении раздражает.",
+        "impressive|ɪmˈpresɪv|впечатляющий|Your progress is impressive.|Ваш прогресс впечатляет.",
+        "independent|ˌɪndɪˈpendənt|независимый, самостоятельный|She is an independent game developer.|Она независимый разработчик игр."
+      ]
+    },
+    {
+      "name": "Глаголы B1",
+      "words": [
+        "achieve|əˈtʃiːv|достигать|You can achieve your goal if you practice every day.|Вы достигнете цели, если будете заниматься каждый день.",
+        "avoid|əˈvɔɪd|избегать|Try to avoid the city center at rush hour.|Старайтесь объезжать центр в час пик.",
+        "manage|ˈmænɪdʒ|справляться; управлять|I managed to finish on time.|Я успел закончить вовремя.",
+        "prepare|prɪˈper|готовить(ся)|I need to prepare for the interview.|Мне нужно подготовиться к собеседованию.",
+        "improve|ɪmˈpruːv|улучшать(ся)|My English is improving every week.|Мой английский улучшается каждую неделю.",
+        "require|rɪˈkwaɪər|требовать|This job requires good English.|Для этой работы нужен хороший английский.",
+        "solve|sɑːlv|решать (задачу)|We solved the problem together.|Мы решили проблему вместе.",
+        "offer|ˈɔːfər|предлагать; предложение|They offered me a better salary.|Мне предложили зарплату получше.",
+        "notice|ˈnoʊtɪs|замечать|Did you notice the mistake?|Ты заметил ошибку?",
+        "allow|əˈlaʊ|разрешать, позволять|Smoking is not allowed here.|Здесь курить нельзя.",
+        "compare|kəmˈper|сравнивать|Compare the prices before you buy.|Сравните цены перед покупкой.",
+        "depend|dɪˈpend|зависеть|It depends on the weather.|Это зависит от погоды.",
+        "expect|ɪkˈspekt|ожидать|I didn't expect such a good ending.|Я не ожидал такой хорошей концовки.",
+        "increase|ɪnˈkriːs|увеличивать(ся), расти|Prices increased by ten percent.|Цены выросли на десять процентов.",
+        "reduce|rɪˈduːs|снижать, сокращать|We need to reduce costs.|Нам нужно сократить расходы.",
+        "succeed|səkˈsiːd|преуспеть, добиться успеха|If you work hard, you will succeed.|Если будете много работать, добьётесь успеха."
+      ]
+    },
+    {
+      "name": "Связки и наречия",
+      "words": [
+        "although|ɔːlˈðoʊ|хотя|Although it was raining, we went for a run.|Хотя шёл дождь, мы пошли на пробежку.",
+        "however|haʊˈevər|однако|The game is short. However, it's very fun.|Игра короткая. Однако она очень весёлая.",
+        "therefore|ˈðerfɔːr|поэтому, следовательно|The bridge was closed; therefore, we were late.|Мост закрыли, поэтому мы опоздали.",
+        "instead|ɪnˈsted|вместо (этого)|Let's take the train instead.|Давай лучше поедем на поезде.",
+        "unless|ənˈles|если не|We'll go unless it rains.|Мы пойдём, если не будет дождя.",
+        "while|waɪl|пока, в то время как|I listen to podcasts while I drive.|Я слушаю подкасты, пока веду машину.",
+        "actually|ˈæktʃuəli|на самом деле|Actually, I've never been to London.|Вообще-то я никогда не был в Лондоне.",
+        "probably|ˈprɑːbəbli|вероятно, наверное|It will probably be ready tomorrow.|Наверное, будет готово завтра.",
+        "especially|ɪˈspeʃəli|особенно|I love sports, especially football.|Я люблю спорт, особенно футбол.",
+        "recently|ˈriːsəntli|недавно|I recently started a new project.|Я недавно начал новый проект.",
+        "eventually|ɪˈventʃuəli|в конце концов|Eventually, we found the right hotel.|В конце концов мы нашли нужный отель.",
+        "in order to|ɪn ˈɔːrdər tə|чтобы (с целью)|I study every day in order to move abroad.|Я учусь каждый день, чтобы переехать за границу.",
+        "as soon as|æz suːn æz|как только|Call me as soon as you arrive.|Позвони, как только приедешь.",
+        "despite|dɪˈspaɪt|несмотря на|Despite the injury, he finished the race.|Несмотря на травму, он закончил гонку."
+      ]
+    }
+  ]
+}

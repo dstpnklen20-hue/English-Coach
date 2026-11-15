@@ -1,0 +1,58 @@
+{
+  "dialogs": [
+    {
+      "id": "b2-d-salary",
+      "title": "Переговоры о зарплате",
+      "topic": "Работа",
+      "level": "B2",
+      "intro": "Вам предложили работу. Обсудите условия с HR-менеджером.",
+      "lines": [
+        { "who": "them", "en": "We'd like to offer you the position. The salary is 4,000 a month. What do you think?", "ru": "Мы хотим предложить вам должность. Зарплата — 4000 в месяц. Что скажете?" },
+        { "who": "me", "hint": "Поблагодарите и скажите, что рассчитывали на немного большее", "options": ["Thank you, I appreciate it. To be honest, I was expecting a bit more.", "Thank you, I appreciate. Honestly, I was expect a bit more.", "Thanks, I appreciating it. I expected more bit."], "ru": "Спасибо, ценю. Честно говоря, я рассчитывал на немного большее." },
+        { "who": "them", "en": "I see. What figure did you have in mind?", "ru": "Понимаю. Какую сумму вы имели в виду?" },
+        { "who": "me", "hint": "Скажите, что с учётом вашего опыта разумно 4500", "options": ["Considering my experience, I think 4,500 would be reasonable.", "Considering my experience, I think 4,500 will reasonable.", "Consider my experience, I am thinking 4,500 is reasonably."], "ru": "Учитывая мой опыт, думаю, 4500 было бы разумно." },
+        { "who": "them", "en": "That's above our budget. However, we could offer more flexible hours.", "ru": "Это выше нашего бюджета. Но мы могли бы предложить более гибкий график." },
+        { "who": "me", "hint": "Спросите, можно ли работать удалённо два дня в неделю", "options": ["Would it be possible to work remotely two days a week?", "Would it possible to work remote two days in week?", "Is it be possible working remotely two days a week?"], "ru": "Можно ли работать удалённо два дня в неделю?" },
+        { "who": "them", "en": "Yes, we can do that. And we'll review your salary after six months.", "ru": "Да, это возможно. И пересмотрим зарплату через полгода." },
+        { "who": "me", "hint": "Скажите, что это звучит как справедливый компромисс и вы согласны", "options": ["That sounds like a fair compromise. I accept.", "That sounds a fair compromise. I am accept.", "That is sounding like fair compromise. I accepting."], "ru": "Звучит как справедливый компромисс. Я согласен." },
+        { "who": "them", "en": "Wonderful! I'll send you the contract this afternoon.", "ru": "Замечательно! Пришлю договор сегодня днём." }
+      ]
+    },
+    {
+      "id": "b2-d-contractor",
+      "title": "Претензия подрядчику",
+      "topic": "Строительство",
+      "level": "B2",
+      "intro": "Ремонт затянулся, а в ванной нашлась протечка. Поговорите с подрядчиком.",
+      "lines": [
+        { "who": "them", "en": "Hi! You wanted to talk about the renovation?", "ru": "Здравствуйте! Вы хотели поговорить о ремонте?" },
+        { "who": "me", "hint": "Скажите, что работы должны были закончиться две недели назад", "options": ["Yes. The work should have been finished two weeks ago.", "Yes. The work should finished two weeks ago.", "Yes. The work must have finish two weeks before."], "ru": "Да. Работы должны были закончиться две недели назад." },
+        { "who": "them", "en": "I know, I'm sorry. We had problems with the material deliveries.", "ru": "Знаю, простите. У нас были проблемы с поставками материалов." },
+        { "who": "me", "hint": "Скажите, что понимаете, но есть проблема посерьёзнее — в ванной течёт", "options": ["I understand, but there's a bigger problem: the bathroom is leaking.", "I understand, but there is more big problem: bathroom leaks itself.", "I am understanding, but problem bigger is bathroom leaking."], "ru": "Понимаю, но есть проблема посерьёзнее: в ванной протечка." },
+        { "who": "them", "en": "Really? The plumbing passed the inspection last week.", "ru": "Правда? Сантехника прошла проверку на прошлой неделе." },
+        { "who": "me", "hint": "Скажите, что вода, должно быть, идёт из-под ванны", "options": ["The water must be coming from under the bath.", "The water must coming from under the bath.", "The water must to come from under bath."], "ru": "Вода, должно быть, идёт из-под ванны." },
+        { "who": "them", "en": "OK, I'll send someone tomorrow morning to check it.", "ru": "Хорошо, пришлю кого-нибудь завтра утром проверить." },
+        { "who": "me", "hint": "Скажите, что ожидаете, что ремонт протечки будет бесплатным", "options": ["I expect the repair to be done free of charge.", "I expect that repair be done for free charge.", "I am expecting the repair doing free of charge."], "ru": "Рассчитываю, что ремонт протечки будет бесплатным." },
+        { "who": "them", "en": "Of course. It's covered by our guarantee.", "ru": "Конечно. Это входит в нашу гарантию." }
+      ]
+    },
+    {
+      "id": "b2-d-hotel",
+      "title": "Проблема в отеле",
+      "topic": "Путешествия",
+      "level": "B2",
+      "intro": "Вы забронировали номер с видом на море, а вас поселили окнами на стройку.",
+      "lines": [
+        { "who": "them", "en": "Good evening. How can I help you?", "ru": "Добрый вечер. Чем могу помочь?" },
+        { "who": "me", "hint": "Скажите, что бронировали номер с видом на море, а окна выходят на стройку", "options": ["I booked a sea-view room, but my window faces a construction site.", "I have booked a sea-view room, but my window is facing to construction site.", "I booked room with sea view, but my window face the construction."], "ru": "Я бронировал номер с видом на море, а окно выходит на стройку." },
+        { "who": "them", "en": "I'm very sorry. Let me check… I'm afraid all sea-view rooms are taken tonight.", "ru": "Очень сожалею. Сейчас проверю… Боюсь, все номера с видом на море сегодня заняты." },
+        { "who": "me", "hint": "Скажите, что если бы знали заранее, забронировали бы другой отель", "options": ["If I had known that, I would have booked another hotel.", "If I knew that, I would booked another hotel.", "If I would know that, I had booked another hotel."], "ru": "Если бы я это знал, забронировал бы другой отель." },
+        { "who": "them", "en": "I completely understand. We can move you tomorrow and give you a discount for tonight.", "ru": "Полностью понимаю. Мы можем переселить вас завтра и дать скидку за эту ночь." },
+        { "who": "me", "hint": "Спросите, начнётся ли шум рано утром", "options": ["Will the noise start early in the morning?", "Does the noise will start early in the morning?", "Will start the noise early at morning?"], "ru": "Шум начнётся рано утром?" },
+        { "who": "them", "en": "Work starts at eight, I'm afraid. We can provide earplugs.", "ru": "Боюсь, работы начинаются в восемь. Можем дать беруши." },
+        { "who": "me", "hint": "Согласитесь при условии, что завтра точно переселят", "options": ["OK, as long as you definitely move me tomorrow.", "OK, as long you definitely will move me tomorrow.", "OK, so long as you are definitely moving me at tomorrow."], "ru": "Хорошо, если завтра вы меня точно переселите." },
+        { "who": "them", "en": "You have my word. I'll write it in your booking right now.", "ru": "Даю слово. Сейчас же отмечу это в вашей брони." }
+      ]
+    }
+  ]
+}
